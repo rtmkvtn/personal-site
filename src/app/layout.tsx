@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "STUDIO MONOLITH",
+  title: "rtmkvtn | Fullstack Web Engineer",
   description: "Engineering Scalable Digital Infrastructure",
 };
 
