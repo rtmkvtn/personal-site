@@ -14,7 +14,7 @@ export function Navigation() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-6">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 py-4 sm:px-8 sm:py-6">
       <Link
         href="/"
         className="text-primary text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-opacity duration-300 hover:opacity-60"
@@ -22,7 +22,7 @@ export function Navigation() {
         STUDIO MONOLITH
       </Link>
 
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-4 sm:gap-8">
         {NAV_LINKS.map(({ href, label }) => {
           const isActive = pathname === href;
           return (

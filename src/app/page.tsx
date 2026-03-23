@@ -13,12 +13,12 @@ export default function Home() {
 
       {/* Architectural hairline */}
       <div
-        className="absolute left-[7rem] top-0 h-full w-px bg-outline-variant/20"
+        className="absolute left-4 top-0 hidden h-full w-px bg-outline-variant/20 sm:left-[7rem] sm:block"
         aria-hidden="true"
       />
 
       {/* Content — anchored left, vertically centered */}
-      <div className="relative z-10 flex flex-col justify-center pl-[8.5rem] pr-16">
+      <div className="relative z-10 flex flex-col justify-center px-6 sm:pl-[8.5rem] sm:pr-16">
         <p className="mb-6 text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-on-surface/40">
           Fullstack Engineer
         </p>
