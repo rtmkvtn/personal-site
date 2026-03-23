@@ -2,13 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const NAV_LINKS = [
-  { href: "/work", label: "WORK" },
-  { href: "/skills", label: "SKILLS" },
-  { href: "/about", label: "ABOUT" },
-  { href: "/contact", label: "CONTACT" },
-];
+import { NAV_LINKS } from "@/shared/config";
 
 export function Navigation() {
   const pathname = usePathname();
@@ -19,7 +13,7 @@ export function Navigation() {
         href="/"
         className="text-primary text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-opacity duration-300 hover:opacity-60"
       >
-        STUDIO MONOLITH
+        rtmkvtn
       </Link>
 
       <div className="flex items-center gap-4 sm:gap-8">

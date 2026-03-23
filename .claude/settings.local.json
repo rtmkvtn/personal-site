@@ -6,7 +6,8 @@
       "Bash(npm run build 2>&1)",
       "Bash(git remote get-url origin)",
       "Bash(npx vitest run)",
-      "Bash(npx playwright test --project=chromium 2>&1)"
+      "Bash(npx playwright test --project=chromium 2>&1)",
+      "Bash(ls -la /Users/fckxyz/Documents/projects.nosync/portfolio/site/ | grep -E \"\\\\.\\(md|txt\\)$\")"
     ]
   }
 }
