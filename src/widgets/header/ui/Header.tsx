@@ -23,11 +23,11 @@ export function Header() {
             <Link
               key={href}
               href={href}
-              className="relative text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-on-surface transition-opacity duration-300 hover:opacity-60"
+              className={`relative text-[0.6875rem] font-semibold uppercase tracking-[0.1em] ${isActive ? "text-primary" : "text-on-surface"} transition-opacity duration-300 hover:opacity-60`}
             >
               {label}
               {isActive && (
-                <span className="absolute -bottom-2 left-1/2 h-1 w-1 -translate-x-1/2 bg-primary" />
+                <span className="absolute -bottom-3 left-1/2 h-1.5 w-1.5 -translate-x-1/2 rounded-full bg-primary" />
               )}
             </Link>
           );

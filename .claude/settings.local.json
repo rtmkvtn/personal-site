@@ -8,7 +8,8 @@
       "Bash(npx vitest run)",
       "Bash(npx playwright test --project=chromium 2>&1)",
       "Bash(ls -la /Users/fckxyz/Documents/projects.nosync/portfolio/site/ | grep -E \"\\\\.\\(md|txt\\)$\")",
-      "Bash(npx tsc --noEmit 2>&1)"
+      "Bash(npx tsc --noEmit 2>&1)",
+      "Skill(playwright-cli)"
     ]
   }
 }
