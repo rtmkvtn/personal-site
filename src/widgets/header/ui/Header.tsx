@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/shared/config";
 
-export function Navigation() {
+export function Header() {
   const pathname = usePathname();
 
   return (

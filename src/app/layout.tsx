@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Navigation } from "@/widgets/navigation";
+import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
 import { GrainOverlay } from "@/shared/ui";
 import "./globals.css";
@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <GrainOverlay />
-        <Navigation />
+        <Header />
         {children}
         <Footer />
       </body>
