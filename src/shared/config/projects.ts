@@ -16,6 +16,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Next.js", "Rust"],
     highlight: "50K monthly active users",
+    image: "/images/projects/topographic.png",
   },
   {
     name: "NEURAL.LX",
@@ -24,6 +25,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Go", "Kubernetes", "Redis", "gRPC"],
     highlight: "Real-time data pipeline @ 1M req/s",
+    image: "/images/projects/blueprint.png",
   },
   {
     name: "QUANTUM.FLOW",
@@ -32,6 +34,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Python", "WebGPU"],
     highlight: "Sub-50ms inference latency",
+    image: "/images/projects/isometric-layers.png",
   },
   {
     name: "VOID.ARCH",
@@ -40,6 +43,7 @@ export const PROJECTS: Project[] = [
     type: "Frontend",
     stack: ["TypeScript", "React", "Three.js"],
     highlight: "60fps on low-end devices",
+    image: "/images/projects/wireframe-box.png",
   },
   {
     name: "PRISM.DEPLOY",
@@ -48,6 +52,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Terraform", "AWS", "Docker"],
     highlight: "Zero-downtime deployments across 3 regions",
+    image: "/images/projects/wave-flow.png",
   },
   {
     name: "MONO.STACK",
@@ -56,6 +61,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["PostgreSQL", "Redis", "GraphQL"],
     highlight: "p99 query latency under 10ms",
+    image: "/images/projects/grid-elevation.png",
   },
   {
     name: "FLUX.SYSTEM",
@@ -64,6 +70,7 @@ export const PROJECTS: Project[] = [
     type: "Frontend",
     stack: ["Elixir", "Phoenix", "LiveView"],
     highlight: "10K concurrent WebSocket connections",
+    image: "/images/projects/grid-plan.png",
   },
   {
     name: "VECTOR.GRID",
@@ -72,6 +79,7 @@ export const PROJECTS: Project[] = [
     type: "Frontend",
     stack: ["Canvas", "Three.js", "WASM"],
     highlight: "Procedural generation in real-time",
+    image: "/images/projects/block-assembly.png",
   },
   {
     name: "AETHER.DB",
@@ -80,5 +88,6 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["MongoDB", "GraphQL", "Edge Functions"],
     highlight: "Global edge caching with 20ms TTFB",
+    image: "/images/projects/contour-frame.png",
   },
 ];
