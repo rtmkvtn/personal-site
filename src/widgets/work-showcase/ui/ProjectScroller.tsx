@@ -78,6 +78,15 @@ export function ProjectScroller({
             >
               {project.name}
             </h2>
+            <span
+              className={`ml-auto text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-opacity duration-500 ${
+                isActive
+                  ? "opacity-100 text-primary/60"
+                  : "opacity-0"
+              }`}
+            >
+              {project.stack.join(" / ")}
+            </span>
           </div>
         );
       })}
