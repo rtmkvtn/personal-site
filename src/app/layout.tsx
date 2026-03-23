@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Navigation, Footer, GrainOverlay } from "@/shared/ui";
+import { Navigation } from "@/widgets/navigation";
+import { Footer } from "@/widgets/footer";
+import { GrainOverlay } from "@/shared/ui";
 import "./globals.css";
 
 const inter = Inter({
