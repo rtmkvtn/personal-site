@@ -1,0 +1,71 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 1.5rem 2rem;
+  }
+}
+
+.logo {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: opacity 300ms ease-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: 2rem;
+  }
+}
+
+.link {
+  position: relative;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: var(--color-on-surface);
+  transition: opacity 300ms ease-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.linkActive {
+  color: var(--color-primary);
+}
+
+.dot {
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+  background-color: var(--color-primary);
+}
