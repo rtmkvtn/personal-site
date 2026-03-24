@@ -60,7 +60,13 @@ export function ProjectScroller({
   }, [activeIndex]);
 
   return (
-    <div className="overflow-hidden flex-1">
+    <div
+      className="overflow-hidden flex-1"
+      style={{
+        maskImage:
+          "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
+      }}
+    >
       <div
         ref={scrollElementRef}
         className="h-dvh overflow-y-auto scrollbar-none"
@@ -128,7 +134,7 @@ export function ProjectScroller({
                 {project.name}
               </h2>
               <span
-                className={`ml-auto text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-opacity duration-500 ${
+                className={`text-[0.6875rem] font-semibold uppercase tracking-widest transition-opacity duration-500 ${
                   isActive
                     ? "opacity-100 text-primary/60"
                     : "opacity-0"
