@@ -47,7 +47,8 @@ export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
     >
       {/* Background image */}
       {project?.image && (
-        <div className={`absolute inset-0 ${fadeIn(1)}`}>
+        <div className={`h-[50vh] absolute ${fadeIn(1)} left-0 right-0 top-[-20%] -translate-x-[70%]`}>
+          <div className="absolute inset-0 bg-linear-to-r from-gray/10 to-gray/70" />
           <Image
             src={project.image}
             alt=""
