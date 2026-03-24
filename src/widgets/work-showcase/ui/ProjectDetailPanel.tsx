@@ -52,6 +52,8 @@ export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
             src={project.image}
             alt=""
             fill
+            sizes="(min-width: 1024px) 40vw, 0px"
+            loading="eager"
             className="object-cover opacity-30"
           />
         </div>
