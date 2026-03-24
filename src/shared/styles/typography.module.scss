@@ -1,0 +1,41 @@
+.display-lg {
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+.display-md {
+  font-size: 3.5rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.body-md {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface);
+}
+
+.label-sm {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.label-sm-wide {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.watermark {
+  font-size: clamp(15rem, 30vw, 25rem);
+  font-weight: 200;
+  line-height: 1;
+}

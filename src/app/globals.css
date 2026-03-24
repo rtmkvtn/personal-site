@@ -1,6 +1,4 @@
-@import "tailwindcss";
-
-@theme inline {
+:root {
   /* Font */
   --font-sans: var(--font-inter);
 
@@ -23,22 +21,22 @@
 
   /* Colors — Semantic */
   --color-error: #ffb4ab;
-
-  /* Border radius — strictly 0 */
-  --radius-sm: 0px;
-  --radius-md: 0px;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
-  --radius-2xl: 0px;
-  --radius-3xl: 0px;
-  --radius-4xl: 0px;
-  --radius-full: 9999px;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
+  font-family: var(--font-sans), sans-serif;
   background-color: var(--color-surface);
   color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
