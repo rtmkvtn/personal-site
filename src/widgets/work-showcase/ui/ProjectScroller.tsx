@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, useState } from "react";
 import type { Project } from "@/shared/config";
 
 const SCROLL_SPEED = 0.5; // pixels per frame at 60fps (~30px/s)
@@ -20,6 +20,19 @@ export function ProjectScroller({
   const offsetRef = useRef(0);
   const animRef = useRef<number>(0);
   const pausedRef = useRef(false);
+  const [activeUid, setActiveUid] = useState<number | null>(null);
+
+  const items = [
+    ...projects.map((p) => ({ ...p, uid: p.index, isClone: false })),
+    ...projects.map((p) => ({
+      ...p,
+      uid: p.index + projects.length,
+      isClone: true,
+    })),
+  ];
+
+  const originals = items.filter((i) => !i.isClone);
+  const clones = items.filter((i) => i.isClone);
 
   const animate = useCallback(() => {
     if (!pausedRef.current && scrollRef.current) {
@@ -39,22 +52,35 @@ export function ProjectScroller({
   }, [animate]);
 
   useEffect(() => {
-    pausedRef.current = activeIndex !== null;
+    pausedRef.current = activeUid !== null;
+  }, [activeUid]);
+
+  useEffect(() => {
+    if (activeIndex === null) setActiveUid(null);
   }, [activeIndex]);
 
-  const renderList = (ariaHidden?: boolean) => (
+  const renderList = (
+    subset: typeof items,
+    ariaHidden?: boolean,
+  ) => (
     <div aria-hidden={ariaHidden || undefined}>
-      {projects.map((project) => {
-        const isActive = activeIndex === project.index;
-        const isDimmed = activeIndex !== null && !isActive;
+      {subset.map((item) => {
+        const isActive = activeUid === item.uid;
+        const isDimmed = activeUid !== null && !isActive;
 
         return (
           <div
-            key={`${ariaHidden ? "clone-" : ""}${project.slug}`}
+            key={`${item.isClone ? "clone-" : ""}${item.slug}`}
             className="group flex items-baseline gap-8 cursor-pointer py-1"
-            onMouseEnter={() => onHover(project.index)}
-            onMouseLeave={() => onHover(null)}
-            data-project-index={project.index}
+            onMouseEnter={() => {
+              setActiveUid(item.uid);
+              onHover(item.index);
+            }}
+            onMouseLeave={() => {
+              setActiveUid(null);
+              onHover(null);
+            }}
+            data-project-index={item.index}
           >
             <span
               className={`text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 ${
@@ -65,7 +91,7 @@ export function ProjectScroller({
                     : "text-outline-variant"
               }`}
             >
-              {String(project.index).padStart(2, "0")}
+              {String(item.index).padStart(2, "0")}
             </span>
             <h2
               className={`text-[3.5rem] font-extralight tracking-[-0.02em] leading-[1.1] transition-all duration-300 ${
@@ -76,7 +102,7 @@ export function ProjectScroller({
                     : "text-on-surface"
               }`}
             >
-              {project.name}
+              {item.name}
             </h2>
             <span
               className={`ml-auto text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-opacity duration-500 ${
@@ -85,7 +111,7 @@ export function ProjectScroller({
                   : "opacity-0"
               }`}
             >
-              {project.stack.join(" / ")}
+              {item.stack.join(" / ")}
             </span>
           </div>
         );
@@ -96,8 +122,8 @@ export function ProjectScroller({
   return (
     <div className="overflow-hidden flex-1">
       <div ref={scrollRef} className="will-change-transform">
-        {renderList()}
-        {renderList(true)}
+        {renderList(originals)}
+        {renderList(clones, true)}
       </div>
     </div>
   );
