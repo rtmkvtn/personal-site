@@ -5,6 +5,7 @@ import { PROJECTS } from "@/shared/config";
 import { ProjectScroller } from "./ProjectScroller";
 import { ProjectDetailPanel } from "./ProjectDetailPanel";
 import { ProjectIndexWatermark } from "./ProjectIndexWatermark";
+import styles from "./WorkShowcase.module.scss";
 
 const DISMISS_DELAY = 2000;
 
@@ -64,16 +65,15 @@ export function WorkShowcase() {
       : null;
 
   return (
-    <main className="relative flex flex-1 overflow-hidden px-6 sm:pl-12 sm:pr-16">
+    <main className={styles.main}>
       <ProjectScroller
         projects={PROJECTS}
         activeIndex={activeIndex}
         onHover={handleProjectHover}
       />
 
-      {/* Detail panel — right side */}
       <div
-        className="hidden lg:flex items-center justify-center w-[40%] shrink-0"
+        className={styles.detailWrapper}
         onMouseEnter={handlePanelEnter}
         onMouseLeave={handlePanelLeave}
       >

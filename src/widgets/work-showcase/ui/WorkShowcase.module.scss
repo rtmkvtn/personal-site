@@ -1,0 +1,28 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+$breakpoint-lg: 1024px;
+
+.main {
+  position: relative;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  padding: 0 1.5rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding-left: 3rem;
+    padding-right: 4rem;
+  }
+}
+
+.detailWrapper {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  flex-shrink: 0;
+
+  @media (min-width: $breakpoint-lg) {
+    display: flex;
+  }
+}
