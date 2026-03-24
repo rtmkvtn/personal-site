@@ -65,22 +65,21 @@ export function ProjectScroller({
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
-      const h2 = (e.target as HTMLElement).closest("h2");
-      if (h2) {
-        const row = h2.closest("[data-index]") as HTMLElement | null;
-        if (row) {
-          const virtualIndex = Number(row.getAttribute("data-index"));
-          if (virtualIndex !== activeVirtualIndexRef.current) {
-            const projectIndex = Number(
-              row.getAttribute("data-project-index"),
-            );
-            pausedRef.current = true;
-            activeVirtualIndexRef.current = virtualIndex;
-            setActiveVirtualIndex(virtualIndex);
-            onHover(projectIndex);
-          }
-          return;
+      const row = (e.target as HTMLElement).closest(
+        "[data-project-index]",
+      ) as HTMLElement | null;
+      if (row) {
+        const virtualIndex = Number(row.getAttribute("data-index"));
+        if (virtualIndex !== activeVirtualIndexRef.current) {
+          const projectIndex = Number(
+            row.getAttribute("data-project-index"),
+          );
+          pausedRef.current = true;
+          activeVirtualIndexRef.current = virtualIndex;
+          setActiveVirtualIndex(virtualIndex);
+          onHover(projectIndex);
         }
+        return;
       }
       if (pausedRef.current) {
         pausedRef.current = false;
@@ -146,7 +145,7 @@ export function ProjectScroller({
               className="group flex items-baseline gap-8 py-1"
             >
               <span
-                className={`text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 ${
+                className={`text-[0.6875rem] font-semibold uppercase tracking-widest transition-colors duration-300 ${
                   isActive
                     ? "text-primary"
                     : isDimmed

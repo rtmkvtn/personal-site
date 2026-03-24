@@ -10,29 +10,34 @@ interface ProjectDetailPanelProps {
 }
 
 export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
-  const [visible, setVisible] = useState(false);
+  const [displayedProject, setDisplayedProject] = useState<Project | null>(null);
+  const [prevProject, setPrevProject] = useState<Project | null>(null);
   const [stage, setStage] = useState(0);
   // stage 0: hidden, 1: image, 2: type, 3: stack, 4: highlight, 5: button
 
+  if (project !== prevProject) {
+    setPrevProject(project);
+    setStage(0);
+    if (project) setDisplayedProject(project);
+  }
+
   useEffect(() => {
     if (project) {
-      setVisible(true);
-      setStage(0);
-      const timers: ReturnType<typeof setTimeout>[] = [];
-      timers.push(setTimeout(() => setStage(1), 50));
-      timers.push(setTimeout(() => setStage(2), 200));
-      timers.push(setTimeout(() => setStage(3), 300));
-      timers.push(setTimeout(() => setStage(4), 400));
-      timers.push(setTimeout(() => setStage(5), 500));
+      const timers = [
+        setTimeout(() => setStage(1), 50),
+        setTimeout(() => setStage(2), 200),
+        setTimeout(() => setStage(3), 300),
+        setTimeout(() => setStage(4), 400),
+        setTimeout(() => setStage(5), 500),
+      ];
       return () => timers.forEach(clearTimeout);
     } else {
-      setStage(0);
-      const timer = setTimeout(() => setVisible(false), 200);
+      const timer = setTimeout(() => setDisplayedProject(null), 200);
       return () => clearTimeout(timer);
     }
   }, [project]);
 
-  if (!visible && !project) return null;
+  if (!displayedProject) return null;
 
   const fadeIn = (minStage: number) =>
     `transition-all duration-200 ${
@@ -46,11 +51,11 @@ export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
       }`}
     >
       {/* Background image */}
-      {project?.image && (
+      {displayedProject?.image && (
         <div className={`h-[50vh] absolute ${fadeIn(1)} left-0 right-0 top-[-20%] -translate-x-[70%]`}>
-          <div className="absolute inset-0 bg-linear-to-r from-gray/10 to-gray/70" />
+          <div className="absolute inset-0 bg-radial from-gray/5 to-surface" />
           <Image
-            src={project.image}
+            src={displayedProject.image}
             alt=""
             fill
             sizes="(min-width: 1024px) 40vw, 0px"
@@ -63,40 +68,40 @@ export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
       <div className="relative z-10 flex h-full flex-col justify-center gap-8 p-8">
         {/* TYPE */}
         <div className={fadeIn(2)}>
-          <span className="block text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-outline mb-2">
+          <span className="block text-[0.6875rem] font-semibold uppercase tracking-widest text-outline mb-2">
             TYPE
           </span>
           <p className="text-[0.875rem] font-normal tracking-[0.05em] text-on-surface">
-            {project?.type?.toUpperCase() ?? ""}
+            {displayedProject?.type?.toUpperCase() ?? ""}
           </p>
         </div>
 
         {/* STACK */}
         <div className={fadeIn(3)}>
-          <span className="block text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-outline mb-2">
+          <span className="block text-[0.6875rem] font-semibold uppercase tracking-widest text-outline mb-2">
             STACK
           </span>
           <p className="text-[0.875rem] font-normal tracking-[0.05em] text-on-surface">
-            {project?.stack?.join(", ").toUpperCase() ?? ""}
+            {displayedProject?.stack?.join(", ").toUpperCase() ?? ""}
           </p>
         </div>
 
         {/* HIGHLIGHT */}
         <div className={fadeIn(4)}>
-          <span className="block text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-outline mb-2">
+          <span className="block text-[0.6875rem] font-semibold uppercase tracking-widest text-outline mb-2">
             HIGHLIGHT
           </span>
           <p className="text-[0.875rem] font-normal tracking-[0.05em] text-on-surface">
-            {project?.highlight?.toUpperCase() ?? ""}
+            {displayedProject?.highlight?.toUpperCase() ?? ""}
           </p>
         </div>
 
         {/* DETAILS button */}
         <div className={fadeIn(5)}>
-          {project && (
+          {displayedProject && (
             <Link
-              href={`/work/${project.slug}`}
-              className="inline-block border border-primary px-6 py-3 text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-primary transition-colors duration-300 hover:bg-primary hover:text-on-primary"
+              href={`/work/${displayedProject.slug}`}
+              className="inline-block border border-primary px-6 py-3 text-[0.6875rem] font-semibold uppercase tracking-widest text-primary transition-colors duration-300 hover:bg-primary hover:text-on-primary"
             >
               DETAILS
             </Link>

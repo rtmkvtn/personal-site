@@ -73,7 +73,7 @@ export function WorkShowcase() {
 
       {/* Detail panel — right side */}
       <div
-        className="hidden lg:flex items-center justify-center w-[40%] flex-shrink-0"
+        className="hidden lg:flex items-center justify-center w-[40%] shrink-0"
         onMouseEnter={handlePanelEnter}
         onMouseLeave={handlePanelLeave}
       >
