@@ -1,5 +1,6 @@
 import { PROJECTS } from "@/shared/config";
 import { notFound } from "next/navigation";
+import styles from "./page.module.scss";
 
 export default async function ProjectPage({
   params,
@@ -14,10 +15,8 @@ export default async function ProjectPage({
   }
 
   return (
-    <main className="relative flex flex-1 items-center justify-center">
-      <h1 className="text-[3.5rem] font-extralight tracking-[-0.02em] text-primary">
-        {project.name}
-      </h1>
+    <main className={styles.main}>
+      <h1 className={styles.title}>{project.name}</h1>
     </main>
   );
 }
