@@ -6,8 +6,13 @@ async function hoverProject(page: Page, index: number) {
   for (const row of rows) {
     const box = await row.boundingBox();
     if (box && box.y >= 0 && box.y + box.height <= 900) {
-      await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-      return;
+      // Hover the h2 (project name) since that's where the mouse handlers live
+      const h2 = row.locator("h2");
+      const h2Box = await h2.boundingBox();
+      if (h2Box) {
+        await page.mouse.move(h2Box.x + h2Box.width / 2, h2Box.y + h2Box.height / 2);
+        return;
+      }
     }
   }
   throw new Error(`No visible copy of project ${index} found`);

@@ -93,17 +93,7 @@ export function ProjectScroller({
                 width: "100%",
                 transform: `translateY(${vRow.start}px)`,
               }}
-              className="group flex items-baseline gap-8 cursor-pointer py-1"
-              onMouseEnter={() => {
-                pausedRef.current = true;
-                setActiveVirtualIndex(vRow.index);
-                onHover(project.index);
-              }}
-              onMouseLeave={() => {
-                pausedRef.current = false;
-                setActiveVirtualIndex(null);
-                onHover(null);
-              }}
+              className="group flex items-baseline gap-8 py-1"
             >
               <span
                 className={`text-[0.6875rem] font-semibold uppercase tracking-[0.1em] transition-colors duration-300 ${
@@ -117,13 +107,23 @@ export function ProjectScroller({
                 {String(project.index).padStart(2, "0")}
               </span>
               <h2
-                className={`text-[3.5rem] font-extralight tracking-[-0.02em] leading-[1.1] transition-all duration-300 ${
+                className={`text-[3.5rem] font-extralight tracking-[-0.02em] leading-[1.1] transition-all duration-300 cursor-pointer ${
                   isActive
                     ? "text-primary"
                     : isDimmed
                       ? "text-on-surface/30"
                       : "text-on-surface"
                 }`}
+                onMouseEnter={() => {
+                  pausedRef.current = true;
+                  setActiveVirtualIndex(vRow.index);
+                  onHover(project.index);
+                }}
+                onMouseLeave={() => {
+                  pausedRef.current = false;
+                  setActiveVirtualIndex(null);
+                  onHover(null);
+                }}
               >
                 {project.name}
               </h2>
