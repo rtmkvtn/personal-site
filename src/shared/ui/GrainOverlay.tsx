@@ -1,7 +1,9 @@
+import styles from "./GrainOverlay.module.scss";
+
 export function GrainOverlay() {
   return (
     <svg
-      className="pointer-events-none fixed inset-0 z-[100] h-full w-full opacity-[0.035]"
+      className={styles.overlay}
       aria-hidden="true"
     >
       <filter id="grain">
