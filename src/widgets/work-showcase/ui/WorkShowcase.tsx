@@ -1,65 +1,86 @@
-const projects = [
-  {
-    title: "Infrastructure Platform",
-    description:
-      "Distributed systems architecture for high-throughput data pipelines. Built with event-driven microservices handling millions of daily transactions.",
-    tags: ["Distributed Systems", "Event-Driven", "Cloud"],
-  },
-  {
-    title: "Design System Engine",
-    description:
-      "Token-based design system powering a multi-product ecosystem. Automated visual regression testing and cross-platform component delivery.",
-    tags: ["React", "TypeScript", "CI/CD"],
-  },
-  {
-    title: "Real-Time Analytics",
-    description:
-      "Stream processing platform for behavioral analytics. Sub-second query latency across terabytes of time-series data.",
-    tags: ["Data Engineering", "Streaming", "Visualization"],
-  },
-];
+"use client";
+
+import { useState, useRef, useCallback } from "react";
+import { PROJECTS } from "@/shared/config";
+import { ProjectScroller } from "./ProjectScroller";
+import { ProjectDetailPanel } from "./ProjectDetailPanel";
+import { ProjectIndexWatermark } from "./ProjectIndexWatermark";
+
+const DISMISS_DELAY = 2000;
 
 export function WorkShowcase() {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const dismissTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hoverZoneRef = useRef(false);
+  const panelZoneRef = useRef(false);
+
+  const cancelDismiss = useCallback(() => {
+    if (dismissTimer.current) {
+      clearTimeout(dismissTimer.current);
+      dismissTimer.current = null;
+    }
+  }, []);
+
+  const tryDismiss = useCallback(() => {
+    cancelDismiss();
+    dismissTimer.current = setTimeout(() => {
+      if (!hoverZoneRef.current && !panelZoneRef.current) {
+        setActiveIndex(null);
+      }
+    }, DISMISS_DELAY);
+  }, [cancelDismiss]);
+
+  const handleProjectHover = useCallback(
+    (index: number | null) => {
+      if (index !== null) {
+        cancelDismiss();
+        hoverZoneRef.current = true;
+        setActiveIndex(index);
+      } else {
+        hoverZoneRef.current = false;
+        if (!panelZoneRef.current) {
+          tryDismiss();
+        }
+      }
+    },
+    [cancelDismiss, tryDismiss],
+  );
+
+  const handlePanelEnter = useCallback(() => {
+    panelZoneRef.current = true;
+    cancelDismiss();
+  }, [cancelDismiss]);
+
+  const handlePanelLeave = useCallback(() => {
+    panelZoneRef.current = false;
+    if (!hoverZoneRef.current) {
+      tryDismiss();
+    }
+  }, [tryDismiss]);
+
+  const activeProject =
+    activeIndex !== null
+      ? PROJECTS.find((p) => p.index === activeIndex) ?? null
+      : null;
+
   return (
-    <main className="relative flex flex-1 overflow-hidden">
-      <span className="pointer-events-none absolute right-[-2rem] top-1/2 -translate-y-1/2 select-none text-[clamp(15rem,30vw,25rem)] font-extralight leading-none text-primary/[0.03]">
-        02
-      </span>
+    <main className="relative flex flex-1 overflow-hidden px-6 sm:pl-12 sm:pr-16">
+      <ProjectScroller
+        projects={PROJECTS}
+        activeIndex={activeIndex}
+        onHover={handleProjectHover}
+      />
 
-      <div className="absolute left-4 top-0 hidden h-full w-px bg-outline-variant/20 sm:left-[7rem] sm:block" />
-
-      <div className="relative z-10 flex flex-col justify-center px-6 sm:pl-[8.5rem] sm:pr-16">
-        <p className="mb-6 text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-on-surface/40">
-          Selected Projects
-        </p>
-
-        <h1 className="text-[clamp(3.5rem,8vw,8rem)] font-thin leading-[0.9] tracking-[-0.02em] text-primary">
-          WORK
-        </h1>
-
-        <div className="mt-12 flex flex-col gap-[2.75rem]">
-          {projects.map((project) => (
-            <article key={project.title} className="max-w-lg">
-              <h2 className="text-[0.6875rem] font-semibold uppercase tracking-[0.1em] text-primary">
-                {project.title}
-              </h2>
-              <p className="mt-3 text-[0.875rem] font-normal leading-relaxed tracking-[0.05em] text-on-surface">
-                {project.description}
-              </p>
-              <div className="mt-3 flex gap-4">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[0.6875rem] font-normal tracking-[0.05em] text-on-surface/40"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </article>
-          ))}
-        </div>
+      {/* Detail panel — right side */}
+      <div
+        className="hidden lg:flex items-center justify-center w-[40%] shrink-0"
+        onMouseEnter={handlePanelEnter}
+        onMouseLeave={handlePanelLeave}
+      >
+        <ProjectDetailPanel project={activeProject} />
       </div>
+
+      <ProjectIndexWatermark index={activeIndex} />
     </main>
   );
 }
