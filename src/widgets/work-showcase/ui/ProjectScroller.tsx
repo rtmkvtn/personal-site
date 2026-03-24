@@ -22,6 +22,7 @@ export function ProjectScroller({
   const scrollElementRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number>(0);
   const pausedRef = useRef(false);
+  const activeVirtualIndexRef = useRef<number | null>(null);
   const [activeVirtualIndex, setActiveVirtualIndex] = useState<number | null>(
     null,
   );
@@ -49,15 +50,56 @@ export function ProjectScroller({
 
   useEffect(() => {
     animRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animRef.current);
+    return () => {
+      cancelAnimationFrame(animRef.current);
+    };
   }, [animate]);
 
   useEffect(() => {
     if (activeIndex === null) {
+      activeVirtualIndexRef.current = null;
       setActiveVirtualIndex(null);
       pausedRef.current = false;
     }
   }, [activeIndex]);
+
+  const handleMouseMove = useCallback(
+    (e: React.MouseEvent) => {
+      const h2 = (e.target as HTMLElement).closest("h2");
+      if (h2) {
+        const row = h2.closest("[data-index]") as HTMLElement | null;
+        if (row) {
+          const virtualIndex = Number(row.getAttribute("data-index"));
+          if (virtualIndex !== activeVirtualIndexRef.current) {
+            const projectIndex = Number(
+              row.getAttribute("data-project-index"),
+            );
+            pausedRef.current = true;
+            activeVirtualIndexRef.current = virtualIndex;
+            setActiveVirtualIndex(virtualIndex);
+            onHover(projectIndex);
+          }
+          return;
+        }
+      }
+      if (pausedRef.current) {
+        pausedRef.current = false;
+        activeVirtualIndexRef.current = null;
+        setActiveVirtualIndex(null);
+        onHover(null);
+      }
+    },
+    [onHover],
+  );
+
+  const handleMouseLeave = useCallback(() => {
+    if (pausedRef.current) {
+      pausedRef.current = false;
+      activeVirtualIndexRef.current = null;
+      setActiveVirtualIndex(null);
+      onHover(null);
+    }
+  }, [onHover]);
 
   return (
     <div
@@ -70,6 +112,8 @@ export function ProjectScroller({
       <div
         ref={scrollElementRef}
         className="h-dvh overflow-y-auto scrollbar-none"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
       >
         <div
           style={{
@@ -120,16 +164,6 @@ export function ProjectScroller({
                       ? "text-on-surface/30"
                       : "text-on-surface"
                 }`}
-                onMouseEnter={() => {
-                  pausedRef.current = true;
-                  setActiveVirtualIndex(vRow.index);
-                  onHover(project.index);
-                }}
-                onMouseLeave={() => {
-                  pausedRef.current = false;
-                  setActiveVirtualIndex(null);
-                  onHover(null);
-                }}
               >
                 {project.name}
               </h2>

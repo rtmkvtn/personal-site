@@ -6,7 +6,7 @@ import { ProjectScroller } from "./ProjectScroller";
 import { ProjectDetailPanel } from "./ProjectDetailPanel";
 import { ProjectIndexWatermark } from "./ProjectIndexWatermark";
 
-const DISMISS_DELAY = 200;
+const DISMISS_DELAY = 2000;
 
 export function WorkShowcase() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
