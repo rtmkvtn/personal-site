@@ -1,0 +1,23 @@
+.watermark {
+  pointer-events: none;
+  position: absolute;
+  user-select: none;
+  font-size: clamp(12rem, 20vw, 18rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  transition: all 500ms ease-out;
+}
+
+.active {
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: color-mix(in srgb, var(--color-primary) 4%, transparent);
+}
+
+.inactive {
+  bottom: 25%;
+  right: 3rem;
+  color: color-mix(in srgb, var(--color-primary) 3%, transparent);
+}
