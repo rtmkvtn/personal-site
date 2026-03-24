@@ -1,0 +1,92 @@
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 24rem;
+  transition: opacity 200ms ease-out;
+}
+
+.panelHidden {
+  opacity: 0;
+}
+
+.panelVisible {
+  opacity: 1;
+}
+
+.imageWrapper {
+  height: 50vh;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  transform: translateX(-70%);
+  transition: all 200ms ease-out;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, color-mix(in srgb, gray 5%, transparent), var(--color-surface));
+}
+
+.image {
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.inner {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.fadeIn {
+  transition: all 200ms ease-out;
+  opacity: 0;
+  transform: translateY(0.5rem);
+}
+
+.fadeInVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fieldLabel {
+  display: block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-outline);
+  margin-bottom: 0.5rem;
+}
+
+.fieldValue {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface);
+}
+
+.detailsButton {
+  display: inline-block;
+  border: 1px solid var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 300ms ease-out, background-color 300ms ease-out;
+
+  &:hover {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+}
