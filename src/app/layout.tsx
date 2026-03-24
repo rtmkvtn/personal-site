@@ -4,6 +4,7 @@ import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
 import { GrainOverlay } from "@/shared/ui";
 import "./globals.css";
+import styles from "./layout.module.scss";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -22,8 +23,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+    <html lang="en" className={`${inter.variable} ${styles.html}`}>
+      <body className={styles.body}>
         <GrainOverlay />
         <Header />
         {children}
