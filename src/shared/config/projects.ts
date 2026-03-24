@@ -5,6 +5,7 @@ export interface Project {
   type: "Frontend" | "Fullstack";
   stack: string[];
   highlight: string;
+  date: string;
   image?: string;
 }
 
@@ -16,6 +17,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Next.js", "Rust"],
     highlight: "50K monthly active users",
+    date: "Jan 2023 — Aug 2024",
     image: "/images/projects/topographic.png",
   },
   {
@@ -25,6 +27,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Go", "Kubernetes", "Redis", "gRPC"],
     highlight: "Real-time data pipeline @ 1M req/s",
+    date: "Mar 2023 — Dec 2023",
     image: "/images/projects/blueprint.png",
   },
   {
@@ -34,6 +37,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Python", "WebGPU"],
     highlight: "Sub-50ms inference latency",
+    date: "Jun 2023 — Feb 2024",
     image: "/images/projects/isometric-layers.png",
   },
   {
@@ -43,6 +47,7 @@ export const PROJECTS: Project[] = [
     type: "Frontend",
     stack: ["TypeScript", "React", "Three.js"],
     highlight: "60fps on low-end devices",
+    date: "Sep 2023 — May 2024",
     image: "/images/projects/wireframe-box.png",
   },
   {
@@ -52,6 +57,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["Terraform", "AWS", "Docker"],
     highlight: "Zero-downtime deployments across 3 regions",
+    date: "Nov 2023",
     image: "/images/projects/wave-flow.png",
   },
   {
@@ -61,6 +67,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["PostgreSQL", "Redis", "GraphQL"],
     highlight: "p99 query latency under 10ms",
+    date: "Feb 2024 — Jul 2024",
     image: "/images/projects/grid-elevation.png",
   },
   {
@@ -70,6 +77,7 @@ export const PROJECTS: Project[] = [
     type: "Frontend",
     stack: ["Elixir", "Phoenix", "LiveView"],
     highlight: "10K concurrent WebSocket connections",
+    date: "Apr 2024 — Oct 2024",
     image: "/images/projects/grid-plan.png",
   },
   {
@@ -79,6 +87,7 @@ export const PROJECTS: Project[] = [
     type: "Frontend",
     stack: ["Canvas", "Three.js", "WASM"],
     highlight: "Procedural generation in real-time",
+    date: "Aug 2024 — Jan 2025",
     image: "/images/projects/block-assembly.png",
   },
   {
@@ -88,6 +97,7 @@ export const PROJECTS: Project[] = [
     type: "Fullstack",
     stack: ["MongoDB", "GraphQL", "Edge Functions"],
     highlight: "Global edge caching with 20ms TTFB",
+    date: "Nov 2024 — Mar 2025",
     image: "/images/projects/contour-frame.png",
   },
 ];

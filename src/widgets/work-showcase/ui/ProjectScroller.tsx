@@ -134,7 +134,7 @@ export function ProjectScroller({
                     : "opacity-0"
                 }`}
               >
-                {project.stack.join(" / ")}
+                {project.date}
               </span>
             </div>
           );
