@@ -1,0 +1,45 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 1.5rem 2rem;
+  }
+}
+
+.copyright {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.link {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
+  text-decoration: none;
+  transition: opacity 300ms ease-out;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
