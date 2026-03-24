@@ -2,7 +2,9 @@
 
 import { useRef, useEffect, useCallback, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
+import clsx from "clsx";
 import type { Project } from "@/shared/config";
+import styles from "./ProjectScroller.module.scss";
 
 const SCROLL_SPEED = 0.5;
 const VIRTUAL_REPEAT = 100;
@@ -102,7 +104,7 @@ export function ProjectScroller({
 
   return (
     <div
-      className="overflow-hidden flex-1"
+      className={styles.mask}
       style={{
         maskImage:
           "linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)",
@@ -110,7 +112,7 @@ export function ProjectScroller({
     >
       <div
         ref={scrollElementRef}
-        className="h-dvh overflow-y-auto scrollbar-none"
+        className={styles.scrollContainer}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
       >
@@ -142,36 +144,31 @@ export function ProjectScroller({
                 width: "100%",
                 transform: `translateY(${vRow.start}px)`,
               }}
-              className="group flex items-baseline gap-8 py-1"
+              className={styles.row}
             >
               <span
-                className={`text-[0.6875rem] font-semibold uppercase tracking-widest transition-colors duration-300 ${
-                  isActive
-                    ? "text-primary"
-                    : isDimmed
-                      ? "text-outline-variant/40"
-                      : "text-outline-variant"
-                }`}
+                className={clsx(
+                  styles.index,
+                  isActive && styles.indexActive,
+                  isDimmed && styles.indexDimmed,
+                )}
               >
                 {String(project.index).padStart(2, "0")}
               </span>
               <h2
-                className={`text-[3.5rem] font-extralight tracking-[-0.02em] leading-[1.1] transition-all duration-300 cursor-pointer ${
-                  isActive
-                    ? "text-primary"
-                    : isDimmed
-                      ? "text-on-surface/30"
-                      : "text-on-surface"
-                }`}
+                className={clsx(
+                  styles.name,
+                  isActive && styles.nameActive,
+                  isDimmed && styles.nameDimmed,
+                )}
               >
                 {project.name}
               </h2>
               <span
-                className={`text-[0.6875rem] font-semibold uppercase tracking-widest transition-opacity duration-500 ${
-                  isActive
-                    ? "opacity-100 text-primary/60"
-                    : "opacity-0"
-                }`}
+                className={clsx(
+                  styles.date,
+                  isActive && styles.dateVisible,
+                )}
               >
                 {project.date}
               </span>
