@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { RichTextEditor } from "./RichTextEditor";
 import styles from "./ProjectForm.module.scss";
 
 const PROJECT_TYPES = [
@@ -20,6 +21,7 @@ interface ProjectFormData {
   tags: string[];
   highlight: string;
   achievements: string[];
+  description: unknown;
   date: string;
   link: string;
   githubLink: string;
@@ -49,6 +51,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
     tags: initialData?.tags ?? [],
     highlight: initialData?.highlight ?? "",
     achievements: initialData?.achievements ?? [],
+    description: initialData?.description ?? null,
     date: initialData?.date ?? "",
     link: initialData?.link ?? "",
     githubLink: initialData?.githubLink ?? "",
@@ -194,6 +197,16 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
           value={form.highlight}
           onChange={(e) => updateField("highlight", e.target.value)}
           required
+        />
+      </div>
+
+      <div className={styles.field}>
+        <label className={styles.label}>DESCRIPTION</label>
+        <RichTextEditor
+          content={form.description}
+          onChange={(json) =>
+            setForm((prev) => ({ ...prev, description: json }))
+          }
         />
       </div>
 
