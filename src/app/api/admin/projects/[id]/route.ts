@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { revalidateTag } from "next/cache";
 import { prisma } from "@/shared/lib/prisma";
 
 export async function GET(
@@ -23,6 +24,7 @@ export async function PUT(
     where: { id },
     data: body,
   });
+  revalidateTag("projects", "max");
   return Response.json(project);
 }
 
@@ -32,5 +34,6 @@ export async function DELETE(
 ) {
   const { id } = await params;
   await prisma.project.delete({ where: { id } });
+  revalidateTag("projects", "max");
   return Response.json({ success: true });
 }
