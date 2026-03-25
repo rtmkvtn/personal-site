@@ -30,6 +30,7 @@ interface ProjectFormData {
   avatar: string | null;
   gallery: { url: string; order: number }[];
   video: string | null;
+  readmeFile: string | null;
 }
 
 interface ProjectFormProps {
@@ -63,6 +64,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
     avatar: initialData?.avatar ?? null,
     gallery: (initialData?.gallery as { url: string; order: number }[]) ?? [],
     video: initialData?.video ?? null,
+    readmeFile: initialData?.readmeFile ?? null,
   });
 
   const [stackInput, setStackInput] = useState("");
@@ -70,6 +72,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
   const [achievementsInput, setAchievementsInput] = useState("");
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
+  const [fetchingReadme, setFetchingReadme] = useState(false);
 
   function updateField<K extends keyof ProjectFormData>(
     key: K,
@@ -361,6 +364,51 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
         onChange={(url) => setForm((prev) => ({ ...prev, video: url }))}
         accept="video/*"
       />
+
+      <div className={styles.field}>
+        <span className={styles.label}>README</span>
+        <ImageUpload
+          label=""
+          value={form.readmeFile}
+          projectId={isEdit ? initialData.id : null}
+          type="readme"
+          onChange={(url) =>
+            setForm((prev) => ({ ...prev, readmeFile: url }))
+          }
+          accept=".md,text/markdown"
+        />
+        {isEdit && form.githubLink && (
+          <button
+            type="button"
+            className={styles.fetchReadmeButton}
+            disabled={fetchingReadme}
+            onClick={async () => {
+              setFetchingReadme(true);
+              try {
+                const res = await fetch("/api/admin/fetch-readme", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    githubUrl: form.githubLink,
+                    projectId: initialData.id,
+                  }),
+                });
+                if (!res.ok) throw new Error("Failed to fetch");
+                const { url } = await res.json();
+                setForm((prev) => ({ ...prev, readmeFile: url }));
+              } catch {
+                alert("Could not fetch README from GitHub");
+              } finally {
+                setFetchingReadme(false);
+              }
+            }}
+          >
+            {fetchingReadme
+              ? "FETCHING..."
+              : "FETCH README FROM GITHUB"}
+          </button>
+        )}
+      </div>
 
       <button type="submit" className={styles.submitButton} disabled={saving}>
         {saving ? "SAVING..." : isEdit ? "UPDATE PROJECT" : "CREATE PROJECT"}

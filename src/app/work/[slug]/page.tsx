@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { RichTextRenderer } from "@/shared/ui/RichTextRenderer";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { MarkdownRenderer } from "@/shared/ui/MarkdownRenderer";
 import styles from "./page.module.scss";
 
 export const dynamic = "force-dynamic";
@@ -29,6 +30,7 @@ export default async function ProjectPage({
       )}
       {project.video && <ProjectVideo src={project.video} />}
       <ProjectGallery images={gallery} />
+      {project.readmeFile && <MarkdownRenderer url={project.readmeFile} />}
     </main>
   );
 }
