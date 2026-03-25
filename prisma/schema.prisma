@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum ProjectType {
+  Frontend
+  Fullstack
+  TelegramMiniApp
+  TelegramBot
+}
+
+model Project {
+  id          String      @id @default(cuid())
+  name        String
+  slug        String      @unique
+  index       Int         @unique
+  type        ProjectType
+  stack       String[]
+  tags        String[]
+  highlight   String
+  achievements String[]
+  description Json?
+  date        String
+  link        String?
+  githubLink  String?     @map("github_link")
+  avatar      String?
+  gallery     Json        @default("[]")
+  video       String?
+  readmeFile  String?     @map("readme_file")
+  createdAt   DateTime    @default(now()) @map("created_at")
+  updatedAt   DateTime    @updatedAt @map("updated_at")
+
+  @@map("projects")
+}
