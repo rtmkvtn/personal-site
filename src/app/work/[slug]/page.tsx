@@ -1,6 +1,8 @@
-import { PROJECTS } from "@/shared/config";
+import { getProjectBySlug } from "@/shared/lib/projects";
 import { notFound } from "next/navigation";
 import styles from "./page.module.scss";
+
+export const dynamic = "force-dynamic";
 
 export default async function ProjectPage({
   params,
@@ -8,7 +10,7 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const project = PROJECTS.find((p) => p.slug === slug);
+  const project = await getProjectBySlug(slug);
 
   if (!project) {
     notFound();

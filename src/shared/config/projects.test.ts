@@ -1,41 +1,22 @@
 import { describe, expect, it } from "vitest";
-import { PROJECTS, type Project } from "./projects";
+import { PROJECT_IMAGES, getProjectImage } from "./projects";
 
-describe("PROJECTS data layer", () => {
-  it("is a non-empty array", () => {
-    expect(PROJECTS.length).toBeGreaterThan(0);
-  });
-
-  it("every project has all required fields populated", () => {
-    for (const p of PROJECTS) {
-      expect(p.name).toBeTruthy();
-      expect(p.slug).toBeTruthy();
-      expect(p.index).toBeGreaterThan(0);
-      expect(p.type).toBeTruthy();
-      expect(p.stack.length).toBeGreaterThan(0);
-      expect(p.highlight).toBeTruthy();
+describe("Project config", () => {
+  it("PROJECT_IMAGES contains image paths", () => {
+    expect(PROJECT_IMAGES.length).toBeGreaterThan(0);
+    for (const img of PROJECT_IMAGES) {
+      expect(img).toMatch(/^\/images\/projects\/.+\.png$/);
     }
   });
 
-  it("every project has a unique slug", () => {
-    const slugs = PROJECTS.map((p) => p.slug);
-    expect(new Set(slugs).size).toBe(slugs.length);
+  it("getProjectImage returns an image for any index", () => {
+    expect(getProjectImage(0)).toBe(PROJECT_IMAGES[0]);
+    expect(getProjectImage(9)).toBe(PROJECT_IMAGES[0]);
+    expect(getProjectImage(3)).toBe(PROJECT_IMAGES[3]);
   });
 
-  it("every project has a unique index", () => {
-    const indices = PROJECTS.map((p) => p.index);
-    expect(new Set(indices).size).toBe(indices.length);
-  });
-
-  it("slugs are URL-safe (lowercase, hyphenated)", () => {
-    for (const p of PROJECTS) {
-      expect(p.slug).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
-    }
-  });
-
-  it("type field is constrained to Frontend or Fullstack", () => {
-    for (const p of PROJECTS) {
-      expect(["Frontend", "Fullstack"]).toContain(p.type);
-    }
+  it("getProjectImage wraps around for large indices", () => {
+    const img = getProjectImage(100);
+    expect(PROJECT_IMAGES).toContain(img);
   });
 });

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
-import { PROJECTS } from "@/shared/config";
+import type { Project } from "@/shared/config";
 import { ProjectScroller } from "./ProjectScroller";
 import { ProjectDetailPanel } from "./ProjectDetailPanel";
 import { ProjectIndexWatermark } from "./ProjectIndexWatermark";
@@ -9,7 +9,11 @@ import styles from "./WorkShowcase.module.scss";
 
 const DISMISS_DELAY = 2000;
 
-export function WorkShowcase() {
+interface WorkShowcaseProps {
+  projects: Project[];
+}
+
+export function WorkShowcase({ projects }: WorkShowcaseProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const dismissTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hoverZoneRef = useRef(false);
@@ -61,13 +65,13 @@ export function WorkShowcase() {
 
   const activeProject =
     activeIndex !== null
-      ? PROJECTS.find((p) => p.index === activeIndex) ?? null
+      ? projects.find((p) => p.index === activeIndex) ?? null
       : null;
 
   return (
     <main className={styles.main}>
       <ProjectScroller
-        projects={PROJECTS}
+        projects={projects}
         activeIndex={activeIndex}
         onHover={handleProjectHover}
       />
