@@ -12,11 +12,17 @@
       "Bash(npx tsc --noEmit 2>&1)",
       "Skill(playwright-cli)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(git commit -m \"\")",
+      "Bash(git commit:*)",
       "Bash(npx next build 2>&1 | tail -20)",
       "Bash(npx next build 2>&1 | tail -15)",
       "Bash(cat:*)",
-      "Bash(npx playwright:*)"
+      "Bash(npx playwright:*)",
+      "Bash(find /Users/fckxyz/Documents/projects.nosync/portfolio/site -maxdepth 2 -name \"*.md\" -o -name \"TODO*\" -o -name \"PLANS*\" 2>/dev/null | head -20)",
+      "Bash(git log:*)",
+      "Bash(gh issue:*)",
+      "Bash(npx next build:*)",
+      "Bash(npx vitest run:*)"
     ]
-  }
+  },
+  "outputStyle": "default"
 }

@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Header } from "@/widgets/header";
-import { Footer } from "@/widgets/footer";
-import { GrainOverlay } from "@/shared/ui";
 import "./globals.css";
 import styles from "./layout.module.scss";
 
@@ -24,12 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${styles.html}`}>
-      <body className={styles.body}>
-        <GrainOverlay />
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <body className={styles.body}>{children}</body>
     </html>
   );
 }
