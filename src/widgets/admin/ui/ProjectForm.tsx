@@ -29,6 +29,7 @@ interface ProjectFormData {
   githubLink: string;
   avatar: string | null;
   gallery: { url: string; order: number }[];
+  video: string | null;
 }
 
 interface ProjectFormProps {
@@ -61,6 +62,7 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
     githubLink: initialData?.githubLink ?? "",
     avatar: initialData?.avatar ?? null,
     gallery: (initialData?.gallery as { url: string; order: number }[]) ?? [],
+    video: initialData?.video ?? null,
   });
 
   const [stackInput, setStackInput] = useState("");
@@ -349,6 +351,15 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
         images={form.gallery}
         projectId={isEdit ? initialData.id : null}
         onChange={(images) => setForm((prev) => ({ ...prev, gallery: images }))}
+      />
+
+      <ImageUpload
+        label="VIDEO"
+        value={form.video}
+        projectId={isEdit ? initialData.id : null}
+        type="video"
+        onChange={(url) => setForm((prev) => ({ ...prev, video: url }))}
+        accept="video/*"
       />
 
       <button type="submit" className={styles.submitButton} disabled={saving}>
