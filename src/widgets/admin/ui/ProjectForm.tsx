@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { RichTextEditor } from "./RichTextEditor";
+import { ImageUpload } from "./ImageUpload";
+import { GalleryEditor } from "./GalleryEditor";
 import styles from "./ProjectForm.module.scss";
 
 const PROJECT_TYPES = [
@@ -25,6 +27,8 @@ interface ProjectFormData {
   date: string;
   link: string;
   githubLink: string;
+  avatar: string | null;
+  gallery: { url: string; order: number }[];
 }
 
 interface ProjectFormProps {
@@ -55,6 +59,8 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
     date: initialData?.date ?? "",
     link: initialData?.link ?? "",
     githubLink: initialData?.githubLink ?? "",
+    avatar: initialData?.avatar ?? null,
+    gallery: (initialData?.gallery as { url: string; order: number }[]) ?? [],
   });
 
   const [stackInput, setStackInput] = useState("");
@@ -330,6 +336,20 @@ export function ProjectForm({ initialData }: ProjectFormProps) {
           />
         </div>
       </div>
+
+      <ImageUpload
+        label="AVATAR"
+        value={form.avatar}
+        projectId={isEdit ? initialData.id : null}
+        type="avatar"
+        onChange={(url) => setForm((prev) => ({ ...prev, avatar: url }))}
+      />
+
+      <GalleryEditor
+        images={form.gallery}
+        projectId={isEdit ? initialData.id : null}
+        onChange={(images) => setForm((prev) => ({ ...prev, gallery: images }))}
+      />
 
       <button type="submit" className={styles.submitButton} disabled={saving}>
         {saving ? "SAVING..." : isEdit ? "UPDATE PROJECT" : "CREATE PROJECT"}
