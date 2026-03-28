@@ -1,12 +1,8 @@
-import { getProjectBySlug } from "@/shared/lib/projects";
+import { getProjectBySlug } from "@/shared/lib/content-loader";
 import { notFound } from "next/navigation";
-import { RichTextRenderer } from "@/shared/ui/RichTextRenderer";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
-import { MarkdownRenderer } from "@/shared/ui/MarkdownRenderer";
 import styles from "./page.module.scss";
-
-export const dynamic = "force-dynamic";
 
 export default async function ProjectPage({
   params,
@@ -20,17 +16,21 @@ export default async function ProjectPage({
     notFound();
   }
 
-  const gallery = (project.gallery as { url: string; order: number }[]) ?? [];
-
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{project.name}</h1>
       {project.description && (
-        <RichTextRenderer content={project.description} />
+        <p className={styles.description}>{project.description}</p>
+      )}
+      {project.achievements.length > 0 && (
+        <ul className={styles.achievements}>
+          {project.achievements.map((a) => (
+            <li key={a}>{a}</li>
+          ))}
+        </ul>
       )}
       {project.video && <ProjectVideo src={project.video} />}
-      <ProjectGallery images={gallery} />
-      {project.readmeFile && <MarkdownRenderer url={project.readmeFile} />}
+      <ProjectGallery images={project.gallery} />
     </main>
   );
 }

@@ -1,0 +1,15 @@
+{
+  "name": "Sample Project",
+  "type": "Frontend",
+  "stack": ["React", "TypeScript", "Next.js"],
+  "highlight": "A sample project to validate the content model",
+  "achievements": [
+    "Established the JSON-based content convention",
+    "Validated media auto-discovery from folder structure"
+  ],
+  "description": "This is a sample project used to establish and validate the file-based content model. It demonstrates the folder structure, JSON schema, and media discovery conventions.",
+  "startDate": "2024-01",
+  "endDate": "2024-03",
+  "link": "https://example.com",
+  "githubLink": "https://github.com/example/sample"
+}

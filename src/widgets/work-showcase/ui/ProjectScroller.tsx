@@ -135,7 +135,7 @@ export function ProjectScroller({
               key={vRow.key}
               ref={virtualizer.measureElement}
               data-index={vRow.index}
-              data-project-index={project.index}
+              data-project-index={projectIndex}
               aria-hidden={isClone || undefined}
               style={{
                 position: "absolute",
@@ -153,7 +153,7 @@ export function ProjectScroller({
                   isDimmed && styles.indexDimmed,
                 )}
               >
-                {String(project.index).padStart(2, "0")}
+                {String(projectIndex + 1).padStart(2, "0")}
               </span>
               <h2
                 className={clsx(
@@ -170,7 +170,7 @@ export function ProjectScroller({
                   isActive && styles.dateVisible,
                 )}
               >
-                {project.date}
+                {project.displayDate}
               </span>
             </div>
           );

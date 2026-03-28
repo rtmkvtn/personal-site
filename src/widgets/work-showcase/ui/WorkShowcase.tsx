@@ -64,9 +64,7 @@ export function WorkShowcase({ projects }: WorkShowcaseProps) {
   }, [tryDismiss]);
 
   const activeProject =
-    activeIndex !== null
-      ? projects.find((p) => p.index === activeIndex) ?? null
-      : null;
+    activeIndex !== null ? projects[activeIndex] ?? null : null;
 
   return (
     <main className={styles.main}>

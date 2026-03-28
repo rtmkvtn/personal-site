@@ -26,6 +26,7 @@ export interface Project extends ProjectJson {
   gallery: string[];
   video: string | null;
   displayDate: string;
+  image?: string;
 }
 
 // Static images for decorative backgrounds, randomly assigned

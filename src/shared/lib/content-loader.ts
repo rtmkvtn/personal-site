@@ -5,7 +5,7 @@ import type { Project, ProjectJson } from "@/shared/config/projects";
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 const VIDEO_EXTENSIONS = new Set([".mp4"]);
 
-const CONTENT_DIR = path.resolve(process.cwd(), "content/projects");
+const CONTENT_DIR = path.resolve(process.cwd(), "public/content/projects");
 
 function formatDate(dateStr: string): string {
   const [year, month] = dateStr.split("-");
