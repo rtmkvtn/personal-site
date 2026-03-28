@@ -1,24 +1,12 @@
 import fs from "fs/promises";
 import path from "path";
 import type { Project, ProjectJson } from "@/shared/config/projects";
+import { getDisplayDate } from "./date-format";
 
 const IMAGE_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".avif"]);
 const VIDEO_EXTENSIONS = new Set([".mp4"]);
 
 const CONTENT_DIR = path.resolve(process.cwd(), "public/content/projects");
-
-function formatDate(dateStr: string): string {
-  const [year, month] = dateStr.split("-");
-  const date = new Date(Number(year), Number(month) - 1);
-  return date.toLocaleDateString("en-US", { month: "short", year: "numeric" });
-}
-
-function getDisplayDate(startDate?: string, endDate?: string): string {
-  if (startDate && endDate) {
-    return `${formatDate(startDate)} — ${formatDate(endDate)}`;
-  }
-  return formatDate(startDate || endDate!);
-}
 
 function getSortDate(json: ProjectJson): string {
   return json.endDate || json.startDate!;

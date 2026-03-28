@@ -4,6 +4,7 @@ import type {
   LocalizedString,
   LocalizedStringArray,
 } from "@/shared/config/projects";
+import { getDisplayDate } from "../date-format";
 import type { Locale } from "./detect";
 
 function resolveString(value: LocalizedString, locale: Locale): string {
@@ -27,5 +28,6 @@ export function resolveProjectLocale(
     highlight: resolveString(project.highlight, locale),
     description: resolveString(project.description, locale),
     achievements: resolveStringArray(project.achievements, locale),
+    displayDate: getDisplayDate(project.startDate, project.endDate, locale),
   };
 }
