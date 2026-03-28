@@ -7,5 +7,35 @@
   },
   "footer": {
     "linkedin": "LINKEDIN"
+  },
+  "home": {
+    "greeting": "Hi!",
+    "intro": "My name is",
+    "name": "ARTEM",
+    "role": "Fullstack Web Engineer",
+    "cta": "View Work"
+  },
+  "about": {
+    "label": "Background",
+    "title": "ABOUT",
+    "bio1": "A fullstack engineer focused on building scalable digital infrastructure. With a background spanning distributed systems, frontend architecture, and cloud-native platforms, I approach every project as an exercise in intentional design.",
+    "bio2": "My work is guided by a belief that great engineering is indistinguishable from great design — both demand clarity, restraint, and an obsessive attention to the details that most people never notice.",
+    "approachTitle": "Approach",
+    "approachBody": "Systems thinking over feature stacking. Every architectural decision is made with long-term maintainability and operational excellence in mind. I build infrastructure that scales silently."
+  },
+  "skills": {
+    "label": "Technical Capabilities",
+    "title": "SKILLS",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "infrastructure": "Infrastructure"
+  },
+  "contact": {
+    "label": "Get in Touch",
+    "title": "CONTACT",
+    "body": "Available for select projects and collaborations. Reach out to discuss how we can build something exceptional together.",
+    "emailTitle": "Email",
+    "locationTitle": "Location",
+    "location": "Remote — Available Worldwide"
   }
 }

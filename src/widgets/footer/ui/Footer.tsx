@@ -1,6 +1,11 @@
+"use client";
+
+import { useTranslation } from "react-i18next";
 import styles from "./Footer.module.scss";
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className={styles.footer}>
       <span className={styles.copyright}>
@@ -8,19 +13,19 @@ export function Footer() {
       </span>
 
       <div className={styles.links}>
-        {[
-          { label: "LINKEDIN", href: "#" },
-        ].map(({ label, href }) => (
-          <a
-            key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.link}
-          >
-            {label}
-          </a>
-        ))}
+        {[{ labelKey: "footer.linkedin", href: "#" }].map(
+          ({ labelKey, href }) => (
+            <a
+              key={labelKey}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.link}
+            >
+              {t(labelKey)}
+            </a>
+          ),
+        )}
       </div>
     </footer>
   );
