@@ -1,22 +1,31 @@
-export interface Project {
-  id: string;
+export const PROJECT_TYPES = [
+  "Frontend",
+  "Fullstack",
+  "TelegramMiniApp",
+  "TelegramBot",
+] as const;
+
+export type ProjectType = (typeof PROJECT_TYPES)[number];
+
+export interface ProjectJson {
   name: string;
-  slug: string;
-  index: number;
-  type: "Frontend" | "Fullstack" | "TelegramMiniApp" | "TelegramBot";
+  type: ProjectType;
   stack: string[];
-  tags: string[];
   highlight: string;
   achievements: string[];
-  description: unknown;
-  date: string;
-  link: string | null;
-  githubLink: string | null;
+  description: string;
+  startDate?: string; // YYYY-MM
+  endDate?: string; // YYYY-MM
+  link?: string;
+  githubLink?: string;
+}
+
+export interface Project extends ProjectJson {
+  slug: string;
   avatar: string | null;
-  gallery: unknown;
+  gallery: string[];
   video: string | null;
-  readmeFile: string | null;
-  image?: string;
+  displayDate: string;
 }
 
 // Static images for decorative backgrounds, randomly assigned
