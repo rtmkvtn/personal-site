@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "work": "WORK",
+    "skills": "SKILLS",
+    "about": "ABOUT",
+    "contact": "CONTACT"
+  },
+  "footer": {
+    "linkedin": "LINKEDIN"
+  }
+}

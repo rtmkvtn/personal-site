@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "work": "РАБОТЫ",
+    "skills": "НАВЫКИ",
+    "about": "ОБО МНЕ",
+    "contact": "КОНТАКТ"
+  },
+  "footer": {
+    "linkedin": "LINKEDIN"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "nav": {
+    "work": "作品",
+    "skills": "技能",
+    "about": "关于",
+    "contact": "联系"
+  },
+  "footer": {
+    "linkedin": "LINKEDIN"
+  }
+}

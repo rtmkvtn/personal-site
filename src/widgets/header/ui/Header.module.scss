@@ -30,6 +30,16 @@
   }
 }
 
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  @media (min-width: $breakpoint-sm) {
+    gap: 2.5rem;
+  }
+}
+
 .links {
   display: flex;
   align-items: center;

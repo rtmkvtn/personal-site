@@ -1,2 +1,1 @@
-export { GrainOverlay } from "./GrainOverlay";
 export { LanguageSwitcher } from "./LanguageSwitcher";
