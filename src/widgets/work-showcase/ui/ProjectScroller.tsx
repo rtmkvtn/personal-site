@@ -3,7 +3,7 @@
 import { useRef, useEffect, useCallback, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import clsx from "clsx";
-import type { Project } from "@/shared/config";
+import type { ResolvedProject } from "@/shared/config";
 import styles from "./ProjectScroller.module.scss";
 
 const SCROLL_SPEED = 0.5;
@@ -11,7 +11,7 @@ const VIRTUAL_REPEAT = 100;
 const ROW_HEIGHT_EST = 66;
 
 interface ProjectScrollerProps {
-  projects: Project[];
+  projects: ResolvedProject[];
   activeIndex: number | null;
   onHover: (index: number | null) => void;
 }

@@ -4,16 +4,16 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
-import type { Project } from "@/shared/config";
+import type { ResolvedProject } from "@/shared/config";
 import styles from "./ProjectDetailPanel.module.scss";
 
 interface ProjectDetailPanelProps {
-  project: Project | null;
+  project: ResolvedProject | null;
 }
 
 export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
-  const [displayedProject, setDisplayedProject] = useState<Project | null>(null);
-  const [prevProject, setPrevProject] = useState<Project | null>(null);
+  const [displayedProject, setDisplayedProject] = useState<ResolvedProject | null>(null);
+  const [prevProject, setPrevProject] = useState<ResolvedProject | null>(null);
   const [stage, setStage] = useState(0);
 
   if (project !== prevProject) {

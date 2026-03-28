@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import type { Project } from "@/shared/config";
+import { useLocalizedProjects } from "@/shared/lib/i18n";
 import { ProjectScroller } from "./ProjectScroller";
 import { ProjectDetailPanel } from "./ProjectDetailPanel";
 import { ProjectIndexWatermark } from "./ProjectIndexWatermark";
@@ -13,7 +14,8 @@ interface WorkShowcaseProps {
   projects: Project[];
 }
 
-export function WorkShowcase({ projects }: WorkShowcaseProps) {
+export function WorkShowcase({ projects: rawProjects }: WorkShowcaseProps) {
+  const projects = useLocalizedProjects(rawProjects);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const dismissTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hoverZoneRef = useRef(false);

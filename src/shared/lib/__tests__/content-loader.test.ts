@@ -31,12 +31,12 @@ async function writeFixture(slug: string, json: object, files?: Record<string, s
 }
 
 const BASE_PROJECT = {
-  name: "Test Project",
+  name: { en: "Test Project" },
   type: "Frontend",
   stack: ["React"],
-  highlight: "A test",
-  achievements: ["Did something"],
-  description: "Test description",
+  highlight: { en: "A test" },
+  achievements: { en: ["Did something"] },
+  description: { en: "Test description" },
 };
 
 beforeAll(async () => {
@@ -45,7 +45,7 @@ beforeAll(async () => {
   // Project with both dates, some media
   await writeFixture("project-alpha", {
     ...BASE_PROJECT,
-    name: "Alpha",
+    name: { en: "Alpha" },
     startDate: "2023-06",
     endDate: "2024-01",
   }, {
@@ -57,7 +57,7 @@ beforeAll(async () => {
   // Project with later end date
   await writeFixture("project-beta", {
     ...BASE_PROJECT,
-    name: "Beta",
+    name: { en: "Beta" },
     startDate: "2024-03",
     endDate: "2024-09",
   }, {
@@ -67,21 +67,21 @@ beforeAll(async () => {
   // Project with only one date (treated as endDate)
   await writeFixture("project-gamma", {
     ...BASE_PROJECT,
-    name: "Gamma",
+    name: { en: "Gamma" },
     endDate: "2024-05",
   });
 
   // Project with only startDate
   await writeFixture("project-delta", {
     ...BASE_PROJECT,
-    name: "Delta",
+    name: { en: "Delta" },
     startDate: "2023-01",
   });
 
   // Project with no media
   await writeFixture("project-epsilon", {
     ...BASE_PROJECT,
-    name: "Epsilon",
+    name: { en: "Epsilon" },
     endDate: "2022-12",
   });
 });
@@ -89,7 +89,7 @@ beforeAll(async () => {
 describe("getProjects", () => {
   it("returns all projects sorted by endDate descending", async () => {
     const projects = await getProjects(FIXTURES_DIR);
-    const names = projects.map((p) => p.name);
+    const names = projects.map((p) => p.name.en);
     // Beta (2024-09) > Gamma (2024-05) > Alpha (2024-01) > Delta (2023-01) > Epsilon (2022-12)
     expect(names).toEqual(["Beta", "Gamma", "Alpha", "Delta", "Epsilon"]);
   });
@@ -104,7 +104,7 @@ describe("getProjectBySlug", () => {
   it("returns a project by slug", async () => {
     const project = await getProjectBySlug("project-alpha", FIXTURES_DIR);
     expect(project).not.toBeNull();
-    expect(project!.name).toBe("Alpha");
+    expect(project!.name.en).toBe("Alpha");
   });
 
   it("returns null for unknown slug", async () => {

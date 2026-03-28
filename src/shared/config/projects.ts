@@ -7,13 +7,25 @@ export const PROJECT_TYPES = [
 
 export type ProjectType = (typeof PROJECT_TYPES)[number];
 
+export interface LocalizedString {
+  en: string;
+  ru?: string;
+  zh?: string;
+}
+
+export interface LocalizedStringArray {
+  en: string[];
+  ru?: string[];
+  zh?: string[];
+}
+
 export interface ProjectJson {
-  name: string;
+  name: LocalizedString;
   type: ProjectType;
   stack: string[];
-  highlight: string;
-  achievements: string[];
-  description: string;
+  highlight: LocalizedString;
+  achievements: LocalizedStringArray;
+  description: LocalizedString;
   startDate?: string; // YYYY-MM
   endDate?: string; // YYYY-MM
   link?: string;
@@ -27,6 +39,14 @@ export interface Project extends ProjectJson {
   video: string | null;
   displayDate: string;
   image?: string;
+}
+
+export interface ResolvedProject
+  extends Omit<Project, "name" | "highlight" | "description" | "achievements"> {
+  name: string;
+  highlight: string;
+  description: string;
+  achievements: string[];
 }
 
 // Static images for decorative backgrounds, randomly assigned
