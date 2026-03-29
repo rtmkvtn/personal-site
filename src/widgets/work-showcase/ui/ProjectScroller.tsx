@@ -67,19 +67,22 @@ export function ProjectScroller({
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
-      const row = (e.target as HTMLElement).closest(
-        "[data-project-index]",
+      const title = (e.target as HTMLElement).closest(
+        "[data-project-title]",
       ) as HTMLElement | null;
-      if (row) {
-        const virtualIndex = Number(row.getAttribute("data-index"));
-        if (virtualIndex !== activeVirtualIndexRef.current) {
-          const projectIndex = Number(
-            row.getAttribute("data-project-index"),
-          );
-          pausedRef.current = true;
-          activeVirtualIndexRef.current = virtualIndex;
-          setActiveVirtualIndex(virtualIndex);
-          onHover(projectIndex);
+      if (title) {
+        const row = title.closest("[data-project-index]") as HTMLElement | null;
+        if (row) {
+          const virtualIndex = Number(row.getAttribute("data-index"));
+          if (virtualIndex !== activeVirtualIndexRef.current) {
+            const projectIndex = Number(
+              row.getAttribute("data-project-index"),
+            );
+            pausedRef.current = true;
+            activeVirtualIndexRef.current = virtualIndex;
+            setActiveVirtualIndex(virtualIndex);
+            onHover(projectIndex);
+          }
         }
         return;
       }
@@ -157,6 +160,7 @@ export function ProjectScroller({
                 {String(projects.length - projectIndex).padStart(2, "0")}
               </span>
               <h2
+                data-project-title
                 className={clsx(
                   styles.name,
                   isActive && styles.nameActive,
