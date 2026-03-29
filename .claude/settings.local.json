@@ -22,7 +22,9 @@
       "Bash(gh issue:*)",
       "Bash(npx next build:*)",
       "Bash(npx vitest run:*)",
-      "Bash(npm install react-day-picker date-fns @radix-ui/react-popover)"
+      "Bash(npm install react-day-picker date-fns @radix-ui/react-popover)",
+      "Bash(npx tsc --noEmit --pretty 2>&1 | tail -20)",
+      "Bash(playwright-cli resize 1440 900)"
     ]
   },
   "outputStyle": "default"

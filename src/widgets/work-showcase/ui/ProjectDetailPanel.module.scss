@@ -51,6 +51,9 @@
   justify-content: center;
   gap: 2rem;
   padding: 2rem;
+  background-color: rgba(var(--color-surface), .7);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 .fadeIn {
