@@ -4,11 +4,15 @@ import { useRef, useEffect, useCallback, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import clsx from "clsx";
 import type { ResolvedProject } from "@/shared/config";
+import { GlitchText } from "@/shared/ui";
 import styles from "./ProjectScroller.module.scss";
 
 const SCROLL_SPEED = 0.5;
 const VIRTUAL_REPEAT = 100;
 const ROW_HEIGHT_EST = 106;
+
+const GLITCH_INTERVAL = 2000;
+const GLITCH_DURATION = 500;
 
 interface ProjectScrollerProps {
   projects: ResolvedProject[];
@@ -25,7 +29,11 @@ export function ProjectScroller({
   const animRef = useRef<number>(0);
   const pausedRef = useRef(false);
   const activeVirtualIndexRef = useRef<number | null>(null);
+  const glitchIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [activeVirtualIndex, setActiveVirtualIndex] = useState<number | null>(
+    null,
+  );
+  const [glitchVirtualIndex, setGlitchVirtualIndex] = useState<number | null>(
     null,
   );
 
@@ -64,6 +72,42 @@ export function ProjectScroller({
       pausedRef.current = false;
     }
   }, [activeIndex]);
+
+  useEffect(() => {
+    if (activeIndex !== null) {
+      if (glitchIntervalRef.current) {
+        clearInterval(glitchIntervalRef.current);
+        glitchIntervalRef.current = null;
+      }
+      return;
+    }
+
+    const tick = () => {
+      const el = scrollElementRef.current;
+      if (!el) return;
+      const scrollTop = el.scrollTop;
+      const viewH = el.clientHeight;
+      // Account for the 15% mask fade on top and bottom
+      const visibleTop = scrollTop + viewH * 0.15;
+      const visibleBottom = scrollTop + viewH * 0.85;
+      const inView = virtualizer.getVirtualItems().filter(
+        (item) => item.end > visibleTop && item.start < visibleBottom,
+      );
+      if (inView.length === 0) return;
+      const pick = inView[Math.floor(Math.random() * inView.length)];
+      setGlitchVirtualIndex(pick.index);
+      setTimeout(() => setGlitchVirtualIndex(null), GLITCH_DURATION);
+    };
+
+    glitchIntervalRef.current = setInterval(tick, GLITCH_INTERVAL);
+
+    return () => {
+      if (glitchIntervalRef.current) {
+        clearInterval(glitchIntervalRef.current);
+        glitchIntervalRef.current = null;
+      }
+    };
+  }, [activeIndex, virtualizer]);
 
   const handleMouseMove = useCallback(
     (e: React.MouseEvent) => {
@@ -167,7 +211,9 @@ export function ProjectScroller({
                   isDimmed && styles.nameDimmed,
                 )}
               >
-                {project.name}
+                <GlitchText active={vRow.index === glitchVirtualIndex}>
+                  {project.name}
+                </GlitchText>
               </h2>
               <span
                 className={clsx(
