@@ -51,7 +51,7 @@ export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
       )}
     >
       {displayedProject?.image && (
-        <div className={clsx(styles.imageWrapper, fadeIn(1))}>
+        <div className={clsx(styles.imageWrapper, stage >= 1 && styles.imageWrapperVisible)}>
           <div className={styles.imageOverlay} />
           <Image
             src={displayedProject.image}

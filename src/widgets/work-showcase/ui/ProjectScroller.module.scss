@@ -73,6 +73,8 @@
   transition: opacity 500ms ease-out;
   opacity: 0;
   color: color-mix(in srgb, var(--color-primary) 60%, transparent);
+  word-break: keep-all;
+  white-space: nowrap;
 }
 
 .dateVisible {

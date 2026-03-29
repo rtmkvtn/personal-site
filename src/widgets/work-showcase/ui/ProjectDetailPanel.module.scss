@@ -19,12 +19,20 @@
   left: 0;
   right: 0;
   top: -20%;
-  transform: translateX(-70%);
+  transform: translateX(-70%) translateY(0.5rem);
+  opacity: 0;
   transition: all 200ms ease-out;
+}
+
+.imageWrapperVisible {
+  transform: translateX(-70%) translateY(0);
+  opacity: 1;
 }
 
 .imageOverlay {
   position: absolute;
+  left: 0;
+  top: 0;
   inset: 0;
   background: radial-gradient(circle, color-mix(in srgb, gray 5%, transparent), var(--color-surface));
 }
