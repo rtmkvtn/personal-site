@@ -1,4 +1,6 @@
 .mask {
+  position: relative;
+  z-index: 1;
   overflow: hidden;
   flex: 1;
 }
@@ -75,6 +77,10 @@
   color: color-mix(in srgb, var(--color-primary) 60%, transparent);
   word-break: keep-all;
   white-space: nowrap;
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(var(--color-surface), .7);
+  border-radius: 0.5rem;
+  backdrop-filter: blur(10px);
 }
 
 .dateVisible {
