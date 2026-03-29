@@ -1,0 +1,38 @@
+{
+  "name": {
+    "en": "ED-TECH PLATFORM",
+    "ru": "ED-TECH PLATFORM",
+    "zh": "在线教育平台"
+  },
+  "type": "Fullstack",
+  "stack": ["JS", "React", "Redux", "Redux Saga", "SCSS modules", "NodeJS", "Strapi CMS", "PostgreSQL"],
+  "highlight": {
+    "en": "Ed-Tech platform for both courses authors and students with role-based interface segregation",
+    "ru": "Ed-Tech платформа для авторов курсов и студентов с разделением интерфейса по ролям",
+    "zh": "面向课程作者和学生的在线教育平台，具备基于角色的界面隔离"
+  },
+  "achievements": {
+    "en": [
+      "Built the entire platform from scratch, delivering both author and student interfaces with role-based access control",
+      "Integrated Stripe and Cloud Payments for seamless subscription-based billing",
+      "Migrated Strapi CMS from v3 to v4, ensuring zero downtime and data integrity across the transition"
+    ],
+    "ru": [
+      "Разработал платформу с нуля, реализовав интерфейсы автора и студента с ролевым разграничением доступа",
+      "Интегрировал Stripe и Cloud Payments для бесшовной подписочной системы оплаты",
+      "Мигрировал Strapi CMS с v3 на v4, обеспечив нулевой простой и целостность данных"
+    ],
+    "zh": [
+      "从零构建整个平台，交付了具有角色访问控制的作者和学生界面",
+      "集成Stripe和Cloud Payments，实现无缝的订阅计费系统",
+      "将Strapi CMS从v3迁移至v4，确保零停机和数据完整性"
+    ]
+  },
+  "description": {
+    "en": "A comprehensive ed-tech platform serving two distinct user roles. Course authors get a full content management suite to create, edit, and publish video-based courses with structured curricula. Students access a subscription-based learning environment featuring progress tracking, course ratings, and personalized dashboards. The platform enforces strict role-based interface segregation, ensuring each user type sees only the tools and content relevant to their workflow.",
+    "ru": "Комплексная ed-tech платформа, обслуживающая две различные пользовательские роли. Авторы курсов получают полный набор инструментов для создания, редактирования и публикации видеокурсов со структурированными учебными программами. Студенты используют среду обучения на основе подписки с отслеживанием прогресса, рейтингами курсов и персонализированными дашбордами. Платформа обеспечивает строгое разделение интерфейса по ролям, гарантируя, что каждый тип пользователя видит только релевантные инструменты и контент.",
+    "zh": "一个服务于两种不同用户角色的综合在线教育平台。课程作者拥有完整的内容管理工具，可创建、编辑和发布结构化的视频课程。学生通过订阅制访问学习环境，支持学习进度追踪、课程评分和个性化仪表盘。平台实施严格的角色界面隔离，确保每种用户类型只能看到与其工作流相关的工具和内容。"
+  },
+  "startDate": "2021-01",
+  "endDate": "2022-01"
+}

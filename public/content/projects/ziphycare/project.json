@@ -1,0 +1,42 @@
+{
+  "name": {
+    "en": "ZIPHYCARE",
+    "ru": "ZIPHYCARE",
+    "zh": "ZIPHYCARE"
+  },
+  "type": "Frontend",
+  "stack": ["JS", "TS", "React", "MobX", "SCSS modules", "GitHub Actions CI", "FHIR"],
+  "highlight": {
+    "en": "US Health-Tech startup",
+    "ru": "Американский Health-Tech стартап",
+    "zh": "美国健康科技初创公司"
+  },
+  "achievements": {
+    "en": [
+      "Developed a patient medical history module compliant with FHIR standards, including PDF report generation, standardizing medical data handling and reducing data access time for physicians",
+      "Migrated the entire codebase (100k+ lines) from JavaScript to TypeScript, reducing runtime errors in production by ~30%",
+      "Refactored the project using Feature-Sliced Design (FSD) architecture, reducing onboarding time for new developers by 25% and simplifying maintenance of legacy modules",
+      "Managed frontend releases and coordinated with QA and backend teams, ensuring stable deliveries and reduced errors"
+    ],
+    "ru": [
+      "Разработал модуль медицинской истории пациента, соответствующий стандартам FHIR, включая генерацию PDF-отчётов, что стандартизировало обработку медицинских данных и сократило время доступа к данным для врачей",
+      "Мигрировал всю кодовую базу (100k+ строк) с JavaScript на TypeScript, сократив ошибки в продакшене на ~30%",
+      "Провёл рефакторинг проекта с использованием архитектуры Feature-Sliced Design (FSD), сократив время онбординга новых разработчиков на 25% и упростив поддержку устаревших модулей",
+      "Управлял фронтенд-релизами и координировал работу с QA и бэкенд-командами, обеспечивая стабильные поставки и снижение ошибок"
+    ],
+    "zh": [
+      "开发了符合FHIR标准的患者病历模块，包括PDF报告生成，标准化了医疗数据处理并缩短了医生的数据访问时间",
+      "将整个代码库（10万+行代码）从JavaScript迁移至TypeScript，生产环境运行时错误减少约30%",
+      "使用Feature-Sliced Design（FSD）架构重构项目，新开发者入职时间缩短25%，简化了遗留模块的维护",
+      "管理前端发布并与QA和后端团队协调，确保稳定交付并减少错误"
+    ]
+  },
+  "description": {
+    "en": "A US-based health-tech startup reimagining at-home healthcare delivery. ZiphyCare bridges the gap between remote and in-person medical exams by dispatching trained medical assistants equipped with a patented ZiphyKit to patients' homes, enabling physicians to conduct thorough examinations remotely. The platform provides an end-to-end solution covering patient triage, scheduling, real-time examination, and communication — all powered by FDA-cleared proprietary technology.",
+    "ru": "Американский health-tech стартап, переосмысливающий оказание медицинской помощи на дому. ZiphyCare устраняет разрыв между дистанционными и очными медицинскими осмотрами, направляя обученных медицинских ассистентов с запатентованным ZiphyKit к пациентам домой, позволяя врачам проводить полноценные обследования удалённо. Платформа предоставляет комплексное решение, охватывающее триаж пациентов, планирование, обследование в реальном времени и коммуникацию — всё на основе запатентованной технологии с допуском FDA.",
+    "zh": "一家重新定义居家医疗服务的美国健康科技初创公司。ZiphyCare通过派遣配备专利ZiphyKit的训练有素的医疗助理到患者家中，使医生能够远程进行全面检查，弥合了远程与面对面医疗检查之间的鸿沟。平台提供覆盖患者分诊、预约排期、实时检查和沟通的端到端解决方案——全部基于FDA认证的专有技术。"
+  },
+  "startDate": "2022-06",
+  "endDate": "2024-12",
+  "link": "https://ziphycare.com/"
+}

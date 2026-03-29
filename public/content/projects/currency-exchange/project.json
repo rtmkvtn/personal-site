@@ -1,0 +1,40 @@
+{
+  "name": {
+    "en": "CURRENCY EXCHANGE",
+    "ru": "CURRENCY EXCHANGE",
+    "zh": "CURRENCY EXCHANGE"
+  },
+  "type": "Fullstack",
+  "stack": ["TS", "React", "Next.JS", "React Context API", "ShadCN", "TailwindCSS", "NestJS", "Strapi CMS", "PostgreSQL", "GitLab CI/CD", "Docker", "Docker-Compose"],
+  "highlight": {
+    "en": "Back office for digital currency exchange service",
+    "ru": "Бэк-офис для сервиса обмена цифровых валют",
+    "zh": "数字货币兑换服务后台管理系统"
+  },
+  "achievements": {
+    "en": [
+      "Built a full-stack currency exchange service from scratch (React, NestJS), designed to handle 1,000+ requests per day, with integration of multiple payment APIs",
+      "Created an internal admin panel that reduced manual request processing time by operators by 50% through automated payment reconciliation",
+      "Developed a fully functional bookkeeping module for tracking all financial operations, balances, and transaction history across exchange accounts",
+      "Set up CI/CD via Docker, stabilizing releases and data integrity"
+    ],
+    "ru": [
+      "Разработал полнофункциональный сервис обмена валют с нуля (React, NestJS), рассчитанный на обработку 1000+ запросов в день, с интеграцией множества платёжных API",
+      "Создал внутреннюю админ-панель, сократившую время ручной обработки заявок операторами на 50% благодаря автоматической сверке платежей",
+      "Разработал полнофункциональный модуль бухгалтерского учёта для отслеживания всех финансовых операций, балансов и истории транзакций по счетам обмена",
+      "Настроил CI/CD через Docker, стабилизировав релизы и целостность данных"
+    ],
+    "zh": [
+      "从零构建了全栈货币兑换服务（React、NestJS），设计日处理1000+请求，集成多个支付API",
+      "创建了内部管理面板，通过自动支付对账将操作员手动处理请求的时间缩短50%",
+      "开发了全功能记账模块，追踪所有财务操作、余额和兑换账户的交易历史",
+      "通过Docker搭建CI/CD，稳定了发布流程和数据完整性"
+    ]
+  },
+  "description": {
+    "en": "A back-office platform for a digital currency exchange service featuring multiple integrations with requisites providers, automated order workflow management, cryptocurrency transaction parsing, and a fully functional bookkeeping system. The platform streamlines exchange operations by automating the entire order lifecycle from initiation to settlement, while maintaining accurate financial records across all transactions.",
+    "ru": "Бэк-офис платформа для сервиса обмена цифровых валют с множественными интеграциями с провайдерами реквизитов, автоматизированным управлением заказами, парсингом криптовалютных транзакций и полнофункциональной системой бухгалтерского учёта. Платформа оптимизирует операции обмена, автоматизируя весь жизненный цикл заказа от инициации до завершения расчётов, обеспечивая точный финансовый учёт по всем транзакциям.",
+    "zh": "一个数字货币兑换服务的后台管理平台，集成多家支付信息提供商，实现自动化订单流程管理、加密货币交易解析和全功能记账系统。平台通过自动化从发起到结算的整个订单生命周期来优化兑换操作，同时确保所有交易的财务记录准确无误。"
+  },
+  "startDate": "2025-06"
+}

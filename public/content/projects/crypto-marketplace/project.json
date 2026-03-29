@@ -1,0 +1,38 @@
+{
+  "name": {
+    "en": "CRYPTO MARKETPLACE",
+    "ru": "CRYPTO MARKETPLACE",
+    "zh": "CRYPTO MARKETPLACE"
+  },
+  "type": "Fullstack",
+  "stack": ["JS", "React", "Redux", "NodeJS (Express)", "MongoDB", "Bitcoin NODE", "Bootstrap UI"],
+  "highlight": {
+    "en": "Crypto P2P marketplace with payments in BTC and internal currency",
+    "ru": "P2P-маркетплейс криптовалют с оплатой в BTC и внутренней валюте",
+    "zh": "支持BTC和内部货币支付的P2P加密货币交易市场"
+  },
+  "achievements": {
+    "en": [
+      "Implemented responsive mobile version of the client-facing frontend",
+      "Built Bitcoin node integration for payment processing",
+      "Developed admin panel from scratch with dispute resolution management"
+    ],
+    "ru": [
+      "Реализовал адаптивную мобильную версию клиентского фронтенда",
+      "Разработал интеграцию с Bitcoin-нодой для обработки платежей",
+      "Разработал админ-панель с нуля с функционалом управления спорами"
+    ],
+    "zh": [
+      "实现了面向客户的前端响应式移动版本",
+      "构建了Bitcoin节点集成以处理支付",
+      "从零开发了带有争议解决管理功能的管理面板"
+    ]
+  },
+  "description": {
+    "en": "Peer-to-peer crypto marketplace where users could register, create product listings, and communicate with buyers and sellers in real time. The platform supported purchases via direct Bitcoin payments through a self-hosted Bitcoin node, as well as an internal currency system. Features included advanced listing filters, a seller rating system, and a built-in dispute resolution mechanism managed through an admin panel. The frontend provided a full trading experience with messaging, filtering, and dispute tracking.",
+    "ru": "P2P криптовалютный маркетплейс, где пользователи могли регистрироваться, создавать объявления о товарах и общаться с покупателями и продавцами в реальном времени. Платформа поддерживала покупки через прямые платежи в Bitcoin с использованием собственной Bitcoin-ноды, а также систему внутренней валюты. Функционал включал расширенные фильтры объявлений, систему рейтинга продавцов и встроенный механизм разрешения споров, управляемый через админ-панель. Фронтенд обеспечивал полноценный торговый опыт с обменом сообщениями, фильтрацией и отслеживанием споров.",
+    "zh": "点对点加密货币交易市场，用户可以注册、创建商品列表，并与买家和卖家实时沟通。平台通过自建Bitcoin节点支持直接比特币支付，同时提供内部货币系统。功能包括高级列表筛选、卖家评分系统以及通过管理面板管理的内置争议解决机制。前端提供了完整的交易体验，包含消息通讯、筛选和争议跟踪。"
+  },
+  "startDate": "2019-12",
+  "endDate": "2021-01"
+}

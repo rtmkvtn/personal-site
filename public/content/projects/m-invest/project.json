@@ -1,0 +1,41 @@
+{
+  "name": {
+    "en": "M-INVEST",
+    "ru": "M-INVEST",
+    "zh": "M-INVEST"
+  },
+  "type": "Frontend",
+  "stack": ["TS", "React", "MobX", "WebSocket", "XMPP", "Chart.js", "SCSS Modules", "GitLab CI/CD", "Docker"],
+  "highlight": {
+    "en": "Internal cabinet for investors for buying/selling investment instruments",
+    "ru": "Внутренний кабинет инвестора для покупки/продажи инвестиционных инструментов",
+    "zh": "投资者内部平台，用于买卖投资工具"
+  },
+  "achievements": {
+    "en": [
+      "Developed a real-time interface for P2P transactions using WebSocket, ensuring instant order and data updates for users",
+      "Designed and implemented the frontend from mockup to MVP using FSD architecture, improving code modularity and scalability",
+      "Set up CI/CD pipelines from scratch (GitLab CI, Docker) for 3 environments (prod/stage/demo), automating builds and deployments and reducing feature release time from several hours to 15 minutes",
+      "Led a team of 3 frontend developers: introduced mandatory code reviews, unified code style, and onboarding process"
+    ],
+    "ru": [
+      "Разработал интерфейс для P2P-транзакций в реальном времени на WebSocket, обеспечив мгновенное обновление заявок и данных для пользователей",
+      "Спроектировал и реализовал фронтенд от макета до MVP с использованием архитектуры FSD, повысив модульность и масштабируемость кода",
+      "Настроил CI/CD-пайплайны с нуля (GitLab CI, Docker) для 3 окружений (prod/stage/demo), автоматизировав сборку и деплой и сократив время выпуска фич с нескольких часов до 15 минут",
+      "Руководил командой из 3 фронтенд-разработчиков: внедрил обязательные код-ревью, единый код-стайл и процесс онбординга"
+    ],
+    "zh": [
+      "使用WebSocket开发了P2P交易的实时界面，确保用户订单和数据的即时更新",
+      "使用FSD架构从设计稿到MVP设计并实现了前端，提升了代码的模块化和可扩展性",
+      "从零搭建CI/CD流水线（GitLab CI、Docker），覆盖3个环境（prod/stage/demo），自动化构建和部署，将功能发布时间从数小时缩短至15分钟",
+      "带领3名前端开发人员团队：引入强制代码审查、统一代码风格和入职流程"
+    ]
+  },
+  "description": {
+    "en": "An internal investor cabinet for managing investment portfolios, enabling users to browse, buy, and sell a range of investment instruments. The platform provides a streamlined interface for tracking holdings, executing transactions, and monitoring investment performance in real time.",
+    "ru": "Внутренний кабинет инвестора для управления инвестиционными портфелями, позволяющий пользователям просматривать, покупать и продавать различные инвестиционные инструменты. Платформа предоставляет удобный интерфейс для отслеживания активов, проведения транзакций и мониторинга инвестиционной доходности в реальном времени.",
+    "zh": "一个用于管理投资组合的内部投资者平台，使用户能够浏览、购买和出售各类投资工具。平台提供简洁的界面，用于追踪持仓、执行交易和实时监控投资表现。"
+  },
+  "startDate": "2025-01",
+  "endDate": "2025-06"
+}

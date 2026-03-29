@@ -1,0 +1,35 @@
+{
+  "name": {
+    "en": "WIZMART",
+    "ru": "WIZMART",
+    "zh": "WIZMART"
+  },
+  "type": "Fullstack",
+  "stack": ["JS", "React", "Redux", "Redux Saga", "SCSS modules", "NodeJS (Express)", "PostgreSQL"],
+  "highlight": {
+    "en": "Platform for automation of workflow for seller-manufacturing relations on Wildberries",
+    "ru": "Платформа для автоматизации рабочих процессов между продавцами и производителями на Wildberries",
+    "zh": "Wildberries平台上卖家与制造商工作流程自动化平台"
+  },
+  "achievements": {
+    "en": [
+      "Implemented YooMoney payment flow and OFD integration, fully automating receipt issuance and tax reporting — eliminating manual effort entirely",
+      "Built Wildberries API integration for real-time data fetching, order tracking, and automated barcode/QR code printing"
+    ],
+    "ru": [
+      "Реализовал платёжный поток через ЮMoney и интеграцию с ОФД, полностью автоматизировав выдачу чеков и налоговую отчётность — исключив ручной труд",
+      "Разработал интеграцию с API Wildberries для получения данных в реальном времени, отслеживания заказов и автоматической печати штрихкодов и QR-кодов"
+    ],
+    "zh": [
+      "实现了YooMoney支付流程和OFD集成，完全自动化收据开具和税务报告——彻底消除人工操作",
+      "构建了Wildberries API集成，实现实时数据获取、订单追踪和条形码/二维码自动打印"
+    ]
+  },
+  "description": {
+    "en": "A B2B platform streamlining the seller-manufacturer supply chain on the Wildberries marketplace. Integrated with the official Wildberries API, the platform enabled sellers to track orders in real time and automatically forward them to manufacturers, eliminating manual coordination and reducing fulfillment delays. OFD integration automated tax reporting and financial document generation, keeping all parties compliant with minimal manual effort. Payment processing was handled via YooMoney (U-Money), enabling seamless transactions between sellers and manufacturers. The system served as a central hub connecting all parties in the production-to-delivery pipeline.",
+    "ru": "B2B-платформа, оптимизирующая цепочку поставок между продавцами и производителями на маркетплейсе Wildberries. Благодаря интеграции с официальным API Wildberries платформа позволяла продавцам отслеживать заказы в реальном времени и автоматически передавать их производителям, исключая ручную координацию и сокращая задержки выполнения. Интеграция с ОФД автоматизировала налоговую отчётность и формирование финансовых документов, обеспечивая соответствие требованиям при минимальных ручных затратах. Приём платежей осуществлялся через ЮMoney, обеспечивая бесшовные расчёты между продавцами и производителями. Система служила центральным узлом, связывающим всех участников цепочки от производства до доставки.",
+    "zh": "一个优化Wildberries电商平台上卖家与制造商供应链的B2B平台。通过集成Wildberries官方API，平台使卖家能够实时追踪订单并自动转发给制造商，消除人工协调并减少履约延迟。OFD集成实现了税务报告和财务文档生成的自动化，以最少的人工投入确保各方合规。支付通过YooMoney处理，实现卖家与制造商之间的无缝交易。系统作为连接生产到交付全链条各方的中心枢纽。"
+  },
+  "startDate": "2022-01",
+  "endDate": "2022-06"
+}
