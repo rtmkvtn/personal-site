@@ -8,7 +8,7 @@ import styles from "./ProjectScroller.module.scss";
 
 const SCROLL_SPEED = 0.5;
 const VIRTUAL_REPEAT = 100;
-const ROW_HEIGHT_EST = 66;
+const ROW_HEIGHT_EST = 106;
 
 interface ProjectScrollerProps {
   projects: ResolvedProject[];
@@ -146,6 +146,7 @@ export function ProjectScroller({
               }}
               className={styles.row}
             >
+              <div className={styles.separator} />
               <span
                 className={clsx(
                   styles.index,
@@ -153,7 +154,7 @@ export function ProjectScroller({
                   isDimmed && styles.indexDimmed,
                 )}
               >
-                {String(projectIndex + 1).padStart(2, "0")}
+                {String(projects.length - projectIndex).padStart(2, "0")}
               </span>
               <h2
                 className={clsx(

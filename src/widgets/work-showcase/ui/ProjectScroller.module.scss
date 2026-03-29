@@ -18,7 +18,16 @@
   display: flex;
   align-items: baseline;
   gap: 2rem;
-  padding: 0.25rem 0;
+  padding: 40px 0 0;
+
+  .separator {
+    position: absolute;
+    width: 1px;
+    height: 35px;
+    left: 124px;
+    top: 0;
+    background-color: var(--color-outline-variant);
+  }
 }
 
 .index {
