@@ -84,7 +84,7 @@ export function WorkShowcase({ projects: rawProjects }: WorkShowcaseProps) {
         <ProjectDetailPanel project={activeProject} />
       </div>
 
-      <ProjectIndexWatermark index={activeIndex} />
+      <ProjectIndexWatermark index={activeIndex ? projects.length - activeIndex : null} />
     </main>
   );
 }
