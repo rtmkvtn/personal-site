@@ -15,24 +15,51 @@ export interface SkillBubble {
   projects: SkillProject[];
 }
 
-function computeMonths(startDate?: string, endDate?: string): number {
-  if (!startDate) return 0;
-  const [sy, sm] = startDate.split("-").map(Number);
-  const now = new Date();
-  const [ey, em] = endDate
-    ? endDate.split("-").map(Number)
-    : [now.getFullYear(), now.getMonth() + 1];
-  return (ey - sy) * 12 + (em - sm) + 1;
+interface Interval {
+  start: number;
+  end: number;
+}
+
+function toMonthEpoch(date: string): number {
+  const [y, m] = date.split("-").map(Number);
+  return y * 12 + m;
+}
+
+function mergeIntervals(intervals: Interval[]): Interval[] {
+  if (intervals.length === 0) return [];
+  intervals.sort((a, b) => a.start - b.start);
+  const merged: Interval[] = [{ ...intervals[0] }];
+  for (let i = 1; i < intervals.length; i++) {
+    const prev = merged[merged.length - 1];
+    if (intervals[i].start <= prev.end + 1) {
+      prev.end = Math.max(prev.end, intervals[i].end);
+    } else {
+      merged.push({ ...intervals[i] });
+    }
+  }
+  return merged;
+}
+
+function computeTotalMonths(intervals: Interval[]): number {
+  const merged = mergeIntervals(intervals);
+  return merged.reduce((sum, iv) => sum + (iv.end - iv.start + 1), 0);
 }
 
 export function aggregateSkills(projects: Project[]): SkillBubble[] {
   const map = new Map<
     string,
-    { count: number; totalMonths: number; projects: SkillProject[] }
+    { count: number; intervals: Interval[]; projects: SkillProject[] }
   >();
 
   for (const project of projects) {
-    const months = computeMonths(project.startDate, project.endDate);
+    if (!project.startDate) continue;
+    const now = new Date();
+    const start = toMonthEpoch(project.startDate);
+    const end = project.endDate
+      ? toMonthEpoch(project.endDate)
+      : now.getFullYear() * 12 + (now.getMonth() + 1);
+    const interval: Interval = { start, end };
+
     for (const skill of project.stack) {
       const existing = map.get(skill);
       const sp: SkillProject = {
@@ -43,24 +70,26 @@ export function aggregateSkills(projects: Project[]): SkillBubble[] {
       };
       if (existing) {
         existing.count++;
-        existing.totalMonths += months;
+        existing.intervals.push(interval);
         existing.projects.push(sp);
       } else {
-        map.set(skill, { count: 1, totalMonths: months, projects: [sp] });
+        map.set(skill, { count: 1, intervals: [interval], projects: [sp] });
       }
     }
   }
 
-  const entries = Array.from(map.entries());
-  const maxDuration = Math.max(...entries.map(([, v]) => v.totalMonths), 1);
+  const entries = Array.from(map.entries()).map(([skill, data]) => ({
+    skill,
+    count: data.count,
+    totalMonths: computeTotalMonths(data.intervals),
+    projects: data.projects,
+  }));
+  const maxDuration = Math.max(...entries.map((e) => e.totalMonths), 1);
 
   return entries
-    .map(([skill, data]) => ({
-      skill,
-      count: data.count,
-      totalMonths: data.totalMonths,
-      weight: data.count * 0.4 + (data.totalMonths / maxDuration) * 0.6,
-      projects: data.projects,
+    .map((e) => ({
+      ...e,
+      weight: e.count * 0.4 + (e.totalMonths / maxDuration) * 0.6,
     }))
     .sort((a, b) => b.weight - a.weight);
 }
