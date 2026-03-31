@@ -1,7 +1,7 @@
 {
   "nav": {
     "work": "WORK",
-    "skills": "SKILLS",
+    "skills": "HARD SKILLS",
     "about": "ABOUT",
     "contact": "CONTACT"
   },
@@ -25,7 +25,7 @@
   },
   "skills": {
     "label": "Technical Capabilities",
-    "title": "SKILLS",
+    "title": "HARD SKILLS",
     "frontend": "Frontend",
     "backend": "Backend",
     "infrastructure": "Infrastructure",

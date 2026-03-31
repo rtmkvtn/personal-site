@@ -1,7 +1,7 @@
 {
   "nav": {
     "work": "项目",
-    "skills": "技能",
+    "skills": "硬技能",
     "about": "关于",
     "contact": "联系"
   },
@@ -25,7 +25,7 @@
   },
   "skills": {
     "label": "技术能力",
-    "title": "技能",
+    "title": "硬技能",
     "frontend": "前端",
     "backend": "后端",
     "infrastructure": "基础设施",
