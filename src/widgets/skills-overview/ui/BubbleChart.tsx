@@ -15,6 +15,7 @@ import clsx from "clsx";
 interface BubbleNode extends SimulationNodeDatum {
   skill: SkillBubble;
   r: number;
+  baseR: number;
 }
 
 interface BubbleChartProps {
@@ -72,12 +73,16 @@ export function BubbleChart({
     const maxR = isMobile ? MOBILE_MAX_RADIUS : MAX_RADIUS;
     const maxWeight = Math.max(...skills.map((s) => s.weight));
 
-    const bubbleNodes: BubbleNode[] = skills.map((skill) => ({
-      skill,
-      r: computeRadius(skill.weight, maxWeight, minR, maxR),
-      x: width / 2 + (Math.random() - 0.5) * width * 0.3,
-      y: height / 2 + (Math.random() - 0.5) * height * 0.3,
-    }));
+    const bubbleNodes: BubbleNode[] = skills.map((skill) => {
+      const r = computeRadius(skill.weight, maxWeight, minR, maxR);
+      return {
+        skill,
+        r,
+        baseR: r,
+        x: width / 2 + (Math.random() - 0.5) * width * 0.3,
+        y: height / 2 + (Math.random() - 0.5) * height * 0.3,
+      };
+    });
 
     const sim = forceSimulation(bubbleNodes)
       .force("x", forceX(width / 2).strength(0.05))
@@ -100,6 +105,23 @@ export function BubbleChart({
       clearTimeout(entryTimer);
     };
   }, [skills, dimensions]);
+
+  useEffect(() => {
+    const sim = simulationRef.current;
+    if (!sim) return;
+
+    for (const node of sim.nodes()) {
+      node.r = hoveredSkill === node.skill.skill
+        ? node.baseR * 1.25
+        : node.baseR;
+    }
+
+    sim.force(
+      "collide",
+      forceCollide<BubbleNode>((d) => d.r + 4).strength(1).iterations(3),
+    );
+    sim.alpha(0.5).restart();
+  }, [hoveredSkill]);
 
   const handlePointerEnter = useCallback(
     (skill: string) => {

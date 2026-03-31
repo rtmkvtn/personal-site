@@ -13,9 +13,7 @@
   cursor: pointer;
   transform-origin: center;
   opacity: 0;
-  transition:
-    opacity 300ms ease-out,
-    transform 300ms ease-out;
+  transition: opacity 300ms ease-out;
 
   .circle {
     fill: var(--color-surface-container);
@@ -23,7 +21,8 @@
     stroke-width: 1;
     transition:
       fill 300ms ease-out,
-      stroke 300ms ease-out;
+      stroke 300ms ease-out,
+      r 200ms ease-out;
   }
 
   .label {
