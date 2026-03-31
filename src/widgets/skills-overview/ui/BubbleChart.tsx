@@ -86,7 +86,7 @@ export function BubbleChart({
         "collide",
         forceCollide<BubbleNode>((d) => d.r + 3).strength(0.8),
       )
-      .alphaDecay(0.02)
+      .alphaDecay(0.05)
       .on("tick", () => {
         setNodes([...bubbleNodes]);
       });
