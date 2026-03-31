@@ -182,7 +182,6 @@ export function ProjectScroller({
           const isActive = activeVirtualIndex === vRow.index;
           const isDimmed = activeVirtualIndex !== null && !isActive;
 
-          const isFirstInTimeline = projectIndex === projects.length - 1;
           const isLastInTimeline = projectIndex === 0;
 
           return (
@@ -199,9 +198,18 @@ export function ProjectScroller({
                 width: "100%",
                 transform: `translateY(${vRow.start}px)`,
               }}
-              className={styles.row}
+              className={clsx(styles.row, isLastInTimeline && styles.rowLast)}
             >
-              {isLastInTimeline ? <div className={styles.startIcon}><StartIcon /></div>:<div className={styles.separator} />}
+              {isLastInTimeline ?
+                <div className={styles.startIcon}>
+                  <StartIcon className={styles.svg} />
+                  <span className={styles.timelineDate}>Today</span>
+                </div>
+                :
+                <div className={styles.separator}>
+                  {project.endDate &&<span className={styles.timelineDate}>{new Date(project.endDate).getFullYear()}</span>}
+                </div>
+              }
               <span
                 className={clsx(
                   styles.index,

@@ -21,6 +21,9 @@
   align-items: baseline;
   gap: 2rem;
   padding: 40px 0 0;
+  &Last {
+    padding-top: 80px;
+  }
 
   .separator {
     position: absolute;
@@ -30,14 +33,51 @@
     top: 0;
     background-color: var(--color-outline-variant);
   }
+  .timelineDate {
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-outline-variant);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    &:after {
+      display: block;
+      content: '';
+      width: 2px;
+      height: 2px;
+      background-color: var(--color-outline-variant);
+      border-radius: 50%;
+    }
+  }
   .startIcon {
+    .svg {
+      transform: rotate(90deg);
+    }
     position: absolute;
     left: 112px;
     top: 0;
     width: 24px;
     height: 24px;
-    transform: rotate(90deg);
     color: var(--color-outline-variant);
+    .timelineDate {
+      left: 50%;
+      top: auto;
+      bottom: -54px;
+      transform: translate(-50%, 0);
+      white-space: nowrap;
+      flex-direction: column;
+      &:after {
+        height: 12px;
+        width: 1px;
+        border-radius: 0;
+      }
+    }
   }
 }
 
