@@ -5,6 +5,7 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import clsx from "clsx";
 import type { ResolvedProject } from "@/shared/config";
 import { GlitchText } from "@/shared/ui";
+import { StartIcon } from "@/shared/icons/StartIcon";
 import styles from "./ProjectScroller.module.scss";
 
 const SCROLL_SPEED = 0.5;
@@ -177,6 +178,9 @@ export function ProjectScroller({
           const isActive = activeVirtualIndex === vRow.index;
           const isDimmed = activeVirtualIndex !== null && !isActive;
 
+          const isFirstInTimeline = projectIndex === projects.length - 1;
+          const isLastInTimeline = projectIndex === 0;
+
           return (
             <div
               key={vRow.key}
@@ -193,7 +197,7 @@ export function ProjectScroller({
               }}
               className={styles.row}
             >
-              <div className={styles.separator} />
+              {isLastInTimeline ? <div className={styles.startIcon}><StartIcon /></div>:<div className={styles.separator} />}
               <span
                 className={clsx(
                   styles.index,

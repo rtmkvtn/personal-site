@@ -30,6 +30,15 @@
     top: 0;
     background-color: var(--color-outline-variant);
   }
+  .startIcon {
+    position: absolute;
+    left: 112px;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    transform: rotate(90deg);
+    color: var(--color-outline-variant);
+  }
 }
 
 .index {
