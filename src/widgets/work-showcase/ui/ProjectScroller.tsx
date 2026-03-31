@@ -50,16 +50,20 @@ export function ProjectScroller({
   const animate = useCallback(() => {
     const el = scrollElementRef.current;
     if (!pausedRef.current && el) {
-      el.scrollTop += SCROLL_SPEED;
+      el.scrollTop -= SCROLL_SPEED;
       const cycleHeight = ROW_HEIGHT_EST * projects.length;
-      if (el.scrollTop > cycleHeight * (VIRTUAL_REPEAT / 2)) {
-        el.scrollTop -= cycleHeight;
+      if (el.scrollTop < cycleHeight) {
+        el.scrollTop += cycleHeight;
       }
     }
     animRef.current = requestAnimationFrame(animate);
   }, [projects.length]);
 
   useEffect(() => {
+    const el = scrollElementRef.current;
+    if (el) {
+      el.scrollTop = ROW_HEIGHT_EST * projects.length * (VIRTUAL_REPEAT / 2);
+    }
     animRef.current = requestAnimationFrame(animate);
     return () => {
       cancelAnimationFrame(animRef.current);
