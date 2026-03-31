@@ -5,7 +5,7 @@
     "zh": "CRYPTO MARKETPLACE"
   },
   "type": "Fullstack",
-  "stack": ["JS", "React", "Redux", "NodeJS (Express)", "MongoDB", "Bitcoin NODE", "Bootstrap UI"],
+  "stack": ["JavaScript", "React", "Redux", "Node.js", "Express", "MongoDB", "Bootstrap"],
   "highlight": {
     "en": "Crypto P2P marketplace with payments in BTC and internal currency",
     "ru": "P2P-маркетплейс криптовалют с оплатой в BTC и внутренней валюте",

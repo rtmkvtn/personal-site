@@ -1,0 +1,53 @@
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.svg {
+  display: block;
+}
+
+.bubble {
+  cursor: pointer;
+  transform-origin: center;
+  opacity: 0;
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+
+  .circle {
+    fill: var(--color-surface-container);
+    stroke: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+    stroke-width: 1;
+    transition:
+      fill 300ms ease-out,
+      stroke 300ms ease-out;
+  }
+
+  .label {
+    fill: var(--color-on-surface);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    pointer-events: none;
+    transition: fill 300ms ease-out;
+  }
+}
+
+.bubbleEntered {
+  opacity: 1;
+}
+
+.bubbleHovered {
+  .circle {
+    fill: var(--color-primary);
+    stroke: var(--color-primary);
+  }
+
+  .label {
+    fill: var(--color-on-primary);
+  }
+}

@@ -28,7 +28,14 @@
     "title": "НАВЫКИ",
     "frontend": "Фронтенд",
     "backend": "Бэкенд",
-    "infrastructure": "Инфраструктура"
+    "infrastructure": "Инфраструктура",
+    "totalSkills": "Навыки",
+    "totalYears": "Лет",
+    "totalProjects": "Проекты",
+    "hoverHint": "Наведите на навык для подробностей",
+    "duration": "Длительность",
+    "projects": "Проекты",
+    "close": "ЗАКРЫТЬ"
   },
   "contact": {
     "label": "Связаться",

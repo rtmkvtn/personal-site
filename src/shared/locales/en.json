@@ -28,7 +28,14 @@
     "title": "SKILLS",
     "frontend": "Frontend",
     "backend": "Backend",
-    "infrastructure": "Infrastructure"
+    "infrastructure": "Infrastructure",
+    "totalSkills": "Skills",
+    "totalYears": "Years",
+    "totalProjects": "Projects",
+    "hoverHint": "Hover a skill to explore",
+    "duration": "Duration",
+    "projects": "Projects",
+    "close": "CLOSE"
   },
   "contact": {
     "label": "Get in Touch",

@@ -5,7 +5,7 @@
     "zh": "CURRENCY EXCHANGE"
   },
   "type": "Fullstack",
-  "stack": ["TS", "React", "Next.JS", "React Context API", "ShadCN", "TailwindCSS", "NestJS", "Strapi CMS", "PostgreSQL", "GitLab CI/CD", "Docker", "Docker-Compose"],
+  "stack": ["TypeScript", "React", "Next.js", "React Context API", "ShadCN", "Tailwind CSS", "NestJS", "Strapi CMS", "PostgreSQL", "GitLab CI/CD", "Docker", "Docker Compose"],
   "highlight": {
     "en": "Back office for digital currency exchange service",
     "ru": "Бэк-офис для сервиса обмена цифровых валют",

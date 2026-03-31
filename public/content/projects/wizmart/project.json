@@ -5,7 +5,7 @@
     "zh": "WIZMART"
   },
   "type": "Fullstack",
-  "stack": ["JS", "React", "Redux", "Redux Saga", "SCSS modules", "NodeJS (Express)", "PostgreSQL"],
+  "stack": ["JavaScript", "React", "Redux", "Redux Saga", "SCSS Modules", "Node.js", "Express", "PostgreSQL"],
   "highlight": {
     "en": "Platform for automation of workflow for seller-manufacturing relations on Wildberries",
     "ru": "Платформа для автоматизации рабочих процессов между продавцами и производителями на Wildberries",

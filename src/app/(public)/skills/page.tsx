@@ -1,5 +1,7 @@
+import { getProjects } from "@/shared/lib/content-loader";
 import { SkillsOverview } from "@/widgets/skills-overview";
 
-export default function SkillsPage() {
-  return <SkillsOverview />;
+export default async function SkillsPage() {
+  const projects = await getProjects();
+  return <SkillsOverview projects={projects} />;
 }

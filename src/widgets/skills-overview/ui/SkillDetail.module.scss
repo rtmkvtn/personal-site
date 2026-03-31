@@ -1,0 +1,161 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding: 0 1.5rem;
+  position: relative;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 0 4rem;
+  }
+}
+
+.panelVisible {
+  opacity: 1;
+  transition: opacity 200ms ease-out;
+}
+
+.panelHidden {
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+// Staggered fade-in (matches ProjectDetailPanel pattern)
+.fadeIn {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 200ms ease-out,
+    transform 200ms ease-out;
+}
+
+.fadeInVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+// Hover state — skill detail
+.skillName {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin-bottom: 2.75rem;
+  text-transform: uppercase;
+}
+
+.fieldLabel {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
+}
+
+.fieldValue {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface);
+  margin-bottom: 2.75rem;
+}
+
+.projectList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.projectLink {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-on-surface);
+  text-decoration: none;
+  transition: color 300ms ease-out;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+
+// Default state — aggregate summary
+.defaultState {
+  position: relative;
+}
+
+.watermark {
+  pointer-events: none;
+  position: absolute;
+  right: -2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  user-select: none;
+  font-size: clamp(10rem, 20vw, 18rem);
+  font-weight: 200;
+  line-height: 1;
+  color: color-mix(in srgb, var(--color-primary) 3%, transparent);
+
+  @media (min-width: $breakpoint-sm) {
+    right: -4rem;
+  }
+}
+
+.pageLabel {
+  margin-bottom: 1.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
+}
+
+.title {
+  font-size: clamp(3.5rem, 8vw, 8rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+}
+
+.stats {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2.75rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.statValue {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+.statLabel {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--color-on-surface) 40%, transparent);
+}
+
+.hint {
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: color-mix(in srgb, var(--color-on-surface) 30%, transparent);
+}

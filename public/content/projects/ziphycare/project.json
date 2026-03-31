@@ -5,7 +5,7 @@
     "zh": "ZIPHYCARE"
   },
   "type": "Frontend",
-  "stack": ["JS", "TS", "React", "MobX", "SCSS modules", "GitHub Actions CI", "FHIR"],
+  "stack": ["JavaScript", "TypeScript", "React", "MobX", "SCSS Modules", "GitHub Actions", "FHIR"],
   "highlight": {
     "en": "US Health-Tech startup",
     "ru": "Американский Health-Tech стартап",

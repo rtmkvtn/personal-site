@@ -5,7 +5,7 @@
     "zh": "M-INVEST"
   },
   "type": "Frontend",
-  "stack": ["TS", "React", "MobX", "WebSocket", "XMPP", "Chart.js", "SCSS Modules", "GitLab CI/CD", "Docker"],
+  "stack": ["TypeScript", "React", "MobX", "WebSocket", "XMPP", "Chart.js", "SCSS Modules", "GitLab CI/CD", "Docker"],
   "highlight": {
     "en": "Internal cabinet for investors for buying/selling investment instruments",
     "ru": "Внутренний кабинет инвестора для покупки/продажи инвестиционных инструментов",
