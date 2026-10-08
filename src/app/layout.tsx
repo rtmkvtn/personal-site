@@ -25,7 +25,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "rtmkvtn | Fullstack Web Engineer",
+  title: "rtmkvtn | AI-First Fullstack Engineer",
   description: "Engineering Scalable Digital Infrastructure",
 };
 
