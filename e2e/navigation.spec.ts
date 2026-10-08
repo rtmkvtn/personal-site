@@ -1,30 +1,48 @@
 import { test, expect } from "@playwright/test";
 
+// The nav labels are the locale's, not the route's: `/skills` is labelled HARD SKILLS.
+const LINKS = [
+  { label: "WORK", url: "/work" },
+  { label: "HARD SKILLS", url: "/skills" },
+  { label: "ABOUT", url: "/about" },
+  { label: "CONTACT", url: "/contact" },
+];
+
 test.describe("Navigation", () => {
-  test("renders brand logo and all nav links", async ({ page }) => {
+  test("renders the wordmark and every nav link", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.getByRole("link", { name: "STUDIO MONOLITH" })).toBeVisible();
     const nav = page.getByRole("navigation");
-    await expect(nav.getByRole("link", { name: "WORK" })).toBeVisible();
-    await expect(nav.getByRole("link", { name: "SKILLS" })).toBeVisible();
-    await expect(nav.getByRole("link", { name: "ABOUT" })).toBeVisible();
-    await expect(nav.getByRole("link", { name: "CONTACT" })).toBeVisible();
+    await expect(nav.getByRole("link", { name: "rtmkvtn" })).toBeVisible();
+    for (const { label } of LINKS) {
+      await expect(nav.getByRole("link", { name: label })).toBeVisible();
+    }
   });
 
-  test("nav links navigate to correct pages", async ({ page }) => {
+  test("each nav link reaches its surface", async ({ page }) => {
     await page.goto("/");
 
-    await page.getByRole("navigation").getByRole("link", { name: "WORK" }).click();
-    await expect(page).toHaveURL("/work");
+    for (const { label, url } of LINKS) {
+      await page.getByRole("navigation").getByRole("link", { name: label }).click();
+      await expect(page).toHaveURL(url);
+    }
+  });
 
-    await page.getByRole("navigation").getByRole("link", { name: "SKILLS" }).click();
-    await expect(page).toHaveURL("/skills");
+  test("the wordmark returns home from a surface", async ({ page }) => {
+    await page.goto("/about");
 
-    await page.getByRole("navigation").getByRole("link", { name: "ABOUT" }).click();
-    await expect(page).toHaveURL("/about");
+    await page.getByRole("navigation").getByRole("link", { name: "rtmkvtn" }).click();
+    await expect(page).toHaveURL("/");
+  });
 
-    await page.getByRole("navigation").getByRole("link", { name: "CONTACT" }).click();
-    await expect(page).toHaveURL("/contact");
+  test("labels are translated in ru and zh", async ({ page }) => {
+    await page.goto("/");
+    const nav = page.getByRole("navigation");
+
+    await page.getByRole("button", { name: "RU" }).click();
+    await expect(nav.getByRole("link", { name: "ПРОЕКТЫ" })).toBeVisible();
+
+    await page.getByRole("button", { name: "ZH" }).click();
+    await expect(nav.getByRole("link", { name: "项目" })).toBeVisible();
   });
 });
