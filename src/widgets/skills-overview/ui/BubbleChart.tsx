@@ -25,6 +25,8 @@ interface BubbleChartProps {
   onTap: (skill: string) => void;
 }
 
+export const AI_TOOLING = new Set(["Claude Code", "Codex", "AI Agents"]);
+
 const MIN_RADIUS = 28;
 const MAX_RADIUS = 72;
 const MOBILE_MIN_RADIUS = 22;
@@ -150,14 +152,18 @@ export function BubbleChart({
       >
         {nodes.map((node, i) => {
           const isHovered = hoveredSkill === node.skill.skill;
+          const isAi = AI_TOOLING.has(node.skill.skill);
           return (
             <g
               key={node.skill.skill}
+              data-skill={node.skill.skill}
+              data-ai-tooling={isAi ? "true" : undefined}
               transform={`translate(${node.x ?? 0}, ${node.y ?? 0})`}
               className={clsx(
                 styles.bubble,
                 entered && styles.bubbleEntered,
                 isHovered && styles.bubbleHovered,
+                isAi && styles.bubbleAi,
               )}
               style={{
                 transitionDelay: entered ? `${i * 30}ms` : "0ms",
@@ -175,8 +181,8 @@ export function BubbleChart({
                 dominantBaseline="central"
                 className={styles.label}
               >
-                {node.skill.skill.length > node.r / 4.5
-                  ? node.skill.skill.slice(0, Math.floor(node.r / 4.5)) + "."
+                {node.skill.skill.length > node.r / 3.6
+                  ? node.skill.skill.slice(0, Math.floor(node.r / 3.6)) + "."
                   : node.skill.skill}
               </text>
             </g>

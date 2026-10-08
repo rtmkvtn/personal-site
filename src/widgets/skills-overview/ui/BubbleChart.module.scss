@@ -40,6 +40,17 @@
   opacity: 1;
 }
 
+.bubbleAi {
+  .circle {
+    fill: var(--color-surface);
+    stroke: color-mix(in srgb, var(--color-on-surface-variant) 70%, transparent);
+  }
+
+  .label {
+    fill: var(--color-primary);
+  }
+}
+
 .bubbleHovered {
   .circle {
     fill: var(--color-primary);
