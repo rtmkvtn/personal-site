@@ -5,7 +5,20 @@
     "zh": "M-INVEST"
   },
   "type": "Frontend",
-  "stack": ["TypeScript", "React", "MobX", "WebSocket", "XMPP", "Chart.js", "SCSS Modules", "GitLab CI/CD", "Docker"],
+  "stack": [
+    "TypeScript",
+    "React",
+    "MobX",
+    "WebSocket",
+    "XMPP",
+    "Chart.js",
+    "SCSS Modules",
+    "GitLab CI/CD",
+    "Docker",
+    "Claude Code",
+    "Codex",
+    "AI Agents"
+  ],
   "highlight": {
     "en": "Internal cabinet for investors for buying/selling investment instruments",
     "ru": "Внутренний кабинет инвестора для покупки/продажи инвестиционных инструментов",
@@ -37,5 +50,47 @@
     "zh": "一个用于管理投资组合的内部投资者平台，使用户能够浏览、购买和出售各类投资工具。平台提供简洁的界面，用于追踪持仓、执行交易和实时监控投资表现。"
   },
   "startDate": "2025-01",
-  "endDate": "2025-06"
+  "endDate": "2025-06",
+  "aiFirst": {
+    "steps": {
+      "specify": {
+        "en": "Frontend architecture (FSD), specs, review and onboarding process for a team of three",
+        "ru": "Архитектура фронтенда (FSD), спецификации, процесс ревью и онбординга для команды из трёх человек",
+        "zh": "前端架构（FSD）、规格、三人团队的审查与入职流程"
+      },
+      "implement": {
+        "en": "Claude Code and Codex as each became available; boilerplate first, then features",
+        "ru": "Claude Code и Codex по мере их появления; сначала шаблонный код, затем фичи",
+        "zh": "Claude Code 与 Codex 随可用逐步引入；先是样板代码，后是功能"
+      },
+      "verify": {
+        "en": "Tests, GitLab CI for three environments",
+        "ru": "Тесты, GitLab CI для трёх окружений",
+        "zh": "测试、面向三个环境的 GitLab CI"
+      },
+      "review": {
+        "en": "Mandatory code review on every PR, agent-written or not",
+        "ru": "Обязательное код-ревью каждого PR, написан он агентом или нет",
+        "zh": "每个 PR 都强制代码审查，无论是否由智能体编写"
+      }
+    },
+    "anchor": {
+      "value": {
+        "en": "15 min",
+        "ru": "15 мин",
+        "zh": "十五分钟"
+      },
+      "label": {
+        "en": "Feature release time, down from several hours, after the CI/CD pipelines",
+        "ru": "Время выпуска фичи после настройки CI/CD, вместо нескольких часов",
+        "zh": "搭建 CI/CD 流水线后的功能发布时间，此前需数小时"
+      },
+      "mark": "RELEASES / 2025"
+    },
+    "note": {
+      "en": "The tooling matured during the project, so the agents' share grew from boilerplate to full features. The review process did not change.",
+      "ru": "Инструменты взрослели по ходу проекта, поэтому доля агентов выросла от шаблонного кода до полноценных фич. Процесс ревью не менялся.",
+      "zh": "工具在项目进行中逐渐成熟，智能体的份额从样板代码扩展到完整功能。审查流程没有改变。"
+    }
+  }
 }
