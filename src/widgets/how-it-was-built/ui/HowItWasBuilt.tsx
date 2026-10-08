@@ -3,7 +3,8 @@
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import type { ResolvedAiFirst } from "@/shared/config";
-import { toChineseNumeral } from "@/shared/lib/chinese-numerals";
+import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
+import { useLocale } from "@/shared/lib/i18n";
 import styles from "./HowItWasBuilt.module.scss";
 
 interface HowItWasBuiltProps {
@@ -21,10 +22,9 @@ const STEPS: { key: StepKey; owner: Owner }[] = [
 ];
 
 export function HowItWasBuilt({ data }: HowItWasBuiltProps) {
-  const { t, i18n } = useTranslation();
-  const isZh = i18n.language === "zh";
-  const index = (i: number) =>
-    isZh ? toChineseNumeral(i, "value") : String(i).padStart(2, "0");
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const index = (i: number) => toLocaleNumeral(i, locale, { pad: 2 });
 
   return (
     <section className={styles.section} aria-label={t("built.label")}>

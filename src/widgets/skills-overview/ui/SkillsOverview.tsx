@@ -4,7 +4,8 @@ import { useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import type { Project } from "@/shared/config";
 import { aggregateSkills, type SkillBubble } from "@/shared/utils/skillsAggregator";
-import { toChineseNumeral } from "@/shared/lib/chinese-numerals";
+import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
+import { useLocale } from "@/shared/lib/i18n";
 import { BubbleChart } from "./BubbleChart";
 import { SkillDetail } from "./SkillDetail";
 import styles from "./SkillsOverview.module.scss";
@@ -14,9 +15,9 @@ interface SkillsOverviewProps {
 }
 
 export function SkillsOverview({ projects }: SkillsOverviewProps) {
-  const { t, i18n } = useTranslation();
-  const locale = i18n.language;
-  const num = (n: number) => locale === "zh" ? toChineseNumeral(n, "value") : String(n);
+  const { t } = useTranslation();
+  const locale = useLocale();
+  const num = (n: number) => toLocaleNumeral(n, locale);
   const skills = useMemo(() => aggregateSkills(projects), [projects]);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [modalSkill, setModalSkill] = useState<SkillBubble | null>(null);

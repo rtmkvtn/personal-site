@@ -1,5 +1,9 @@
 import { describe, it, expect } from "vitest";
-import { toChineseNumeral, replaceDigitsInString } from "../chinese-numerals";
+import {
+  toChineseNumeral,
+  toLocaleNumeral,
+  replaceDigitsInString,
+} from "../chinese-numerals";
 
 describe("toChineseNumeral", () => {
   describe("year mode (digit-by-digit)", () => {
@@ -71,5 +75,28 @@ describe("replaceDigitsInString", () => {
 
   it("replaces all digit groups individually", () => {
     expect(replaceDigitsInString("12月30日", "zh")).toBe("十二月三十日");
+  });
+});
+
+describe("toLocaleNumeral", () => {
+  it("gives Chinese numerals in zh and Latin digits elsewhere", () => {
+    expect(toLocaleNumeral(7, "zh")).toBe("七");
+    expect(toLocaleNumeral(7, "en")).toBe("7");
+    expect(toLocaleNumeral(7, "ru")).toBe("7");
+  });
+
+  it("pads the Latin form only, because zh takes no leading zero", () => {
+    expect(toLocaleNumeral(3, "en", { pad: 2 })).toBe("03");
+    expect(toLocaleNumeral(3, "zh", { pad: 2 })).toBe("三");
+    expect(toLocaleNumeral(12, "en", { pad: 2 })).toBe("12");
+  });
+
+  it("reads a year digit by digit when asked", () => {
+    expect(toLocaleNumeral(2024, "zh", { mode: "year" })).toBe("二零二四");
+    expect(toLocaleNumeral(2024, "en", { mode: "year" })).toBe("2024");
+  });
+
+  it("counts by value by default", () => {
+    expect(toLocaleNumeral(24, "zh")).toBe("二十四");
   });
 });

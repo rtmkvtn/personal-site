@@ -27,6 +27,19 @@ export function toChineseNumeral(
     : `${DIGITS[tens]}十${DIGITS[ones]}`;
 }
 
+/**
+ * A number as the locale prints it: Chinese numerals in zh, Latin digits elsewhere, where `pad`
+ * is the zero-padding the Latin form takes and zh never does.
+ */
+export function toLocaleNumeral(
+  n: number,
+  locale: string,
+  options: { mode?: "year" | "value"; pad?: number } = {},
+): string {
+  if (locale === "zh") return toChineseNumeral(n, options.mode ?? "value");
+  return String(n).padStart(options.pad ?? 0, "0");
+}
+
 export function replaceDigitsInString(str: string, locale: string): string {
   if (locale !== "zh") return str;
   if (!str) return str;
