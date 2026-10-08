@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Noto_Sans_SC } from "next/font/google";
 import "./globals.css";
 import styles from "./layout.module.scss";
 import { I18nProvider } from "@/shared/lib/i18n";
@@ -8,6 +8,13 @@ const inter = Inter({
   subsets: ["latin", "cyrillic"],
   display: "swap",
   variable: "--font-inter",
+});
+
+const notoSansSC = Noto_Sans_SC({
+  subsets: ["latin"],
+  weight: ["100", "200", "400", "600"],
+  display: "swap",
+  variable: "--font-noto-sans-sc",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${styles.html}`}>
+    <html lang="en" className={`${inter.variable} ${notoSansSC.variable} ${styles.html}`}>
       <body className={styles.body}>
         <I18nProvider>{children}</I18nProvider>
       </body>

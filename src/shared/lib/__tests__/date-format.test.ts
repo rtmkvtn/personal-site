@@ -14,10 +14,10 @@ describe("formatDate", () => {
     expect(result).not.toBe("Jun 2024");
   });
 
-  it("formats date in Chinese", () => {
+  it("formats date in Chinese with Chinese numerals", () => {
     const result = formatDate("2024-06", "zh");
-    // Chinese date format includes the year
-    expect(result).toMatch(/2024/);
+    expect(result).not.toMatch(/[0-9]/);
+    expect(result).toMatch(/二零二四/);
   });
 });
 
@@ -43,10 +43,11 @@ describe("getDisplayDate", () => {
     expect(result).toMatch(/2024/);
   });
 
-  it("formats date range in Chinese", () => {
+  it("formats date range in Chinese with Chinese numerals", () => {
     const result = getDisplayDate("2023-06", "2024-01", "zh");
-    expect(result).toMatch(/2023/);
+    expect(result).not.toMatch(/[0-9]/);
+    expect(result).toMatch(/二零二三/);
     expect(result).toMatch(/—/);
-    expect(result).toMatch(/2024/);
+    expect(result).toMatch(/二零二四/);
   });
 });

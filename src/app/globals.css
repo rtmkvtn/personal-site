@@ -1,6 +1,6 @@
 :root {
   /* Font */
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-inter), var(--font-noto-sans-sc);
 
   /* Colors — Surface hierarchy */
   --color-surface: #000000;

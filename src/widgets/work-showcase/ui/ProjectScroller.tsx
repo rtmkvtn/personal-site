@@ -3,9 +3,11 @@
 import { useRef, useEffect, useCallback, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import clsx from "clsx";
+import { useTranslation } from "react-i18next";
 import type { ResolvedProject } from "@/shared/config";
 import { GlitchText } from "@/shared/ui";
 import { StartIcon } from "@/shared/icons/StartIcon";
+import { toChineseNumeral } from "@/shared/lib/chinese-numerals";
 import styles from "./ProjectScroller.module.scss";
 
 const SCROLL_SPEED = 0.5;
@@ -26,6 +28,8 @@ export function ProjectScroller({
   activeIndex,
   onHover,
 }: ProjectScrollerProps) {
+  const { i18n } = useTranslation();
+  const locale = i18n.language;
   const scrollElementRef = useRef<HTMLDivElement>(null);
   const animRef = useRef<number>(0);
   const pausedRef = useRef(false);
@@ -207,7 +211,9 @@ export function ProjectScroller({
                 </div>
                 :
                 <div className={styles.separator}>
-                  {project.endDate &&<span className={styles.timelineDate}>{new Date(project.endDate).getFullYear()}</span>}
+                  {project.endDate &&<span className={styles.timelineDate}>{locale === "zh"
+                    ? toChineseNumeral(new Date(project.endDate).getFullYear(), "year")
+                    : new Date(project.endDate).getFullYear()}</span>}
                 </div>
               }
               <span
@@ -217,7 +223,9 @@ export function ProjectScroller({
                   isDimmed && styles.indexDimmed,
                 )}
               >
-                {String(projects.length - projectIndex).padStart(2, "0")}
+                {locale === "zh"
+                  ? toChineseNumeral(projects.length - projectIndex, "value")
+                  : String(projects.length - projectIndex).padStart(2, "0")}
               </span>
               <h2
                 data-project-title

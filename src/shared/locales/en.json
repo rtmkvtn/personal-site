@@ -35,7 +35,9 @@
     "hoverHint": "Hover a skill to explore",
     "duration": "Duration",
     "projects": "Projects",
-    "close": "CLOSE"
+    "close": "CLOSE",
+    "durationYear": "y",
+    "durationMonth": "mo"
   },
   "contact": {
     "label": "Get in Touch",

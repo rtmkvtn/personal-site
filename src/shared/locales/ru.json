@@ -35,7 +35,9 @@
     "hoverHint": "Наведите на навык для подробностей",
     "duration": "Длительность",
     "projects": "Проекты",
-    "close": "ЗАКРЫТЬ"
+    "close": "ЗАКРЫТЬ",
+    "durationYear": "г",
+    "durationMonth": "мес"
   },
   "contact": {
     "label": "Связаться",

@@ -4,6 +4,7 @@ import { useMemo, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import type { Project } from "@/shared/config";
 import { aggregateSkills, type SkillBubble } from "@/shared/utils/skillsAggregator";
+import { toChineseNumeral } from "@/shared/lib/chinese-numerals";
 import { BubbleChart } from "./BubbleChart";
 import { SkillDetail } from "./SkillDetail";
 import styles from "./SkillsOverview.module.scss";
@@ -13,7 +14,9 @@ interface SkillsOverviewProps {
 }
 
 export function SkillsOverview({ projects }: SkillsOverviewProps) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const locale = i18n.language;
+  const num = (n: number) => locale === "zh" ? toChineseNumeral(n, "value") : String(n);
   const skills = useMemo(() => aggregateSkills(projects), [projects]);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [modalSkill, setModalSkill] = useState<SkillBubble | null>(null);
@@ -89,16 +92,18 @@ export function SkillsOverview({ projects }: SkillsOverviewProps) {
                 {(() => {
                   const y = Math.floor(modalSkill.totalMonths / 12);
                   const m = modalSkill.totalMonths % 12;
-                  if (y === 0) return `${m}mo`;
-                  if (m === 0) return `${y}y`;
-                  return `${y}y ${m}mo`;
+                  const yUnit = t("skills.durationYear");
+                  const mUnit = t("skills.durationMonth");
+                  if (y === 0) return `${num(m)}${mUnit}`;
+                  if (m === 0) return `${num(y)}${yUnit}`;
+                  return `${num(y)}${yUnit} ${num(m)}${mUnit}`;
                 })()}
               </p>
             </div>
 
             <div className={styles.modalField}>
               <span className={styles.modalLabel}>
-                {t("skills.projects")} ({modalSkill.count})
+                {t("skills.projects")} ({num(modalSkill.count)})
               </span>
               <ul className={styles.modalProjectList}>
                 {modalSkill.projects.map((p) => (

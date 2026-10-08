@@ -35,7 +35,9 @@
     "hoverHint": "悬停技能以查看详情",
     "duration": "持续时间",
     "projects": "项目",
-    "close": "关闭"
+    "close": "关闭",
+    "durationYear": "年",
+    "durationMonth": "月"
   },
   "contact": {
     "label": "联系我",

@@ -75,8 +75,8 @@ describe("resolveProjectLocale", () => {
     expect(resolved.type).toBe("Frontend");
     expect(resolved.stack).toEqual(["React"]);
     expect(resolved.slug).toBe("test-project");
-    // displayDate is re-formatted with active locale (zh)
-    expect(resolved.displayDate).toMatch(/2024/);
+    // displayDate is re-formatted with active locale (zh) — digits become Chinese numerals
+    expect(resolved.displayDate).toMatch(/二零二四/);
     expect(resolved.avatar).toBeNull();
     expect(resolved.gallery).toEqual([]);
   });
