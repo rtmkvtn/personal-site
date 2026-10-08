@@ -1,0 +1,199 @@
+.label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+}
+
+.wide {
+  max-width: 80rem;
+}
+
+/* A */
+.ledger {
+  margin-top: 2.75rem;
+  margin-left: -4rem;
+  padding: 2.75rem 4rem;
+  background: var(--color-surface-container-low);
+}
+
+.ledgerGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 4fr);
+  gap: 5.5rem;
+  margin-top: 1.5rem;
+}
+
+.ledgerMethod {
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+}
+
+.ledgerList {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  column-gap: 1.5rem;
+  row-gap: 0.75rem;
+  align-items: baseline;
+
+  dt {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-outline);
+  }
+
+  dd {
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+    color: var(--color-on-surface);
+  }
+}
+
+.ledgerAnchorLabel {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.ledgerAnchor {
+  font-size: 1.75rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+/* B */
+.marginGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: 8.5rem;
+  align-items: start;
+}
+
+.marginAside {
+  position: sticky;
+  top: 3rem;
+  padding-left: 1.5rem;
+  margin-top: 1.5rem;
+  border-left: 1px solid color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.marginLine {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+}
+
+.marginKey {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+/* C */
+.strip {
+  margin-top: 7rem;
+}
+
+.stripHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2.75rem;
+}
+
+.stripAnchor {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  max-width: 20rem;
+}
+
+.stripAnchorValue {
+  font-size: 3.5rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--color-primary);
+}
+
+.stripAnchorLabel {
+  margin-top: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.stripSteps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2.75rem;
+  margin-top: 2.75rem;
+}
+
+.stripStep {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+}
+
+.stripIndex {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: var(--color-outline);
+}
+
+.stripWho {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.stripWhat {
+  font-size: 1.75rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+}
+
+.stripDetail {
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+}
+
+.stripNote {
+  margin-top: 2.75rem;
+  max-width: 36rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+}

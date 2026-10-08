@@ -5,12 +5,20 @@ import type { Project } from "@/shared/config";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import styles from "./page.module.scss";
+import { ProjectDetailPrototype } from "./ProjectDetail.prototype";
 
 interface ProjectDetailProps {
   project: Project;
 }
 
 export function ProjectDetail({ project: rawProject }: ProjectDetailProps) {
+  if (process.env.NODE_ENV !== "production" && rawProject.slug === "currency-exchange") {
+    return <ProjectDetailPrototype project={rawProject} />;
+  }
+  return <ProjectDetailReal project={rawProject} />;
+}
+
+function ProjectDetailReal({ project: rawProject }: ProjectDetailProps) {
   const project = useLocalizedProject(rawProject);
 
   return (
