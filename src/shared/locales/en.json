@@ -46,5 +46,15 @@
     "emailTitle": "Email",
     "locationTitle": "Location",
     "location": "Remote — Available Worldwide"
+  },
+  "built": {
+    "label": "How it was built",
+    "me": "Me",
+    "agents": "Agents",
+    "specify": "Specify",
+    "implement": "Implement",
+    "verify": "Verify",
+    "review": "Review",
+    "handoff": "hand-off"
   }
 }

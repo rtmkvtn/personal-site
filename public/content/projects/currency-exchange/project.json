@@ -5,7 +5,20 @@
     "zh": "CURRENCY EXCHANGE"
   },
   "type": "Fullstack",
-  "stack": ["TypeScript", "React", "Next.js", "React Context API", "ShadCN", "Tailwind CSS", "NestJS", "Strapi CMS", "PostgreSQL", "GitLab CI/CD", "Docker", "Docker Compose"],
+  "stack": [
+    "TypeScript",
+    "React",
+    "Next.js",
+    "React Context API",
+    "ShadCN",
+    "Tailwind CSS",
+    "NestJS",
+    "Strapi CMS",
+    "PostgreSQL",
+    "GitLab CI/CD",
+    "Docker",
+    "Docker Compose"
+  ],
   "highlight": {
     "en": "Back office for digital currency exchange service",
     "ru": "Бэк-офис для сервиса обмена цифровых валют",
@@ -36,5 +49,47 @@
     "ru": "Бэк-офис платформа для сервиса обмена цифровых валют с множественными интеграциями с провайдерами реквизитов, автоматизированным управлением заказами, парсингом криптовалютных транзакций и полнофункциональной системой бухгалтерского учёта. Платформа оптимизирует операции обмена, автоматизируя весь жизненный цикл заказа от инициации до завершения расчётов, обеспечивая точный финансовый учёт по всем транзакциям.",
     "zh": "一个数字货币兑换服务的后台管理平台，集成多家支付信息提供商，实现自动化订单流程管理、加密货币交易解析和全功能记账系统。平台通过自动化从发起到结算的整个订单生命周期来优化兑换操作，同时确保所有交易的财务记录准确无误。"
   },
-  "startDate": "2025-06"
+  "startDate": "2025-06",
+  "aiFirst": {
+    "steps": {
+      "specify": {
+        "en": "Architecture, specs, tickets, service contracts",
+        "ru": "Архитектура, спецификации, тикеты, контракты сервисов",
+        "zh": "架构、规格、任务单、服务契约"
+      },
+      "implement": {
+        "en": "Claude Code & Codex, custom skills and agents",
+        "ru": "Claude Code и Codex, кастомные скиллы и агенты",
+        "zh": "Claude Code 与 Codex，自定义技能和智能体"
+      },
+      "verify": {
+        "en": "Tests, CI, documentation",
+        "ru": "Тесты, CI, документация",
+        "zh": "测试、CI、文档"
+      },
+      "review": {
+        "en": "Every agent-written PR against one checklist",
+        "ru": "Каждый PR, написанный агентом, — по единому чеклисту",
+        "zh": "每个由智能体编写的 PR 都按同一份清单审查"
+      }
+    },
+    "anchor": {
+      "value": {
+        "en": "2 mo",
+        "ru": "2 мес",
+        "zh": "两个月"
+      },
+      "label": {
+        "en": "Bookkeeping module, first shareholder conversation to production MVP",
+        "ru": "Модуль бухучёта: от первого разговора с акционерами до production MVP",
+        "zh": "记账模块：从首次与股东沟通到生产环境 MVP"
+      },
+      "mark": "BOOKKEEPING / 2025–26"
+    },
+    "note": {
+      "en": "Started solo. When two developers joined, moved the team onto one AI-first workflow: repo-level agent config, shared skills and agents, spec-driven tickets, a review rule for agent-written PRs.",
+      "ru": "Начинал один. Когда присоединились два разработчика, перевёл команду на единый AI-first процесс: конфигурация агентов на уровне репозитория, общие скиллы и агенты, тикеты по спецификациям, правило ревью для PR, написанных агентами.",
+      "zh": "起初独自开发。两名开发者加入后，将团队迁移到统一的 AI-first 工作流：仓库级智能体配置、共享技能与智能体、基于规格的任务单、智能体编写 PR 的审查规则。"
+    }
+  }
 }

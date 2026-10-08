@@ -1,6 +1,7 @@
 :root {
   /* Font */
   --font-sans: var(--font-inter), var(--font-noto-sans-sc);
+  --font-mono: var(--font-jetbrains-mono);
 
   /* Colors — Surface hierarchy */
   --color-surface: #000000;
@@ -33,6 +34,7 @@
 
 body {
   font-family: var(--font-sans), sans-serif;
+  overflow-x: clip;
   background-color: var(--color-surface);
   color: var(--color-on-surface);
   -webkit-font-smoothing: antialiased;

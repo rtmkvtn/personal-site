@@ -4,6 +4,7 @@ import { useLocalizedProject } from "@/shared/lib/i18n";
 import type { Project } from "@/shared/config";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { HowItWasBuilt } from "@/widgets/how-it-was-built";
 import styles from "./page.module.scss";
 
 interface ProjectDetailProps {
@@ -26,6 +27,7 @@ export function ProjectDetail({ project: rawProject }: ProjectDetailProps) {
           ))}
         </ul>
       )}
+      {project.aiFirst && <HowItWasBuilt data={project.aiFirst} />}
       {project.video && <ProjectVideo src={project.video} />}
       <ProjectGallery images={project.gallery} />
     </main>

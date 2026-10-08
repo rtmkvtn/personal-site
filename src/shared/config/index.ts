@@ -4,6 +4,8 @@ export {
   getProjectImage,
   type LocalizedString,
   type LocalizedStringArray,
+  type AiFirstJson,
+  type ResolvedAiFirst,
   type Project,
   type ProjectJson,
   type ProjectType,

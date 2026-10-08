@@ -46,5 +46,15 @@
     "emailTitle": "邮箱",
     "locationTitle": "地点",
     "location": "远程 — 全球可用"
+  },
+  "built": {
+    "label": "构建方式",
+    "me": "我",
+    "agents": "智能体",
+    "specify": "规划",
+    "implement": "实现",
+    "verify": "验证",
+    "review": "审查",
+    "handoff": "hand-off"
   }
 }

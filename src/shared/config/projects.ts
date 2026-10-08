@@ -19,6 +19,36 @@ export interface LocalizedStringArray {
   zh?: string[];
 }
 
+export interface AiFirstJson {
+  steps: {
+    specify: LocalizedString;
+    implement: LocalizedString;
+    verify: LocalizedString;
+    review: LocalizedString;
+  };
+  anchor: {
+    value: LocalizedString;
+    label: LocalizedString;
+    mark?: string;
+  };
+  note?: LocalizedString;
+}
+
+export interface ResolvedAiFirst {
+  steps: {
+    specify: string;
+    implement: string;
+    verify: string;
+    review: string;
+  };
+  anchor: {
+    value: string;
+    label: string;
+    mark?: string;
+  };
+  note?: string;
+}
+
 export interface ProjectJson {
   name: LocalizedString;
   type: ProjectType;
@@ -30,6 +60,7 @@ export interface ProjectJson {
   endDate?: string; // YYYY-MM
   link?: string;
   githubLink?: string;
+  aiFirst?: AiFirstJson;
 }
 
 export interface Project extends ProjectJson {
@@ -42,11 +73,15 @@ export interface Project extends ProjectJson {
 }
 
 export interface ResolvedProject
-  extends Omit<Project, "name" | "highlight" | "description" | "achievements"> {
+  extends Omit<
+    Project,
+    "name" | "highlight" | "description" | "achievements" | "aiFirst"
+  > {
   name: string;
   highlight: string;
   description: string;
   achievements: string[];
+  aiFirst?: ResolvedAiFirst;
 }
 
 // Static images for decorative backgrounds, randomly assigned

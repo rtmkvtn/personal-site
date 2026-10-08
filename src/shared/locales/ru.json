@@ -46,5 +46,15 @@
     "emailTitle": "Почта",
     "locationTitle": "Местоположение",
     "location": "Удалённо — доступен по всему миру"
+  },
+  "built": {
+    "label": "Как это сделано",
+    "me": "Я",
+    "agents": "Агенты",
+    "specify": "Спецификация",
+    "implement": "Реализация",
+    "verify": "Проверка",
+    "review": "Ревью",
+    "handoff": "hand-off"
   }
 }
