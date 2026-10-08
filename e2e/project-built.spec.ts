@@ -32,6 +32,18 @@ test.describe("How it was built block", () => {
     await expect(block.getByText(/Started solo\. When two developers joined/)).toBeVisible();
   });
 
+  test("Currency Exchange achievements say solo and name the team migration", async ({ page }) => {
+    await page.goto("/work/currency-exchange");
+
+    const achievements = page.getByRole("main").getByRole("list").first().getByRole("listitem");
+    await expect(achievements).toHaveCount(5);
+    await expect(achievements.nth(0)).toContainText("from scratch and solo (React, NestJS)");
+    await expect(achievements.nth(4)).toContainText(
+      "Moved two newly joined developers from ad-hoc AI tool use to one AI-first workflow",
+    );
+    await expect(achievements.nth(4)).toContainText("a review rule for agent-written PRs");
+  });
+
   test("a pre-2025 project shows no block", async ({ page }) => {
     await page.goto("/work/ziphycare");
 

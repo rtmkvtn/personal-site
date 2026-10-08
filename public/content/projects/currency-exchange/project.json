@@ -17,7 +17,10 @@
     "PostgreSQL",
     "GitLab CI/CD",
     "Docker",
-    "Docker Compose"
+    "Docker Compose",
+    "Claude Code",
+    "Codex",
+    "AI Agents"
   ],
   "highlight": {
     "en": "Back office for digital currency exchange service",
@@ -26,22 +29,25 @@
   },
   "achievements": {
     "en": [
-      "Built a full-stack currency exchange service from scratch (React, NestJS), designed to handle 1,000+ requests per day, with integration of multiple payment APIs",
+      "Built a full-stack currency exchange service from scratch and solo (React, NestJS), designed to handle 1,000+ requests per day, with integration of multiple payment APIs",
       "Created an internal admin panel that reduced manual request processing time by operators by 50% through automated payment reconciliation",
       "Developed a fully functional bookkeeping module for tracking all financial operations, balances, and transaction history across exchange accounts",
-      "Set up CI/CD via Docker, stabilizing releases and data integrity"
+      "Set up CI/CD via Docker, stabilizing releases and data integrity",
+      "Moved two newly joined developers from ad-hoc AI tool use to one AI-first workflow: repo-level agent config, shared skills and agents, spec-driven tickets, a review rule for agent-written PRs, making the codebase maintainable by any member of the team"
     ],
     "ru": [
-      "Разработал полнофункциональный сервис обмена валют с нуля (React, NestJS), рассчитанный на обработку 1000+ запросов в день, с интеграцией множества платёжных API",
+      "Разработал полнофункциональный сервис обмена валют с нуля и в одиночку (React, NestJS), рассчитанный на обработку 1000+ запросов в день, с интеграцией множества платёжных API",
       "Создал внутреннюю админ-панель, сократившую время ручной обработки заявок операторами на 50% благодаря автоматической сверке платежей",
       "Разработал полнофункциональный модуль бухгалтерского учёта для отслеживания всех финансовых операций, балансов и истории транзакций по счетам обмена",
-      "Настроил CI/CD через Docker, стабилизировав релизы и целостность данных"
+      "Настроил CI/CD через Docker, стабилизировав релизы и целостность данных",
+      "Перевёл двух присоединившихся разработчиков с разрозненного использования AI-инструментов на единый AI-first процесс: конфигурация агентов на уровне репозитория, общие скиллы и агенты, тикеты по спецификациям, правило ревью для PR, написанных агентами, — так что кодовую базу может поддерживать любой участник команды"
     ],
     "zh": [
-      "从零构建了全栈货币兑换服务（React、NestJS），设计日处理1000+请求，集成多个支付API",
+      "从零独自构建了全栈货币兑换服务（React、NestJS），设计日处理1000+请求，集成多个支付API",
       "创建了内部管理面板，通过自动支付对账将操作员手动处理请求的时间缩短50%",
       "开发了全功能记账模块，追踪所有财务操作、余额和兑换账户的交易历史",
-      "通过Docker搭建CI/CD，稳定了发布流程和数据完整性"
+      "通过Docker搭建CI/CD，稳定了发布流程和数据完整性",
+      "将两名新加入的开发者从各自零散使用 AI 工具迁移到统一的 AI-first 工作流：仓库级智能体配置、共享技能与智能体、基于规格的任务单、智能体编写 PR 的审查规则，使团队中的任何成员都能维护这套代码"
     ]
   },
   "description": {
