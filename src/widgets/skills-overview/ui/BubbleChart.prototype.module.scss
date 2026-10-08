@@ -1,0 +1,19 @@
+.ring.ring {
+  circle {
+    fill: var(--color-surface);
+    stroke: color-mix(in srgb, var(--color-on-surface-variant) 70%, transparent);
+  }
+
+  text {
+    fill: var(--color-primary);
+  }
+}
+
+.caption {
+  fill: var(--color-outline);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
