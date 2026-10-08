@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import type { SkillBubble } from "@/shared/utils/skillsAggregator";
 import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { useLocale } from "@/shared/lib/i18n";
+import { useSkillDuration } from "../lib/use-skill-duration";
 import styles from "./SkillDetail.module.scss";
 
 interface SkillDetailProps {
@@ -14,21 +15,6 @@ interface SkillDetailProps {
   totalSkills: number;
   totalProjects: number;
   totalYears: number;
-}
-
-function formatDuration(
-  months: number,
-  t: (key: string) => string,
-  locale: string,
-): string {
-  const years = Math.floor(months / 12);
-  const remaining = months % 12;
-  const num = (n: number) => toLocaleNumeral(n, locale);
-  const yUnit = t("skills.durationYear");
-  const mUnit = t("skills.durationMonth");
-  if (years === 0) return `${num(remaining)}${mUnit}`;
-  if (remaining === 0) return `${num(years)}${yUnit}`;
-  return `${num(years)}${yUnit} ${num(remaining)}${mUnit}`;
 }
 
 export function SkillDetail({
@@ -39,6 +25,7 @@ export function SkillDetail({
 }: SkillDetailProps) {
   const { t } = useTranslation();
   const locale = useLocale();
+  const skillDuration = useSkillDuration();
   const [displayed, setDisplayed] = useState<SkillBubble | null>(null);
   const [prev, setPrev] = useState<SkillBubble | null>(null);
   const [stage, setStage] = useState(0);
@@ -82,7 +69,7 @@ export function SkillDetail({
         <div className={fadeIn(2)}>
           <span className={styles.fieldLabel}>{t("skills.duration")}</span>
           <p className={styles.fieldValue}>
-            {formatDuration(displayed.totalMonths, t, locale)}
+            {skillDuration(displayed.totalMonths)}
           </p>
         </div>
 
