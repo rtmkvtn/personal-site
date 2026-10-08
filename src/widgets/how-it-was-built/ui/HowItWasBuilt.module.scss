@@ -1,7 +1,7 @@
 @use "../../../shared/styles/breakpoints" as *;
 
-$guide-strong: rgba(142, 145, 146, 0.22);
-$guide-soft: rgba(142, 145, 146, 0.14);
+$guide-strong: color-mix(in srgb, var(--color-outline) 22%, transparent);
+$guide-soft: color-mix(in srgb, var(--color-outline) 14%, transparent);
 
 .section {
   position: relative;

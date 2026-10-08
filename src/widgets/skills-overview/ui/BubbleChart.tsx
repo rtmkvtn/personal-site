@@ -25,7 +25,7 @@ interface BubbleChartProps {
   onTap: (skill: string) => void;
 }
 
-export const AI_TOOLING = new Set(["Claude Code", "Codex", "AI Agents"]);
+const AI_TOOLING = new Set(["Claude Code", "Codex", "AI Agents"]);
 
 const MIN_RADIUS = 28;
 const MAX_RADIUS = 72;

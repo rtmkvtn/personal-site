@@ -28,9 +28,9 @@ test.describe("About", () => {
     await page.goto("/about");
 
     await page.getByRole("button", { name: "RU" }).click();
-    await expect(page.getByText("работает AI-first с 2025 года")).toBeVisible();
+    await expect(page.getByText("Fullstack-инженер, который строит финансовые бэк-офис-системы и работает AI-first с 2025 года. Я формулирую задачу и делаю ревью; агенты реализуют, тестируют и рефакторят. Каждая строка проходит ревью, и в продакшен не уходит ничего, что я не могу объяснить.", { exact: true })).toBeVisible();
 
     await page.getByRole("button", { name: "ZH" }).click();
-    await expect(page.getByText("自 2025 年起以 AI-first 方式工作")).toBeVisible();
+    await expect(page.getByText("全栈工程师，构建金融后台系统，自 2025 年起以 AI-first 方式工作。我负责规划与审查；智能体负责实现、测试和重构。每一行代码都经过审查，我无法解释的代码不会上线。", { exact: true })).toBeVisible();
   });
 });

@@ -43,16 +43,18 @@ export function HowItWasBuilt({ data }: HowItWasBuiltProps) {
 
         <div className={styles.body}>
           <ol className={styles.steps}>
-            {STEPS.map((step, i) => (
+            {STEPS.map((step, i) => {
+              const handsOff = i > 0 && STEPS[i - 1].owner === "me" && step.owner === "agents";
+              return (
               <li
                 key={step.key}
                 className={clsx(
                   styles.step,
                   step.owner === "agents" ? styles.stepAgents : styles.stepMe,
-                  i === 1 && styles.stepAfterHandoff,
+                  handsOff && styles.stepAfterHandoff,
                 )}
               >
-                {i === 1 && (
+                {handsOff && (
                   <div className={styles.handoff} aria-hidden="true">
                     <span className={styles.handoffLine} />
                     <span className={styles.crosshair}>
@@ -71,7 +73,8 @@ export function HowItWasBuilt({ data }: HowItWasBuiltProps) {
                   <span className={styles.detail}>{data.steps[step.key]}</span>
                 </div>
               </li>
-            ))}
+              );
+            })}
           </ol>
 
           <p className={styles.anchor}>

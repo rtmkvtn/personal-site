@@ -1,4 +1,13 @@
 import { test, expect } from "@playwright/test";
+import { readdirSync, readFileSync } from "fs";
+import path from "path";
+
+const CONTENT = path.resolve(__dirname, "../public/content/projects");
+const skillCount = new Set(
+  readdirSync(CONTENT).flatMap(
+    (slug) => JSON.parse(readFileSync(path.join(CONTENT, slug, "project.json"), "utf-8")).stack as string[],
+  ),
+).size;
 
 test.describe("Hard Skills chart, AI tooling", () => {
   test.use({ viewport: { width: 1440, height: 900 } });
@@ -7,7 +16,7 @@ test.describe("Hard Skills chart, AI tooling", () => {
     await page.goto("/skills");
 
     const bubbles = page.locator("svg g[data-skill]");
-    await expect(bubbles).toHaveCount(29);
+    await expect(bubbles).toHaveCount(skillCount);
 
     const ai = page.locator("svg g[data-ai-tooling='true']");
     await expect(ai).toHaveCount(3);
@@ -19,9 +28,11 @@ test.describe("Hard Skills chart, AI tooling", () => {
     const claude = page.locator("svg g[data-skill='Claude Code']");
     await expect(claude.locator("text")).toHaveText("Claude Code");
 
+    const surface = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
     const ringFill = await claude.locator("circle").evaluate((el) => getComputedStyle(el).fill);
     const reactFill = await page.locator("svg g[data-skill='React'] circle").evaluate((el) => getComputedStyle(el).fill);
-    expect(ringFill).not.toBe(reactFill);
+    expect(ringFill).toBe(surface);
+    expect(reactFill).not.toBe(surface);
 
     // Bubbles keep drifting while the force simulation settles; move the pointer in steps,
     // as a hand would, and retry until the panel shows.

@@ -44,6 +44,16 @@ test.describe("How it was built block", () => {
     await expect(achievements.nth(4)).toContainText("a review rule for agent-written PRs");
   });
 
+  test("block label is translated in ru and zh", async ({ page }) => {
+    await page.goto("/work/currency-exchange");
+
+    await page.getByRole("button", { name: "RU" }).click();
+    await expect(page.getByRole("region", { name: "Как это сделано" })).toBeVisible();
+
+    await page.getByRole("button", { name: "ZH" }).click();
+    await expect(page.getByRole("region", { name: "构建方式" })).toBeVisible();
+  });
+
   test("a pre-2025 project shows no block", async ({ page }) => {
     await page.goto("/work/ziphycare");
 
