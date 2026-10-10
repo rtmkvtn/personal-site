@@ -150,7 +150,7 @@ A single-hue system in which only lightness moves; the palette is a stone's cros
 - **On Signal** (#1a1c1c): text on a Signal White fill, the only place a near-black sits on a light ground.
 
 ### Neutral
-- **Obsidian** (#131313): the page surface and the normative canvas. The shipped token currently resolves to true black; see the drift note below.
+- **Obsidian** (#131313): the page surface and the normative canvas.
 - **True Black** (#000000): the lowest container, used where a plane must sit *below* the page: image overlays fading to nothing, the deepest tonal step.
 - **Basalt Low** (#1a1a1a) and **Basalt** (#1f1f1f): the first lift. Bubble fills, the tonal plane behind a secondary context, the stripe in placeholder media.
 - **Basalt High** (#2a2a2a), **Basalt Highest** (#353535), **Basalt Bright** (#393939): higher planes. Highest is the smoked-glass modal body; Bright is reserved for interactive surfaces that need to read as raised.
@@ -290,5 +290,4 @@ Quiet until touched. At rest a component is a label or a ghost outline on the vo
 - **Don't** reintroduce the pre-2025 "scalable infrastructure" register in copy inside components; the copy voice is short declaratives with specifics.
 
 ### Known drift in the shipped code
-- `--color-surface` and `--color-surface-container-lowest` both resolve to `#000000`; the normative surface is Obsidian `#131313` with True Black reserved for the lowest plane. Fix the token, not the document.
 - Two glass surfaces (the Work date chip and the hover detail panel) use `rgba(var(--color-surface), .7)`, which is invalid CSS and renders no background; they rely on the blur alone. The intent is surface at 70% via `color-mix`.
