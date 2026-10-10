@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-10T00:00:00Z",
+  "title": "Design System: rtmkvtn",
+  "extensions": {
+    "colorMeta": {
+      "signal-white": { "role": "primary", "displayName": "Signal White", "canonical": "#ffffff", "tonalRamp": ["#262626", "#3d3d3d", "#555555", "#6e6e6e", "#8a8a8a", "#a8a8a8", "#c7c7c7", "#e8e8e8"] },
+      "on-signal": { "role": "primary", "displayName": "On Signal", "canonical": "#1a1c1c", "tonalRamp": ["#0b0c0c", "#1a1c1c", "#2b2e2e", "#3f4242", "#555858", "#6e7171", "#8a8d8d", "#a9abab"] },
+      "obsidian": { "role": "neutral", "displayName": "Obsidian", "canonical": "#131313", "tonalRamp": ["#000000", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747"] },
+      "true-black": { "role": "neutral", "displayName": "True Black", "canonical": "#000000", "tonalRamp": ["#000000", "#0a0a0a", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939"] },
+      "basalt-low": { "role": "neutral", "displayName": "Basalt Low", "canonical": "#1a1a1a", "tonalRamp": ["#000000", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747"] },
+      "basalt": { "role": "neutral", "displayName": "Basalt", "canonical": "#1f1f1f", "tonalRamp": ["#000000", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747"] },
+      "basalt-high": { "role": "neutral", "displayName": "Basalt High", "canonical": "#2a2a2a", "tonalRamp": ["#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747", "#5c5c5c"] },
+      "basalt-highest": { "role": "neutral", "displayName": "Basalt Highest", "canonical": "#353535", "tonalRamp": ["#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747", "#5c5c5c"] },
+      "basalt-bright": { "role": "neutral", "displayName": "Basalt Bright", "canonical": "#393939", "tonalRamp": ["#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747", "#5c5c5c"] },
+      "soft-white": { "role": "neutral", "displayName": "Soft White", "canonical": "#e2e2e2", "tonalRamp": ["#474747", "#5c5c5c", "#737373", "#8e9192", "#a8aaaa", "#c4c7c7", "#e2e2e2", "#f5f5f5"] },
+      "soft-white-variant": { "role": "neutral", "displayName": "Soft White Variant", "canonical": "#c4c7c7", "tonalRamp": ["#474747", "#5c5c5c", "#737373", "#8e9192", "#a8aaaa", "#c4c7c7", "#e2e2e2", "#f5f5f5"] },
+      "ash": { "role": "neutral", "displayName": "Ash", "canonical": "#8e9192", "tonalRamp": ["#2a2a2a", "#393939", "#474747", "#5c5c5c", "#737373", "#8e9192", "#a8aaaa", "#c4c7c7"] },
+      "slate": { "role": "neutral", "displayName": "Slate", "canonical": "#474747", "tonalRamp": ["#131313", "#1f1f1f", "#2a2a2a", "#353535", "#474747", "#5c5c5c", "#737373", "#8e9192"] },
+      "error": { "role": "status", "displayName": "Error", "canonical": "#ffb4ab", "tonalRamp": ["#410002", "#690005", "#93000a", "#ba1a1a", "#de3730", "#ff5449", "#ffb4ab", "#ffdad6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "One per page: the caps page title or the name on Home." },
+      "headline": { "displayName": "Headline", "purpose": "Project names and the skill name; weight 100 on panels, 200 elsewhere." },
+      "title": { "displayName": "Title", "purpose": "Step names in the ladder and stat values." },
+      "body": { "displayName": "Body", "purpose": "All prose, achievements, field values; 28 to 32rem max width on heroes." },
+      "label": { "displayName": "Label", "purpose": "Every piece of meta: nav, labels, indices, buttons. Uppercase." },
+      "mono": { "displayName": "Mono", "purpose": "Drafting coordinates and the hand-off mark only." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-standard", "value": "300ms ease-out", "purpose": "Hover fills, fades, border changes, color shifts." },
+      { "name": "ease-reveal", "value": "200ms ease-out", "purpose": "Panel and field reveal: opacity 0 to 1 with a 0.5rem rise, staggered 50 to 400ms." },
+      { "name": "ease-watermark", "value": "500ms ease-out", "purpose": "Watermark index reposition on the Work page." },
+      { "name": "glitch", "value": "120ms steps(2) / 100ms steps(3), infinite while hovered", "purpose": "Red and blue screen-blended halves on a hovered project name. The one loud motion." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "The only button: label caps inside a 1px Signal White outline; fills white on hover.",
+      "html": "<button class=\"ds-btn-ghost\">DETAILS</button>",
+      "css": ".ds-btn-ghost { background: none; border: 1px solid var(--color-primary, #ffffff); color: var(--color-primary, #ffffff); font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.5rem; border-radius: 0; cursor: pointer; transition: background-color 300ms ease-out, color 300ms ease-out; } .ds-btn-ghost:hover, .ds-btn-ghost:focus-visible { background-color: var(--color-primary, #ffffff); color: var(--color-on-primary, #1a1c1c); outline: none; }"
+    },
+    {
+      "name": "CTA Link",
+      "kind": "custom",
+      "refersTo": "link-cta",
+      "description": "Label caps with an arrow and a 40% underline that wakes to full on hover while the arrow travels.",
+      "html": "<a class=\"ds-cta\" href=\"#\">VIEW WORK <span class=\"ds-cta-arrow\">&rarr;</span></a>",
+      "css": ".ds-cta { display: inline-flex; align-items: center; gap: 0.5rem; padding-bottom: 0.25rem; border-bottom: 1px solid color-mix(in srgb, var(--color-primary, #ffffff) 40%, transparent); font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-primary, #ffffff); text-decoration: none; transition: border-color 300ms ease-out; } .ds-cta:hover, .ds-cta:focus-visible { border-color: var(--color-primary, #ffffff); outline: none; } .ds-cta-arrow { transition: transform 300ms ease-out; } .ds-cta:hover .ds-cta-arrow { transform: translateX(0.25rem); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Label caps links; the active one is Signal White with a 6px dot beneath. Hover fades to 60%.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">WORK</a><a class=\"ds-nav-link ds-nav-link--active\" href=\"#\">HARD SKILLS<span class=\"ds-nav-dot\"></span></a><a class=\"ds-nav-link\" href=\"#\">ABOUT</a><a class=\"ds-nav-link\" href=\"#\">CONTACT</a></nav>",
+      "css": ".ds-nav { display: flex; gap: 2rem; align-items: center; } .ds-nav-link { position: relative; font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-on-surface, #e2e2e2); text-decoration: none; transition: opacity 300ms ease-out; } .ds-nav-link:hover, .ds-nav-link:focus-visible { opacity: 0.6; outline: none; } .ds-nav-link--active { color: var(--color-primary, #ffffff); } .ds-nav-dot { position: absolute; bottom: -0.75rem; left: 50%; transform: translateX(-50%); width: 0.375rem; height: 0.375rem; border-radius: 9999px; background: var(--color-primary, #ffffff); }"
+    },
+    {
+      "name": "Field",
+      "kind": "custom",
+      "refersTo": "field-label",
+      "description": "Label caps in Ash over a body value in Soft White; the unit of every detail panel.",
+      "html": "<div class=\"ds-field\"><span class=\"ds-field-label\">Duration</span><p class=\"ds-field-value\">1y 10mo</p></div>",
+      "css": ".ds-field-label { display: block; margin-bottom: 0.5rem; font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-outline, #8e9192); } .ds-field-value { margin: 0; font-family: Inter, sans-serif; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.05em; line-height: 1.6; color: var(--color-on-surface, #e2e2e2); }"
+    },
+    {
+      "name": "Smoked Glass Modal",
+      "kind": "card",
+      "refersTo": "modal-smoked",
+      "description": "Phone-only panel: a 20px-blurred 60% surface overlay with an opaque Basalt Highest body and a ghost CLOSE button.",
+      "html": "<div class=\"ds-modal-overlay\"><div class=\"ds-modal\"><h2 class=\"ds-modal-title\">React</h2><span class=\"ds-field-label\">Projects (4)</span><p class=\"ds-field-value\">CURRENCY EXCHANGE</p><button class=\"ds-btn-ghost\">CLOSE</button></div></div>",
+      "css": ".ds-modal-overlay { display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: color-mix(in srgb, var(--color-surface, #131313) 60%, transparent); backdrop-filter: blur(20px); } .ds-modal { width: 100%; max-width: 24rem; padding: 2rem; background: var(--color-surface-container-highest, #353535); border-radius: 0; } .ds-modal-title { margin: 0 0 2rem; font-family: Inter, sans-serif; font-size: 2rem; font-weight: 100; line-height: 0.9; letter-spacing: -0.02em; text-transform: uppercase; color: var(--color-primary, #ffffff); } .ds-modal .ds-field-label { display: block; margin-bottom: 0.5rem; font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--color-on-surface, #e2e2e2) 40%, transparent); } .ds-modal .ds-field-value { margin: 0 0 1.5rem; font-family: Inter, sans-serif; font-size: 0.875rem; letter-spacing: 0.05em; color: var(--color-on-surface, #e2e2e2); } .ds-modal .ds-btn-ghost { background: none; border: 1px solid var(--color-primary, #ffffff); color: var(--color-primary, #ffffff); font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.75rem 1.5rem; border-radius: 0; cursor: pointer; transition: background-color 300ms ease-out, color 300ms ease-out; } .ds-modal .ds-btn-ghost:hover { background: var(--color-primary, #ffffff); color: var(--color-on-primary, #1a1c1c); }"
+    },
+    {
+      "name": "Skill Bubble",
+      "kind": "chip",
+      "refersTo": "bubble",
+      "description": "Basalt circle with a 20% Slate stroke and a caps label; AI tooling is a hollow ring; hover fills Signal White.",
+      "html": "<svg class=\"ds-bubbles\" width=\"260\" height=\"120\" viewBox=\"0 0 260 120\"><g class=\"ds-bubble\" transform=\"translate(60,60)\"><circle r=\"48\"></circle><text text-anchor=\"middle\" dominant-baseline=\"central\">REACT</text></g><g class=\"ds-bubble ds-bubble--ai\" transform=\"translate(180,60)\"><circle r=\"44\"></circle><text text-anchor=\"middle\" dominant-baseline=\"central\">CLAUDE CODE</text></g></svg>",
+      "css": ".ds-bubbles { display: block; } .ds-bubble { cursor: pointer; } .ds-bubble circle { fill: var(--color-surface-container, #1f1f1f); stroke: color-mix(in srgb, var(--color-outline-variant, #474747) 20%, transparent); stroke-width: 1; transition: fill 300ms ease-out, stroke 300ms ease-out; } .ds-bubble text { fill: var(--color-on-surface, #e2e2e2); font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; pointer-events: none; transition: fill 300ms ease-out; } .ds-bubble--ai circle { fill: var(--color-surface, #131313); stroke: color-mix(in srgb, var(--color-on-surface-variant, #c4c7c7) 70%, transparent); } .ds-bubble--ai text { fill: var(--color-primary, #ffffff); } .ds-bubble:hover circle { fill: var(--color-primary, #ffffff); stroke: var(--color-primary, #ffffff); } .ds-bubble:hover text { fill: var(--color-on-primary, #1a1c1c); }"
+    },
+    {
+      "name": "Hero Composition",
+      "kind": "custom",
+      "refersTo": "field-label",
+      "description": "The shared hero grammar: 40% label, display title, body paragraph, a hairline at the margin, a watermark numeral behind.",
+      "html": "<section class=\"ds-hero\"><span class=\"ds-hero-watermark\" aria-hidden=\"true\">04</span><span class=\"ds-hero-hairline\"></span><div class=\"ds-hero-content\"><p class=\"ds-hero-label\">Background</p><h1 class=\"ds-hero-title\">ABOUT</h1><p class=\"ds-hero-body\">A fullstack engineer building financial back-office systems, working AI-first since 2025.</p></div></section>",
+      "css": ".ds-hero { position: relative; overflow: hidden; min-height: 22rem; background: var(--color-surface, #131313); } .ds-hero-watermark { pointer-events: none; user-select: none; position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-family: Inter, sans-serif; font-size: 12rem; font-weight: 200; line-height: 1; color: color-mix(in srgb, var(--color-primary, #ffffff) 4%, transparent); } .ds-hero-hairline { position: absolute; left: 3.5rem; top: 0; height: 100%; width: 1px; background: color-mix(in srgb, var(--color-outline-variant, #474747) 20%, transparent); } .ds-hero-content { position: relative; padding: 3rem 2rem 3rem 4.25rem; } .ds-hero-label { margin: 0 0 1.5rem; font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: color-mix(in srgb, var(--color-on-surface, #e2e2e2) 40%, transparent); } .ds-hero-title { margin: 0; font-family: Inter, sans-serif; font-size: 4.5rem; font-weight: 100; line-height: 0.9; letter-spacing: -0.02em; color: var(--color-primary, #ffffff); } .ds-hero-body { margin: 2rem 0 0; max-width: 28rem; font-family: Inter, sans-serif; font-size: 0.875rem; letter-spacing: 0.05em; line-height: 1.6; color: var(--color-on-surface, #e2e2e2); }"
+    },
+    {
+      "name": "Ladder Step",
+      "kind": "custom",
+      "refersTo": "field-label",
+      "description": "One Me row and one Agents row from the How It Was Built ladder, with the hand-off hairline and crosshair between them.",
+      "html": "<ol class=\"ds-ladder\"><li class=\"ds-step ds-step--me\"><span class=\"ds-step-index\">01</span><span class=\"ds-step-owner\">Me</span><span class=\"ds-step-name\">Specify</span><span class=\"ds-step-detail\">Architecture, specs, tickets, service contracts</span></li><li class=\"ds-handoff\"><span class=\"ds-handoff-line\"></span><span class=\"ds-crosshair\"></span><span class=\"ds-mark\">hand-off</span></li><li class=\"ds-step ds-step--agents\"><span class=\"ds-step-index\">02</span><span class=\"ds-step-owner\">Agents</span><span class=\"ds-step-name\">Implement</span><span class=\"ds-step-detail\">Claude Code &amp; Codex, custom skills and agents</span></li></ol>",
+      "css": ".ds-ladder { list-style: none; margin: 0; padding: 0; font-family: Inter, sans-serif; } .ds-step { display: grid; grid-template-columns: 2.75rem 5.5rem 9rem minmax(0, 1fr); align-items: baseline; } .ds-step--agents { margin-left: 5.5rem; } .ds-step-index, .ds-step-owner { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-outline, #8e9192); } .ds-step--me .ds-step-owner { color: var(--color-primary, #ffffff); } .ds-step-name { font-size: 1.75rem; letter-spacing: -0.02em; line-height: 1.15; } .ds-step--me .ds-step-name { font-weight: 200; color: var(--color-primary, #ffffff); } .ds-step--agents .ds-step-name { font-weight: 100; color: var(--color-on-surface-variant, #c4c7c7); } .ds-step-detail { font-size: 0.875rem; letter-spacing: 0.05em; line-height: 1.6; } .ds-step--me .ds-step-detail { color: var(--color-on-surface, #e2e2e2); } .ds-step--agents .ds-step-detail { color: var(--color-on-surface-variant, #c4c7c7); } .ds-handoff { position: relative; height: 2.75rem; } .ds-handoff-line { position: absolute; left: -1rem; right: -1rem; top: 50%; height: 1px; background: color-mix(in srgb, var(--color-outline, #8e9192) 14%, transparent); } .ds-crosshair { position: absolute; left: calc(5.5rem - 5px); top: calc(50% - 5px); width: 11px; height: 11px; background: linear-gradient(var(--color-outline, #8e9192), var(--color-outline, #8e9192)) 5px 0 / 1px 11px no-repeat, linear-gradient(var(--color-outline, #8e9192), var(--color-outline, #8e9192)) 0 5px / 11px 1px no-repeat; } .ds-mark { position: absolute; left: -1rem; top: calc(50% - 1.5rem); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: var(--color-outline-variant, #474747); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Monolith",
+    "overview": "The site is one block of obsidian with content carved out of it. Nothing sits on the page; everything is cut into it. White type is the exposed face of the cut, hairlines are the scribe marks left by the tool, and the enormous section numerals behind each page are the grain of the stone itself, visible only at three to five percent. The result is heavy, silent, and intentional: a monograph page rather than an app screen, where the void does as much work as the words.\n\nDensity is deliberately low. Each surface holds one composition: a label, a display-scale title, a short paragraph, and at most one interactive element, anchored to an asymmetric offset rather than centered. Pages are built to be taken in without scrolling where the content allows; when it cannot, the scroll is itself the artifact (the Work page's continuous timeline). Motion is restrained to opacity, a fill, or a few pixels of travel at 200 to 300 milliseconds, with one deliberate exception: the glitch on a project name, the only moment the system raises its voice.\n\nThe system is monochrome by doctrine. The only chromatic token is the error tone, and nothing on the site uses it yet. Anything that would read as a \"pop\" of color is rejected; emphasis is carried by lightness and scale alone.",
+    "keyCharacteristics": [
+      "Obsidian surface, white type, five grayscale planes, zero chroma",
+      "Extreme type contrast: thin display at up to 8rem beside 0.6875rem tracked caps, with the middle sizes skipped",
+      "Boundaries drawn with void and tone, never with lines; the one permitted line is a 20% ghost hairline",
+      "Asymmetric anchoring: content offset 7 to 8.5rem from the left with a hairline marking the margin",
+      "Section numerals as watermarks, the deepest plane of every page",
+      "Quiet until touched: hover is a fill, a fade, or a border waking up"
+    ],
+    "rules": [
+      { "name": "The Zero-Chroma Rule", "body": "Nothing on the site carries hue except an error. Emphasis is lightness and scale; a colored accent is a failed design, not a choice.", "section": "colors" },
+      { "name": "The Forty-Percent Rule", "body": "De-emphasis is done by mixing a token to 40% (labels, footer, the \"Hi!\" lead-in), 30% (dimmed scroller names, hints), or 60% (hover on links and nav). The alpha steps are the secondary palette; do not invent new grays.", "section": "colors" },
+      { "name": "The Ghost Hairline Rule", "body": "A line is Slate at 20% opacity, 1px, and marks a margin or a hand-off. It never boxes content. The drafting marks on the \"How it was built\" block (Ash at 14 to 22%) are the one place lines are decoration rather than margin.", "section": "colors" },
+      { "name": "The Missing-Middle Rule", "body": "Never pair adjacent sizes. Display sits beside body or label; headline sits beside body; nothing sits beside a slightly larger version of itself.", "section": "typography" },
+      { "name": "The Caps-Carry-Meta Rule", "body": "If it is a label, a number, a date, or a navigation item, it is uppercase, 600, and tracked +0.1em. If it is prose, it is sentence case, 400, and tracked +0.05em. There is no third style.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "A box-shadow is a defect. Lift with tone or blur.", "section": "elevation" },
+      { "name": "The Deepest-Plane Rule", "body": "Every hero carries its section numeral behind the content. It is depth, not decoration, and it is never brighter than 5%.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do anchor content at the 8.5rem offset with the 7rem hairline on hero surfaces, and keep the watermark numeral behind it at 3 to 5%.",
+      "Do separate ideas with 2.75rem and sections with 5.5 to 8.5rem of void; a list gets 0.5rem and a disc, never a rule.",
+      "Do de-emphasize by mixing a token to 40%, 30%, or 60%; those alpha steps are the only \"extra\" grays.",
+      "Do use label typography (0.6875rem, 600, caps, +0.1em) for every piece of meta, and skip the middle of the scale when pairing it with a title.",
+      "Do keep hover to a fill, a fade, or a border change at 300ms ease-out, and reveal panels with the 200ms staggered rise.",
+      "Do render zh numerals through the Chinese numeral helper wherever a digit is shown.",
+      "Do reach for a tonal plane or a blur, never a shadow, when something needs to lift."
+    ],
+    "donts": [
+      "Don't introduce hue. The error token is the only chroma allowed, and only for an actual error.",
+      "Don't round a corner. 0px everywhere; the nav dot and the two glass surfaces are the whole exception list.",
+      "Don't draw a line to section content. Hairlines mark margins and hand-offs at 20%; they never box.",
+      "Don't add icons. Labels, characters, and drafting symbols only.",
+      "Don't center long-form text or hero compositions; left-anchor, or right-align metadata.",
+      "Don't add a second button style, a filled card, or a drop shadow; each would be a new system decision, not a variant.",
+      "Don't reintroduce the pre-2025 \"scalable infrastructure\" register in copy inside components; the copy voice is short declaratives with specifics."
+    ]
+  }
+}
