@@ -5,6 +5,7 @@ import type { Project } from "@/shared/config";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import { HowItWasBuilt } from "@/widgets/how-it-was-built";
+import { PROJECT_COMPOSITIONS } from "@/widgets/project-compositions";
 import styles from "./page.module.scss";
 
 interface ProjectDetailProps {
@@ -13,6 +14,11 @@ interface ProjectDetailProps {
 
 export function ProjectDetail({ project: rawProject }: ProjectDetailProps) {
   const project = useLocalizedProject(rawProject);
+  const Composition = PROJECT_COMPOSITIONS[project.slug];
+
+  if (Composition) {
+    return <Composition project={project} />;
+  }
 
   return (
     <main className={styles.main}>

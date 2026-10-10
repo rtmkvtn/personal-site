@@ -50,3 +50,7 @@ next-env.d.ts
 .playwright-cli
 
 /src/generated/prisma
+
+# impeccable session artifacts
+.impeccable/review/
+.impeccable/questions/

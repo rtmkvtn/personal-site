@@ -1,0 +1,235 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 7rem 1.5rem 7rem;
+  max-width: 72rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 7rem 4rem 8.5rem;
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 5.5rem;
+  }
+}
+
+.title {
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+  }
+}
+
+.lede {
+  max-width: 24rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    flex: none;
+  }
+}
+
+.steps {
+  list-style: none;
+  margin-top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-top: 7rem;
+  }
+}
+
+.step {
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+
+  .steps:hover &:not(:hover) {
+    opacity: 0.3;
+  }
+}
+
+.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.stepBody {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  column-gap: 0;
+  row-gap: 0.75rem;
+  align-items: baseline;
+}
+
+.index {
+  grid-column: 1;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-outline);
+}
+
+.name {
+  grid-column: 2;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--color-on-surface);
+  text-wrap: balance;
+}
+
+.detail {
+  grid-column: 2;
+  max-width: 32rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+  text-wrap: pretty;
+}
+
+.step1 .name {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.step2 {
+  margin-top: 2.75rem;
+
+  .name {
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--color-on-surface);
+  }
+}
+
+.step3 {
+  margin-top: 4rem;
+
+  .name {
+    font-size: 1.75rem;
+    font-weight: 200;
+  }
+}
+
+.step4 {
+  margin-top: 5.5rem;
+
+  .name {
+    font-size: clamp(2.25rem, 7vw, 3.5rem);
+    font-weight: 200;
+  }
+}
+
+.step5 {
+  margin-top: 7rem;
+
+  .name {
+    font-size: clamp(3rem, 12vw, 3.5rem);
+    font-weight: 100;
+    line-height: 0.95;
+    color: var(--color-primary);
+  }
+
+  @media (min-width: $breakpoint-sm) {
+    .name {
+      font-size: clamp(3.5rem, 6vw, 6rem);
+    }
+  }
+}
+
+.stepLast {
+  @media (min-width: $breakpoint-md) {
+    display: grid;
+    grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+    column-gap: 5.5rem;
+    align-items: end;
+  }
+
+  .stepBody {
+    position: relative;
+    padding-bottom: 2.75rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 2.75rem;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+    }
+  }
+}
+
+.arc {
+  margin-top: 2.75rem;
+  max-width: 28rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    margin-top: 0;
+    padding-bottom: 2.75rem;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 5.5rem;
+  padding-left: 2.75rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.stack {
+  color: var(--color-outline);
+  max-width: 40rem;
+  line-height: 1.8;
+}

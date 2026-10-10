@@ -61,6 +61,7 @@ export interface ProjectJson {
   link?: string;
   githubLink?: string;
   aiFirst?: AiFirstJson;
+  arc?: { steps: LocalizedStringArray };
 }
 
 export interface Project extends ProjectJson {
@@ -75,13 +76,14 @@ export interface Project extends ProjectJson {
 export interface ResolvedProject
   extends Omit<
     Project,
-    "name" | "highlight" | "description" | "achievements" | "aiFirst"
+    "name" | "highlight" | "description" | "achievements" | "aiFirst" | "arc"
   > {
   name: string;
   highlight: string;
   description: string;
   achievements: string[];
   aiFirst?: ResolvedAiFirst;
+  arc?: { steps: string[] };
 }
 
 // Static images for decorative backgrounds, randomly assigned

@@ -1,42 +1,299 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T00:00:00Z",
+  "generatedAt": "2026-10-10T12:00:00Z",
   "title": "Design System: rtmkvtn",
   "extensions": {
     "colorMeta": {
-      "signal-white": { "role": "primary", "displayName": "Signal White", "canonical": "#ffffff", "tonalRamp": ["#262626", "#3d3d3d", "#555555", "#6e6e6e", "#8a8a8a", "#a8a8a8", "#c7c7c7", "#e8e8e8"] },
-      "on-signal": { "role": "primary", "displayName": "On Signal", "canonical": "#1a1c1c", "tonalRamp": ["#0b0c0c", "#1a1c1c", "#2b2e2e", "#3f4242", "#555858", "#6e7171", "#8a8d8d", "#a9abab"] },
-      "obsidian": { "role": "neutral", "displayName": "Obsidian", "canonical": "#131313", "tonalRamp": ["#000000", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747"] },
-      "true-black": { "role": "neutral", "displayName": "True Black", "canonical": "#000000", "tonalRamp": ["#000000", "#0a0a0a", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939"] },
-      "basalt-low": { "role": "neutral", "displayName": "Basalt Low", "canonical": "#1a1a1a", "tonalRamp": ["#000000", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747"] },
-      "basalt": { "role": "neutral", "displayName": "Basalt", "canonical": "#1f1f1f", "tonalRamp": ["#000000", "#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747"] },
-      "basalt-high": { "role": "neutral", "displayName": "Basalt High", "canonical": "#2a2a2a", "tonalRamp": ["#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747", "#5c5c5c"] },
-      "basalt-highest": { "role": "neutral", "displayName": "Basalt Highest", "canonical": "#353535", "tonalRamp": ["#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747", "#5c5c5c"] },
-      "basalt-bright": { "role": "neutral", "displayName": "Basalt Bright", "canonical": "#393939", "tonalRamp": ["#131313", "#1a1a1a", "#1f1f1f", "#2a2a2a", "#353535", "#393939", "#474747", "#5c5c5c"] },
-      "soft-white": { "role": "neutral", "displayName": "Soft White", "canonical": "#e2e2e2", "tonalRamp": ["#474747", "#5c5c5c", "#737373", "#8e9192", "#a8aaaa", "#c4c7c7", "#e2e2e2", "#f5f5f5"] },
-      "soft-white-variant": { "role": "neutral", "displayName": "Soft White Variant", "canonical": "#c4c7c7", "tonalRamp": ["#474747", "#5c5c5c", "#737373", "#8e9192", "#a8aaaa", "#c4c7c7", "#e2e2e2", "#f5f5f5"] },
-      "ash": { "role": "neutral", "displayName": "Ash", "canonical": "#8e9192", "tonalRamp": ["#2a2a2a", "#393939", "#474747", "#5c5c5c", "#737373", "#8e9192", "#a8aaaa", "#c4c7c7"] },
-      "slate": { "role": "neutral", "displayName": "Slate", "canonical": "#474747", "tonalRamp": ["#131313", "#1f1f1f", "#2a2a2a", "#353535", "#474747", "#5c5c5c", "#737373", "#8e9192"] },
-      "error": { "role": "status", "displayName": "Error", "canonical": "#ffb4ab", "tonalRamp": ["#410002", "#690005", "#93000a", "#ba1a1a", "#de3730", "#ff5449", "#ffb4ab", "#ffdad6"] }
+      "signal-white": {
+        "role": "primary",
+        "displayName": "Signal White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#3d3d3d",
+          "#555555",
+          "#6e6e6e",
+          "#8a8a8a",
+          "#a8a8a8",
+          "#c7c7c7",
+          "#e8e8e8"
+        ]
+      },
+      "on-signal": {
+        "role": "primary",
+        "displayName": "On Signal",
+        "canonical": "#1a1c1c",
+        "tonalRamp": [
+          "#0b0c0c",
+          "#1a1c1c",
+          "#2b2e2e",
+          "#3f4242",
+          "#555858",
+          "#6e7171",
+          "#8a8d8d",
+          "#a9abab"
+        ]
+      },
+      "obsidian": {
+        "role": "neutral",
+        "displayName": "Obsidian",
+        "canonical": "#131313",
+        "tonalRamp": [
+          "#000000",
+          "#131313",
+          "#1a1a1a",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#393939",
+          "#474747"
+        ]
+      },
+      "true-black": {
+        "role": "neutral",
+        "displayName": "True Black",
+        "canonical": "#000000",
+        "tonalRamp": [
+          "#000000",
+          "#0a0a0a",
+          "#131313",
+          "#1a1a1a",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#393939"
+        ]
+      },
+      "basalt-low": {
+        "role": "neutral",
+        "displayName": "Basalt Low",
+        "canonical": "#1a1a1a",
+        "tonalRamp": [
+          "#000000",
+          "#131313",
+          "#1a1a1a",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#393939",
+          "#474747"
+        ]
+      },
+      "basalt": {
+        "role": "neutral",
+        "displayName": "Basalt",
+        "canonical": "#1f1f1f",
+        "tonalRamp": [
+          "#000000",
+          "#131313",
+          "#1a1a1a",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#393939",
+          "#474747"
+        ]
+      },
+      "basalt-high": {
+        "role": "neutral",
+        "displayName": "Basalt High",
+        "canonical": "#2a2a2a",
+        "tonalRamp": [
+          "#131313",
+          "#1a1a1a",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#393939",
+          "#474747",
+          "#5c5c5c"
+        ]
+      },
+      "basalt-highest": {
+        "role": "neutral",
+        "displayName": "Basalt Highest",
+        "canonical": "#353535",
+        "tonalRamp": [
+          "#131313",
+          "#1a1a1a",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#393939",
+          "#474747",
+          "#5c5c5c"
+        ]
+      },
+      "basalt-bright": {
+        "role": "neutral",
+        "displayName": "Basalt Bright",
+        "canonical": "#393939",
+        "tonalRamp": [
+          "#131313",
+          "#1a1a1a",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#393939",
+          "#474747",
+          "#5c5c5c"
+        ]
+      },
+      "soft-white": {
+        "role": "neutral",
+        "displayName": "Soft White",
+        "canonical": "#e2e2e2",
+        "tonalRamp": [
+          "#474747",
+          "#5c5c5c",
+          "#737373",
+          "#8e9192",
+          "#a8aaaa",
+          "#c4c7c7",
+          "#e2e2e2",
+          "#f5f5f5"
+        ]
+      },
+      "soft-white-variant": {
+        "role": "neutral",
+        "displayName": "Soft White Variant",
+        "canonical": "#c4c7c7",
+        "tonalRamp": [
+          "#474747",
+          "#5c5c5c",
+          "#737373",
+          "#8e9192",
+          "#a8aaaa",
+          "#c4c7c7",
+          "#e2e2e2",
+          "#f5f5f5"
+        ]
+      },
+      "ash": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "#8e9192",
+        "tonalRamp": [
+          "#2a2a2a",
+          "#393939",
+          "#474747",
+          "#5c5c5c",
+          "#737373",
+          "#8e9192",
+          "#a8aaaa",
+          "#c4c7c7"
+        ]
+      },
+      "slate": {
+        "role": "neutral",
+        "displayName": "Slate",
+        "canonical": "#474747",
+        "tonalRamp": [
+          "#131313",
+          "#1f1f1f",
+          "#2a2a2a",
+          "#353535",
+          "#474747",
+          "#5c5c5c",
+          "#737373",
+          "#8e9192"
+        ]
+      },
+      "error": {
+        "role": "status",
+        "displayName": "Error",
+        "canonical": "#ffb4ab",
+        "tonalRamp": [
+          "#410002",
+          "#690005",
+          "#93000a",
+          "#ba1a1a",
+          "#de3730",
+          "#ff5449",
+          "#ffb4ab",
+          "#ffdad6"
+        ]
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "One per page: the caps page title or the name on Home." },
-      "headline": { "displayName": "Headline", "purpose": "Project names and the skill name; weight 100 on panels, 200 elsewhere." },
-      "title": { "displayName": "Title", "purpose": "Step names in the ladder and stat values." },
-      "body": { "displayName": "Body", "purpose": "All prose, achievements, field values; 28 to 32rem max width on heroes." },
-      "label": { "displayName": "Label", "purpose": "Every piece of meta: nav, labels, indices, buttons. Uppercase." },
-      "mono": { "displayName": "Mono", "purpose": "Drafting coordinates and the hand-off mark only." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "One per page: the caps page title or the name on Home."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Project names and the skill name; weight 100 on panels, 200 elsewhere."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Step names in the ladder and stat values."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "All prose, achievements, field values; 28 to 32rem max width on heroes."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Every piece of meta: nav, labels, indices, buttons. Uppercase."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Drafting coordinates and the hand-off mark only."
+      },
+      "display-compact": {
+        "displayName": "Display Compact",
+        "purpose": "Two-line uppercase titles and the final Growth Curve step; caps at 6rem."
+      },
+      "display-compact-phone": {
+        "displayName": "Display Compact (phone)",
+        "purpose": "Composition title below 640px; floors at 2.5rem."
+      },
+      "display-final-phone": {
+        "displayName": "Display Final (phone)",
+        "purpose": "Final Growth Curve step below 640px; floors at 3rem and tops out at headline size."
+      },
+      "headline-fluid": {
+        "displayName": "Headline Fluid",
+        "purpose": "Fourth Growth Curve step; 2.25rem floor to the 3.5rem headline."
+      }
     },
     "shadows": [],
     "motion": [
-      { "name": "ease-standard", "value": "300ms ease-out", "purpose": "Hover fills, fades, border changes, color shifts." },
-      { "name": "ease-reveal", "value": "200ms ease-out", "purpose": "Panel and field reveal: opacity 0 to 1 with a 0.5rem rise, staggered 50 to 400ms." },
-      { "name": "ease-watermark", "value": "500ms ease-out", "purpose": "Watermark index reposition on the Work page." },
-      { "name": "glitch", "value": "120ms steps(2) / 100ms steps(3), infinite while hovered", "purpose": "Red and blue screen-blended halves on a hovered project name. The one loud motion." }
+      {
+        "name": "ease-standard",
+        "value": "300ms ease-out",
+        "purpose": "Hover fills, fades, border changes, color shifts."
+      },
+      {
+        "name": "ease-reveal",
+        "value": "200ms ease-out",
+        "purpose": "Panel and field reveal: opacity 0 to 1 with a 0.5rem rise, staggered 50 to 400ms."
+      },
+      {
+        "name": "ease-watermark",
+        "value": "500ms ease-out",
+        "purpose": "Watermark index reposition on the Work page."
+      },
+      {
+        "name": "glitch",
+        "value": "120ms steps(2) / 100ms steps(3), infinite while hovered",
+        "purpose": "Red and blue screen-blended halves on a hovered project name. The one loud motion."
+      },
+      {
+        "name": "step-reveal",
+        "value": "300ms ease-out, 60ms stagger per step",
+        "purpose": "Growth Curve steps: opacity 0 to 1 with a 0.5rem rise when scrolled into view (10% root margin). Hovering a step dims siblings to 30%. None under reduced motion."
+      }
     ],
     "breakpoints": [
-      { "name": "sm", "value": "640px" },
-      { "name": "md", "value": "1024px" }
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "1024px"
+      }
     ]
   },
   "components": [
@@ -103,6 +360,14 @@
       "description": "One Me row and one Agents row from the How It Was Built ladder, with the hand-off hairline and crosshair between them.",
       "html": "<ol class=\"ds-ladder\"><li class=\"ds-step ds-step--me\"><span class=\"ds-step-index\">01</span><span class=\"ds-step-owner\">Me</span><span class=\"ds-step-name\">Specify</span><span class=\"ds-step-detail\">Architecture, specs, tickets, service contracts</span></li><li class=\"ds-handoff\"><span class=\"ds-handoff-line\"></span><span class=\"ds-crosshair\"></span><span class=\"ds-mark\">hand-off</span></li><li class=\"ds-step ds-step--agents\"><span class=\"ds-step-index\">02</span><span class=\"ds-step-owner\">Agents</span><span class=\"ds-step-name\">Implement</span><span class=\"ds-step-detail\">Claude Code &amp; Codex, custom skills and agents</span></li></ol>",
       "css": ".ds-ladder { list-style: none; margin: 0; padding: 0; font-family: Inter, sans-serif; } .ds-step { display: grid; grid-template-columns: 2.75rem 5.5rem 9rem minmax(0, 1fr); align-items: baseline; } .ds-step--agents { margin-left: 5.5rem; } .ds-step-index, .ds-step-owner { font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-outline, #8e9192); } .ds-step--me .ds-step-owner { color: var(--color-primary, #ffffff); } .ds-step-name { font-size: 1.75rem; letter-spacing: -0.02em; line-height: 1.15; } .ds-step--me .ds-step-name { font-weight: 200; color: var(--color-primary, #ffffff); } .ds-step--agents .ds-step-name { font-weight: 100; color: var(--color-on-surface-variant, #c4c7c7); } .ds-step-detail { font-size: 0.875rem; letter-spacing: 0.05em; line-height: 1.6; } .ds-step--me .ds-step-detail { color: var(--color-on-surface, #e2e2e2); } .ds-step--agents .ds-step-detail { color: var(--color-on-surface-variant, #c4c7c7); } .ds-handoff { position: relative; height: 2.75rem; } .ds-handoff-line { position: absolute; left: -1rem; right: -1rem; top: 50%; height: 1px; background: color-mix(in srgb, var(--color-outline, #8e9192) 14%, transparent); } .ds-crosshair { position: absolute; left: calc(5.5rem - 5px); top: calc(50% - 5px); width: 11px; height: 11px; background: linear-gradient(var(--color-outline, #8e9192), var(--color-outline, #8e9192)) 5px 0 / 1px 11px no-repeat, linear-gradient(var(--color-outline, #8e9192), var(--color-outline, #8e9192)) 0 5px / 11px 1px no-repeat; } .ds-mark { position: absolute; left: -1rem; top: calc(50% - 1.5rem); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: var(--color-outline-variant, #474747); }"
+    },
+    {
+      "name": "Growth Curve",
+      "kind": "custom",
+      "refersTo": "field-label",
+      "description": "Per-project composition: steps climb from label caps to display; the final step is Signal White at weight 100 with a ghost hairline at its baseline. Hover dims siblings to 30%.",
+      "html": "<ol class=\"ds-curve\"><li class=\"ds-curve-step ds-curve-step--label\"><span class=\"ds-curve-index\">01</span><h2 class=\"ds-curve-name\">Seller ratings</h2><p class=\"ds-curve-detail\">Built the seller rating widget end to end.</p></li><li class=\"ds-curve-step ds-curve-step--title\"><span class=\"ds-curve-index\">03</span><h2 class=\"ds-curve-name\">Order lifecycle</h2><p class=\"ds-curve-detail\">Took over the order state machine and its edge cases.</p></li><li class=\"ds-curve-step ds-curve-step--display\"><span class=\"ds-curve-index\">05</span><h2 class=\"ds-curve-name\">Owned end to end</h2><p class=\"ds-curve-detail\">Split a feature, scoped it, and shipped it alone.</p></li></ol>",
+      "css": ".ds-curve { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; background: var(--color-surface, #131313); } .ds-curve-step { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); row-gap: 0.75rem; align-items: baseline; opacity: 1; transform: translateY(0); transition: opacity 300ms ease-out, transform 300ms ease-out; } .ds-curve-step + .ds-curve-step { margin-top: 2.75rem; } .ds-curve-step--display { margin-top: 5.5rem; } .ds-curve:hover .ds-curve-step:not(:hover) { opacity: 0.3; } .ds-curve-index { grid-column: 1; font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-outline, #8e9192); } .ds-curve-name { grid-column: 2; margin: 0; font-family: Inter, sans-serif; letter-spacing: -0.02em; line-height: 1.1; color: var(--color-on-surface, #e2e2e2); } .ds-curve-step--label .ds-curve-name { font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; } .ds-curve-step--title .ds-curve-name { font-size: 1.75rem; font-weight: 200; } .ds-curve-step--display { position: relative; padding-bottom: 2.75rem; } .ds-curve-step--display .ds-curve-name { font-size: clamp(3.5rem, 6vw, 6rem); font-weight: 100; line-height: 0.95; color: var(--color-primary, #ffffff); } .ds-curve-step--display::after { content: ''; position: absolute; left: 2.75rem; right: 0; bottom: 0; height: 1px; background: color-mix(in srgb, var(--color-outline-variant, #474747) 20%, transparent); } .ds-curve-detail { grid-column: 2; margin: 0; max-width: 32rem; font-family: Inter, sans-serif; font-size: 0.875rem; letter-spacing: 0.05em; line-height: 1.6; color: var(--color-on-surface-variant, #c4c7c7); } @media (prefers-reduced-motion: reduce) { .ds-curve-step { transition: none; transform: none; } .ds-curve:hover .ds-curve-step:not(:hover) { opacity: 1; } }"
     }
   ],
   "narrative": {
@@ -117,13 +382,41 @@
       "Quiet until touched: hover is a fill, a fade, or a border waking up"
     ],
     "rules": [
-      { "name": "The Zero-Chroma Rule", "body": "Nothing on the site carries hue except an error. Emphasis is lightness and scale; a colored accent is a failed design, not a choice.", "section": "colors" },
-      { "name": "The Forty-Percent Rule", "body": "De-emphasis is done by mixing a token to 40% (labels, footer, the \"Hi!\" lead-in), 30% (dimmed scroller names, hints), or 60% (hover on links and nav). The alpha steps are the secondary palette; do not invent new grays.", "section": "colors" },
-      { "name": "The Ghost Hairline Rule", "body": "A line is Slate at 20% opacity, 1px, and marks a margin or a hand-off. It never boxes content. The drafting marks on the \"How it was built\" block (Ash at 14 to 22%) are the one place lines are decoration rather than margin.", "section": "colors" },
-      { "name": "The Missing-Middle Rule", "body": "Never pair adjacent sizes. Display sits beside body or label; headline sits beside body; nothing sits beside a slightly larger version of itself.", "section": "typography" },
-      { "name": "The Caps-Carry-Meta Rule", "body": "If it is a label, a number, a date, or a navigation item, it is uppercase, 600, and tracked +0.1em. If it is prose, it is sentence case, 400, and tracked +0.05em. There is no third style.", "section": "typography" },
-      { "name": "The No-Shadow Rule", "body": "A box-shadow is a defect. Lift with tone or blur.", "section": "elevation" },
-      { "name": "The Deepest-Plane Rule", "body": "Every hero carries its section numeral behind the content. It is depth, not decoration, and it is never brighter than 5%.", "section": "elevation" }
+      {
+        "name": "The Zero-Chroma Rule",
+        "body": "Nothing on the site carries hue except an error. Emphasis is lightness and scale; a colored accent is a failed design, not a choice.",
+        "section": "colors"
+      },
+      {
+        "name": "The Forty-Percent Rule",
+        "body": "De-emphasis is done by mixing a token to 40% (labels, footer, the \"Hi!\" lead-in), 30% (dimmed scroller names, hints), or 60% (hover on links and nav). The alpha steps are the secondary palette; do not invent new grays.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ghost Hairline Rule",
+        "body": "A line is Slate at 20% opacity, 1px, and marks a margin or a hand-off. It never boxes content. The drafting marks on the \"How it was built\" block (Ash at 14 to 22%) are the one place lines are decoration rather than margin.",
+        "section": "colors"
+      },
+      {
+        "name": "The Missing-Middle Rule",
+        "body": "Never pair adjacent sizes. Display sits beside body or label; headline sits beside body; nothing sits beside a slightly larger version of itself.",
+        "section": "typography"
+      },
+      {
+        "name": "The Caps-Carry-Meta Rule",
+        "body": "If it is a label, a number, a date, or a navigation item, it is uppercase, 600, and tracked +0.1em. If it is prose, it is sentence case, 400, and tracked +0.05em. There is no third style.",
+        "section": "typography"
+      },
+      {
+        "name": "The No-Shadow Rule",
+        "body": "A box-shadow is a defect. Lift with tone or blur.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Deepest-Plane Rule",
+        "body": "Every hero carries its section numeral behind the content. It is depth, not decoration, and it is never brighter than 5%.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do anchor content at the 8.5rem offset with the 7rem hairline on hero surfaces, and keep the watermark numeral behind it at 3 to 5%.",

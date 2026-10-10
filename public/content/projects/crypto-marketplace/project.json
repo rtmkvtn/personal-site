@@ -25,28 +25,57 @@
   },
   "achievements": {
     "en": [
+      "Implemented seller ratings on listings",
+      "Debugged the Bitcoin payment flows around the self-hosted node, including per-trade address generation with bitcoinjs",
       "Built the admin panel from scratch (Bootstrap, React): dispute resolution with release or refund on the held balance, user management, listing moderation, balance adjustments, chat review, and account blocking",
       "Retrofitted a non-responsive SCSS frontend for phones and tablets, screen by screen, over about two months, delivering the mobile version of the client-facing product",
-      "Debugged the Bitcoin payment flows around the self-hosted node, including per-trade address generation with bitcoinjs",
-      "Implemented seller ratings on listings",
       "Grew from isolated tasks to end-to-end feature ownership on frontend and backend in a two-to-three-person team alongside a senior fullstack engineer"
     ],
     "ru": [
-      "Реализовал адаптивную мобильную версию клиентского фронтенда",
-      "Разработал интеграцию с Bitcoin-нодой для обработки платежей",
-      "Разработал админ-панель с нуля с функционалом управления спорами"
+      "Реализовал рейтинги продавцов в объявлениях",
+      "Отлаживал платёжные потоки вокруг собственной Bitcoin-ноды, включая генерацию адреса на каждую сделку через bitcoinjs",
+      "Построил админ-панель с нуля (Bootstrap, React): разрешение споров с возвратом или выплатой удержанного баланса, управление пользователями, модерация объявлений, корректировка балансов, просмотр чатов и блокировка аккаунтов",
+      "Переработал неадаптивный фронтенд на SCSS под телефоны и планшеты, экран за экраном, примерно за два месяца, сдав мобильную версию клиентского продукта",
+      "Вырос от изолированных задач до полной ответственности за фичи на фронтенде и бэкенде в команде из двух-трёх человек рядом с senior fullstack-инженером"
     ],
     "zh": [
-      "实现了面向客户的前端响应式移动版本",
-      "构建了Bitcoin节点集成以处理支付",
-      "从零开发了带有争议解决管理功能的管理面板"
+      "在商品列表中实现了卖家评分",
+      "调试自托管比特币节点周边的支付流程，包括使用 bitcoinjs 为每笔交易生成地址",
+      "从零构建管理面板（Bootstrap、React）：在冻结余额上放款或退款的纠纷处理、用户管理、商品审核、余额调整、聊天审阅和账号封禁",
+      "将一个未考虑响应式的 SCSS 前端逐屏改造为适配手机和平板，用时约两个月，交付了面向客户产品的移动版本",
+      "在一支两到三人的团队里与一位资深全栈工程师并肩工作，从孤立的任务成长为前后端功能的端到端负责人"
     ]
   },
   "description": {
     "en": "A peer-to-peer marketplace for physical goods, paid in Bitcoin. A buyer clicks buy, the seller confirms, and the buyer pays to a wallet address generated for that trade. The platform holds the funds on an internal balance until the seller confirms shipment and the buyer confirms receipt; a chat stays open between the two for the whole trade, and either side can raise a dispute that freezes the balance until an admin settles it. Listings carried filters and seller ratings; a self-hosted Bitcoin node handled deposits and withdrawals. Built for a founder by a team of two to three, it ran for a couple of months with a closed circle of users and was then shelved.\n\nThis was my first engineering job. I joined as a junior, started on isolated tasks, and finished owning features end to end on both sides of the stack: the admin panel, including dispute resolution, and the mobile layout, which meant retrofitting a frontend built with no thought for responsiveness, screen by screen, for phones and tablets, over about two months. In between I debugged the payment flows around the node, worked on seller ratings, and learned the things I still use: how to communicate with a team, how to split a feature into implementation steps, and how to deliver and own them.",
-    "ru": "P2P криптовалютный маркетплейс, где пользователи могли регистрироваться, создавать объявления о товарах и общаться с покупателями и продавцами в реальном времени. Платформа поддерживала покупки через прямые платежи в Bitcoin с использованием собственной Bitcoin-ноды, а также систему внутренней валюты. Функционал включал расширенные фильтры объявлений, систему рейтинга продавцов и встроенный механизм разрешения споров, управляемый через админ-панель. Фронтенд обеспечивал полноценный торговый опыт с обменом сообщениями, фильтрацией и отслеживанием споров.",
-    "zh": "点对点加密货币交易市场，用户可以注册、创建商品列表，并与买家和卖家实时沟通。平台通过自建Bitcoin节点支持直接比特币支付，同时提供内部货币系统。功能包括高级列表筛选、卖家评分系统以及通过管理面板管理的内置争议解决机制。前端提供了完整的交易体验，包含消息通讯、筛选和争议跟踪。"
+    "ru": "Peer-to-peer маркетплейс физических товаров с оплатой в биткоине. Покупатель нажимает «купить», продавец подтверждает, покупатель платит на кошелёк, сгенерированный под эту сделку. Платформа держит средства на внутреннем балансе, пока продавец не подтвердит отправку, а покупатель — получение; всю сделку между ними открыт чат, и любая сторона может открыть спор, который замораживает баланс до решения администратора. У объявлений были фильтры и рейтинги продавцов; депозиты и выводы обслуживала собственная Bitcoin-нода. Сделан для основателя командой из двух-трёх человек, пару месяцев работал для закрытого круга пользователей, затем был заморожен.\n\nЭто была моя первая работа в разработке. Я пришёл джуниором, начал с изолированных задач и закончил полной ответственностью за фичи на обеих сторонах стека: админ-панель, включая разрешение споров, и мобильную вёрстку, то есть переработку фронтенда, построенного без мысли об адаптивности, экран за экраном, под телефоны и планшеты, примерно за два месяца. Между этим я отлаживал платёжные потоки вокруг ноды, занимался рейтингами продавцов и выучил то, чем пользуюсь до сих пор: как общаться с командой, как разбивать фичу на шаги реализации и как доводить их до конца и отвечать за них.",
+    "zh": "一个以比特币支付的实体商品 P2P 市场。买家点击购买，卖家确认，买家向为这笔交易生成的钱包地址付款。平台把资金保留在内部余额上，直到卖家确认发货、买家确认收货；整笔交易期间双方之间保持聊天通道，任何一方都可以发起纠纷，冻结余额直到管理员裁决。商品列表带有筛选和卖家评分；自托管的比特币节点处理充值和提现。它由两到三人的团队为一位创始人打造，面向一个封闭的用户圈运行了几个月，之后被搁置。\n\n这是我的第一份工程工作。我以初级工程师身份加入，从孤立的任务起步，最终在前后端两侧都对功能端到端负责：管理面板（含纠纷处理）和移动端布局，后者意味着把一个完全没有考虑响应式的前端逐屏改造为适配手机和平板，用时约两个月。在此期间我调试了节点周边的支付流程，做了卖家评分，也学会了至今仍在用的东西：如何与团队沟通，如何把一个功能拆成实现步骤，以及如何交付并为之负责。"
   },
   "startDate": "2019-12",
-  "endDate": "2021-01"
+  "endDate": "2021-01",
+  "arc": {
+    "steps": {
+      "en": [
+        "Seller ratings",
+        "Payment flows",
+        "The admin panel",
+        "The mobile retrofit",
+        "Owned end to end"
+      ],
+      "ru": [
+        "Рейтинги продавцов",
+        "Платёжные потоки",
+        "Админ-панель",
+        "Мобильная версия",
+        "Фичи от и до"
+      ],
+      "zh": [
+        "卖家评分",
+        "支付流程",
+        "管理面板",
+        "移动端改造",
+        "端到端负责"
+      ]
+    }
+  }
 }

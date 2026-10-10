@@ -52,6 +52,9 @@ export function resolveProjectLocale(
     description: resolveString(project.description, locale),
     achievements: resolveStringArray(project.achievements, locale),
     aiFirst: resolveAiFirst(project.aiFirst, locale),
+    arc: project.arc
+      ? { steps: resolveStringArray(project.arc.steps, locale) }
+      : undefined,
     displayDate: getDisplayDate(project.startDate, project.endDate, locale),
   };
 }

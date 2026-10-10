@@ -23,9 +23,33 @@ typography:
     fontWeight: 100
     lineHeight: 0.9
     letterSpacing: "-0.02em"
+  display-compact:
+    fontFamily: "Inter, Noto Sans SC, sans-serif"
+    fontSize: "clamp(3.5rem, 6vw, 6rem)"
+    fontWeight: 100
+    lineHeight: 0.9
+    letterSpacing: "-0.02em"
+  display-compact-phone:
+    fontFamily: "Inter, Noto Sans SC, sans-serif"
+    fontSize: "clamp(2.5rem, 10vw, 3.5rem)"
+    fontWeight: 100
+    lineHeight: 0.9
+    letterSpacing: "-0.02em"
+  display-final-phone:
+    fontFamily: "Inter, Noto Sans SC, sans-serif"
+    fontSize: "clamp(3rem, 12vw, 3.5rem)"
+    fontWeight: 100
+    lineHeight: 0.95
+    letterSpacing: "-0.02em"
   headline:
     fontFamily: "Inter, Noto Sans SC, sans-serif"
     fontSize: "3.5rem"
+    fontWeight: 200
+    lineHeight: 1.1
+    letterSpacing: "-0.02em"
+  headline-fluid:
+    fontFamily: "Inter, Noto Sans SC, sans-serif"
+    fontSize: "clamp(2.25rem, 7vw, 3.5rem)"
     fontWeight: 200
     lineHeight: 1.1
     letterSpacing: "-0.02em"
@@ -179,7 +203,8 @@ A single-hue system in which only lightness moves; the palette is a stone's cros
 
 ### Hierarchy
 - **Display** (100, clamp(3.5rem, 8vw, 8rem), 0.9): page titles in caps (HARD SKILLS, ABOUT, CONTACT), the name on Home. One per page.
-- **Headline** (200, 3.5rem, 1.1): project names in the Work scroller and on project pages; the skill name in the detail panel at clamp(2.5rem, 5vw, 3.5rem). Weight 100 on the skill panel and the mobile modal, 200 elsewhere.
+- **Display Compact** (100, clamp(3.5rem, 6vw, 6rem), 0.9): the display step for two-line uppercase titles that would overrun at 8rem (CRYPTO MARKETPLACE) and for the final step of a Growth Curve. Caps at 6rem on purpose. On phones the title floors at clamp(2.5rem, 10vw, 3.5rem) and the final step at clamp(3rem, 12vw, 3.5rem) with line-height 0.95, so the climb tops out at headline size below 640px.
+- **Headline** (200, 3.5rem, 1.1): project names in the Work scroller and on project pages; the skill name in the detail panel at clamp(2.5rem, 5vw, 3.5rem); the fourth Growth Curve step at clamp(2.25rem, 7vw, 3.5rem). Weight 100 on the skill panel and the mobile modal, 200 elsewhere.
 - **Title** (200, 1.75rem, 1.15): step names in the "How it was built" ladder, stat values at clamp(1.5rem, 3vw, 2rem). Agents steps drop to weight 100.
 - **Body** (400, 0.875rem, 1.6, +0.05em): all paragraphs, achievements, field values, link text. Max width 28 to 32rem on hero surfaces.
 - **Label** (600, 0.6875rem, +0.1em, uppercase): navigation, footer, section labels, field labels, index numbers, owner tags, the CTA, every button. The most used style on the site.
@@ -273,6 +298,13 @@ Quiet until touched. At rest a component is a label or a ghost outline on the vo
 - **Drafting marks:** Ash guides at 22% (vertical) and 14% (horizontal and right edge), a 11px crosshair where the hand-off line crosses the guide, mono coordinates in Slate, a rotated project mark on desktop.
 - **Anchor:** display-scale figure in Signal White at weight 100 with a label-typography caption in Ash, right-aligned.
 - **Note:** body typography in Soft White Variant, indented to the guide, max width 28rem.
+
+### Per-project compositions
+A project page may own its composition. A registry keyed by slug (`src/widgets/project-compositions`) hands the resolved project to a bespoke component; slugs without an entry fall back to the generic reading column. Each composition stays inside the Monolith and reuses the tokens above; only the arrangement is the project's own. The first is the **Growth Curve** (Crypto Marketplace): five steps whose type scale encodes the arc.
+- **Ascent:** step names climb label caps (0.6875rem, 600) to body (0.875rem, 400) to title (1.75rem, 200) to headline-fluid to display-compact; indices in label caps in Ash; details in body in Soft White Variant, max width 32rem. Vertical gaps grow with the scale: 2.75, 4, 5.5, 7rem.
+- **Final step:** Signal White at weight 100, a 20% Slate ghost hairline at its baseline running from the index column to the right edge, and the arc paragraph beside it (7/4 columns from 1024px; stacked below on phones).
+- **Head:** display-compact title top-left with the lede right-anchored at 24rem; 7rem top padding, 72rem max width, 1.5rem side padding on phones and 4rem from 640px.
+- **Motion:** steps reveal on scroll with the 300ms ease-out rise (opacity 0 to 1, 0.5rem travel) staggered 60ms per step; hovering a step dims its siblings to 30% opacity. Under reduced motion every step is shown at rest with no transition.
 
 ## Do's and Don'ts
 
