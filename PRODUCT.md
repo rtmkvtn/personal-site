@@ -37,7 +37,7 @@ Visitors arrive from a CV link, LinkedIn, or a direct share, usually on desktop 
 - Name: "rtmkvtn" as the wordmark and site identity; "Artem" on the home page.
 - Role line: "AI-First Fullstack Engineer", the only AI modifier allowed anywhere in the identity. No "AI Engineer", no "agentic" or tool names beside it.
 - Voice: short declaratives, specifics over adjectives, human-written. Approved copy lives in `docs/specs/ai-first-content-spec.md` and the locale files; it was written line by line and must not be regenerated.
-- Existing visual language: a dark, editorial, architectural-minimalism system documented in `DESIGN_SYSTEM.md` ("The Monolith"), already implemented across every surface. Future visual decisions are made in that context, not here.
+- Existing visual language: a dark, editorial, architectural-minimalism system documented in `DESIGN.md` ("The Monolith"), already implemented across every surface. Future visual decisions are made in that context, not here.
 
 ## Evidence on Hand
 

@@ -249,6 +249,11 @@ Quiet until touched. At rest a component is a label or a ghost outline on the vo
 - **Value:** body typography in Soft White. Stat values use title typography in Signal White.
 - **Rhythm:** fields stack with 2.75rem between them; revealed with a staggered 200ms fade and 0.5rem rise.
 
+### Inputs (reserved, none built yet)
+- **Style:** no bounding box; a single 1px Slate line at the bottom, label typography above in Ash.
+- **Focus:** the line thickens to 2px and turns Signal White; the label turns Signal White.
+- **Error:** text in the error token; no icon, the color shift is the signal.
+
 ### Smoked Glass Modal (phone only)
 - **Overlay:** surface at 60% with a 20px blur, 200ms fade in.
 - **Body:** Basalt Highest, 2rem padding, 0px radius, max width 24rem. Title in headline typography at weight 100, uppercase; fields as above; a ghost CLOSE button.
