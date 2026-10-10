@@ -21,6 +21,10 @@
   line-height: 1.6;
   color: var(--color-on-surface);
   margin-top: 2.75rem;
+
+  & + & {
+    margin-top: 1.5rem;
+  }
 }
 
 .achievements {

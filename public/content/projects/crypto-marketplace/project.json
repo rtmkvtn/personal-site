@@ -5,7 +5,19 @@
     "zh": "CRYPTO MARKETPLACE"
   },
   "type": "Fullstack",
-  "stack": ["JavaScript", "React", "Redux", "Node.js", "Express", "MongoDB", "Bootstrap"],
+  "stack": [
+    "JavaScript",
+    "React",
+    "Redux",
+    "SCSS",
+    "Node.js",
+    "Express",
+    "MongoDB",
+    "Mongoose",
+    "WebSocket",
+    "bitcoinjs",
+    "Bootstrap"
+  ],
   "highlight": {
     "en": "Crypto P2P marketplace with payments in BTC and internal currency",
     "ru": "P2P-маркетплейс криптовалют с оплатой в BTC и внутренней валюте",
@@ -13,9 +25,11 @@
   },
   "achievements": {
     "en": [
-      "Implemented responsive mobile version of the client-facing frontend",
-      "Built Bitcoin node integration for payment processing",
-      "Developed admin panel from scratch with dispute resolution management"
+      "Built the admin panel from scratch (Bootstrap, React): dispute resolution with release or refund on the held balance, user management, listing moderation, balance adjustments, chat review, and account blocking",
+      "Retrofitted a non-responsive SCSS frontend for phones and tablets, screen by screen, over about two months, delivering the mobile version of the client-facing product",
+      "Debugged the Bitcoin payment flows around the self-hosted node, including per-trade address generation with bitcoinjs",
+      "Implemented seller ratings on listings",
+      "Grew from isolated tasks to end-to-end feature ownership on frontend and backend in a two-to-three-person team alongside a senior fullstack engineer"
     ],
     "ru": [
       "Реализовал адаптивную мобильную версию клиентского фронтенда",
@@ -29,7 +43,7 @@
     ]
   },
   "description": {
-    "en": "Peer-to-peer crypto marketplace where users could register, create product listings, and communicate with buyers and sellers in real time. The platform supported purchases via direct Bitcoin payments through a self-hosted Bitcoin node, as well as an internal currency system. Features included advanced listing filters, a seller rating system, and a built-in dispute resolution mechanism managed through an admin panel. The frontend provided a full trading experience with messaging, filtering, and dispute tracking.",
+    "en": "A peer-to-peer marketplace for physical goods, paid in Bitcoin. A buyer clicks buy, the seller confirms, and the buyer pays to a wallet address generated for that trade. The platform holds the funds on an internal balance until the seller confirms shipment and the buyer confirms receipt; a chat stays open between the two for the whole trade, and either side can raise a dispute that freezes the balance until an admin settles it. Listings carried filters and seller ratings; a self-hosted Bitcoin node handled deposits and withdrawals. Built for a founder by a team of two to three, it ran for a couple of months with a closed circle of users and was then shelved.\n\nThis was my first engineering job. I joined as a junior, started on isolated tasks, and finished owning features end to end on both sides of the stack: the admin panel, including dispute resolution, and the mobile layout, which meant retrofitting a frontend built with no thought for responsiveness, screen by screen, for phones and tablets, over about two months. In between I debugged the payment flows around the node, worked on seller ratings, and learned the things I still use: how to communicate with a team, how to split a feature into implementation steps, and how to deliver and own them.",
     "ru": "P2P криптовалютный маркетплейс, где пользователи могли регистрироваться, создавать объявления о товарах и общаться с покупателями и продавцами в реальном времени. Платформа поддерживала покупки через прямые платежи в Bitcoin с использованием собственной Bitcoin-ноды, а также систему внутренней валюты. Функционал включал расширенные фильтры объявлений, систему рейтинга продавцов и встроенный механизм разрешения споров, управляемый через админ-панель. Фронтенд обеспечивал полноценный торговый опыт с обменом сообщениями, фильтрацией и отслеживанием споров.",
     "zh": "点对点加密货币交易市场，用户可以注册、创建商品列表，并与买家和卖家实时沟通。平台通过自建Bitcoin节点支持直接比特币支付，同时提供内部货币系统。功能包括高级列表筛选、卖家评分系统以及通过管理面板管理的内置争议解决机制。前端提供了完整的交易体验，包含消息通讯、筛选和争议跟踪。"
   },

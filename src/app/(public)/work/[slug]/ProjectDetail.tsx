@@ -17,9 +17,14 @@ export function ProjectDetail({ project: rawProject }: ProjectDetailProps) {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{project.name}</h1>
-      {project.description && (
-        <p className={styles.description}>{project.description}</p>
-      )}
+      {project.description
+        .split(/\n{2,}/)
+        .filter(Boolean)
+        .map((paragraph) => (
+          <p key={paragraph} className={styles.description}>
+            {paragraph}
+          </p>
+        ))}
       {project.achievements.length > 0 && (
         <ul className={styles.achievements}>
           {project.achievements.map((a) => (
