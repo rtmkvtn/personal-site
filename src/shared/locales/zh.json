@@ -61,5 +61,13 @@
     "seller": "卖家",
     "manufacturer": "制造商",
     "platform": "平台"
+  },
+  "crypto": {
+    "tradeAddress": "交易地址",
+    "generated": "每笔交易生成 · 一次性",
+    "confirmations": "确认数",
+    "balance": "余额",
+    "held": "双方确认前保留",
+    "released": "已放款"
   }
 }

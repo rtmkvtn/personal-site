@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import { BalanceFigure } from "./BalanceFigure";
 import clsx from "clsx";
 import type { ResolvedProject } from "@/shared/config";
 import { useLocale } from "@/shared/lib/i18n";
@@ -30,7 +31,10 @@ export function CryptoMarketplace({ project }: CryptoMarketplaceProps) {
   return (
     <main className={styles.main}>
       <header className={styles.head}>
-        <h1 className={styles.title}>{project.name}</h1>
+        <div>
+          <BalanceFigure />
+          <h1 className={styles.title}>{project.name}</h1>
+        </div>
         <p className={styles.lede}>{lede}</p>
       </header>
 

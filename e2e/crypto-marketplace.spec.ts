@@ -10,6 +10,7 @@ test.describe("Crypto Marketplace composition", () => {
     await page.goto("/work/crypto-marketplace");
 
     await expect(page.getByRole("heading", { level: 1, name: "CRYPTO MARKETPLACE" })).toBeVisible();
+    await expect(page.locator("[data-balance-figure]")).toBeVisible();
 
     const steps = page.locator("[data-composition='growth-curve'] > li");
     await expect(steps).toHaveCount(5);

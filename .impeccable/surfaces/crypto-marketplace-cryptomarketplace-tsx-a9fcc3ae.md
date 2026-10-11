@@ -17,7 +17,7 @@ OWN-WORLD: The Monolith, unchanged: Obsidian ground, Signal White for the final 
 
 STORY: The visitor reads the product in one paragraph, drops down the page as each step grows, and lands on "Owned end to end" beside the arc paragraph, whose last words are how to split a feature and own it. They believe the growth because the steps are real deliverables, and leave with the person, not the product.
 
-FIRST VIEWPORT: Title "CRYPTO MARKETPLACE" at display scale top-left on the 4rem gutter; the trade-flow paragraph right-anchored at body size, 24rem wide; beneath the title the first two steps, "01 SELLER RATINGS" in label caps and "02 Payment flows" at body size, each with its achievement sentence as detail. The primary action is the scroll itself; the page's weight is below the fold by design.
+FIRST VIEWPORT: The held-balance slip drawn at hairline above the title in the left column; title "CRYPTO MARKETPLACE" at display scale on the 4rem gutter; the trade-flow paragraph right-anchored at body size, 24rem wide; beneath the title the first two steps, "01 SELLER RATINGS" in label caps and "02 Payment flows" at body size, each with its achievement sentence as detail. The primary action is the scroll itself; the page's weight is below the fold by design.
 
 FORM: The Growth Curve, position 3 of my seven ranked structures, dealt and locked on the decision page; seed key f363aee6. Signature interaction: steps reveal with the 200ms staggered rise on scroll, and hovering a step dims the others to 30%. Motion grammar: opacity and 0.5rem travel only, 200 to 300ms ease-out, none under reduced motion. Phone: one column, the climb capped at headline size, the arc paragraph after the fifth step.
 

@@ -61,5 +61,13 @@
     "seller": "Seller",
     "manufacturer": "Manufacturer",
     "platform": "The platform"
+  },
+  "crypto": {
+    "tradeAddress": "Trade address",
+    "generated": "generated per trade · one use",
+    "confirmations": "Confirmations",
+    "balance": "Balance",
+    "held": "held until both confirm",
+    "released": "released"
   }
 }
