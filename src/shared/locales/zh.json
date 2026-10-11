@@ -56,5 +56,10 @@
     "verify": "验证",
     "review": "审查",
     "handoff": "hand-off"
+  },
+  "journey": {
+    "seller": "卖家",
+    "manufacturer": "制造商",
+    "platform": "平台"
   }
 }

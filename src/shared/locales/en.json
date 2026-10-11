@@ -56,5 +56,10 @@
     "verify": "Verify",
     "review": "Review",
     "handoff": "hand-off"
+  },
+  "journey": {
+    "seller": "Seller",
+    "manufacturer": "Manufacturer",
+    "platform": "The platform"
   }
 }

@@ -17,8 +17,8 @@
   ],
   "highlight": {
     "en": "B2B platform matching Wildberries sellers with manufacturers",
-    "ru": "Платформа для автоматизации рабочих процессов между продавцами и производителями на Wildberries",
-    "zh": "Wildberries平台上卖家与制造商工作流程自动化平台"
+    "ru": "B2B-платформа, связывающая продавцов Wildberries с производителями",
+    "zh": "连接 Wildberries 卖家与制造商的 B2B 平台"
   },
   "achievements": {
     "en": [
@@ -29,19 +29,131 @@
       "Delegated small frontend components to a junior developer during short engagements, with specs and review"
     ],
     "ru": [
-      "Реализовал платёжный поток через ЮMoney и интеграцию с ОФД, полностью автоматизировав выдачу чеков и налоговую отчётность — исключив ручной труд",
-      "Разработал интеграцию с API Wildberries для получения данных в реальном времени, отслеживания заказов и автоматической печати штрихкодов и QR-кодов"
+      "В одиночку построил платформу с нуля до сданного MVP за шесть месяцев: одно приложение с ролями продавца и производителя и внутренний каталог, где производители размещают позиции, а продавцы сопоставляют с ними свои товары Wildberries",
+      "Интегрировал официальный API Wildberries: опрос заказов по расписанию, автоматическая маршрутизация каждого заказа сопоставленному производителю как производственного задания и готовые к печати этикетки маркетплейса со штрихкодами и QR-кодами",
+      "Реализовал платёжный поток ЮMoney и интеграцию с ОФД: фискальный чек на каждый платёж продавца производителю и налоговая отчётность без ручных шагов",
+      "Обошёл API маркетплейса без тестовой среды и с ответами, расходящимися с документацией: записал реальные ответы и собрал mock-сервер, который их воспроизводил, с вручную дописанными случаями для статусов, которые нельзя было вызвать по запросу",
+      "Делегировал небольшие фронтенд-компоненты джуниору на коротких отрезках, со спецификацией и ревью"
     ],
     "zh": [
-      "实现了YooMoney支付流程和OFD集成，完全自动化收据开具和税务报告——彻底消除人工操作",
-      "构建了Wildberries API集成，实现实时数据获取、订单追踪和条形码/二维码自动打印"
+      "独自从零构建平台，六个月内交付 MVP：一个具备卖家和制造商角色的应用，以及一个内部目录，制造商在其中登记产品位，卖家把自己的 Wildberries 商品与之匹配",
+      "集成 Wildberries 官方 API：按计划轮询订单，把每笔订单自动路由到匹配的制造商作为生产任务，并生成带条形码和二维码、可直接打印的市场标签",
+      "实现 YooMoney 支付流程和 OFD 集成：每笔卖家向制造商的付款都开具电子发票，税务申报无需手动步骤",
+      "绕过一个没有测试环境、响应与文档不一致的市场 API：录制真实响应并搭建回放它们的 mock 服务器，手工补充无法按需触发的状态用例",
+      "在短期合作中把小的前端组件委派给一位初级工程师，附带规格说明并进行审查"
     ]
   },
   "description": {
     "en": "One app, two roles. Manufacturers list their positions in an internal catalog; sellers connect their Wildberries account and match their goods to those positions. From then on every new marketplace order is pulled on a schedule and routed to the matched manufacturer as a production task; manufacturers work the queue and print the marketplace's barcode and QR labels from the platform. The seller pays the manufacturer through the platform via YooMoney, and a fiscal receipt goes out through the OFD provider on every payment, so tax reporting needs no manual step. Built for a founder, delivered as an MVP in six months, and running with a pool of sellers and manufacturers when I left.\n\nI was the sole developer, with a junior borrowed for short stretches for small frontend components. It was the first project where I owned external integrations end to end, three of them at once, and the first where compliance shaped the code. The hard part was Wildberries itself: no test environment, and live responses that drifted from their own documentation. I recorded real responses and built a small mock server that replayed them, with hand-edited cases for statuses I couldn't trigger on demand, and developed against that. It's the project where I became the engineer the product depended on: three integrations owned alone, and an MVP real sellers used.",
-    "ru": "B2B-платформа, оптимизирующая цепочку поставок между продавцами и производителями на маркетплейсе Wildberries. Благодаря интеграции с официальным API Wildberries платформа позволяла продавцам отслеживать заказы в реальном времени и автоматически передавать их производителям, исключая ручную координацию и сокращая задержки выполнения. Интеграция с ОФД автоматизировала налоговую отчётность и формирование финансовых документов, обеспечивая соответствие требованиям при минимальных ручных затратах. Приём платежей осуществлялся через ЮMoney, обеспечивая бесшовные расчёты между продавцами и производителями. Система служила центральным узлом, связывающим всех участников цепочки от производства до доставки.",
-    "zh": "一个优化Wildberries电商平台上卖家与制造商供应链的B2B平台。通过集成Wildberries官方API，平台使卖家能够实时追踪订单并自动转发给制造商，消除人工协调并减少履约延迟。OFD集成实现了税务报告和财务文档生成的自动化，以最少的人工投入确保各方合规。支付通过YooMoney处理，实现卖家与制造商之间的无缝交易。系统作为连接生产到交付全链条各方的中心枢纽。"
+    "ru": "Одно приложение, две роли. Производители размещают свои позиции во внутреннем каталоге; продавцы подключают аккаунт Wildberries и сопоставляют свои товары с этими позициями. Дальше каждый новый заказ с маркетплейса забирается по расписанию и уходит сопоставленному производителю как производственное задание; производители работают с очередью и печатают штрихкоды и QR-этикетки маркетплейса прямо из платформы. Продавец платит производителю через платформу по ЮMoney, и на каждый платёж через ОФД уходит фискальный чек, так что налоговая отчётность не требует ручных шагов. Сделано для основателя, сдано как MVP за шесть месяцев и на момент моего ухода работало с пулом продавцов и производителей.\n\nЯ был единственным разработчиком; иногда на короткое время подключался джуниор для небольших фронтенд-компонентов. Это был первый проект, где я целиком отвечал за внешние интеграции, сразу за три, и первый, где код формировали требования законодательства. Самым сложным оказался сам Wildberries: тестовой среды не было, а реальные ответы расходились с их же документацией. Я записал настоящие ответы и собрал небольшой mock-сервер, который их воспроизводил, с вручную дописанными случаями для статусов, которые нельзя было вызвать по запросу, и разрабатывал против него. Это проект, где я стал инженером, от которого зависел продукт: три интеграции в одиночку и MVP, которым пользовались реальные продавцы.",
+    "zh": "一个应用，两种角色。制造商在内部目录中登记自己的产品位；卖家连接 Wildberries 账户，把自己的商品与这些产品位匹配。此后，每一笔新的市场订单都会按计划拉取，并作为生产任务路由到匹配的制造商；制造商处理队列，并直接从平台打印市场的条形码和二维码标签。卖家通过平台以 YooMoney 向制造商付款，每笔付款都经由 OFD 开具电子发票，税务申报无需任何手动步骤。它为一位创始人打造，六个月内交付为 MVP，在我离开时已与一批卖家和制造商一起运行。\n\n我是唯一的开发者，偶尔有一位初级工程师短期加入，做一些小的前端组件。这是我第一个端到端负责外部集成的项目，一次三个，也是第一个由合规要求塑造代码的项目。最难的是 Wildberries 本身：没有测试环境，线上响应又与他们自己的文档不一致。我录下真实响应，搭了一个小型 mock 服务器来回放它们，并手工补充了无法按需触发的状态用例，然后对着它开发。正是在这个项目里，我成了产品所依赖的工程师：独自负责三个集成，交付了真实卖家在用的 MVP。"
   },
   "startDate": "2022-01",
-  "endDate": "2022-06"
+  "endDate": "2022-06",
+  "journey": {
+    "stages": [
+      {
+        "name": {
+          "en": "Matched",
+          "ru": "Сопоставлен",
+          "zh": "匹配"
+        },
+        "fact": {
+          "en": "Manufacturers list their positions in an internal catalog; a seller connects a Wildberries account and matches their goods to those positions.",
+          "ru": "Производители размещают позиции во внутреннем каталоге; продавец подключает аккаунт Wildberries и сопоставляет с ними свои товары.",
+          "zh": "制造商在内部目录中登记产品位；卖家连接 Wildberries 账户，把商品与这些产品位匹配。"
+        },
+        "built": {
+          "en": "The catalog and the matching, with seller and manufacturer roles in one app.",
+          "ru": "Каталог и сопоставление, роли продавца и производителя в одном приложении.",
+          "zh": "目录与匹配机制，卖家和制造商两种角色在同一个应用里。"
+        }
+      },
+      {
+        "name": {
+          "en": "Pulled",
+          "ru": "Получен",
+          "zh": "拉取"
+        },
+        "fact": {
+          "en": "Every new marketplace order is pulled from Wildberries on a schedule.",
+          "ru": "Каждый новый заказ с маркетплейса забирается из Wildberries по расписанию.",
+          "zh": "每一笔新的市场订单都按计划从 Wildberries 拉取。"
+        },
+        "built": {
+          "en": "The Wildberries integration, against an API with no test environment and responses that drifted from its own documentation: real responses recorded and replayed by a small mock server, with hand-edited cases for statuses that couldn't be triggered on demand.",
+          "ru": "Интеграция с Wildberries, против API без тестовой среды и с ответами, расходящимися с их же документацией: записанные настоящие ответы, которые воспроизводил небольшой mock-сервер, с вручную дописанными случаями для статусов, которые нельзя было вызвать по запросу.",
+          "zh": "Wildberries 集成，面对的是一个没有测试环境、响应与自身文档不一致的 API：录下真实响应，由一个小型 mock 服务器回放，并手工补充无法按需触发的状态用例。"
+        }
+      },
+      {
+        "name": {
+          "en": "Routed",
+          "ru": "Направлен",
+          "zh": "路由"
+        },
+        "fact": {
+          "en": "The order becomes a production task for the matched manufacturer.",
+          "ru": "Заказ становится производственным заданием для сопоставленного производителя.",
+          "zh": "订单成为匹配制造商的生产任务。"
+        },
+        "built": {
+          "en": "Automatic routing and the manufacturer's task queue.",
+          "ru": "Автоматическая маршрутизация и очередь заданий производителя.",
+          "zh": "自动路由和制造商的任务队列。"
+        }
+      },
+      {
+        "name": {
+          "en": "Labelled",
+          "ru": "Промаркирован",
+          "zh": "贴标"
+        },
+        "fact": {
+          "en": "The manufacturer prints the marketplace's barcode and QR labels from the platform.",
+          "ru": "Производитель печатает штрихкоды и QR-этикетки маркетплейса прямо из платформы.",
+          "zh": "制造商直接从平台打印市场的条形码和二维码标签。"
+        },
+        "built": {
+          "en": "Print-ready label documents from the marketplace's label data.",
+          "ru": "Готовые к печати документы с этикетками из данных маркетплейса.",
+          "zh": "基于市场标签数据生成可直接打印的标签文档。"
+        }
+      },
+      {
+        "name": {
+          "en": "Paid",
+          "ru": "Оплачен",
+          "zh": "付款"
+        },
+        "fact": {
+          "en": "The seller pays the manufacturer through the platform.",
+          "ru": "Продавец платит производителю через платформу.",
+          "zh": "卖家通过平台向制造商付款。"
+        },
+        "built": {
+          "en": "The YooMoney payment flow.",
+          "ru": "Платёжный поток ЮMoney.",
+          "zh": "YooMoney 支付流程。"
+        }
+      },
+      {
+        "name": {
+          "en": "Receipted",
+          "ru": "Пробит чек",
+          "zh": "开票"
+        },
+        "fact": {
+          "en": "A fiscal receipt goes out on every payment, so tax reporting needs no manual step.",
+          "ru": "На каждый платёж уходит фискальный чек, и налоговая отчётность не требует ручных шагов.",
+          "zh": "每笔付款都开具电子发票，税务申报无需手动步骤。"
+        },
+        "built": {
+          "en": "The OFD integration and the reporting behind it.",
+          "ru": "Интеграция с ОФД и отчётность за ней.",
+          "zh": "OFD 集成及其背后的申报流程。"
+        }
+      }
+    ]
+  }
 }

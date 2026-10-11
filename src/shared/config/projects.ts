@@ -49,6 +49,18 @@ export interface ResolvedAiFirst {
   note?: string;
 }
 
+export interface JourneyStageJson {
+  name: LocalizedString;
+  fact: LocalizedString;
+  built: LocalizedString;
+}
+
+export interface JourneyStage {
+  name: string;
+  fact: string;
+  built: string;
+}
+
 export interface ProjectJson {
   name: LocalizedString;
   type: ProjectType;
@@ -62,6 +74,7 @@ export interface ProjectJson {
   githubLink?: string;
   aiFirst?: AiFirstJson;
   arc?: { steps: LocalizedStringArray };
+  journey?: { stages: JourneyStageJson[] };
 }
 
 export interface Project extends ProjectJson {
@@ -76,7 +89,7 @@ export interface Project extends ProjectJson {
 export interface ResolvedProject
   extends Omit<
     Project,
-    "name" | "highlight" | "description" | "achievements" | "aiFirst" | "arc"
+    "name" | "highlight" | "description" | "achievements" | "aiFirst" | "arc" | "journey"
   > {
   name: string;
   highlight: string;
@@ -84,6 +97,7 @@ export interface ResolvedProject
   achievements: string[];
   aiFirst?: ResolvedAiFirst;
   arc?: { steps: string[] };
+  journey?: { stages: JourneyStage[] };
 }
 
 // Static images for decorative backgrounds, randomly assigned

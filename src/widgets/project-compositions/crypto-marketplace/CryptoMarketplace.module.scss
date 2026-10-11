@@ -70,8 +70,10 @@
     opacity 300ms ease-out,
     transform 300ms ease-out;
 
-  .steps:hover &:not(:hover) {
-    opacity: 0.3;
+  @media (hover: hover) {
+    .steps:hover &:not(:hover) {
+      opacity: 0.3;
+    }
   }
 }
 
@@ -84,7 +86,7 @@
   .step {
     opacity: 1;
     transform: none;
-    transition: none;
+    transition: opacity 300ms ease-out;
   }
 }
 

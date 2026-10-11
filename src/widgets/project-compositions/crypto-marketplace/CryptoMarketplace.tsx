@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import clsx from "clsx";
 import type { ResolvedProject } from "@/shared/config";
 import { useLocale } from "@/shared/lib/i18n";
 import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { useReveal } from "../lib/use-reveal";
 import styles from "./CryptoMarketplace.module.scss";
 
 interface CryptoMarketplaceProps {
@@ -24,28 +25,7 @@ export function CryptoMarketplace({ project }: CryptoMarketplaceProps) {
   }));
   const last = steps.length - 1;
 
-  useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-    const items = Array.from(list.children) as HTMLElement[];
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      items.forEach((el) => el.classList.add(styles.in));
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(styles.in);
-            observer.unobserve(entry.target);
-          }
-        }
-      },
-      { rootMargin: "0px 0px -10% 0px" },
-    );
-    items.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, [steps.length]);
+  useReveal(listRef, styles.in, steps.length);
 
   return (
     <main className={styles.main}>

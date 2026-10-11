@@ -1,0 +1,40 @@
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  color: var(--color-outline);
+}
+
+.label {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--color-outline);
+}
+
+.line {
+  stroke: color-mix(in srgb, var(--color-outline-variant) 40%, transparent);
+}
+
+.seam {
+  stroke: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+}
+
+.node {
+  transition: color 300ms ease-out;
+
+  .label {
+    transition: fill 300ms ease-out;
+  }
+}
+
+.nodeActive {
+  color: var(--color-primary);
+
+  .label {
+    fill: var(--color-primary);
+  }
+}

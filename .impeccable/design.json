@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-10T12:00:00Z",
+  "generatedAt": "2026-10-11T12:00:00Z",
   "title": "Design System: rtmkvtn",
   "extensions": {
     "colorMeta": {
@@ -254,7 +254,7 @@
       },
       "headline-fluid": {
         "displayName": "Headline Fluid",
-        "purpose": "Fourth Growth Curve step; 2.25rem floor to the 3.5rem headline."
+        "purpose": "Fourth Growth Curve step and the Order's Journey event verb (weight 100, line-height 1 there); 2.25rem floor to the 3.5rem headline."
       }
     },
     "shadows": [],
@@ -282,7 +282,7 @@
       {
         "name": "step-reveal",
         "value": "300ms ease-out, 60ms stagger per step",
-        "purpose": "Growth Curve steps: opacity 0 to 1 with a 0.5rem rise when scrolled into view (10% root margin). Hovering a step dims siblings to 30%. None under reduced motion."
+        "purpose": "Shared by both per-project compositions (Growth Curve steps, Order's Journey stages): opacity 0 to 1 with a 0.5rem rise when scrolled into view (10% root margin), 60ms stagger per item. Hovering an item dims siblings to 30%, only on hover-capable pointers. Under reduced motion items show at rest with the rise dropped and the 300ms opacity fade kept."
       }
     ],
     "breakpoints": [
@@ -368,6 +368,14 @@
       "description": "Per-project composition: steps climb from label caps to display; the final step is Signal White at weight 100 with a ghost hairline at its baseline. Hover dims siblings to 30%.",
       "html": "<ol class=\"ds-curve\"><li class=\"ds-curve-step ds-curve-step--label\"><span class=\"ds-curve-index\">01</span><h2 class=\"ds-curve-name\">Seller ratings</h2><p class=\"ds-curve-detail\">Built the seller rating widget end to end.</p></li><li class=\"ds-curve-step ds-curve-step--title\"><span class=\"ds-curve-index\">03</span><h2 class=\"ds-curve-name\">Order lifecycle</h2><p class=\"ds-curve-detail\">Took over the order state machine and its edge cases.</p></li><li class=\"ds-curve-step ds-curve-step--display\"><span class=\"ds-curve-index\">05</span><h2 class=\"ds-curve-name\">Owned end to end</h2><p class=\"ds-curve-detail\">Split a feature, scoped it, and shipped it alone.</p></li></ol>",
       "css": ".ds-curve { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; background: var(--color-surface, #131313); } .ds-curve-step { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); row-gap: 0.75rem; align-items: baseline; opacity: 1; transform: translateY(0); transition: opacity 300ms ease-out, transform 300ms ease-out; } .ds-curve-step + .ds-curve-step { margin-top: 2.75rem; } .ds-curve-step--display { margin-top: 5.5rem; } .ds-curve:hover .ds-curve-step:not(:hover) { opacity: 0.3; } .ds-curve-index { grid-column: 1; font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-outline, #8e9192); } .ds-curve-name { grid-column: 2; margin: 0; font-family: Inter, sans-serif; letter-spacing: -0.02em; line-height: 1.1; color: var(--color-on-surface, #e2e2e2); } .ds-curve-step--label .ds-curve-name { font-family: Inter, sans-serif; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1; } .ds-curve-step--title .ds-curve-name { font-size: 1.75rem; font-weight: 200; } .ds-curve-step--display { position: relative; padding-bottom: 2.75rem; } .ds-curve-step--display .ds-curve-name { font-size: clamp(3.5rem, 6vw, 6rem); font-weight: 100; line-height: 0.95; color: var(--color-primary, #ffffff); } .ds-curve-step--display::after { content: ''; position: absolute; left: 2.75rem; right: 0; bottom: 0; height: 1px; background: color-mix(in srgb, var(--color-outline-variant, #474747) 20%, transparent); } .ds-curve-detail { grid-column: 2; margin: 0; max-width: 32rem; font-family: Inter, sans-serif; font-size: 0.875rem; letter-spacing: 0.05em; line-height: 1.6; color: var(--color-on-surface-variant, #c4c7c7); } @media (prefers-reduced-motion: reduce) { .ds-curve-step { transition: none; transform: none; } .ds-curve:hover .ds-curve-step:not(:hover) { opacity: 1; } }"
+    },
+    {
+      "name": "Order's Journey",
+      "kind": "custom",
+      "refersTo": "field-label",
+      "description": "Per-project composition: stages walk down a 20% Slate guide at the indent; the event stage lifts its verb to headline-fluid in Signal White with an 11px Ash tick on the guide and a wider build column. Hover dims siblings to 30% on hover-capable pointers.",
+      "html": "<ol class=\"ds-journey\"><li class=\"ds-journey-stage\"><span class=\"ds-journey-index\">01</span><h2 class=\"ds-journey-verb\">Matched</h2><p class=\"ds-journey-fact\">Manufacturers list their positions in an internal catalog; a seller connects a Wildberries account and matches their goods to those positions.</p><p class=\"ds-journey-built\">The catalog and the matching, with seller and manufacturer roles in one app.</p></li><li class=\"ds-journey-stage ds-journey-stage--event\"><span class=\"ds-journey-index\">02</span><h2 class=\"ds-journey-verb\">Pulled</h2><p class=\"ds-journey-fact\">Every new marketplace order is pulled from Wildberries on a schedule.</p><p class=\"ds-journey-built\">The Wildberries integration, against an API with no test environment: real responses recorded and replayed by a small mock server, with hand-edited cases for statuses that couldn't be triggered on demand.</p></li></ol>",
+      "css": ".ds-journey { --ds-indent: 5.5rem; --ds-gap: 2.75rem; position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 5.5rem; background: var(--color-surface, #131313); font-family: Inter, sans-serif; } .ds-journey::before { content: ''; position: absolute; left: var(--ds-indent); top: 0; bottom: -2.75rem; width: 1px; background: color-mix(in srgb, var(--color-outline-variant, #474747) 20%, transparent); } .ds-journey-stage { position: relative; display: grid; grid-template-columns: var(--ds-indent) minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--ds-gap); row-gap: 0.75rem; align-items: baseline; opacity: 1; transform: translateY(0); transition: opacity 300ms ease-out, transform 300ms ease-out; } @media (hover: hover) { .ds-journey:hover .ds-journey-stage:not(:hover) { opacity: 0.3; } } .ds-journey-index { grid-column: 1; padding-right: 1rem; font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-outline, #8e9192); } .ds-journey-verb { position: relative; grid-column: 2 / 4; margin: 0; font-size: 1.75rem; font-weight: 200; letter-spacing: -0.02em; line-height: 1.15; color: var(--color-on-surface, #e2e2e2); } .ds-journey-fact, .ds-journey-built { margin: 0; max-width: 28rem; font-size: 0.875rem; letter-spacing: 0.05em; line-height: 1.6; } .ds-journey-fact { grid-column: 2; color: var(--color-on-surface, #e2e2e2); } .ds-journey-built { grid-column: 3; color: var(--color-on-surface-variant, #c4c7c7); } .ds-journey-stage--event { margin: 2.75rem 0; grid-template-columns: var(--ds-indent) minmax(0, 2fr) minmax(0, 3fr); } .ds-journey-stage--event .ds-journey-verb { font-size: clamp(2.25rem, 7vw, 3.5rem); font-weight: 100; line-height: 1; color: var(--color-primary, #ffffff); } .ds-journey-stage--event .ds-journey-verb::before { content: ''; position: absolute; left: calc(-1 * var(--ds-gap) - 5px); top: 0.5em; width: 11px; height: 1px; background: var(--color-outline, #8e9192); } .ds-journey-stage--event .ds-journey-built { max-width: 36rem; color: var(--color-on-surface, #e2e2e2); } @media (prefers-reduced-motion: reduce) { .ds-journey-stage { transform: none; transition: opacity 300ms ease-out; } }"
     }
   ],
   "narrative": {
@@ -416,6 +424,11 @@
         "name": "The Deepest-Plane Rule",
         "body": "Every hero carries its section numeral behind the content. It is depth, not decoration, and it is never brighter than 5%.",
         "section": "elevation"
+      },
+      {
+        "name": "The Own-Loud-Element Rule",
+        "body": "Per-project compositions do not carry the hero watermark numeral. The section numerals belong to the five hero surfaces; a composition's loud element is its own (the display step of a Growth Curve, the event verb of an Order's Journey), and a numeral behind it would be a second voice. Its absence on a project page is deliberate, not drift.",
+        "section": "components"
       }
     ],
     "dos": [

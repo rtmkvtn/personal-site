@@ -55,6 +55,15 @@ export function resolveProjectLocale(
     arc: project.arc
       ? { steps: resolveStringArray(project.arc.steps, locale) }
       : undefined,
+    journey: project.journey
+      ? {
+          stages: project.journey.stages.map((stage) => ({
+            name: resolveString(stage.name, locale),
+            fact: resolveString(stage.fact, locale),
+            built: resolveString(stage.built, locale),
+          })),
+        }
+      : undefined,
     displayDate: getDisplayDate(project.startDate, project.endDate, locale),
   };
 }

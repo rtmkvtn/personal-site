@@ -56,5 +56,10 @@
     "verify": "Проверка",
     "review": "Ревью",
     "handoff": "hand-off"
+  },
+  "journey": {
+    "seller": "Продавец",
+    "manufacturer": "Производитель",
+    "platform": "Платформа"
   }
 }

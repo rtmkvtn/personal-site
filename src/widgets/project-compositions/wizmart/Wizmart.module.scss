@@ -1,0 +1,283 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 7rem 1.5rem 7rem;
+  max-width: 72rem;
+  --indent: 2.75rem;
+  --gap: 1rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 7rem 4rem 8.5rem;
+    --indent: 5.5rem;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    --gap: 2.75rem;
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+
+  @media (min-width: $breakpoint-md) {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 5.5rem;
+  }
+}
+
+.title {
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+  }
+}
+
+.lede {
+  max-width: 24rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    flex: none;
+  }
+}
+
+.journey {
+  margin-top: 5.5rem;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-top: 7rem;
+  }
+}
+
+.band {
+  display: none;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 2.75rem;
+  padding: 0.5rem 0;
+  background: var(--color-surface);
+
+  @media (min-width: $breakpoint-sm) {
+    display: block;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    position: sticky;
+    top: 0;
+    padding-top: 4rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2.75rem;
+      height: 2.75rem;
+      background: linear-gradient(var(--color-surface), transparent);
+      pointer-events: none;
+    }
+  }
+}
+
+.track {
+  position: relative;
+}
+
+.guide {
+  position: absolute;
+  left: var(--indent);
+  top: 0;
+  bottom: calc(-8.5rem - 0.6rem);
+  width: 1px;
+  background: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+}
+
+.stages {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+}
+
+.stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--indent) minmax(0, 1fr);
+  column-gap: var(--gap);
+  row-gap: 0.75rem;
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+
+  @media (hover: hover) {
+    .stages:hover &:not(:hover) {
+      opacity: 0.3;
+    }
+  }
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: var(--indent) minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage {
+    opacity: 1;
+    transform: none;
+    transition: opacity 300ms ease-out;
+  }
+}
+
+.index {
+  grid-column: 1;
+  padding-right: 1rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-outline);
+}
+
+.verb {
+  position: relative;
+  grid-column: 2;
+  font-size: 1.75rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-on-surface);
+
+  @media (min-width: $breakpoint-md) {
+    grid-column: 2 / 4;
+  }
+}
+
+.fact,
+.built {
+  grid-column: 2;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.fact {
+  color: var(--color-on-surface);
+  max-width: 28rem;
+}
+
+.built {
+  color: var(--color-on-surface-variant);
+  max-width: 28rem;
+
+  @media (min-width: $breakpoint-md) {
+    grid-column: 3;
+  }
+}
+
+.stageEvent {
+  margin: 2.75rem 0;
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: var(--indent) minmax(0, 2fr) minmax(0, 3fr);
+  }
+
+  .verb {
+    font-size: clamp(2.25rem, 7vw, 3.5rem);
+    font-weight: 100;
+    line-height: 1;
+    color: var(--color-primary);
+  }
+
+  .built {
+    max-width: 36rem;
+    color: var(--color-on-surface);
+  }
+
+  .verb::before {
+    content: "";
+    position: absolute;
+    left: calc(-1 * var(--gap) - 5px);
+    top: 0.5em;
+    width: 11px;
+    height: 1px;
+    background: var(--color-outline);
+  }
+}
+
+.handoff {
+  position: relative;
+  margin-top: 8.5rem;
+  padding-left: calc(var(--indent) + var(--gap));
+
+  @media (min-width: $breakpoint-md) {
+    padding-left: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: var(--indent);
+      right: calc(28rem + 2.75rem);
+      top: 0.6rem;
+      height: 1px;
+      background: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+    }
+  }
+}
+
+.arc {
+  max-width: 28rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 5.5rem;
+  padding-left: calc(var(--indent) + 1rem);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.stack {
+  max-width: 40rem;
+  line-height: 1.8;
+}
