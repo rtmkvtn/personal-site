@@ -24,13 +24,6 @@
   display: flex;
   flex-direction: column;
   gap: 2.75rem;
-
-  @media (min-width: $breakpoint-md) {
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 5.5rem;
-  }
 }
 
 .title {
@@ -46,24 +39,43 @@
   }
 }
 
+.body {
+  @media (min-width: $breakpoint-md) {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
+    column-gap: 5.5rem;
+    align-items: start;
+  }
+}
+
+.deck {
+  max-width: 36rem;
+  font-size: 1.75rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-on-surface);
+  text-wrap: balance;
+}
+
 .lede {
   max-width: 24rem;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
   line-height: 1.6;
-  color: var(--color-on-surface);
+  color: var(--color-on-surface-variant);
   text-wrap: pretty;
 
   @media (min-width: $breakpoint-md) {
-    flex: none;
+    margin-left: auto;
   }
 }
 
 .journey {
-  margin-top: 5.5rem;
+  margin-top: 2.75rem;
 
   @media (min-width: $breakpoint-sm) {
-    margin-top: 7rem;
+    margin-top: 4rem;
   }
 }
 
@@ -81,8 +93,17 @@
 
   @media (min-width: $breakpoint-md) {
     position: sticky;
-    top: 0;
-    padding-top: 4rem;
+    top: 4rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: -4rem;
+      height: 4rem;
+      background: var(--color-surface);
+    }
 
     &::after {
       content: "";

@@ -45,7 +45,7 @@ test.describe("Wizmart composition", () => {
     await expect(map.locator("[data-map-node='0']")).not.toHaveClass(/nodeActive/);
 
     const top = await map.evaluate((el) => el.getBoundingClientRect().top);
-    expect(top).toBe(0);
+    expect(top).toBe(64);
   });
 
   test("hovering a stage dims the others", async ({ page }) => {

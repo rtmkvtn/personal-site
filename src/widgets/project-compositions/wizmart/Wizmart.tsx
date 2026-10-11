@@ -17,10 +17,16 @@ interface WizmartProps {
 
 const EVENT_INDEX = 1;
 
+function splitLede(text: string): [string, string] {
+  const match = text.match(/^(.+?[.。])\s*([\s\S]*)$/);
+  return match ? [match[1], match[2]] : [text, ""];
+}
+
 export function Wizmart({ project }: WizmartProps) {
   const locale = useLocale();
   const listRef = useRef<HTMLOListElement>(null);
   const [lede, arc] = project.description.split(/\n{2,}/);
+  const [deck, ledeRest] = splitLede(lede);
   const stages = project.journey?.stages ?? [];
   const [hovered, setHovered] = useState<number | null>(null);
   const [current, setCurrent] = useState(0);
@@ -57,7 +63,10 @@ export function Wizmart({ project }: WizmartProps) {
     <main className={styles.main}>
       <header className={styles.head}>
         <h1 className={styles.title}>{project.name}</h1>
-        <p className={styles.lede}>{lede}</p>
+        <div className={styles.body}>
+          <p className={styles.deck}>{deck}</p>
+          {ledeRest && <p className={styles.lede}>{ledeRest}</p>}
+        </div>
       </header>
 
       <div className={styles.journey}>
