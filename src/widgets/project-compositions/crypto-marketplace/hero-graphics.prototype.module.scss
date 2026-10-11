@@ -1,0 +1,39 @@
+.figure {
+  display: block;
+  width: 100%;
+  max-width: 44rem;
+  height: auto;
+  margin-bottom: 4rem;
+  overflow: visible;
+  color: var(--color-outline);
+}
+
+.label {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--color-outline);
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 9px;
+  fill: var(--color-outline-variant);
+}
+
+.monoLarge {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  fill: var(--color-on-surface-variant);
+}
+
+.line {
+  stroke: color-mix(in srgb, var(--color-outline-variant) 40%, transparent);
+}
+
+.seam {
+  stroke: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+}
