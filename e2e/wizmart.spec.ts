@@ -10,6 +10,7 @@ test.describe("Wizmart composition", () => {
     await page.goto("/work/wizmart");
 
     await expect(page.getByRole("heading", { level: 1, name: "WIZMART" })).toBeVisible();
+    await expect(page.locator("[data-label-figure]")).toBeVisible();
 
     const stages = page.locator("[data-composition='order-journey'] > li");
     await expect(stages).toHaveCount(6);
@@ -38,14 +39,35 @@ test.describe("Wizmart composition", () => {
     await expect(map.locator("[data-map-node]")).toHaveCount(6);
     await expect(map.locator("[data-map-node='0']")).toHaveClass(/nodeActive/);
 
-    const fourth = page.locator("[data-composition='order-journey'] > li").nth(3);
-    const box = (await fourth.boundingBox())!;
-    await page.evaluate((y) => window.scrollTo(0, y - 500), box.y);
+    const stages = page.locator("[data-composition='order-journey'] > li");
+    const box = (await stages.nth(3).boundingBox())!;
+    await page.evaluate((y) => window.scrollTo(0, y - 360), box.y);
     await expect(map.locator("[data-map-node='3']")).toHaveClass(/nodeActive/);
     await expect(map.locator("[data-map-node='0']")).not.toHaveClass(/nodeActive/);
+    await expect(stages.nth(3)).toHaveAttribute("aria-current", "step");
+    await expect
+      .poll(async () => stages.nth(2).evaluate((el) => getComputedStyle(el).opacity))
+      .toBe("0.3");
 
     const top = await map.evaluate((el) => el.getBoundingClientRect().top);
     expect(top).toBe(64);
+  });
+
+  test("clicking a stage or a node scrolls that stage into the active position", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/work/wizmart");
+    const stages = page.locator("[data-composition='order-journey'] > li");
+    const map = page.locator("[data-journey-map]");
+
+    await stages.nth(4).click();
+    await expect(stages.nth(4)).toHaveAttribute("aria-current", "step");
+    await expect(map.locator("[data-map-node='4']")).toHaveClass(/nodeActive/);
+    const top = await stages.nth(4).evaluate((el) => el.getBoundingClientRect().top);
+    expect(Math.abs(top - 360)).toBeLessThan(4);
+
+    await map.locator("[data-map-node='1']").dispatchEvent("click");
+    await expect(stages.nth(1)).toHaveAttribute("aria-current", "step");
+    await expect(map.locator("[data-map-node='1']")).toHaveClass(/nodeActive/);
   });
 
   test("hovering a stage dims the others", async ({ page }) => {

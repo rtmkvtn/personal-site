@@ -25,7 +25,7 @@ export function CryptoMarketplace({ project }: CryptoMarketplaceProps) {
   }));
   const last = steps.length - 1;
 
-  useReveal(listRef, styles.in, steps.length);
+  const revealed = useReveal(listRef, steps.length);
 
   return (
     <main className={styles.main}>
@@ -38,7 +38,12 @@ export function CryptoMarketplace({ project }: CryptoMarketplaceProps) {
         {steps.map((step, i) => (
           <li
             key={step.title}
-            className={clsx(styles.step, styles[`step${i + 1}`], i === last && styles.stepLast)}
+            className={clsx(
+              styles.step,
+              revealed[i] && styles.in,
+              styles[`step${i + 1}`],
+              i === last && styles.stepLast,
+            )}
             style={{ transitionDelay: `${i * 60}ms` }}
           >
             <div className={styles.stepBody}>

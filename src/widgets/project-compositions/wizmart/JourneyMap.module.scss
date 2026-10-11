@@ -23,6 +23,11 @@
   stroke: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
 }
 
+.nodeStage {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
 .node {
   transition: color 300ms ease-out;
 
