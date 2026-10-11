@@ -5,16 +5,28 @@
     "zh": "WIZMART"
   },
   "type": "Fullstack",
-  "stack": ["JavaScript", "React", "Redux", "Redux Saga", "SCSS Modules", "Node.js", "Express", "PostgreSQL"],
+  "stack": [
+    "JavaScript",
+    "React",
+    "Redux",
+    "Redux Saga",
+    "SCSS Modules",
+    "Node.js",
+    "Express",
+    "PostgreSQL"
+  ],
   "highlight": {
-    "en": "Platform for automation of workflow for seller-manufacturing relations on Wildberries",
+    "en": "B2B platform matching Wildberries sellers with manufacturers",
     "ru": "Платформа для автоматизации рабочих процессов между продавцами и производителями на Wildberries",
     "zh": "Wildberries平台上卖家与制造商工作流程自动化平台"
   },
   "achievements": {
     "en": [
-      "Implemented YooMoney payment flow and OFD integration, fully automating receipt issuance and tax reporting — eliminating manual effort entirely",
-      "Built Wildberries API integration for real-time data fetching, order tracking, and automated barcode/QR code printing"
+      "Built the platform solo from zero to a delivered MVP in six months: one app with seller and manufacturer roles and an internal catalog where manufacturers list positions and sellers match their Wildberries goods to them",
+      "Integrated the official Wildberries API: scheduled order polling, automatic routing of each order to the matched manufacturer as a production task, and print-ready marketplace labels with barcodes and QR codes",
+      "Implemented the YooMoney payment flow and OFD integration, issuing a fiscal receipt on every seller-to-manufacturer payment and automating tax reporting with no manual steps",
+      "Worked around a marketplace API with no test environment and responses drifting from its documentation by recording real responses and building a mock server that replayed them, with hand-edited cases for statuses that couldn't be triggered on demand",
+      "Delegated small frontend components to a junior developer during short engagements, with specs and review"
     ],
     "ru": [
       "Реализовал платёжный поток через ЮMoney и интеграцию с ОФД, полностью автоматизировав выдачу чеков и налоговую отчётность — исключив ручной труд",
@@ -26,7 +38,7 @@
     ]
   },
   "description": {
-    "en": "A B2B platform streamlining the seller-manufacturer supply chain on the Wildberries marketplace. Integrated with the official Wildberries API, the platform enabled sellers to track orders in real time and automatically forward them to manufacturers, eliminating manual coordination and reducing fulfillment delays. OFD integration automated tax reporting and financial document generation, keeping all parties compliant with minimal manual effort. Payment processing was handled via YooMoney (U-Money), enabling seamless transactions between sellers and manufacturers. The system served as a central hub connecting all parties in the production-to-delivery pipeline.",
+    "en": "One app, two roles. Manufacturers list their positions in an internal catalog; sellers connect their Wildberries account and match their goods to those positions. From then on every new marketplace order is pulled on a schedule and routed to the matched manufacturer as a production task; manufacturers work the queue and print the marketplace's barcode and QR labels from the platform. The seller pays the manufacturer through the platform via YooMoney, and a fiscal receipt goes out through the OFD provider on every payment, so tax reporting needs no manual step. Built for a founder, delivered as an MVP in six months, and running with a pool of sellers and manufacturers when I left.\n\nI was the sole developer, with a junior borrowed for short stretches for small frontend components. It was the first project where I owned external integrations end to end, three of them at once, and the first where compliance shaped the code. The hard part was Wildberries itself: no test environment, and live responses that drifted from their own documentation. I recorded real responses and built a small mock server that replayed them, with hand-edited cases for statuses I couldn't trigger on demand, and developed against that. It's the project where I became the engineer the product depended on: three integrations owned alone, and an MVP real sellers used.",
     "ru": "B2B-платформа, оптимизирующая цепочку поставок между продавцами и производителями на маркетплейсе Wildberries. Благодаря интеграции с официальным API Wildberries платформа позволяла продавцам отслеживать заказы в реальном времени и автоматически передавать их производителям, исключая ручную координацию и сокращая задержки выполнения. Интеграция с ОФД автоматизировала налоговую отчётность и формирование финансовых документов, обеспечивая соответствие требованиям при минимальных ручных затратах. Приём платежей осуществлялся через ЮMoney, обеспечивая бесшовные расчёты между продавцами и производителями. Система служила центральным узлом, связывающим всех участников цепочки от производства до доставки.",
     "zh": "一个优化Wildberries电商平台上卖家与制造商供应链的B2B平台。通过集成Wildberries官方API，平台使卖家能够实时追踪订单并自动转发给制造商，消除人工协调并减少履约延迟。OFD集成实现了税务报告和财务文档生成的自动化，以最少的人工投入确保各方合规。支付通过YooMoney处理，实现卖家与制造商之间的无缝交易。系统作为连接生产到交付全链条各方的中心枢纽。"
   },
