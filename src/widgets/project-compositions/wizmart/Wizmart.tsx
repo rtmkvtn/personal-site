@@ -1,6 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { PrototypeSwitcher } from "@/shared/ui/PrototypeSwitcher/PrototypeSwitcher";
+import { GRAPHICS_VARIANTS, JourneyMap, StageFigure, Transcript, type GraphicsVariant } from "./graphics.prototype";
 import clsx from "clsx";
 import type { ResolvedProject } from "@/shared/config";
 import { useLocale } from "@/shared/lib/i18n";
@@ -8,8 +11,8 @@ import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import { useReveal } from "../lib/use-reveal";
-import { JourneyMap } from "./JourneyMap";
 import styles from "./Wizmart.module.scss";
+import protoStyles from "./graphics.prototype.module.scss";
 
 interface WizmartProps {
   project: ResolvedProject;
@@ -18,15 +21,38 @@ interface WizmartProps {
 const EVENT_INDEX = 1;
 
 export function Wizmart({ project }: WizmartProps) {
+  if (process.env.NODE_ENV !== "production") {
+    return (
+      <Suspense>
+        <WizmartWithGraphics project={project} />
+      </Suspense>
+    );
+  }
+  return <WizmartBase project={project} />;
+}
+
+function WizmartWithGraphics({ project }: WizmartProps) {
+  const variant = (useSearchParams().get("variant") ?? "A") as GraphicsVariant;
+  return (
+    <>
+      <WizmartBase project={project} graphics={variant} />
+      <PrototypeSwitcher variants={GRAPHICS_VARIANTS} current={variant} />
+    </>
+  );
+}
+
+function WizmartBase({ project, graphics }: WizmartProps & { graphics?: GraphicsVariant }) {
+  const [hovered, setHovered] = useState<number | null>(null);
+  const [current, setCurrent] = useState<number>(0);
+  const active = hovered ?? current;
   const locale = useLocale();
   const listRef = useRef<HTMLOListElement>(null);
   const [lede, arc] = project.description.split(/\n{2,}/);
   const stages = project.journey?.stages ?? [];
-  const [hovered, setHovered] = useState<number | null>(null);
-  const [current, setCurrent] = useState(0);
   useReveal(listRef, styles.in, stages.length);
 
   useEffect(() => {
+    if (!graphics) return;
     const list = listRef.current;
     if (!list) return;
     const items = Array.from(list.children) as HTMLElement[];
@@ -51,7 +77,7 @@ export function Wizmart({ project }: WizmartProps) {
       window.removeEventListener("resize", onScroll);
       if (frame) cancelAnimationFrame(frame);
     };
-  }, [stages.length]);
+  }, [graphics, stages.length]);
 
   return (
     <main className={styles.main}>
@@ -59,14 +85,14 @@ export function Wizmart({ project }: WizmartProps) {
         <h1 className={styles.title}>{project.name}</h1>
         <p className={styles.lede}>{lede}</p>
       </header>
-
       <div className={styles.journey}>
-        <div className={styles.band} data-journey-map>
-          <JourneyMap stages={stages.map((stage) => stage.name)} active={hovered ?? current} />
-        </div>
-        <div className={styles.track}>
-          <span className={styles.guide} aria-hidden="true" />
-          <ol ref={listRef} className={styles.stages} data-composition="order-journey">
+        {graphics === "A" && (
+          <div className={protoStyles.mapSticky}>
+            <JourneyMap active={active} />
+          </div>
+        )}
+        <span className={styles.guide} aria-hidden="true" />
+        <ol ref={listRef} className={styles.stages} data-composition="order-journey">
           {stages.map((stage, i) => (
             <li
               key={stage.name}
@@ -81,10 +107,11 @@ export function Wizmart({ project }: WizmartProps) {
               <h2 className={styles.verb}>{stage.name}</h2>
               <p className={styles.fact}>{stage.fact}</p>
               <p className={styles.built}>{stage.built}</p>
+              {graphics === "B" && <StageFigure index={i} />}
+              {graphics === "C" && i === EVENT_INDEX && <Transcript />}
             </li>
           ))}
-          </ol>
-        </div>
+        </ol>
       </div>
 
       {arc && (

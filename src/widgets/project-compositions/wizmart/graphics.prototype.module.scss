@@ -1,0 +1,100 @@
+.mapSticky {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 2.75rem;
+  padding: 0.5rem 0 0.5rem;
+  background: var(--color-surface);
+
+  @media (min-width: 1024px) {
+    position: sticky;
+    top: 0;
+    padding-top: 4rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -2.75rem;
+      height: 2.75rem;
+      background: linear-gradient(var(--color-surface), transparent);
+      pointer-events: none;
+    }
+  }
+}
+
+.map {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--color-outline);
+  overflow: visible;
+}
+
+.mapLabel {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  fill: var(--color-outline);
+}
+
+.mapLine {
+  stroke: color-mix(in srgb, var(--color-outline-variant) 40%, transparent);
+}
+
+.mapSeam {
+  stroke: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+}
+
+.node,
+.ext {
+  transition: color 300ms ease-out;
+}
+
+.nodeActive {
+  color: var(--color-primary);
+
+  .mapLabel {
+    fill: var(--color-primary);
+  }
+}
+
+.figure {
+  position: absolute;
+  right: 0;
+  top: -0.5rem;
+  width: 4rem;
+  height: 4rem;
+  color: var(--color-outline);
+}
+
+.transcript {
+  grid-column: 2 / -1;
+  margin-top: 1.5rem;
+  max-width: 36rem;
+  color: var(--color-outline);
+
+  svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 9px;
+  fill: var(--color-outline-variant);
+}
+
+.drift {
+  stroke: var(--color-primary);
+}
+
+.caption {
+  margin-top: 0.75rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--color-outline-variant);
+}
