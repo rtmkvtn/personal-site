@@ -6,6 +6,8 @@ export {
   type LocalizedStringArray,
   type AiFirstJson,
   type JourneyStage,
+  type HandoffActor,
+  type HandoffStage,
   type ResolvedAiFirst,
   type Project,
   type ProjectJson,

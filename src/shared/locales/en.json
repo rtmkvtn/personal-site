@@ -69,5 +69,16 @@
     "balance": "Balance",
     "held": "held until both confirm",
     "released": "released"
+  },
+  "handoff": {
+    "author": "Author",
+    "admin": "Admin",
+    "student": "Student",
+    "lesson": "Lesson",
+    "submitted": "Submitted",
+    "published": "Published",
+    "review": "Admin review",
+    "hidden": "not visible to students",
+    "visible": "visible to students"
   }
 }

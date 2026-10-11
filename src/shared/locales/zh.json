@@ -69,5 +69,16 @@
     "balance": "余额",
     "held": "双方确认前保留",
     "released": "已放款"
+  },
+  "handoff": {
+    "author": "作者",
+    "admin": "管理员",
+    "student": "学生",
+    "lesson": "课时",
+    "submitted": "已提交",
+    "published": "已发布",
+    "review": "管理员审核",
+    "hidden": "学生不可见",
+    "visible": "学生可见"
   }
 }

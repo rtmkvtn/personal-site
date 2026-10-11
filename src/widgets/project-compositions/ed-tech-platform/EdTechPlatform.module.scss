@@ -1,0 +1,331 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 7rem 1.5rem 7rem;
+  max-width: 72rem;
+  --indent: 2.75rem;
+  --step: 1.5rem;
+  --gap: 1rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 7rem 4rem 8.5rem;
+    --indent: 5.5rem;
+    --step: 2.75rem;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    --step: 5.5rem;
+    --gap: 2.75rem;
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+
+  @media (min-width: $breakpoint-md) {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
+    column-gap: 5.5rem;
+    align-items: start;
+  }
+}
+
+.deck {
+  max-width: 36rem;
+  font-size: 1.75rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-on-surface);
+  text-wrap: balance;
+}
+
+.lede {
+  max-width: 24rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: auto;
+  }
+}
+
+.stages {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+  margin-top: 5.5rem;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-top: 7rem;
+  }
+}
+
+.stage {
+  --run: 0;
+  --x: calc(var(--indent) + var(--run) * var(--step));
+  --between: 5.5rem;
+  --cross: 1rem;
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--x) minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  column-gap: var(--gap);
+  row-gap: 0.75rem;
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+}
+
+.author {
+  --run: 0;
+}
+
+.admin {
+  --run: 1;
+}
+
+.student {
+  --run: 2;
+}
+
+.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage {
+    transform: none;
+    transition: opacity 300ms ease-out;
+  }
+}
+
+.index,
+.actor,
+.verb,
+.fact,
+.built {
+  transition: opacity 300ms ease-out;
+}
+
+.stages[data-lit] .stage:not(.lit) > :is(.index, .actor, .verb, .fact, .built) {
+  opacity: 0.3;
+}
+
+.rail,
+.tail,
+.cross {
+  position: absolute;
+  background: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+  transition: background-color 300ms ease-out;
+}
+
+.rail {
+  left: var(--x);
+  top: calc(-1 * var(--between));
+  bottom: 0;
+  width: 1px;
+}
+
+.runStart .rail {
+  top: var(--cross);
+}
+
+@media (min-width: $breakpoint-md) {
+  .stageLast .rail {
+    bottom: calc(-8.5rem - 0.6rem);
+  }
+}
+
+.tail {
+  left: calc(var(--x) - var(--step));
+  top: calc(-1 * var(--between));
+  height: calc(var(--between) + var(--cross));
+  width: 1px;
+}
+
+.cross {
+  left: calc(var(--x) - var(--step));
+  top: var(--cross);
+  width: var(--step);
+  height: 1px;
+}
+
+.lit .rail,
+.lit .cross,
+.prevLit .tail,
+.prevLit .cross {
+  background: color-mix(in srgb, var(--color-outline-variant) 60%, transparent);
+}
+
+.index {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: end;
+  padding-right: 1rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-outline);
+}
+
+.actor {
+  grid-column: 1;
+  grid-row: 2 / span 2;
+  justify-self: end;
+  align-self: start;
+  padding-left: 1rem;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.verb {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 1.75rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-on-surface);
+}
+
+.fact,
+.built {
+  grid-column: 2;
+  max-width: 28rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.fact {
+  grid-row: 2;
+  color: var(--color-on-surface);
+}
+
+.built {
+  grid-row: 3;
+  color: var(--color-on-surface-variant);
+}
+
+.stageEvent {
+  --between: 8.25rem;
+  --cross: calc(0.5 * clamp(2.25rem, 7vw, 3.5rem));
+  margin: 2.75rem 0;
+
+  .verb {
+    font-size: clamp(2.25rem, 7vw, 3.5rem);
+    font-weight: 100;
+    line-height: 1;
+    color: var(--color-primary);
+  }
+
+  .fact,
+  .built {
+    max-width: 32rem;
+  }
+
+  .built {
+    color: var(--color-on-surface);
+  }
+}
+
+.stageEvent + .stage {
+  --between: 8.25rem;
+}
+
+.handoff {
+  position: relative;
+  margin-top: 8.5rem;
+  padding-left: calc(var(--indent) + var(--gap));
+
+  @media (min-width: $breakpoint-md) {
+    padding-left: 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: calc(var(--indent) + 2 * var(--step));
+      right: calc(28rem + 2.75rem);
+      top: 0.6rem;
+      height: 1px;
+      background: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+      transition: background-color 300ms ease-out;
+    }
+
+    .stages[data-lit="student"] + &::before {
+      background: color-mix(in srgb, var(--color-outline-variant) 60%, transparent);
+    }
+  }
+}
+
+.arc {
+  max-width: 28rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 5.5rem;
+  padding-left: calc(var(--indent) + var(--gap));
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.stack {
+  max-width: 40rem;
+  line-height: 1.8;
+}
