@@ -5,34 +5,155 @@
     "zh": "在线教育平台"
   },
   "type": "Fullstack",
-  "stack": ["JavaScript", "React", "Redux", "Redux Saga", "SCSS Modules", "Node.js", "Strapi CMS", "PostgreSQL"],
+  "stack": [
+    "JavaScript",
+    "React",
+    "Redux",
+    "Redux Saga",
+    "SCSS Modules",
+    "Node.js",
+    "Strapi CMS",
+    "PostgreSQL"
+  ],
   "highlight": {
-    "en": "Ed-Tech platform for both courses authors and students with role-based interface segregation",
-    "ru": "Ed-Tech платформа для авторов курсов и студентов с разделением интерфейса по ролям",
-    "zh": "面向课程作者和学生的在线教育平台，具备基于角色的界面隔离"
+    "en": "Subscription course platform: authors write, admins publish, students learn",
+    "ru": "Платформа курсов по подписке: авторы пишут, админы публикуют, студенты учатся",
+    "zh": "订阅制课程平台：作者撰写，管理员发布，学生学习"
   },
   "achievements": {
     "en": [
-      "Built the entire platform from scratch, delivering both author and student interfaces with role-based access control",
-      "Integrated Stripe and Cloud Payments for seamless subscription-based billing",
-      "Migrated Strapi CMS from v3 to v4, ensuring zero downtime and data integrity across the transition"
+      "Built the platform from scratch as the only developer: author, admin and student interfaces in one app, with a review gate between writing and publishing",
+      "Integrated Stripe, CloudPayments and a crypto rail behind one monthly subscription, with Stripe driven from the backend over webhooks",
+      "Migrated the live platform from Strapi v3 to v4, rewriting the frontend, permissions and custom controllers, with the data intact"
     ],
     "ru": [
-      "Разработал платформу с нуля, реализовав интерфейсы автора и студента с ролевым разграничением доступа",
-      "Интегрировал Stripe и Cloud Payments для бесшовной подписочной системы оплаты",
-      "Мигрировал Strapi CMS с v3 на v4, обеспечив нулевой простой и целостность данных"
+      "Построил платформу с нуля как единственный разработчик: интерфейсы автора, админа и студента в одном приложении, с этапом проверки между написанием и публикацией",
+      "Интегрировал Stripe, CloudPayments и криптоплатежи за одной месячной подпиской; Stripe — с бэкенда через вебхуки",
+      "Мигрировал живую платформу со Strapi v3 на v4, переписав фронтенд, права и кастомные контроллеры, без потери данных"
     ],
     "zh": [
-      "从零构建整个平台，交付了具有角色访问控制的作者和学生界面",
-      "集成Stripe和Cloud Payments，实现无缝的订阅计费系统",
-      "将Strapi CMS从v3迁移至v4，确保零停机和数据完整性"
+      "作为唯一开发者从零构建平台：作者、管理员和学生三套界面在同一个应用里，写作与发布之间有一道审核关口",
+      "在一个月度订阅背后集成了 Stripe、CloudPayments 和加密货币支付；Stripe 由后端通过 webhook 驱动",
+      "把线上平台从 Strapi v3 迁移到 v4，重写了前端、权限和自定义控制器，数据完好无损"
     ]
   },
   "description": {
-    "en": "A comprehensive ed-tech platform serving two distinct user roles. Course authors get a full content management suite to create, edit, and publish video-based courses with structured curricula. Students access a subscription-based learning environment featuring progress tracking, course ratings, and personalized dashboards. The platform enforces strict role-based interface segregation, ensuring each user type sees only the tools and content relevant to their workflow.",
-    "ru": "Комплексная ed-tech платформа, обслуживающая две различные пользовательские роли. Авторы курсов получают полный набор инструментов для создания, редактирования и публикации видеокурсов со структурированными учебными программами. Студенты используют среду обучения на основе подписки с отслеживанием прогресса, рейтингами курсов и персонализированными дашбордами. Платформа обеспечивает строгое разделение интерфейса по ролям, гарантируя, что каждый тип пользователя видит только релевантные инструменты и контент.",
-    "zh": "一个服务于两种不同用户角色的综合在线教育平台。课程作者拥有完整的内容管理工具，可创建、编辑和发布结构化的视频课程。学生通过订阅制访问学习环境，支持学习进度追踪、课程评分和个性化仪表盘。平台实施严格的角色界面隔离，确保每种用户类型只能看到与其工作流相关的工具和内容。"
+    "en": "Three roles in one app. Authors write lessons as rich-text pages with images, upload a video into a lesson when it has one, group lessons into courses, and send them for review. Admins invite the authors, review every lesson, and publish it; nothing reaches a student without that step. Students pay one monthly subscription for the whole catalog, by card through Stripe or CloudPayments or in crypto for a one-off period, and get a dashboard with progress per course and one rating per course. Built for a founder, it ran for a closed circle of subscribers and was shelved when the money ran out.\n\nI was the only developer on the product, with a PM between me and the founder and a DevOps for the servers. Everything in the app is mine: the three interfaces, the review states, the upload, the payment integrations, and the data model in Strapi. It was the first project where I owned a product's data model and ran a CMS as the backend, and the first where I changed the foundations of a live system: when Strapi v4 came out I moved the running platform from v3 to v4, rewriting the frontend against the new response shape, the permissions model, and the custom controllers, with the data intact. It's the project where I learned to own a whole product rather than features inside one.",
+    "ru": "Три роли в одном приложении. Авторы пишут уроки как страницы с форматированным текстом и картинками, загружают в урок видео, если оно есть, собирают уроки в курсы и отправляют их на проверку. Админы приглашают авторов, проверяют каждый урок и публикуют его; без этого шага студент ничего не увидит. Студенты платят одну месячную подписку за весь каталог, картой через Stripe или CloudPayments либо криптовалютой за разовый период, и получают дашборд с прогрессом по каждому курсу и одной оценкой на курс. Сделано для фаундера, работало для закрытого круга подписчиков и было заморожено, когда закончились деньги.\n\nЯ был единственным разработчиком продукта: между мной и фаундером был PM, серверами занимался DevOps. Всё в приложении моё: три интерфейса, состояния проверки, загрузка, платёжные интеграции и модель данных в Strapi. Это первый проект, где я владел моделью данных продукта и использовал CMS как бэкенд, и первый, где я менял фундамент живой системы: когда вышла Strapi v4, я перевёл работающую платформу с v3 на v4, переписав фронтенд под новый формат ответов, модель прав и кастомные контроллеры, без потери данных. Это проект, где я научился отвечать за продукт целиком, а не за отдельные фичи внутри него.",
+    "zh": "一个应用，三种角色。作者把课时写成带图片的富文本页面，有视频就在课时里上传，把课时组成课程并提交审核。管理员邀请作者，审核每一节课时并发布；没有这一步，学生什么也看不到。学生按月订阅整个目录，用卡通过 Stripe 或 CloudPayments 支付，或用加密货币一次性购买一个周期，并获得一个仪表盘，显示每门课程的进度和每门课程的一个评分。为一位创始人而建，曾为一小圈订阅者运行，后来因资金断裂而搁置。\n\n我是这个产品唯一的开发者，我和创始人之间有一位 PM，服务器由一位 DevOps 负责。应用里的一切都出自我手：三套界面、审核状态、上传、支付集成，以及 Strapi 里的数据模型。这是我第一个掌管产品数据模型、把 CMS 当作后端来跑的项目，也是第一个在线上系统上更换地基的项目：Strapi v4 发布后，我把运行中的平台从 v3 迁到 v4，按新的响应格式、权限模型和自定义控制器重写了前端，数据完好无损。在这个项目里，我学会了对整个产品负责，而不只是产品里的某些功能。"
   },
   "startDate": "2021-01",
-  "endDate": "2022-01"
+  "endDate": "2022-01",
+  "handoff": {
+    "stages": [
+      {
+        "actor": "author",
+        "name": {
+          "en": "Written",
+          "ru": "Написан",
+          "zh": "写成"
+        },
+        "fact": {
+          "en": "A lesson is a rich-text page with images; when it has a video, the author uploads it in the editor and it is served from the platform's own server.",
+          "ru": "Урок — это страница с форматированным текстом и картинками; если в нём есть видео, автор загружает его прямо в редакторе, и оно раздаётся с сервера платформы.",
+          "zh": "课时是一个带图片的富文本页面；如果有视频，作者在编辑器里直接上传，视频由平台自己的服务器提供。"
+        },
+        "built": {
+          "en": "The authoring interface, the lesson editor, and the upload.",
+          "ru": "Интерфейс автора, редактор урока и загрузка.",
+          "zh": "作者界面、课时编辑器和上传。"
+        }
+      },
+      {
+        "actor": "author",
+        "name": {
+          "en": "Submitted",
+          "ru": "Отправлен",
+          "zh": "提交"
+        },
+        "fact": {
+          "en": "The author groups lessons into a course and sends them for review.",
+          "ru": "Автор собирает уроки в курс и отправляет их на проверку.",
+          "zh": "作者把课时组成课程并送去审核。"
+        },
+        "built": {
+          "en": "The draft, submitted, and published states on lessons and courses.",
+          "ru": "Состояния черновика, отправки и публикации у уроков и курсов.",
+          "zh": "课时和课程上的草稿、已提交、已发布三种状态。"
+        }
+      },
+      {
+        "actor": "admin",
+        "name": {
+          "en": "Published",
+          "ru": "Опубликован",
+          "zh": "发布"
+        },
+        "fact": {
+          "en": "An admin reviews the lesson and publishes it. Nothing reaches a student without this step.",
+          "ru": "Админ проверяет урок и публикует его. Без этого шага студент ничего не увидит.",
+          "zh": "管理员审核课时并发布。没有这一步，学生什么也看不到。"
+        },
+        "built": {
+          "en": "The admin interface: the review queue, publishing, and author invites.",
+          "ru": "Интерфейс админа: очередь проверки, публикация и приглашения авторов.",
+          "zh": "管理员界面：审核队列、发布和作者邀请。"
+        }
+      },
+      {
+        "actor": "student",
+        "name": {
+          "en": "Unlocked",
+          "ru": "Открыт",
+          "zh": "解锁"
+        },
+        "fact": {
+          "en": "One monthly subscription opens the whole catalog; there is no per-course purchase.",
+          "ru": "Одна месячная подписка открывает весь каталог; покупки отдельных курсов нет.",
+          "zh": "一个月度订阅打开整个目录；没有按课程购买。"
+        },
+        "built": {
+          "en": "Stripe from the backend over webhooks, CloudPayments for cards, and a crypto rail for one-off periods.",
+          "ru": "Stripe с бэкенда через вебхуки, CloudPayments для карт и криптоплатежи за разовый период.",
+          "zh": "后端通过 webhook 对接 Stripe，CloudPayments 处理银行卡，加密货币一次性购买一个周期。"
+        }
+      },
+      {
+        "actor": "student",
+        "name": {
+          "en": "Completed",
+          "ru": "Пройден",
+          "zh": "完成"
+        },
+        "fact": {
+          "en": "Progress is lessons completed per course, shown on the dashboard the student lands on.",
+          "ru": "Прогресс — это пройденные уроки по каждому курсу, на дашборде, с которого студент начинает.",
+          "zh": "进度是每门课程已完成的课时数，显示在学生登录后看到的仪表盘上。"
+        },
+        "built": {
+          "en": "Progress tracking and the dashboard.",
+          "ru": "Отслеживание прогресса и дашборд.",
+          "zh": "进度跟踪和仪表盘。"
+        }
+      },
+      {
+        "actor": "student",
+        "name": {
+          "en": "Rated",
+          "ru": "Оценён",
+          "zh": "评分"
+        },
+        "fact": {
+          "en": "A student leaves one score per course, and the catalog shows it.",
+          "ru": "Студент ставит курсу одну оценку, и она видна в каталоге.",
+          "zh": "学生给每门课程打一个分，目录里会显示。"
+        },
+        "built": {
+          "en": "Course ratings.",
+          "ru": "Оценки курсов.",
+          "zh": "课程评分。"
+        }
+      }
+    ]
+  }
 }

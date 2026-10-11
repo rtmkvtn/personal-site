@@ -64,6 +64,16 @@ export function resolveProjectLocale(
           })),
         }
       : undefined,
+    handoff: project.handoff
+      ? {
+          stages: project.handoff.stages.map((stage) => ({
+            actor: stage.actor,
+            name: resolveString(stage.name, locale),
+            fact: resolveString(stage.fact, locale),
+            built: resolveString(stage.built, locale),
+          })),
+        }
+      : undefined,
     displayDate: getDisplayDate(project.startDate, project.endDate, locale),
   };
 }

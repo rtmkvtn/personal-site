@@ -39,3 +39,7 @@ _Avoid_: Title, tagline, headline
 **Surface**:
 One of the site's content areas: Home, About, Hard Skills, Work, Contact.
 _Avoid_: Page, section, screen
+
+**Composition**:
+A project page's bespoke arrangement, chosen by the project's slug; a project without one is shown as the generic reading column. Each composition tells one story about its project and owns its own loud element in place of the hero numeral.
+_Avoid_: Layout, template, custom page, case-study page
