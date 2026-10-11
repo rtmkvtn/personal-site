@@ -30,10 +30,10 @@ export function JourneyMap({ stages, active, onHover, onSelect }: JourneyMapProp
   const x = (i: number) => 170 + i * step;
 
   return (
-    <svg className={styles.map} viewBox="0 0 900 112" aria-hidden="true" style={{ pointerEvents: "none" }}>
+    <svg className={styles.map} viewBox="0 0 960 112" aria-hidden="true" style={{ pointerEvents: "none" }}>
       <text x="20" y="38" className={styles.label}>{t("journey.seller")}</text>
-      <text x="880" y="38" textAnchor="end" className={styles.label}>{t("journey.manufacturer")}</text>
-      <line x1="70" y1="34" x2="830" y2="34" {...STROKE} className={styles.line} />
+      <text x="950" y="38" textAnchor="end" className={styles.label}>{t("journey.manufacturer")}</text>
+      <line x1="70" y1="34" x2="890" y2="34" {...STROKE} className={styles.line} />
       <rect x="130" y="12" width="680" height="44" {...STROKE} className={styles.seam} />
       <text x="470" y="6" textAnchor="middle" className={styles.label}>{t("journey.platform")}</text>
       {stages.map((name, i) => (
