@@ -80,5 +80,12 @@
     "review": "管理员审核",
     "hidden": "学生不可见",
     "visible": "学生可见"
+  },
+  "interpreter": {
+    "wire": "后端",
+    "screen": "屏幕",
+    "examRoom": "诊室",
+    "patient": "患者",
+    "previews": "四个实时预览，同一时段"
   }
 }

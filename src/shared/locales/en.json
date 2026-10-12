@@ -80,5 +80,12 @@
     "review": "Admin review",
     "hidden": "not visible to students",
     "visible": "visible to students"
+  },
+  "interpreter": {
+    "wire": "Wire",
+    "screen": "Screen",
+    "examRoom": "Exam room",
+    "patient": "Patient",
+    "previews": "four live previews, one slot"
   }
 }

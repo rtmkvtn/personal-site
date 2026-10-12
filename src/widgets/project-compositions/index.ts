@@ -3,6 +3,7 @@ import type { ResolvedProject } from "@/shared/config";
 import { CryptoMarketplace } from "./crypto-marketplace/CryptoMarketplace";
 import { Wizmart } from "./wizmart/Wizmart";
 import { EdTechPlatform } from "./ed-tech-platform/EdTechPlatform";
+import { Ziphycare } from "./ziphycare/Ziphycare";
 
 export const PROJECT_COMPOSITIONS: Record<
   string,
@@ -11,4 +12,5 @@ export const PROJECT_COMPOSITIONS: Record<
   "crypto-marketplace": CryptoMarketplace,
   wizmart: Wizmart,
   "ed-tech-platform": EdTechPlatform,
+  ziphycare: Ziphycare,
 };
