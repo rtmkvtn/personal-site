@@ -74,6 +74,16 @@ export function resolveProjectLocale(
           })),
         }
       : undefined,
+    interpreter: project.interpreter
+      ? {
+          rows: project.interpreter.rows.map((row) => ({
+            direction: row.direction,
+            wire: resolveString(row.wire, locale),
+            screen: resolveString(row.screen, locale),
+            built: resolveString(row.built, locale),
+          })),
+        }
+      : undefined,
     displayDate: getDisplayDate(project.startDate, project.endDate, locale),
   };
 }

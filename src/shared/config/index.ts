@@ -8,6 +8,8 @@ export {
   type JourneyStage,
   type HandoffActor,
   type HandoffStage,
+  type InterpreterDirection,
+  type InterpreterRow,
   type ResolvedAiFirst,
   type Project,
   type ProjectJson,

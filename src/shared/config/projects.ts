@@ -73,6 +73,24 @@ export interface HandoffStage extends JourneyStage {
   actor: HandoffActor;
 }
 
+export const INTERPRETER_DIRECTIONS = ["in", "out"] as const;
+
+export type InterpreterDirection = (typeof INTERPRETER_DIRECTIONS)[number];
+
+export interface InterpreterRowJson {
+  direction: InterpreterDirection;
+  wire: LocalizedString;
+  screen: LocalizedString;
+  built: LocalizedString;
+}
+
+export interface InterpreterRow {
+  direction: InterpreterDirection;
+  wire: string;
+  screen: string;
+  built: string;
+}
+
 export interface ProjectJson {
   name: LocalizedString;
   type: ProjectType;
@@ -88,6 +106,7 @@ export interface ProjectJson {
   arc?: { steps: LocalizedStringArray };
   journey?: { stages: JourneyStageJson[] };
   handoff?: { stages: HandoffStageJson[] };
+  interpreter?: { rows: InterpreterRowJson[] };
 }
 
 export interface Project extends ProjectJson {
@@ -110,6 +129,7 @@ export interface ResolvedProject
     | "arc"
     | "journey"
     | "handoff"
+    | "interpreter"
   > {
   name: string;
   highlight: string;
@@ -119,6 +139,7 @@ export interface ResolvedProject
   arc?: { steps: string[] };
   journey?: { stages: JourneyStage[] };
   handoff?: { stages: HandoffStage[] };
+  interpreter?: { rows: InterpreterRow[] };
 }
 
 // Static images for decorative backgrounds, randomly assigned

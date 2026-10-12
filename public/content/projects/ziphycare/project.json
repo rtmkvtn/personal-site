@@ -5,38 +5,158 @@
     "zh": "ZIPHYCARE"
   },
   "type": "Frontend",
-  "stack": ["JavaScript", "TypeScript", "React", "MobX", "SCSS Modules", "GitHub Actions", "FHIR"],
+  "stack": [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "MobX",
+    "SCSS Modules",
+    "GitHub Actions",
+    "FHIR"
+  ],
   "highlight": {
-    "en": "US Health-Tech startup",
-    "ru": "Американский Health-Tech стартап",
-    "zh": "美国健康科技初创公司"
+    "en": "Physician and patient apps for at-home medical exams, on raw FHIR",
+    "ru": "Приложения врача и пациента для медосмотров на дому, на сыром FHIR",
+    "zh": "面向医生和患者的上门体检应用，直接基于原始 FHIR 数据"
   },
   "achievements": {
     "en": [
-      "Developed a patient medical history module compliant with FHIR standards, including PDF report generation, standardizing medical data handling and reducing data access time for physicians",
-      "Migrated the entire codebase (100k+ lines) from JavaScript to TypeScript, reducing runtime errors in production by ~30%",
-      "Refactored the project using Feature-Sliced Design (FSD) architecture, reducing onboarding time for new developers by 25% and simplifying maintenance of legacy modules",
-      "Managed frontend releases and coordinated with QA and backend teams, ensuring stable deliveries and reduced errors"
+      "Built the physician's and patient's apps for at-home exams: scheduling, the exam room with Zoom embedded and up to four live appointments in one slot, the patient's booking and history",
+      "Built the frontend's FHIR layer: adapters and transformers on read, one store per resource type, composers producing complete FHIR objects on save, and the PDF visit summary",
+      "Led the incremental migration of a large live codebase from JavaScript to strict TypeScript",
+      "Reorganized the codebase along Feature-Sliced Design and owned biweekly releases to three environments behind a QA gate"
     ],
     "ru": [
-      "Разработал модуль медицинской истории пациента, соответствующий стандартам FHIR, включая генерацию PDF-отчётов, что стандартизировало обработку медицинских данных и сократило время доступа к данным для врачей",
-      "Мигрировал всю кодовую базу (100k+ строк) с JavaScript на TypeScript, сократив ошибки в продакшене на ~30%",
-      "Провёл рефакторинг проекта с использованием архитектуры Feature-Sliced Design (FSD), сократив время онбординга новых разработчиков на 25% и упростив поддержку устаревших модулей",
-      "Управлял фронтенд-релизами и координировал работу с QA и бэкенд-командами, обеспечивая стабильные поставки и снижение ошибок"
+      "Разработал приложения врача и пациента для осмотров на дому: расписание, кабинет осмотра со встроенным Zoom и до четырёх живых приёмов в одном слоте, запись и история визитов пациента",
+      "Построил FHIR-слой фронтенда: адаптеры и трансформеры на чтение, отдельный стор на каждый тип ресурса, композеры, собирающие полные FHIR-объекты при сохранении, и PDF-отчёт о визите",
+      "Возглавил поэтапную миграцию большой живой кодовой базы с JavaScript на strict TypeScript",
+      "Перестроил кодовую базу по Feature-Sliced Design и отвечал за релизы раз в две недели на три окружения с QA-проверкой перед продакшеном"
     ],
     "zh": [
-      "开发了符合FHIR标准的患者病历模块，包括PDF报告生成，标准化了医疗数据处理并缩短了医生的数据访问时间",
-      "将整个代码库（10万+行代码）从JavaScript迁移至TypeScript，生产环境运行时错误减少约30%",
-      "使用Feature-Sliced Design（FSD）架构重构项目，新开发者入职时间缩短25%，简化了遗留模块的维护",
-      "管理前端发布并与QA和后端团队协调，确保稳定交付并减少错误"
+      "构建了上门体检的医生端和患者端应用：排班、内嵌 Zoom 的诊室、同一时段最多四场实时问诊，以及患者的预约和就诊历史",
+      "构建了前端的 FHIR 层：读取时的适配器和转换器、每种资源类型一个 store、保存时组装完整 FHIR 对象的 composer，以及 PDF 就诊摘要",
+      "主导了一个大型线上代码库从 JavaScript 到 strict TypeScript 的渐进式迁移",
+      "按 Feature-Sliced Design 重组代码库，并负责每两周一次、面向三个环境、经 QA 把关的发布"
     ]
   },
   "description": {
-    "en": "A US-based health-tech startup reimagining at-home healthcare delivery. ZiphyCare bridges the gap between remote and in-person medical exams by dispatching trained medical assistants equipped with a patented ZiphyKit to patients' homes, enabling physicians to conduct thorough examinations remotely. The platform provides an end-to-end solution covering patient triage, scheduling, real-time examination, and communication — all powered by FDA-cleared proprietary technology.",
-    "ru": "Американский health-tech стартап, переосмысливающий оказание медицинской помощи на дому. ZiphyCare устраняет разрыв между дистанционными и очными медицинскими осмотрами, направляя обученных медицинских ассистентов с запатентованным ZiphyKit к пациентам домой, позволяя врачам проводить полноценные обследования удалённо. Платформа предоставляет комплексное решение, охватывающее триаж пациентов, планирование, обследование в реальном времени и коммуникацию — всё на основе запатентованной технологии с допуском FDA.",
-    "zh": "一家重新定义居家医疗服务的美国健康科技初创公司。ZiphyCare通过派遣配备专利ZiphyKit的训练有素的医疗助理到患者家中，使医生能够远程进行全面检查，弥合了远程与面对面医疗检查之间的鸿沟。平台提供覆盖患者分诊、预约排期、实时检查和沟通的端到端解决方案——全部基于FDA认证的专有技术。"
+    "en": "Two apps for at-home medical exams. A patient books a visit in MyZiphy; a medical assistant comes to the home with the ZiphyKit, a case of exam devices with its own app; the physician runs the exam from ZiphyDoc, with Zoom inside the app and the kit's readings reaching them through our interface. One physician could hold up to four appointments in a slot, folded into a bottom bar of live previews, one click from the big screen. After the visit, the patient's history and a PDF summary. A US startup, live with real patients the whole time I was there.\n\nI joined as a frontend engineer in a team of four, remote, and stayed two and a half years, the longest I've been on one product. The hard part was FHIR: the backend returned raw resources, Observations, Conditions, medications, prescriptions and orders, in the arrays they came in, and expected complete FHIR objects back. I built the layer between that and the screen: adapters and transformers on read, one base store with an isolated store per resource type, composers that assembled valid resources on save. Around it I led the move of a large codebase from JavaScript to strict TypeScript, incrementally, while it stayed live, reorganized what I could reach along Feature-Sliced Design, and by the end owned the releases: biweekly, three environments, QA sign-off before production. It's the project where I learned to make a legacy codebase safe to change without stopping the product.",
+    "ru": "Два приложения для медосмотров на дому. Пациент записывается на визит в MyZiphy; медицинский ассистент приезжает домой с ZiphyKit, кейсом диагностических приборов со своим приложением; врач ведёт осмотр из ZiphyDoc, с Zoom внутри приложения и показаниями кейса, которые доходят до него через наш интерфейс. У одного врача в слоте могло быть до четырёх приёмов одновременно, свёрнутых в нижнюю панель живых превью, в один клик от большого экрана. После визита — история пациента и PDF-отчёт. Американский стартап, всё время моей работы живой, с настоящими пациентами.\n\nЯ пришёл фронтенд-инженером в команду из четырёх, удалённо, и остался на два с половиной года — дольше, чем на любом другом продукте. Самым сложным был FHIR: бэкенд возвращал сырые ресурсы, Observations, Conditions, лекарства, рецепты и назначения, теми массивами, какими они приходили, и ждал обратно полные FHIR-объекты. Я построил слой между этим и экраном: адаптеры и трансформеры на чтение, один базовый стор с изолированным стором на каждый тип ресурса, композеры, собирающие валидные ресурсы при сохранении. Вокруг этого я возглавил перевод большой кодовой базы с JavaScript на strict TypeScript, поэтапно, не останавливая продукт, перестроил то, до чего дотянулся, по Feature-Sliced Design, а к концу отвечал за релизы: раз в две недели, три окружения, подпись QA перед продакшеном. Это проект, где я научился делать легаси-код безопасным для изменений, не останавливая продукт.",
+    "zh": "两个上门体检应用。患者在 MyZiphy 预约就诊；医疗助理带着 ZiphyKit 上门，那是一箱自带应用的检查设备；医生在 ZiphyDoc 里完成问诊，Zoom 内嵌在应用里，设备读数通过我们的界面送到医生面前。一位医生在一个时段里最多可以同时接四场问诊，它们折叠在底部一栏实时预览里，离大屏只有一次点击。就诊结束后，是患者的病史和一份 PDF 摘要。一家美国初创公司，我在职期间一直线上运行，服务真实患者。\n\n我以前端工程师的身份远程加入一个四人团队，待了两年半，是我在同一个产品上最长的一段。最难的是 FHIR：后端把原始资源，Observations、Conditions、用药、处方和医嘱，按它们原本的数组直接返回，并要求前端回传完整的 FHIR 对象。我在它和屏幕之间搭了一层：读取时的适配器和转换器、一个基础 store 加每种资源类型一个独立 store、保存时组装合规资源的 composer。在此之外，我主导了一个大型代码库从 JavaScript 到 strict TypeScript 的渐进式迁移，产品不停机；把我能触及的部分按 Feature-Sliced Design 重组；到最后负责发布：每两周一次，三个环境，上线前 QA 签字。在这个项目里，我学会了如何在不停下产品的情况下，让遗留代码变得可以安全修改。"
   },
   "startDate": "2022-06",
   "endDate": "2024-12",
-  "link": "https://ziphycare.com/"
+  "link": "https://ziphycare.com/",
+  "interpreter": {
+    "rows": [
+      {
+        "direction": "in",
+        "wire": {
+          "en": "Observations as the backend returned them, raw resources in the arrays they arrived in.",
+          "ru": "Observations в том виде, в каком их отдавал бэкенд: сырые ресурсы теми массивами, какими пришли.",
+          "zh": "后端原样返回的 Observations：原始资源，保持它们到达时的数组形态。"
+        },
+        "screen": {
+          "en": "A history timeline the physician reads at a glance.",
+          "ru": "Лента истории, которую врач читает с одного взгляда.",
+          "zh": "医生一眼就能读懂的病史时间线。"
+        },
+        "built": {
+          "en": "Adapters and transformers on read.",
+          "ru": "Адаптеры и трансформеры на чтение.",
+          "zh": "读取时的适配器和转换器。"
+        }
+      },
+      {
+        "direction": "in",
+        "wire": {
+          "en": "Conditions, medications, prescriptions, each its own resource type.",
+          "ru": "Conditions, лекарства, рецепты — каждый своим типом ресурса.",
+          "zh": "Conditions、用药、处方，各自是一种资源类型。"
+        },
+        "screen": {
+          "en": "The patient's chart.",
+          "ru": "Карта пациента.",
+          "zh": "患者的病历。"
+        },
+        "built": {
+          "en": "One base store, with an isolated inheriting store per resource type.",
+          "ru": "Один базовый стор и изолированный наследующий стор на каждый тип ресурса.",
+          "zh": "一个基础 store，每种资源类型一个继承自它的独立 store。"
+        }
+      },
+      {
+        "direction": "out",
+        "wire": {
+          "en": "Complete FHIR objects, valid on arrival; the backend adapted nothing.",
+          "ru": "Полные FHIR-объекты, валидные на входе; бэкенд ничего не адаптировал.",
+          "zh": "完整的 FHIR 对象，到达即合规；后端不做任何适配。"
+        },
+        "screen": {
+          "en": "The physician's edits: a condition added, a prescription written, an order placed.",
+          "ru": "Правки врача: добавленный диагноз, выписанный рецепт, оформленное назначение.",
+          "zh": "医生的修改：新增一个诊断，开出一张处方，下达一条医嘱。"
+        },
+        "built": {
+          "en": "Composers that assemble the resources on save.",
+          "ru": "Композеры, собирающие ресурсы при сохранении.",
+          "zh": "保存时组装资源的 composer。"
+        }
+      },
+      {
+        "direction": "in",
+        "wire": {
+          "en": "Up to four appointments in one time slot, each a live Zoom session.",
+          "ru": "До четырёх приёмов в одном слоте, каждый — живая Zoom-сессия.",
+          "zh": "一个时段里最多四场问诊，每场都是一个实时 Zoom 会话。"
+        },
+        "screen": {
+          "en": "A bottom bar of small live previews under the big screen; one click opens the appointment.",
+          "ru": "Нижняя панель маленьких живых превью под большим экраном; один клик открывает приём.",
+          "zh": "大屏下方一栏小的实时预览；点一下就打开那场问诊。"
+        },
+        "built": {
+          "en": "The exam room with Zoom embedded in the app, several sessions at once.",
+          "ru": "Кабинет осмотра со встроенным в приложение Zoom, несколько сессий одновременно.",
+          "zh": "内嵌 Zoom 的诊室，多个会话同时进行。"
+        }
+      },
+      {
+        "direction": "in",
+        "wire": {
+          "en": "Appointments.",
+          "ru": "Записи на приём.",
+          "zh": "预约。"
+        },
+        "screen": {
+          "en": "The patient books a visit and follows their history in MyZiphy.",
+          "ru": "Пациент записывается на визит и следит за своей историей в MyZiphy.",
+          "zh": "患者在 MyZiphy 里预约就诊并查看自己的历史。"
+        },
+        "built": {
+          "en": "The patient side of the product.",
+          "ru": "Пациентская сторона продукта.",
+          "zh": "产品的患者端。"
+        }
+      },
+      {
+        "direction": "in",
+        "wire": {
+          "en": "Everything the visit produced: readings, notes, prescriptions.",
+          "ru": "Всё, что дал визит: показания, записи, рецепты.",
+          "zh": "这次就诊产出的一切：读数、记录、处方。"
+        },
+        "screen": {
+          "en": "A PDF visit summary.",
+          "ru": "PDF-отчёт о визите.",
+          "zh": "一份 PDF 就诊摘要。"
+        },
+        "built": {
+          "en": "The report.",
+          "ru": "Отчёт.",
+          "zh": "报告。"
+        }
+      }
+    ]
+  }
 }
