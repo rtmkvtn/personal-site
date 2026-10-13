@@ -91,6 +91,18 @@ export interface InterpreterRow {
   built: string;
 }
 
+export interface TimelineEventJson {
+  when: string; // YYYY-MM
+  name: LocalizedString;
+  detail: LocalizedString;
+}
+
+export interface TimelineEvent {
+  when: string;
+  name: string;
+  detail: string;
+}
+
 export interface ProjectJson {
   name: LocalizedString;
   type: ProjectType;
@@ -107,6 +119,7 @@ export interface ProjectJson {
   journey?: { stages: JourneyStageJson[] };
   handoff?: { stages: HandoffStageJson[] };
   interpreter?: { rows: InterpreterRowJson[] };
+  timeline?: { events: TimelineEventJson[] };
 }
 
 export interface Project extends ProjectJson {
@@ -130,6 +143,7 @@ export interface ResolvedProject
     | "journey"
     | "handoff"
     | "interpreter"
+    | "timeline"
   > {
   name: string;
   highlight: string;
@@ -140,6 +154,7 @@ export interface ResolvedProject
   journey?: { stages: JourneyStage[] };
   handoff?: { stages: HandoffStage[] };
   interpreter?: { rows: InterpreterRow[] };
+  timeline?: { events: TimelineEvent[] };
 }
 
 // Static images for decorative backgrounds, randomly assigned

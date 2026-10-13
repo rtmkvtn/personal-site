@@ -84,6 +84,15 @@ export function resolveProjectLocale(
           })),
         }
       : undefined,
+    timeline: project.timeline
+      ? {
+          events: project.timeline.events.map((event) => ({
+            when: event.when,
+            name: resolveString(event.name, locale),
+            detail: resolveString(event.detail, locale),
+          })),
+        }
+      : undefined,
     displayDate: getDisplayDate(project.startDate, project.endDate, locale),
   };
 }

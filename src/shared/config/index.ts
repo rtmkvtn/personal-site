@@ -10,6 +10,7 @@ export {
   type HandoffStage,
   type InterpreterDirection,
   type InterpreterRow,
+  type TimelineEvent,
   type ResolvedAiFirst,
   type Project,
   type ProjectJson,

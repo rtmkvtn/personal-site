@@ -20,77 +20,117 @@
     "AI Agents"
   ],
   "highlight": {
-    "en": "Internal cabinet for investors for buying/selling investment instruments",
-    "ru": "Внутренний кабинет инвестора для покупки/продажи инвестиционных инструментов",
-    "zh": "投资者内部平台，用于买卖投资工具"
+    "en": "Peer-to-peer market for an internal currency: MVP alone in three months, then a team of three",
+    "ru": "P2P-рынок внутренней валюты: MVP в одиночку за три месяца, затем команда из трёх",
+    "zh": "内部货币的点对点市场：三个月独自做出 MVP，之后带三人团队"
   },
   "achievements": {
     "en": [
-      "Developed a real-time interface for P2P transactions using WebSocket, ensuring instant order and data updates for users",
-      "Designed and implemented the frontend from mockup to MVP using FSD architecture, improving code modularity and scalability",
-      "Set up CI/CD pipelines from scratch (GitLab CI, Docker) for 3 environments (prod/stage/demo), automating builds and deployments and reducing feature release time from several hours to 15 minutes",
-      "Led a team of 3 frontend developers: introduced mandatory code reviews, unified code style, and onboarding process"
+      "Built the frontend alone from a designer's Figma to a working MVP in three months: the peer-to-peer market, orders and balances live over WebSocket, an XMPP chat, price and holdings charts",
+      "Led a team of three after the MVP: mandatory review on every PR, one code style, an onboarding process, and tasks split for a shared codebase",
+      "Folded Claude Code and Codex into that process when they became usable mid-build: functions and components under constant observation, and a lot of the tooling, from linting and pre-commit hooks to the pipelines",
+      "Set up GitLab CI and Docker pipelines to prod, stage, and demo, taking a feature's release time from several hours to 15 minutes"
     ],
     "ru": [
-      "Разработал интерфейс для P2P-транзакций в реальном времени на WebSocket, обеспечив мгновенное обновление заявок и данных для пользователей",
-      "Спроектировал и реализовал фронтенд от макета до MVP с использованием архитектуры FSD, повысив модульность и масштабируемость кода",
-      "Настроил CI/CD-пайплайны с нуля (GitLab CI, Docker) для 3 окружений (prod/stage/demo), автоматизировав сборку и деплой и сократив время выпуска фич с нескольких часов до 15 минут",
-      "Руководил командой из 3 фронтенд-разработчиков: внедрил обязательные код-ревью, единый код-стайл и процесс онбординга"
+      "В одиночку довёл фронтенд от макетов дизайнера в Figma до рабочего MVP за три месяца: P2P-рынок, ордера и балансы в реальном времени по WebSocket, XMPP-чат, графики цены и портфеля",
+      "После MVP возглавил команду из трёх: обязательное ревью каждого PR, единый код-стайл, процесс онбординга и разбиение задач под общую кодовую базу",
+      "Встроил Claude Code и Codex в этот процесс, когда они стали пригодны к работе посреди проекта: функции и компоненты под постоянным наблюдением, и значительная часть инструментария — от линтинга и pre-commit-хуков до пайплайнов",
+      "Настроил пайплайны GitLab CI и Docker на prod, stage и demo, сократив время выпуска фичи с нескольких часов до 15 минут"
     ],
     "zh": [
-      "使用WebSocket开发了P2P交易的实时界面，确保用户订单和数据的即时更新",
-      "使用FSD架构从设计稿到MVP设计并实现了前端，提升了代码的模块化和可扩展性",
-      "从零搭建CI/CD流水线（GitLab CI、Docker），覆盖3个环境（prod/stage/demo），自动化构建和部署，将功能发布时间从数小时缩短至15分钟",
-      "带领3名前端开发人员团队：引入强制代码审查、统一代码风格和入职流程"
+      "独自把前端从设计师的 Figma 做到可用的 MVP，用时三个月：点对点市场、通过 WebSocket 实时更新的订单与余额、XMPP 聊天、价格与持仓图表",
+      "MVP 之后带领三人团队：每个 PR 强制评审、统一代码风格、入职流程，以及面向共享代码库的任务拆分",
+      "在 Claude Code 与 Codex 于项目中期可用后，把它们纳入这套流程：在持续监督下编写函数和组件，以及大量工具链工作，从 lint、pre-commit 钩子到流水线",
+      "搭建 GitLab CI 与 Docker 流水线，覆盖 prod、stage、demo 三个环境，把功能发布时间从数小时缩短到 15 分钟"
     ]
   },
   "description": {
-    "en": "An internal investor cabinet for managing investment portfolios, enabling users to browse, buy, and sell a range of investment instruments. The platform provides a streamlined interface for tracking holdings, executing transactions, and monitoring investment performance in real time.",
-    "ru": "Внутренний кабинет инвестора для управления инвестиционными портфелями, позволяющий пользователям просматривать, покупать и продавать различные инвестиционные инструменты. Платформа предоставляет удобный интерфейс для отслеживания активов, проведения транзакций и мониторинга инвестиционной доходности в реальном времени.",
-    "zh": "一个用于管理投资组合的内部投资者平台，使用户能够浏览、购买和出售各类投资工具。平台提供简洁的界面，用于追踪持仓、执行交易和实时监控投资表现。"
+    "en": "A closed peer-to-peer market for an internal currency. Members buy and sell it among themselves, and the trades set the price. Orders and balances update live over WebSocket, members talk in an XMPP chat inside the cabinet, and the charts draw the price and a member's holdings. Built for a founder by an in-house team, frontend and backend side by side; the frontend went from a designer's Figma to a working MVP in three months, by one developer, and was live in the founder's hands when the engagement ended in June 2025.\n\nI was that developer. For the first three months it was me and the backend team; after the MVP shipped, two frontend developers joined and I led for the first time: review on every PR, one code style, an onboarding process, tasks split so three people could work one codebase. Around the same time Claude Code and Codex became usable, and I folded them into that process rather than the other way round: functions and components written under constant observation with no loss of quality, and a lot of the infrastructure, linting, pre-commit hooks, the GitLab CI and Docker pipelines to prod, stage and demo, which took a feature's release from several hours to fifteen minutes. It's the project where I first led a team, and where the agents first became part of how I work.",
+    "ru": "Закрытый P2P-рынок внутренней валюты. Участники покупают и продают её друг другу, и сделки задают цену. Ордера и балансы обновляются в реальном времени по WebSocket, участники общаются в XMPP-чате внутри кабинета, графики рисуют цену и портфель участника. Сделано для фаундера внутренней командой, фронтенд и бэкенд бок о бок; фронтенд прошёл путь от макетов дизайнера в Figma до рабочего MVP за три месяца силами одного разработчика и работал у фаундера, когда контракт закончился в июне 2025-го.\n\nЭтим разработчиком был я. Первые три месяца были только я и команда бэкенда; после выхода MVP присоединились два фронтенд-разработчика, и я впервые стал лидом: ревью каждого PR, единый код-стайл, процесс онбординга, задачи, разбитые так, чтобы трое могли работать в одной кодовой базе. Примерно тогда же Claude Code и Codex стали пригодны к работе, и я встроил их в этот процесс, а не наоборот: функции и компоненты под постоянным наблюдением без потери качества и значительная часть инфраструктуры — линтинг, pre-commit-хуки, пайплайны GitLab CI и Docker на prod, stage и demo, которые сократили выпуск фичи с нескольких часов до пятнадцати минут. Это проект, где я впервые вёл команду и где агенты впервые стали частью того, как я работаю.",
+    "zh": "一个封闭的内部货币点对点市场。成员之间互相买卖，成交决定价格。订单和余额通过 WebSocket 实时更新，成员在后台内置的 XMPP 聊天里交流，图表绘制价格和成员的持仓。为一位创始人由内部团队构建，前端和后端并肩工作；前端由一名开发者在三个月里从设计师的 Figma 做到可用的 MVP，到 2025 年 6 月合作结束时仍在创始人手中运行。\n\n那名开发者就是我。头三个月只有我和后端团队；MVP 上线后，两名前端开发者加入，我第一次带团队：每个 PR 都评审、统一代码风格、入职流程、把任务拆到三个人能在同一个代码库里工作。差不多同时，Claude Code 和 Codex 变得可用，我把它们纳入这套流程，而不是反过来：在持续监督下编写函数和组件而不损失质量，以及大量基础设施工作，lint、pre-commit 钩子、面向 prod、stage、demo 的 GitLab CI 和 Docker 流水线，把一个功能的发布从数小时缩短到十五分钟。在这个项目里，我第一次带团队，智能体也第一次成为我工作方式的一部分。"
   },
   "startDate": "2025-01",
   "endDate": "2025-06",
-  "aiFirst": {
-    "steps": {
-      "specify": {
-        "en": "Frontend architecture (FSD), specs, review and onboarding process for a team of three",
-        "ru": "Архитектура фронтенда (FSD), спецификации, процесс ревью и онбординга для команды из трёх человек",
-        "zh": "前端架构（FSD）、规格、三人团队的审查与入职流程"
+  "timeline": {
+    "events": [
+      {
+        "when": "2025-01",
+        "name": {
+          "en": "Start",
+          "ru": "Старт",
+          "zh": "起点"
+        },
+        "detail": {
+          "en": "One developer and a designer's Figma. The frontend from the first screen, with the backend team next door.",
+          "ru": "Один разработчик и макеты дизайнера в Figma. Фронтенд с первого экрана, команда бэкенда за соседним столом.",
+          "zh": "一名开发者和设计师的 Figma。前端从第一个屏幕开始，后端团队就在隔壁。"
+        }
       },
-      "implement": {
-        "en": "Claude Code and Codex as each became available; boilerplate first, then features",
-        "ru": "Claude Code и Codex по мере их появления; сначала шаблонный код, затем фичи",
-        "zh": "Claude Code 与 Codex 随可用逐步引入；先是样板代码，后是功能"
+      {
+        "when": "2025-03",
+        "name": {
+          "en": "MVP",
+          "ru": "MVP",
+          "zh": "MVP"
+        },
+        "detail": {
+          "en": "The market built alone in three months: the internal currency traded peer to peer, orders and balances live over WebSocket, the XMPP chat, the charts.",
+          "ru": "Рынок, построенный в одиночку за три месяца: внутренняя валюта, которой торгуют друг с другом, ордера и балансы в реальном времени по WebSocket, XMPP-чат, графики.",
+          "zh": "三个月独自建成的市场：点对点交易的内部货币、通过 WebSocket 实时更新的订单与余额、XMPP 聊天、图表。"
+        }
       },
-      "verify": {
-        "en": "Tests, GitLab CI for three environments",
-        "ru": "Тесты, GitLab CI для трёх окружений",
-        "zh": "测试、面向三个环境的 GitLab CI"
+      {
+        "when": "2025-04",
+        "name": {
+          "en": "Two join",
+          "ru": "Плюс двое",
+          "zh": "两人加入"
+        },
+        "detail": {
+          "en": "The MVP ships and two developers join. Review on every PR, one code style, an onboarding process, tasks split for a shared codebase.",
+          "ru": "MVP выходит, присоединяются два разработчика. Ревью каждого PR, единый код-стайл, процесс онбординга, задачи, разбитые под общую кодовую базу.",
+          "zh": "MVP 上线，两名开发者加入。每个 PR 都评审、统一代码风格、入职流程、面向共享代码库的任务拆分。"
+        }
       },
-      "review": {
-        "en": "Mandatory code review on every PR, agent-written or not",
-        "ru": "Обязательное код-ревью каждого PR, написан он агентом или нет",
-        "zh": "每个 PR 都强制代码审查，无论是否由智能体编写"
+      {
+        "when": "2025-04",
+        "name": {
+          "en": "Agents",
+          "ru": "Агенты",
+          "zh": "智能体"
+        },
+        "detail": {
+          "en": "Claude Code and Codex become usable mid-build. Functions and components written under constant observation with no loss of quality; linting, pre-commit hooks, and the pipelines with their help.",
+          "ru": "Claude Code и Codex становятся пригодны к работе посреди проекта. Функции и компоненты под постоянным наблюдением без потери качества; линтинг, pre-commit-хуки и пайплайны с их помощью.",
+          "zh": "Claude Code 和 Codex 在项目中期变得可用。在持续监督下编写函数和组件而不损失质量；lint、pre-commit 钩子和流水线在它们的协助下完成。"
+        }
+      },
+      {
+        "when": "2025-05",
+        "name": {
+          "en": "Pipelines",
+          "ru": "Пайплайны",
+          "zh": "流水线"
+        },
+        "detail": {
+          "en": "GitLab CI and Docker to prod, stage, and demo. A feature's release time from several hours to 15 minutes.",
+          "ru": "GitLab CI и Docker на prod, stage и demo. Время выпуска фичи — с нескольких часов до 15 минут.",
+          "zh": "GitLab CI 和 Docker 覆盖 prod、stage、demo。功能发布时间从数小时缩短到 15 分钟。"
+        }
+      },
+      {
+        "when": "2025-06",
+        "name": {
+          "en": "Hand-off",
+          "ru": "Передача",
+          "zh": "交接"
+        },
+        "detail": {
+          "en": "Live in the founder's hands when the engagement ends.",
+          "ru": "Работает у фаундера, когда контракт заканчивается.",
+          "zh": "合作结束时，仍在创始人手中运行。"
+        }
       }
-    },
-    "anchor": {
-      "value": {
-        "en": "15 min",
-        "ru": "15 мин",
-        "zh": "十五分钟"
-      },
-      "label": {
-        "en": "Feature release time, down from several hours, after the CI/CD pipelines",
-        "ru": "Время выпуска фичи после настройки CI/CD, вместо нескольких часов",
-        "zh": "搭建 CI/CD 流水线后的功能发布时间，此前需数小时"
-      },
-      "mark": "RELEASES / 2025"
-    },
-    "note": {
-      "en": "The tooling matured during the project, so the agents' share grew from boilerplate to full features. The review process did not change.",
-      "ru": "Инструменты взрослели по ходу проекта, поэтому доля агентов выросла от шаблонного кода до полноценных фич. Процесс ревью не менялся.",
-      "zh": "工具在项目进行中逐渐成熟，智能体的份额从样板代码扩展到完整功能。审查流程没有改变。"
-    }
+    ]
   }
 }
