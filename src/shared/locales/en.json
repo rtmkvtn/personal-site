@@ -87,5 +87,14 @@
     "examRoom": "Exam room",
     "patient": "Patient",
     "previews": "four live previews, one slot"
+  },
+  "timeline": {
+    "one": "One developer",
+    "three": "Three developers",
+    "agents": "Agents",
+    "pr": "Pull request",
+    "review": "Review",
+    "pipeline": "Pipeline",
+    "ci": "GitLab CI · Docker · three environments"
   }
 }

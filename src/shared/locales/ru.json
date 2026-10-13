@@ -87,5 +87,14 @@
     "examRoom": "Кабинет осмотра",
     "patient": "Пациент",
     "previews": "четыре живых превью, один слот"
+  },
+  "timeline": {
+    "one": "Один разработчик",
+    "three": "Три разработчика",
+    "agents": "Агенты",
+    "pr": "Pull request",
+    "review": "Ревью",
+    "pipeline": "Пайплайн",
+    "ci": "GitLab CI · Docker · три окружения"
   }
 }

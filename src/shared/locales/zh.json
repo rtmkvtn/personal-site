@@ -87,5 +87,14 @@
     "examRoom": "诊室",
     "patient": "患者",
     "previews": "四个实时预览，同一时段"
+  },
+  "timeline": {
+    "one": "一名开发者",
+    "three": "三名开发者",
+    "agents": "智能体",
+    "pr": "Pull request",
+    "review": "评审",
+    "pipeline": "流水线",
+    "ci": "GitLab CI · Docker · 三个环境"
   }
 }
