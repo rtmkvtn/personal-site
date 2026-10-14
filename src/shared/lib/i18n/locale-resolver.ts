@@ -5,6 +5,8 @@ import type {
   LocalizedStringArray,
   AiFirstJson,
   ResolvedAiFirst,
+  ByHandRowJson,
+  ByHandRow,
 } from "@/shared/config/projects";
 import { getDisplayDate } from "../date-format";
 import type { Locale } from "./detect";
@@ -38,6 +40,14 @@ function resolveAiFirst(
       mark: value.anchor.mark,
     },
     note: value.note ? resolveString(value.note, locale) : undefined,
+  };
+}
+
+function resolveByHandRow(row: ByHandRowJson, locale: Locale): ByHandRow {
+  return {
+    what: resolveString(row.what, locale),
+    before: resolveString(row.before, locale),
+    now: resolveString(row.now, locale),
   };
 }
 
@@ -91,6 +101,12 @@ export function resolveProjectLocale(
             name: resolveString(event.name, locale),
             detail: resolveString(event.detail, locale),
           })),
+        }
+      : undefined,
+    byHand: project.byHand
+      ? {
+          operators: project.byHand.operators.map((row) => resolveByHandRow(row, locale)),
+          team: project.byHand.team.map((row) => resolveByHandRow(row, locale)),
         }
       : undefined,
     displayDate: getDisplayDate(project.startDate, project.endDate, locale),

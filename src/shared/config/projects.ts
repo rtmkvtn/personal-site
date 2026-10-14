@@ -103,6 +103,18 @@ export interface TimelineEvent {
   detail: string;
 }
 
+export interface ByHandRowJson {
+  what: LocalizedString;
+  before: LocalizedString;
+  now: LocalizedString;
+}
+
+export interface ByHandRow {
+  what: string;
+  before: string;
+  now: string;
+}
+
 export interface ProjectJson {
   name: LocalizedString;
   type: ProjectType;
@@ -120,6 +132,7 @@ export interface ProjectJson {
   handoff?: { stages: HandoffStageJson[] };
   interpreter?: { rows: InterpreterRowJson[] };
   timeline?: { events: TimelineEventJson[] };
+  byHand?: { operators: ByHandRowJson[]; team: ByHandRowJson[] };
 }
 
 export interface Project extends ProjectJson {
@@ -144,6 +157,7 @@ export interface ResolvedProject
     | "handoff"
     | "interpreter"
     | "timeline"
+    | "byHand"
   > {
   name: string;
   highlight: string;
@@ -155,6 +169,7 @@ export interface ResolvedProject
   handoff?: { stages: HandoffStage[] };
   interpreter?: { rows: InterpreterRow[] };
   timeline?: { events: TimelineEvent[] };
+  byHand?: { operators: ByHandRow[]; team: ByHandRow[] };
 }
 
 // Static images for decorative backgrounds, randomly assigned

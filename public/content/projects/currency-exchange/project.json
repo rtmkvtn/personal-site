@@ -23,79 +23,213 @@
     "AI Agents"
   ],
   "highlight": {
-    "en": "Back office for digital currency exchange service",
-    "ru": "Бэк-офис для сервиса обмена цифровых валют",
-    "zh": "数字货币兑换服务后台管理系统"
+    "en": "Back office for a fiat-to-crypto exchange: 2,000 orders a day, half the operator work gone",
+    "ru": "Бэк-офис обменника фиат → крипто: 2 000 заявок в день, вдвое меньше ручной работы операторов",
+    "zh": "法币换加密货币交易所的后台：每天 2,000 笔订单，运营人员的手工操作减半"
   },
   "achievements": {
     "en": [
-      "Built a full-stack currency exchange service from scratch and solo (React, NestJS), designed to handle 1,000+ requests per day, with integration of multiple payment APIs",
-      "Created an internal admin panel that reduced manual request processing time by operators by 50% through automated payment reconciliation",
-      "Developed a fully functional bookkeeping module for tracking all financial operations, balances, and transaction history across exchange accounts",
-      "Set up CI/CD via Docker, stabilizing releases and data integrity",
-      "Moved two newly joined developers from ad-hoc AI tool use to one AI-first workflow: repo-level agent config, shared skills and agents, spec-driven tickets, a review rule for agent-written PRs, making the codebase maintainable by any member of the team"
+      "Built the back office and admin panel of a fiat-to-crypto exchange alone, from scratch; in production, handling over 2,000 exchanges a day",
+      "Took the bookkeeping module from the first shareholder conversation to production in about two months, recording every movement across the exchange's accounts",
+      "Automated the operators' manual steps, from asking providers about funds to typing crypto amounts, cutting their manual processing time by half",
+      "Built and maintain team-agents, the versioned repo of skills, agents, and workflows every project is initialised from, and moved two newly joined developers onto it: spec-driven tickets, agents implementing and reviewing against one checklist, the lead reviewing big features",
+      "Built the AI QA infrastructure: shared checklists and smoke tests run by an agent in the browser after each demo release, with scripted data checks and regression reports"
     ],
     "ru": [
-      "Разработал полнофункциональный сервис обмена валют с нуля и в одиночку (React, NestJS), рассчитанный на обработку 1000+ запросов в день, с интеграцией множества платёжных API",
-      "Создал внутреннюю админ-панель, сократившую время ручной обработки заявок операторами на 50% благодаря автоматической сверке платежей",
-      "Разработал полнофункциональный модуль бухгалтерского учёта для отслеживания всех финансовых операций, балансов и истории транзакций по счетам обмена",
-      "Настроил CI/CD через Docker, стабилизировав релизы и целостность данных",
-      "Перевёл двух присоединившихся разработчиков с разрозненного использования AI-инструментов на единый AI-first процесс: конфигурация агентов на уровне репозитория, общие скиллы и агенты, тикеты по спецификациям, правило ревью для PR, написанных агентами, — так что кодовую базу может поддерживать любой участник команды"
+      "В одиночку с нуля построил бэк-офис и админ-панель обменника фиат → крипто; в продакшене, более 2 000 обменов в день",
+      "Довёл модуль бухгалтерии от первого разговора с акционерами до продакшена примерно за два месяца; он фиксирует каждое движение средств по счетам обменника",
+      "Автоматизировал ручные действия операторов — от запросов провайдерам о поступлении средств до ввода сумм в крипте, сократив время ручной обработки вдвое",
+      "Создал и поддерживаю team-agents — версионируемый репозиторий скиллов, агентов и процессов, с которого инициализируется каждый проект, и перевёл на него двух новых разработчиков: тикеты по спецификациям, агенты реализуют и ревьюят по единому чеклисту, лид ревьюит крупные фичи",
+      "Построил AI-инфраструктуру QA: общие чеклисты и смоук-тесты, которые агент прогоняет в браузере после каждого демо-релиза, со скриптовыми проверками данных и отчётами о регрессиях"
     ],
     "zh": [
-      "从零独自构建了全栈货币兑换服务（React、NestJS），设计日处理1000+请求，集成多个支付API",
-      "创建了内部管理面板，通过自动支付对账将操作员手动处理请求的时间缩短50%",
-      "开发了全功能记账模块，追踪所有财务操作、余额和兑换账户的交易历史",
-      "通过Docker搭建CI/CD，稳定了发布流程和数据完整性",
-      "将两名新加入的开发者从各自零散使用 AI 工具迁移到统一的 AI-first 工作流：仓库级智能体配置、共享技能与智能体、基于规格的任务单、智能体编写 PR 的审查规则，使团队中的任何成员都能维护这套代码"
+      "独自从零构建了法币换加密货币交易所的后台和管理面板；已上线运行，每天处理 2,000 多笔兑换",
+      "把记账模块从与股东的第一次谈话推进到上线，用时约两个月；它记录交易所各账户的每一笔资金流动",
+      "把运营人员的手工步骤自动化，从向支付渠道询问到账到手动输入加密货币金额，手工处理时间减半",
+      "构建并维护 team-agents：一个版本化的技能、智能体和工作流仓库，每个项目都从它初始化；并把两名新加入的开发者迁移到这套流程：规格驱动的工单、智能体按统一清单实现并评审、负责人评审大功能",
+      "构建了 AI QA 基础设施：每次 demo 发布后由智能体在浏览器中执行共享清单和冒烟测试，辅以脚本化数据检查和回归报告"
     ]
   },
   "description": {
-    "en": "A back-office platform for a digital currency exchange service featuring multiple integrations with requisites providers, automated order workflow management, cryptocurrency transaction parsing, and a fully functional bookkeeping system. The platform streamlines exchange operations by automating the entire order lifecycle from initiation to settlement, while maintaining accurate financial records across all transactions.",
-    "ru": "Бэк-офис платформа для сервиса обмена цифровых валют с множественными интеграциями с провайдерами реквизитов, автоматизированным управлением заказами, парсингом криптовалютных транзакций и полнофункциональной системой бухгалтерского учёта. Платформа оптимизирует операции обмена, автоматизируя весь жизненный цикл заказа от инициации до завершения расчётов, обеспечивая точный финансовый учёт по всем транзакциям.",
-    "zh": "一个数字货币兑换服务的后台管理平台，集成多家支付信息提供商，实现自动化订单流程管理、加密货币交易解析和全功能记账系统。平台通过自动化从发起到结算的整个订单生命周期来优化兑换操作，同时确保所有交易的财务记录准确无误。"
+    "en": "The back office of a fiat-to-crypto exchange. A customer orders through a mini app or a Telegram bot; the back office assigns payment requisites from a vendor integration or the internal pool, by priorities the operators set in the admin panel; the provider's confirmation that the fiat arrived lands on its own; the crypto amount is computed and sent, the chain transaction parsed and confirmed; and the bookkeeping microservice records every movement across the exchange's accounts. Built for the exchange's shareholders, in production since 2025, handling over 2,000 exchanges a day with half of the operators' manual work gone.\n\nI started alone in June 2025 and built the operational back office and the admin panel; the bookkeeping module went from the first shareholder conversation to production in about two months. In October two developers joined to take the requisites-provider integrations, which appear and disappear all the time, and I kept the big features and the bookkeeping. The team runs on team-agents, one versioned repo of skills, agents, and documented workflows that every project is initialised from and that I maintain: I write the specs and the tickets, agents implement and submit the PR, agents review every PR against one checklist and I review the big features, and after each demo release an agent runs the shared QA checklists in the browser and scripted checks on the data, and reports the regressions. It's the project where the method became the way I work, and then the way a team works.",
+    "ru": "Бэк-офис обменника фиат → крипто. Клиент оформляет заявку через мини-приложение или Telegram-бота; бэк-офис назначает платёжные реквизиты из интеграции с вендором или из внутреннего пула — по приоритетам, которые операторы задают в админ-панели; подтверждение провайдера о поступлении фиата приходит само; сумма в крипте рассчитывается и отправляется, транзакция в сети разбирается и подтверждается; микросервис бухгалтерии фиксирует каждое движение средств по счетам обменника. Сделано для акционеров обменника, в продакшене с 2025 года, более 2 000 обменов в день, и половина ручной работы операторов исчезла.\n\nЯ начал один в июне 2025-го и построил операционный бэк-офис и админ-панель; модуль бухгалтерии прошёл путь от первого разговора с акционерами до продакшена примерно за два месяца. В октябре присоединились два разработчика, чтобы взять на себя интеграции с провайдерами реквизитов, которые постоянно появляются и исчезают, а я оставил за собой крупные фичи и бухгалтерию. Команда работает на team-agents — одном версионируемом репозитории скиллов, агентов и описанных процессов, с которого инициализируется каждый проект и который поддерживаю я: я пишу спецификации и тикеты, агенты реализуют и отправляют PR, агенты ревьюят каждый PR по единому чеклисту, а я ревьюю крупные фичи, и после каждого демо-релиза агент прогоняет общие QA-чеклисты в браузере и скриптовые проверки данных и отчитывается о регрессиях. Это проект, где метод стал тем, как работаю я, а затем тем, как работает команда.",
+    "zh": "一个法币换加密货币交易所的后台。客户通过小程序或 Telegram 机器人下单；后台按运营人员在管理面板里设定的优先级，从渠道集成或内部池分配收款要素；支付渠道关于法币到账的确认自动送达；加密货币金额自动计算并发出，链上交易被解析并确认；记账微服务记录交易所各账户的每一笔资金流动。为交易所的股东而建，2025 年起上线运行，每天处理 2,000 多笔兑换，运营人员的手工操作减少了一半。\n\n我在 2025 年 6 月独自开始，搭建了运营后台和管理面板；记账模块从与股东的第一次谈话到上线，用了大约两个月。10 月，两名开发者加入，接手不断出现又消失的收款渠道集成，我则保留大功能和记账。团队运行在 team-agents 之上：一个版本化的技能、智能体和成文工作流仓库，每个项目都从它初始化，由我维护。我写规格和工单，智能体实现并提交 PR，智能体按统一清单评审每个 PR，我评审大功能；每次 demo 发布后，智能体在浏览器里执行共享 QA 清单和脚本化数据检查，并报告回归。在这个项目里，这套方法先成了我的工作方式，然后成了一个团队的工作方式。"
   },
   "startDate": "2025-06",
-  "aiFirst": {
-    "steps": {
-      "specify": {
-        "en": "Architecture, specs, tickets, service contracts",
-        "ru": "Архитектура, спецификации, тикеты, контракты сервисов",
-        "zh": "架构、规格、任务单、服务契约"
+  "byHand": {
+    "operators": [
+      {
+        "what": {
+          "en": "Payment details",
+          "ru": "Реквизиты",
+          "zh": "收款要素"
+        },
+        "before": {
+          "en": "An operator picked requisites by hand.",
+          "ru": "Оператор подбирал реквизиты вручную.",
+          "zh": "运营人员手工挑选收款要素。"
+        },
+        "now": {
+          "en": "Assigned from a vendor integration or the internal pool, by priorities the operators set in the admin panel.",
+          "ru": "Назначаются из интеграции с вендором или из внутреннего пула — по приоритетам, которые операторы задают в админ-панели.",
+          "zh": "按运营人员在管理面板里设定的优先级，从渠道集成或内部池自动分配。"
+        }
       },
-      "implement": {
-        "en": "Claude Code & Codex, custom skills and agents",
-        "ru": "Claude Code и Codex, кастомные скиллы и агенты",
-        "zh": "Claude Code 与 Codex，自定义技能和智能体"
+      {
+        "what": {
+          "en": "Funds confirmation",
+          "ru": "Подтверждение оплаты",
+          "zh": "到账确认"
+        },
+        "before": {
+          "en": "An operator asked the requisites provider whether the customer's fiat had arrived.",
+          "ru": "Оператор спрашивал у провайдера реквизитов, поступил ли фиат клиента.",
+          "zh": "运营人员向支付渠道询问客户的法币是否到账。"
+        },
+        "now": {
+          "en": "The provider's confirmation lands in the back office on its own.",
+          "ru": "Подтверждение провайдера приходит в бэк-офис само.",
+          "zh": "渠道的确认自动送达后台。"
+        }
       },
-      "verify": {
-        "en": "Tests, CI, documentation",
-        "ru": "Тесты, CI, документация",
-        "zh": "测试、CI、文档"
+      {
+        "what": {
+          "en": "The crypto leg",
+          "ru": "Крипто-часть",
+          "zh": "加密货币一侧"
+        },
+        "before": {
+          "en": "An operator typed the amount into the send.",
+          "ru": "Оператор вручную вводил сумму при отправке.",
+          "zh": "运营人员手动输入发送金额。"
+        },
+        "now": {
+          "en": "The amount is computed and sent, and the chain transaction is parsed and confirmed.",
+          "ru": "Сумма рассчитывается и отправляется, транзакция в сети разбирается и подтверждается.",
+          "zh": "金额自动计算并发出，链上交易被解析并确认。"
+        }
       },
-      "review": {
-        "en": "Every agent-written PR against one checklist",
-        "ru": "Каждый PR, написанный агентом, — по единому чеклисту",
-        "zh": "每个由智能体编写的 PR 都按同一份清单审查"
+      {
+        "what": {
+          "en": "The books",
+          "ru": "Учёт",
+          "zh": "账目"
+        },
+        "before": {
+          "en": "Balances kept by hand outside the system.",
+          "ru": "Балансы велись вручную вне системы.",
+          "zh": "余额在系统之外手工记录。"
+        },
+        "now": {
+          "en": "The bookkeeping microservice records every movement across the exchange's accounts.",
+          "ru": "Микросервис бухгалтерии фиксирует каждое движение средств по счетам обменника.",
+          "zh": "记账微服务记录交易所各账户的每一笔资金流动。"
+        }
+      },
+      {
+        "what": {
+          "en": "New providers",
+          "ru": "Новые провайдеры",
+          "zh": "新渠道"
+        },
+        "before": {
+          "en": "Each new provider meant a new manual routine.",
+          "ru": "Каждый новый провайдер означал новую ручную рутину.",
+          "zh": "每接入一个新渠道，就多一套手工流程。"
+        },
+        "now": {
+          "en": "An integration pattern the two developers add as providers appear and disappear.",
+          "ru": "Шаблон интеграции, который два разработчика добавляют по мере того, как провайдеры появляются и исчезают.",
+          "zh": "一套集成模式，两名开发者随渠道的出现和消失不断添加。"
+        }
       }
-    },
-    "anchor": {
-      "value": {
-        "en": "2 mo",
-        "ru": "2 мес",
-        "zh": "两个月"
+    ],
+    "team": [
+      {
+        "what": {
+          "en": "Tickets",
+          "ru": "Тикеты",
+          "zh": "工单"
+        },
+        "before": {
+          "en": "Tasks described in chat.",
+          "ru": "Задачи описывались в чате.",
+          "zh": "任务在聊天里口头描述。"
+        },
+        "now": {
+          "en": "Spec-driven tickets, the same shape every time.",
+          "ru": "Тикеты по спецификациям, всегда одной формы.",
+          "zh": "规格驱动的工单，每次都是同一个格式。"
+        }
       },
-      "label": {
-        "en": "Bookkeeping module, first shareholder conversation to production MVP",
-        "ru": "Модуль бухучёта: от первого разговора с акционерами до production MVP",
-        "zh": "记账模块：从首次与股东沟通到生产环境 MVP"
+      {
+        "what": {
+          "en": "Tooling",
+          "ru": "Инструменты",
+          "zh": "工具"
+        },
+        "before": {
+          "en": "Each developer with their own AI setup.",
+          "ru": "У каждого разработчика свой набор AI-инструментов.",
+          "zh": "每个开发者各有一套自己的 AI 配置。"
+        },
+        "now": {
+          "en": "Every project initialised from team-agents, one versioned repo of skills, agents, and documented workflows.",
+          "ru": "Каждый проект инициализируется из team-agents — одного версионируемого репозитория скиллов, агентов и описанных процессов.",
+          "zh": "每个项目都从 team-agents 初始化：一个版本化的技能、智能体和成文工作流仓库。"
+        }
       },
-      "mark": "BOOKKEEPING / 2025–26"
-    },
-    "note": {
-      "en": "Started solo. When two developers joined, moved the team onto one AI-first workflow: repo-level agent config, shared skills and agents, spec-driven tickets, a review rule for agent-written PRs.",
-      "ru": "Начинал один. Когда присоединились два разработчика, перевёл команду на единый AI-first процесс: конфигурация агентов на уровне репозитория, общие скиллы и агенты, тикеты по спецификациям, правило ревью для PR, написанных агентами.",
-      "zh": "起初独自开发。两名开发者加入后，将团队迁移到统一的 AI-first 工作流：仓库级智能体配置、共享技能与智能体、基于规格的任务单、智能体编写 PR 的审查规则。"
-    }
+      {
+        "what": {
+          "en": "Implementation",
+          "ru": "Реализация",
+          "zh": "实现"
+        },
+        "before": {
+          "en": "Written by hand.",
+          "ru": "Писалось вручную.",
+          "zh": "手写代码。"
+        },
+        "now": {
+          "en": "Agents implement from the ticket and submit the PR.",
+          "ru": "Агенты реализуют по тикету и отправляют PR.",
+          "zh": "智能体按工单实现并提交 PR。"
+        }
+      },
+      {
+        "what": {
+          "en": "Review",
+          "ru": "Ревью",
+          "zh": "评审"
+        },
+        "before": {
+          "en": "Whoever had time.",
+          "ru": "Кто был свободен.",
+          "zh": "谁有空谁来。"
+        },
+        "now": {
+          "en": "Agents review every PR against one checklist; the lead reviews the big features.",
+          "ru": "Агенты ревьюят каждый PR по единому чеклисту; лид ревьюит крупные фичи.",
+          "zh": "智能体按统一清单评审每个 PR；负责人评审大功能。"
+        }
+      },
+      {
+        "what": {
+          "en": "QA",
+          "ru": "QA",
+          "zh": "QA"
+        },
+        "before": {
+          "en": "Manual passes on the demo stand.",
+          "ru": "Ручные прогоны на демо-стенде.",
+          "zh": "在 demo 环境手工过一遍。"
+        },
+        "now": {
+          "en": "After each demo release an agent runs the shared checklists in the browser and scripted checks on the data, and reports interface and data regressions.",
+          "ru": "После каждого демо-релиза агент прогоняет общие чеклисты в браузере и скриптовые проверки данных и отчитывается о регрессиях интерфейса и данных.",
+          "zh": "每次 demo 发布后，智能体在浏览器里执行共享清单和脚本化数据检查，并报告界面与数据回归。"
+        }
+      }
+    ]
   }
 }

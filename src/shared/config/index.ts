@@ -11,6 +11,7 @@ export {
   type InterpreterDirection,
   type InterpreterRow,
   type TimelineEvent,
+  type ByHandRow,
   type ResolvedAiFirst,
   type Project,
   type ProjectJson,

@@ -5,7 +5,7 @@ The personal site of a fullstack engineer: a curated record of projects, skills,
 ## Language
 
 **AI-first development**:
-A working method in which the engineer specifies and reviews while AI agents (primarily Claude Code) implement, test, and refactor, so one person ships what previously took a small team. A claim about how the work was done, never about what the product does.
+A working method in which the engineer specifies, sets the review bar, and reviews what matters, while AI agents (primarily Claude Code) implement, test, refactor, and review every change against that bar, so one person ships what previously took a small team. A claim about how the work was done, never about what the product does.
 _Avoid_: AI-assisted, AI-powered, AI usage, vibe coding
 
 **AI feature**:

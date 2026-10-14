@@ -25,7 +25,7 @@ Visitors arrive from a CV link, LinkedIn, or a direct share, usually on desktop 
 ## Capabilities and Constraints
 
 - Surfaces: Home (role line and CTA), Work (continuous project scroller with a hover detail panel, and a detail page per project), Hard Skills (force-directed bubble chart aggregated from project stacks, with a detail panel), About, Contact.
-- Projects carry: name, type, stack, highlight, achievements, description, dates, optional link, optional gallery and video, and an optional "How it was built" block for projects done AI-first (currently Currency Exchange only; M-INVEST tells its AI story inside its own composition, and the block is being retired as a direction).
+- Projects carry: name, type, stack, highlight, achievements, description, dates, optional link, optional gallery and video, and, for the AI-first projects, the method told inside each project's own composition. The former "How it was built" block is retired: no page carries it, and its content moved into the Currency Exchange and M-INVEST compositions.
 - Locale: en is the source of truth; ru and zh follow per field with English fallback. The zh locale renders digits as Chinese numerals in dates, indices, and stats.
 - Vocabulary is fixed in `GLOSSARY.md`: AI-first development, team AI-first migration, surface, role line, stack, achievement, highlight.
 - The four pre-2025 projects deliberately carry no AI-first content; the absence is the contrast, and no marker is wanted.
