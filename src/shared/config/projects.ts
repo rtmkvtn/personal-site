@@ -19,36 +19,6 @@ export interface LocalizedStringArray {
   zh?: string[];
 }
 
-export interface AiFirstJson {
-  steps: {
-    specify: LocalizedString;
-    implement: LocalizedString;
-    verify: LocalizedString;
-    review: LocalizedString;
-  };
-  anchor: {
-    value: LocalizedString;
-    label: LocalizedString;
-    mark?: string;
-  };
-  note?: LocalizedString;
-}
-
-export interface ResolvedAiFirst {
-  steps: {
-    specify: string;
-    implement: string;
-    verify: string;
-    review: string;
-  };
-  anchor: {
-    value: string;
-    label: string;
-    mark?: string;
-  };
-  note?: string;
-}
-
 export interface JourneyStageJson {
   name: LocalizedString;
   fact: LocalizedString;
@@ -126,7 +96,6 @@ export interface ProjectJson {
   endDate?: string; // YYYY-MM
   link?: string;
   githubLink?: string;
-  aiFirst?: AiFirstJson;
   arc?: { steps: LocalizedStringArray };
   journey?: { stages: JourneyStageJson[] };
   handoff?: { stages: HandoffStageJson[] };
@@ -151,7 +120,6 @@ export interface ResolvedProject
     | "highlight"
     | "description"
     | "achievements"
-    | "aiFirst"
     | "arc"
     | "journey"
     | "handoff"
@@ -163,7 +131,6 @@ export interface ResolvedProject
   highlight: string;
   description: string;
   achievements: string[];
-  aiFirst?: ResolvedAiFirst;
   arc?: { steps: string[] };
   journey?: { stages: JourneyStage[] };
   handoff?: { stages: HandoffStage[] };

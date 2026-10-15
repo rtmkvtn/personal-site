@@ -47,16 +47,6 @@
     "locationTitle": "地点",
     "location": "远程 — 全球可用"
   },
-  "built": {
-    "label": "构建方式",
-    "me": "我",
-    "agents": "智能体",
-    "specify": "规划",
-    "implement": "实现",
-    "verify": "验证",
-    "review": "审查",
-    "handoff": "hand-off"
-  },
   "journey": {
     "seller": "卖家",
     "manufacturer": "制造商",
@@ -96,5 +86,23 @@
     "review": "评审",
     "pipeline": "流水线",
     "ci": "GitLab CI · Docker · 三个环境"
+  },
+  "byHand": {
+    "before": "之前",
+    "now": "现在",
+    "operators": "运营",
+    "team": "团队",
+    "exchanges": "二千",
+    "exchangesCaption": "每天的兑换笔数，生产环境",
+    "half": "一半",
+    "halfCaption": "运营人员的手工操作已消失",
+    "entry": "分录",
+    "debit": "借方",
+    "credit": "贷方",
+    "balanced": "平衡",
+    "fiatIn": "法币入",
+    "cryptoOut": "加密货币出",
+    "fee": "手续费",
+    "entryCaption": "每笔流动，两边都记"
   }
 }

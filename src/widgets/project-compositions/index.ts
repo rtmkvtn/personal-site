@@ -5,6 +5,7 @@ import { Wizmart } from "./wizmart/Wizmart";
 import { EdTechPlatform } from "./ed-tech-platform/EdTechPlatform";
 import { Ziphycare } from "./ziphycare/Ziphycare";
 import { MInvest } from "./m-invest/MInvest";
+import { CurrencyExchange } from "./currency-exchange/CurrencyExchange";
 
 export const PROJECT_COMPOSITIONS: Record<
   string,
@@ -15,4 +16,5 @@ export const PROJECT_COMPOSITIONS: Record<
   "ed-tech-platform": EdTechPlatform,
   ziphycare: Ziphycare,
   "m-invest": MInvest,
+  "currency-exchange": CurrencyExchange,
 };

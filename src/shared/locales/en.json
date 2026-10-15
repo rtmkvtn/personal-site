@@ -47,16 +47,6 @@
     "locationTitle": "Location",
     "location": "Remote — Available Worldwide"
   },
-  "built": {
-    "label": "How it was built",
-    "me": "Me",
-    "agents": "Agents",
-    "specify": "Specify",
-    "implement": "Implement",
-    "verify": "Verify",
-    "review": "Review",
-    "handoff": "hand-off"
-  },
   "journey": {
     "seller": "Seller",
     "manufacturer": "Manufacturer",
@@ -96,5 +86,23 @@
     "review": "Review",
     "pipeline": "Pipeline",
     "ci": "GitLab CI · Docker · three environments"
+  },
+  "byHand": {
+    "before": "Before",
+    "now": "Now",
+    "operators": "Operators",
+    "team": "Team",
+    "exchanges": "2,000",
+    "exchangesCaption": "exchanges a day, in production",
+    "half": "½",
+    "halfCaption": "of the operators' manual work gone",
+    "entry": "Entry",
+    "debit": "Debit",
+    "credit": "Credit",
+    "balanced": "Balanced",
+    "fiatIn": "Fiat in",
+    "cryptoOut": "Crypto out",
+    "fee": "Fee",
+    "entryCaption": "every movement, both sides"
   }
 }

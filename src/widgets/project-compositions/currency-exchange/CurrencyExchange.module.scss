@@ -1,0 +1,352 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.main {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 7rem 1.5rem 7rem;
+  max-width: 72rem;
+  --what: 11rem;
+  --gap: 2.75rem;
+
+  @media (min-width: $breakpoint-sm) {
+    padding: 7rem 4rem 8.5rem;
+  }
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.title {
+  font-size: clamp(2.5rem, 10vw, 3.5rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+
+  @media (min-width: $breakpoint-md) {
+    display: grid;
+    grid-template-columns: minmax(0, 6fr) minmax(0, 4fr);
+    column-gap: 5.5rem;
+    align-items: start;
+  }
+}
+
+.deck {
+  max-width: 36rem;
+  font-size: 1.75rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--color-on-surface);
+  text-wrap: pretty;
+}
+
+.lede {
+  max-width: 24rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface-variant);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: auto;
+  }
+}
+
+.ledger {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+  margin-top: 5.5rem;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-top: 7rem;
+  }
+}
+
+.ledgerHead {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: var(--what) minmax(0, 1fr) minmax(0, 1.4fr);
+    column-gap: var(--gap);
+  }
+}
+
+.ledgerName {
+  color: var(--color-on-surface-variant);
+}
+
+.colHead {
+  display: none;
+
+  @media (min-width: $breakpoint-md) {
+    display: block;
+  }
+}
+
+.figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.75rem 5.5rem;
+  margin-top: 5.5rem;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-top: 7rem;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: calc(var(--what) + var(--gap));
+  }
+}
+
+.ledgerFirst {
+  margin-top: 4rem;
+
+  @media (min-width: $breakpoint-sm) {
+    margin-top: 5.5rem;
+  }
+}
+
+.figure {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 18rem;
+}
+
+.figureValue {
+  font-size: clamp(3rem, 12vw, 3.5rem);
+  font-weight: 100;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--color-primary);
+
+  @media (min-width: $breakpoint-sm) {
+    font-size: clamp(3.5rem, 6vw, 6rem);
+  }
+}
+
+.figureCaption {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--color-outline);
+}
+
+.rows {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 0.75rem;
+  opacity: 0;
+  transform: translateY(0.5rem);
+  transition:
+    opacity 300ms ease-out,
+    transform 300ms ease-out;
+
+  @media (min-width: $breakpoint-md) {
+    grid-template-columns: var(--what) minmax(0, 1fr) minmax(0, 1.4fr);
+    column-gap: var(--gap);
+    align-items: start;
+  }
+}
+
+.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .row {
+    transform: none;
+    transition: opacity 300ms ease-out;
+  }
+}
+
+.what,
+.before,
+.now {
+  transition: opacity 300ms ease-out, color 300ms ease-out;
+}
+
+.main[data-active] .row:not(.active) > :is(.what, .now) {
+  opacity: 0.3;
+}
+
+.main[data-active] .row:not(.active) > .before {
+  opacity: 0.3;
+}
+
+.what {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--color-on-surface-variant);
+}
+
+.before,
+.now {
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.before {
+  max-width: 24rem;
+  color: var(--color-on-surface-variant);
+  opacity: 0.4;
+}
+
+.now {
+  max-width: 32rem;
+  color: var(--color-on-surface);
+}
+
+.active .now {
+  color: var(--color-primary);
+}
+
+.inlineHead {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+
+  @media (min-width: $breakpoint-md) {
+    display: none;
+  }
+}
+
+.handoff {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 11px;
+  margin-top: 7rem;
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: calc(var(--what) + var(--gap));
+  }
+}
+
+.handoffLine {
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--color-outline-variant) 20%, transparent);
+}
+
+.crosshair {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 11px;
+  height: 11px;
+}
+
+.crosshairV,
+.crosshairH {
+  position: absolute;
+  background: var(--color-outline);
+}
+
+.crosshairV {
+  left: 5px;
+  top: 0;
+  width: 1px;
+  height: 11px;
+}
+
+.crosshairH {
+  left: 0;
+  top: 5px;
+  width: 11px;
+  height: 1px;
+}
+
+.mark {
+  margin-left: 1rem;
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  color: var(--color-outline);
+}
+
+.close {
+  margin-top: 8.5rem;
+
+  @media (min-width: $breakpoint-md) {
+    padding-left: calc(var(--what) + var(--gap));
+  }
+}
+
+.arc {
+  max-width: 28rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  line-height: 1.6;
+  color: var(--color-on-surface);
+  text-wrap: pretty;
+
+  @media (min-width: $breakpoint-md) {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 5.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-outline);
+
+  @media (min-width: $breakpoint-md) {
+    padding-left: calc(var(--what) + var(--gap));
+  }
+}
+
+.stack {
+  max-width: 40rem;
+  line-height: 1.8;
+}

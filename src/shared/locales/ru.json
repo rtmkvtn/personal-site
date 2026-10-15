@@ -47,16 +47,6 @@
     "locationTitle": "Местоположение",
     "location": "Удалённо — доступен по всему миру"
   },
-  "built": {
-    "label": "Как это сделано",
-    "me": "Я",
-    "agents": "Агенты",
-    "specify": "Спецификация",
-    "implement": "Реализация",
-    "verify": "Проверка",
-    "review": "Ревью",
-    "handoff": "hand-off"
-  },
   "journey": {
     "seller": "Продавец",
     "manufacturer": "Производитель",
@@ -96,5 +86,23 @@
     "review": "Ревью",
     "pipeline": "Пайплайн",
     "ci": "GitLab CI · Docker · три окружения"
+  },
+  "byHand": {
+    "before": "До",
+    "now": "Сейчас",
+    "operators": "Операторы",
+    "team": "Команда",
+    "exchanges": "2 000",
+    "exchangesCaption": "обменов в день, в продакшене",
+    "half": "½",
+    "halfCaption": "ручной работы операторов исчезло",
+    "entry": "Проводка",
+    "debit": "Дебет",
+    "credit": "Кредит",
+    "balanced": "Сходится",
+    "fiatIn": "Фиат вошёл",
+    "cryptoOut": "Крипта вышла",
+    "fee": "Комиссия",
+    "entryCaption": "каждое движение, обе стороны"
   }
 }

@@ -3,8 +3,6 @@ import type {
   ResolvedProject,
   LocalizedString,
   LocalizedStringArray,
-  AiFirstJson,
-  ResolvedAiFirst,
   ByHandRowJson,
   ByHandRow,
 } from "@/shared/config/projects";
@@ -20,27 +18,6 @@ function resolveStringArray(
   locale: Locale,
 ): string[] {
   return (value[locale] ?? value.en) as string[];
-}
-
-function resolveAiFirst(
-  value: AiFirstJson | undefined,
-  locale: Locale,
-): ResolvedAiFirst | undefined {
-  if (!value) return undefined;
-  return {
-    steps: {
-      specify: resolveString(value.steps.specify, locale),
-      implement: resolveString(value.steps.implement, locale),
-      verify: resolveString(value.steps.verify, locale),
-      review: resolveString(value.steps.review, locale),
-    },
-    anchor: {
-      value: resolveString(value.anchor.value, locale),
-      label: resolveString(value.anchor.label, locale),
-      mark: value.anchor.mark,
-    },
-    note: value.note ? resolveString(value.note, locale) : undefined,
-  };
 }
 
 function resolveByHandRow(row: ByHandRowJson, locale: Locale): ByHandRow {
@@ -61,7 +38,6 @@ export function resolveProjectLocale(
     highlight: resolveString(project.highlight, locale),
     description: resolveString(project.description, locale),
     achievements: resolveStringArray(project.achievements, locale),
-    aiFirst: resolveAiFirst(project.aiFirst, locale),
     arc: project.arc
       ? { steps: resolveStringArray(project.arc.steps, locale) }
       : undefined,

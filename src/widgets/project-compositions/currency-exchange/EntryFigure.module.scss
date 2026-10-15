@@ -1,0 +1,38 @@
+@use "../../../shared/styles/breakpoints" as *;
+
+.figure {
+  display: none;
+  width: 100%;
+  max-width: 32rem;
+  height: auto;
+  margin-top: 2.75rem;
+  overflow: visible;
+  color: var(--color-outline);
+
+  @media (min-width: $breakpoint-sm) {
+    display: block;
+  }
+
+  @media (min-width: $breakpoint-md) {
+    margin-top: 4rem;
+  }
+}
+
+.label {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: var(--color-outline);
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 9px;
+  fill: var(--color-outline);
+}
+
+.rule {
+  stroke: color-mix(in srgb, var(--color-outline-variant) 40%, transparent);
+}

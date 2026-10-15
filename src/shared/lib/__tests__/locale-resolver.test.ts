@@ -81,34 +81,3 @@ describe("resolveProjectLocale", () => {
     expect(resolved.gallery).toEqual([]);
   });
 });
-
-describe("resolveProjectLocale aiFirst", () => {
-  const aiFirst = {
-    steps: {
-      specify: { en: "Specs", ru: "Спеки" },
-      implement: { en: "Agents" },
-      verify: { en: "Tests", ru: "Тесты" },
-      review: { en: "Review" },
-    },
-    anchor: {
-      value: { en: "2 mo", ru: "2 мес" },
-      label: { en: "Bookkeeping", ru: "Бухучёт" },
-      mark: "BOOKKEEPING / 2025–26",
-    },
-    note: { en: "Started solo" },
-  };
-
-  it("resolves aiFirst per locale with en fallback per field", () => {
-    const resolved = resolveProjectLocale(makeProject({ aiFirst }), "ru");
-    expect(resolved.aiFirst).toEqual({
-      steps: { specify: "Спеки", implement: "Agents", verify: "Тесты", review: "Review" },
-      anchor: { value: "2 мес", label: "Бухучёт", mark: "BOOKKEEPING / 2025–26" },
-      note: "Started solo",
-    });
-  });
-
-  it("leaves aiFirst undefined when the project has none", () => {
-    const resolved = resolveProjectLocale(makeProject(), "en");
-    expect(resolved.aiFirst).toBeUndefined();
-  });
-});
