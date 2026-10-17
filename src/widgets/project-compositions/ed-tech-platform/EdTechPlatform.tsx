@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import type { HandoffActor, ResolvedProject } from "@/shared/config";
@@ -9,6 +9,7 @@ import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import { readProjectCopy } from "../lib/project-copy";
+import { useAnchoredIndex } from "../lib/use-anchored-index";
 import { useReveal } from "../lib/use-reveal";
 import { LessonFigure } from "./LessonFigure";
 import styles from "./EdTechPlatform.module.scss";
@@ -18,7 +19,6 @@ interface EdTechPlatformProps {
 }
 
 const EVENT_INDEX = 2;
-const ANCHOR_RATIO = 0.4;
 
 export function EdTechPlatform({ project }: EdTechPlatformProps) {
   const locale = useLocale();
@@ -27,40 +27,8 @@ export function EdTechPlatform({ project }: EdTechPlatformProps) {
   const { deck, lede, arc } = readProjectCopy(project.description);
   const stages = project.handoff?.stages ?? [];
   const [hovered, setHovered] = useState<HandoffActor | null>(null);
-  const [current, setCurrent] = useState(0);
+  const current = useAnchoredIndex(listRef, { signal: stages.length });
   const revealed = useReveal(listRef, stages.length);
-
-  useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-    const items = Array.from(list.children) as HTMLElement[];
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const anchor = window.innerHeight * ANCHOR_RATIO;
-      let next = 0;
-      let best = Infinity;
-      items.forEach((el, i) => {
-        const distance = Math.abs(el.getBoundingClientRect().top - anchor);
-        if (distance < best) {
-          best = distance;
-          next = i;
-        }
-      });
-      setCurrent(next);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, [stages.length]);
 
   const lit = hovered ?? stages[current]?.actor ?? null;
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import type { ResolvedProject } from "@/shared/config";
@@ -9,6 +9,7 @@ import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import { readProjectCopy } from "../lib/project-copy";
+import { useAnchoredIndex } from "../lib/use-anchored-index";
 import { useReveal } from "../lib/use-reveal";
 import { PipelineFigure } from "./PipelineFigure";
 import styles from "./MInvest.module.scss";
@@ -19,7 +20,6 @@ interface MInvestProps {
 
 const LOUD_INDEX = 2;
 const AGENTS_INDEX = 3;
-const ANCHOR_RATIO = 0.4;
 const STACK_GAP_REM = 2.75;
 
 interface Layout {
@@ -64,7 +64,7 @@ export function MInvest({ project }: MInvestProps) {
   const [startYear, startMonth] = parseMonth(start);
   const [layout, setLayout] = useState<Layout | null>(null);
   const [hovered, setHovered] = useState<number | null>(null);
-  const [current, setCurrent] = useState(0);
+  const current = useAnchoredIndex(listRef, { signal: layout });
   const revealed = useReveal(listRef, events.length);
 
   useLayoutEffect(() => {
@@ -111,38 +111,6 @@ export function MInvest({ project }: MInvestProps) {
     items.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, [events, start, months, locale]);
-
-  useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-    const items = Array.from(list.children) as HTMLElement[];
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const anchor = window.innerHeight * ANCHOR_RATIO;
-      let next = 0;
-      let best = Infinity;
-      items.forEach((el, i) => {
-        const distance = Math.abs(el.getBoundingClientRect().top - anchor);
-        if (distance < best) {
-          best = distance;
-          next = i;
-        }
-      });
-      setCurrent(next);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, [events.length, layout]);
 
   const active = hovered ?? current;
   const ticks = Array.from({ length: months }, (_, i) => {

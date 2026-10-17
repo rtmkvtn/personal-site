@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import type { ByHandRow, ResolvedProject } from "@/shared/config";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import { readProjectCopy } from "../lib/project-copy";
+import { useAnchoredIndex } from "../lib/use-anchored-index";
 import { useReveal } from "../lib/use-reveal";
 import { EntryFigure } from "./EntryFigure";
 import styles from "./CurrencyExchange.module.scss";
@@ -15,7 +16,6 @@ interface CurrencyExchangeProps {
   project: ResolvedProject;
 }
 
-const ANCHOR_RATIO = 0.4;
 const REPO = "team-agents";
 
 interface LedgerProps {
@@ -78,41 +78,12 @@ export function CurrencyExchange({ project }: CurrencyExchangeProps) {
   const operators = useMemo(() => project.byHand?.operators ?? [], [project.byHand]);
   const team = useMemo(() => project.byHand?.team ?? [], [project.byHand]);
   const [hovered, setHovered] = useState<number | null>(null);
-  const [current, setCurrent] = useState(0);
+  const current = useAnchoredIndex(operatorsRef, {
+    also: teamRef,
+    signal: operators.length + team.length,
+  });
   const revealedOperators = useReveal(operatorsRef, operators.length);
   const revealedTeam = useReveal(teamRef, team.length);
-
-  useEffect(() => {
-    const lists = [operatorsRef.current, teamRef.current].filter(Boolean) as HTMLOListElement[];
-    const items = lists.flatMap((list) => Array.from(list.children) as HTMLElement[]);
-    if (!items.length) return;
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const anchor = window.innerHeight * ANCHOR_RATIO;
-      let next = 0;
-      let best = Infinity;
-      items.forEach((el, i) => {
-        const distance = Math.abs(el.getBoundingClientRect().top - anchor);
-        if (distance < best) {
-          best = distance;
-          next = i;
-        }
-      });
-      setCurrent(next);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, [operators.length, team.length]);
 
   const active = hovered ?? current;
 

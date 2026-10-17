@@ -55,3 +55,8 @@ _Avoid_: Summary, blurb, excerpt
 **Arc**:
 The description's second paragraph, the composition's closing paragraph, set after the stages.
 _Avoid_: Conclusion, outro, closing note
+
+**Anchor line**:
+The line 40% down the viewport that decides which stage, row or event a composition shows as
+active; hovering overrides it.
+_Avoid_: Scroll position, focus line, trigger point

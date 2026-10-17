@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { LabelFigure } from "./LabelFigure";
 import clsx from "clsx";
 import type { ResolvedProject } from "@/shared/config";
@@ -9,6 +9,7 @@ import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import { readProjectCopy } from "../lib/project-copy";
+import { anchorLineOffset, useAnchoredIndex } from "../lib/use-anchored-index";
 import { useReveal } from "../lib/use-reveal";
 import { JourneyMap } from "./JourneyMap";
 import styles from "./Wizmart.module.scss";
@@ -18,7 +19,6 @@ interface WizmartProps {
 }
 
 const EVENT_INDEX = 1;
-const ANCHOR_RATIO = 0.4;
 
 export function Wizmart({ project }: WizmartProps) {
   const locale = useLocale();
@@ -26,46 +26,14 @@ export function Wizmart({ project }: WizmartProps) {
   const { deck, lede, arc } = readProjectCopy(project.description);
   const stages = project.journey?.stages ?? [];
   const [hovered, setHovered] = useState<number | null>(null);
-  const [current, setCurrent] = useState(0);
+  const current = useAnchoredIndex(listRef, { signal: stages.length });
   const revealed = useReveal(listRef, stages.length);
-
-  useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-    const items = Array.from(list.children) as HTMLElement[];
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const anchor = window.innerHeight * ANCHOR_RATIO;
-      let next = 0;
-      let best = Infinity;
-      items.forEach((el, i) => {
-        const distance = Math.abs(el.getBoundingClientRect().top - anchor);
-        if (distance < best) {
-          best = distance;
-          next = i;
-        }
-      });
-      setCurrent(next);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, [stages.length]);
 
   const select = useCallback((index: number) => {
     const el = listRef.current?.children[index] as HTMLElement | undefined;
     if (!el) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const top = window.scrollY + el.getBoundingClientRect().top - window.innerHeight * ANCHOR_RATIO;
+    const top = window.scrollY + el.getBoundingClientRect().top - anchorLineOffset();
     window.scrollTo({ top, behavior: reduce ? "auto" : "smooth" });
   }, []);
 

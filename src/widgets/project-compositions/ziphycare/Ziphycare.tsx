@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import type { ResolvedProject } from "@/shared/config";
@@ -9,6 +9,7 @@ import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
 import { readProjectCopy } from "../lib/project-copy";
+import { useAnchoredIndex } from "../lib/use-anchored-index";
 import { useReveal } from "../lib/use-reveal";
 import { ExamRoomFigure } from "./ExamRoomFigure";
 import styles from "./Ziphycare.module.scss";
@@ -19,7 +20,6 @@ interface ZiphycareProps {
 
 const LOUD_INDEX = 3;
 const LOUD_FIGURE = 4;
-const ANCHOR_RATIO = 0.4;
 
 function hostname(url: string): string {
   try {
@@ -36,40 +36,8 @@ export function Ziphycare({ project }: ZiphycareProps) {
   const { deck, lede, arc } = readProjectCopy(project.description);
   const rows = project.interpreter?.rows ?? [];
   const [hovered, setHovered] = useState<number | null>(null);
-  const [current, setCurrent] = useState(0);
+  const current = useAnchoredIndex(listRef, { signal: rows.length });
   const revealed = useReveal(listRef, rows.length);
-
-  useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-    const items = Array.from(list.children) as HTMLElement[];
-    let frame = 0;
-    const update = () => {
-      frame = 0;
-      const anchor = window.innerHeight * ANCHOR_RATIO;
-      let next = 0;
-      let best = Infinity;
-      items.forEach((el, i) => {
-        const distance = Math.abs(el.getBoundingClientRect().top - anchor);
-        if (distance < best) {
-          best = distance;
-          next = i;
-        }
-      });
-      setCurrent(next);
-    };
-    const onScroll = () => {
-      if (!frame) frame = requestAnimationFrame(update);
-    };
-    update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-      if (frame) cancelAnimationFrame(frame);
-    };
-  }, [rows.length]);
 
   const active = hovered ?? current;
   const sides = [t("interpreter.wire"), t("interpreter.screen")];
