@@ -54,3 +54,6 @@ next-env.d.ts
 # impeccable session artifacts
 .impeccable/review/
 .impeccable/questions/
+
+# claude code session state
+/.claude/
