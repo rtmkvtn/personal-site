@@ -57,3 +57,6 @@ next-env.d.ts
 
 # claude code session state
 /.claude/
+
+# sandcastle session state
+/.sandcastle/
