@@ -1,47 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import clsx from "clsx";
 import type { ResolvedProject } from "@/shared/config";
+import { useStagedReveal } from "@/shared/lib/use-staged-reveal";
 import styles from "./ProjectDetailPanel.module.scss";
 
 interface ProjectDetailPanelProps {
   project: ResolvedProject | null;
 }
 
+const STAGE_DELAYS = [50, 200, 300, 400, 500];
+
 export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
-  const [displayedProject, setDisplayedProject] = useState<ResolvedProject | null>(null);
-  const [prevProject, setPrevProject] = useState<ResolvedProject | null>(null);
-  const [stage, setStage] = useState(0);
-
-  if (project !== prevProject) {
-    setPrevProject(project);
-    setStage(0);
-    if (project) setDisplayedProject(project);
-  }
-
-  useEffect(() => {
-    if (project) {
-      const timers = [
-        setTimeout(() => setStage(1), 50),
-        setTimeout(() => setStage(2), 200),
-        setTimeout(() => setStage(3), 300),
-        setTimeout(() => setStage(4), 400),
-        setTimeout(() => setStage(5), 500),
-      ];
-      return () => timers.forEach(clearTimeout);
-    } else {
-      const timer = setTimeout(() => setDisplayedProject(null), 200);
-      return () => clearTimeout(timer);
-    }
-  }, [project]);
+  const { displayed: displayedProject, reached } = useStagedReveal(project, STAGE_DELAYS);
 
   if (!displayedProject) return null;
 
   const fadeIn = (minStage: number) =>
-    clsx(styles.fadeIn, stage >= minStage && styles.fadeInVisible);
+    clsx(styles.fadeIn, reached(minStage) && styles.fadeInVisible);
 
   return (
     <div
@@ -51,7 +29,7 @@ export function ProjectDetailPanel({ project }: ProjectDetailPanelProps) {
       )}
     >
       {displayedProject?.image && (
-        <div className={clsx(styles.imageWrapper, stage >= 1 && styles.imageWrapperVisible)}>
+        <div className={clsx(styles.imageWrapper, reached(1) && styles.imageWrapperVisible)}>
           <div className={styles.imageOverlay} />
           <Image
             src={displayedProject.image}

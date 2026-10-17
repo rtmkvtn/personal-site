@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import clsx from "clsx";
 import { useTranslation } from "react-i18next";
 import type { SkillBubble } from "@/shared/utils/skillsAggregator";
 import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { useLocale } from "@/shared/lib/i18n";
+import { useStagedReveal } from "@/shared/lib/use-staged-reveal";
 import { useSkillDuration } from "../lib/use-skill-duration";
 import styles from "./SkillDetail.module.scss";
+
+const STAGE_DELAYS = [50, 200, 300, 400];
 
 interface SkillDetailProps {
   skill: SkillBubble | null;
@@ -26,33 +28,10 @@ export function SkillDetail({
   const { t } = useTranslation();
   const locale = useLocale();
   const skillDuration = useSkillDuration();
-  const [displayed, setDisplayed] = useState<SkillBubble | null>(null);
-  const [prev, setPrev] = useState<SkillBubble | null>(null);
-  const [stage, setStage] = useState(0);
-
-  if (skill !== prev) {
-    setPrev(skill);
-    setStage(0);
-    if (skill) setDisplayed(skill);
-  }
-
-  useEffect(() => {
-    if (skill) {
-      const timers = [
-        setTimeout(() => setStage(1), 50),
-        setTimeout(() => setStage(2), 200),
-        setTimeout(() => setStage(3), 300),
-        setTimeout(() => setStage(4), 400),
-      ];
-      return () => timers.forEach(clearTimeout);
-    } else {
-      const timer = setTimeout(() => setDisplayed(null), 200);
-      return () => clearTimeout(timer);
-    }
-  }, [skill]);
+  const { displayed, reached } = useStagedReveal(skill, STAGE_DELAYS);
 
   const fadeIn = (minStage: number) =>
-    clsx(styles.fadeIn, stage >= minStage && styles.fadeInVisible);
+    clsx(styles.fadeIn, reached(minStage) && styles.fadeInVisible);
 
   if (displayed) {
     return (
