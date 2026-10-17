@@ -15,6 +15,11 @@ export interface SkillBubble {
   projects: SkillProject[];
 }
 
+export interface SkillsSummary {
+  skills: SkillBubble[];
+  totalYears: number;
+}
+
 interface Interval {
   start: number;
   end: number;
@@ -45,7 +50,22 @@ function computeTotalMonths(intervals: Interval[]): number {
   return merged.reduce((sum, iv) => sum + (iv.end - iv.start + 1), 0);
 }
 
-export function aggregateSkills(projects: Project[]): SkillBubble[] {
+function computeTotalYears(projects: Project[], now: Date): number {
+  const earliest = projects.reduce((min, p) => {
+    if (!p.startDate) return min;
+    return p.startDate < min ? p.startDate : min;
+  }, "9999-99");
+  if (earliest === "9999-99") return 0;
+  const [y, m] = earliest.split("-").map(Number);
+  return Math.floor(now.getFullYear() - y + (now.getMonth() + 1 - m) / 12);
+}
+
+/**
+ * Every figure the Hard Skills surface shows: one bubble per skill, weighted by how many projects
+ * used it and for how long with overlapping engagements counted once, and the years since the
+ * earliest project began. `now` is injected so the figures are testable.
+ */
+export function aggregateSkills(projects: Project[], now: Date = new Date()): SkillsSummary {
   const map = new Map<
     string,
     { count: number; intervals: Interval[]; projects: SkillProject[] }
@@ -53,7 +73,6 @@ export function aggregateSkills(projects: Project[]): SkillBubble[] {
 
   for (const project of projects) {
     if (!project.startDate) continue;
-    const now = new Date();
     const start = toMonthEpoch(project.startDate);
     const end = project.endDate
       ? toMonthEpoch(project.endDate)
@@ -86,10 +105,12 @@ export function aggregateSkills(projects: Project[]): SkillBubble[] {
   }));
   const maxDuration = Math.max(...entries.map((e) => e.totalMonths), 1);
 
-  return entries
+  const skills = entries
     .map((e) => ({
       ...e,
       weight: e.count * 0.4 + (e.totalMonths / maxDuration) * 0.6,
     }))
     .sort((a, b) => b.weight - a.weight);
+
+  return { skills, totalYears: computeTotalYears(projects, now) };
 }

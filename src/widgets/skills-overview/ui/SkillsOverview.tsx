@@ -19,7 +19,7 @@ export function SkillsOverview({ projects }: SkillsOverviewProps) {
   const { t } = useTranslation();
   const locale = useLocale();
   const skillDuration = useSkillDuration();
-  const skills = useMemo(() => aggregateSkills(projects), [projects]);
+  const { skills, totalYears } = useMemo(() => aggregateSkills(projects), [projects]);
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [modalSkill, setModalSkill] = useState<SkillBubble | null>(null);
 
@@ -27,19 +27,6 @@ export function SkillsOverview({ projects }: SkillsOverviewProps) {
     () => skills.find((s) => s.skill === hoveredSkill) ?? null,
     [skills, hoveredSkill],
   );
-
-  const totalYears = useMemo(() => {
-    const earliest = projects.reduce((min, p) => {
-      if (!p.startDate) return min;
-      return p.startDate < min ? p.startDate : min;
-    }, "9999-99");
-    if (earliest === "9999-99") return 0;
-    const [y, m] = earliest.split("-").map(Number);
-    const now = new Date();
-    return Math.floor(
-      (now.getFullYear() - y) + (now.getMonth() + 1 - m) / 12,
-    );
-  }, [projects]);
 
   const handleHover = useCallback((skill: string | null) => {
     setHoveredSkill(skill);
