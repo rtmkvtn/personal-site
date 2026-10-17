@@ -8,6 +8,7 @@ import { useLocale } from "@/shared/lib/i18n";
 import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { readProjectCopy } from "../lib/project-copy";
 import { useReveal } from "../lib/use-reveal";
 import styles from "./CryptoMarketplace.module.scss";
 
@@ -18,7 +19,7 @@ interface CryptoMarketplaceProps {
 export function CryptoMarketplace({ project }: CryptoMarketplaceProps) {
   const locale = useLocale();
   const listRef = useRef<HTMLOListElement>(null);
-  const [lede, arc] = project.description.split(/\n{2,}/);
+  const { first: lede, arc } = readProjectCopy(project.description);
   const titles = project.arc?.steps ?? [];
   const steps = project.achievements.map((detail, i) => ({
     title: titles[i] ?? detail,

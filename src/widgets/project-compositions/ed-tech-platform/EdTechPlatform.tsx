@@ -8,6 +8,7 @@ import { useLocale } from "@/shared/lib/i18n";
 import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { readProjectCopy } from "../lib/project-copy";
 import { useReveal } from "../lib/use-reveal";
 import { LessonFigure } from "./LessonFigure";
 import styles from "./EdTechPlatform.module.scss";
@@ -19,17 +20,11 @@ interface EdTechPlatformProps {
 const EVENT_INDEX = 2;
 const ANCHOR_RATIO = 0.4;
 
-function splitLede(text: string): [string, string] {
-  const match = text.match(/^(.+?[.。])\s*([\s\S]*)$/);
-  return match ? [match[1], match[2]] : [text, ""];
-}
-
 export function EdTechPlatform({ project }: EdTechPlatformProps) {
   const locale = useLocale();
   const { t } = useTranslation();
   const listRef = useRef<HTMLOListElement>(null);
-  const [lede, arc] = project.description.split(/\n{2,}/);
-  const [deck, ledeRest] = splitLede(lede);
+  const { deck, lede, arc } = readProjectCopy(project.description);
   const stages = project.handoff?.stages ?? [];
   const [hovered, setHovered] = useState<HandoffActor | null>(null);
   const [current, setCurrent] = useState(0);
@@ -78,7 +73,7 @@ export function EdTechPlatform({ project }: EdTechPlatformProps) {
             <p className={styles.deck}>{deck}</p>
             <LessonFigure />
           </div>
-          {ledeRest && <p className={styles.lede}>{ledeRest}</p>}
+          {lede && <p className={styles.lede}>{lede}</p>}
         </div>
       </header>
 

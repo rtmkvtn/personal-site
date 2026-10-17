@@ -8,6 +8,7 @@ import { useLocale } from "@/shared/lib/i18n";
 import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { readProjectCopy } from "../lib/project-copy";
 import { useReveal } from "../lib/use-reveal";
 import { ExamRoomFigure } from "./ExamRoomFigure";
 import styles from "./Ziphycare.module.scss";
@@ -19,11 +20,6 @@ interface ZiphycareProps {
 const LOUD_INDEX = 3;
 const LOUD_FIGURE = 4;
 const ANCHOR_RATIO = 0.4;
-
-function splitLede(text: string): [string, string] {
-  const match = text.match(/^(.+?[.。])\s*([\s\S]*)$/);
-  return match ? [match[1], match[2]] : [text, ""];
-}
 
 function hostname(url: string): string {
   try {
@@ -37,8 +33,7 @@ export function Ziphycare({ project }: ZiphycareProps) {
   const locale = useLocale();
   const { t } = useTranslation();
   const listRef = useRef<HTMLOListElement>(null);
-  const [lede, arc] = project.description.split(/\n{2,}/);
-  const [deck, ledeRest] = splitLede(lede);
+  const { deck, lede, arc } = readProjectCopy(project.description);
   const rows = project.interpreter?.rows ?? [];
   const [hovered, setHovered] = useState<number | null>(null);
   const [current, setCurrent] = useState(0);
@@ -86,7 +81,7 @@ export function Ziphycare({ project }: ZiphycareProps) {
         <div className={styles.body}>
           <p className={styles.deck}>{deck}</p>
           <ExamRoomFigure />
-          {ledeRest && <p className={styles.lede}>{ledeRest}</p>}
+          {lede && <p className={styles.lede}>{lede}</p>}
         </div>
       </header>
 

@@ -8,6 +8,7 @@ import { useLocale } from "@/shared/lib/i18n";
 import { toLocaleNumeral } from "@/shared/lib/chinese-numerals";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { readProjectCopy } from "../lib/project-copy";
 import { useReveal } from "../lib/use-reveal";
 import { PipelineFigure } from "./PipelineFigure";
 import styles from "./MInvest.module.scss";
@@ -28,11 +29,6 @@ interface Layout {
   turn: number;
   agents: number;
   agentsLabel: number;
-}
-
-function splitLede(text: string): [string, string] {
-  const match = text.match(/^(.+?[.。])\s*([\s\S]*)$/);
-  return match ? [match[1], match[2]] : [text, ""];
 }
 
 function parseMonth(when: string): [number, number] {
@@ -60,8 +56,7 @@ export function MInvest({ project }: MInvestProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLOListElement>(null);
   const threeRef = useRef<HTMLSpanElement>(null);
-  const [lede, arc] = project.description.split(/\n{2,}/);
-  const [deck, ledeRest] = splitLede(lede);
+  const { deck, lede, arc } = readProjectCopy(project.description);
   const events = useMemo(() => project.timeline?.events ?? [], [project.timeline]);
   const start = project.startDate ?? events[0]?.when ?? "2025-01";
   const end = project.endDate ?? events[events.length - 1]?.when ?? start;
@@ -164,7 +159,7 @@ export function MInvest({ project }: MInvestProps) {
             <p className={styles.deck}>{deck}</p>
             <PipelineFigure />
           </div>
-          {ledeRest && <p className={styles.lede}>{ledeRest}</p>}
+          {lede && <p className={styles.lede}>{lede}</p>}
         </div>
       </header>
 

@@ -43,3 +43,15 @@ _Avoid_: Page, section, screen
 **Composition**:
 A project page's bespoke arrangement, chosen by the project's slug; a project without one is shown as the generic reading column. Each composition tells one story about its project and owns its own loud element in place of the hero numeral.
 _Avoid_: Layout, template, custom page, case-study page
+
+**Deck**:
+The first sentence of a project's description, set large under the composition's title.
+_Avoid_: Intro, subtitle, standfirst
+
+**Lede**:
+What follows the deck in the description's first paragraph, set beside or under it.
+_Avoid_: Summary, blurb, excerpt
+
+**Arc**:
+The description's second paragraph, the composition's closing paragraph, set after the stages.
+_Avoid_: Conclusion, outro, closing note

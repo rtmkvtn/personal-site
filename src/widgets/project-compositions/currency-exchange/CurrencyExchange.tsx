@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import type { ByHandRow, ResolvedProject } from "@/shared/config";
 import { ProjectGallery } from "@/shared/ui/ProjectGallery";
 import { ProjectVideo } from "@/shared/ui/ProjectVideo";
+import { readProjectCopy } from "../lib/project-copy";
 import { useReveal } from "../lib/use-reveal";
 import { EntryFigure } from "./EntryFigure";
 import styles from "./CurrencyExchange.module.scss";
@@ -16,11 +17,6 @@ interface CurrencyExchangeProps {
 
 const ANCHOR_RATIO = 0.4;
 const REPO = "team-agents";
-
-function splitLede(text: string): [string, string] {
-  const match = text.match(/^(.+?[.。])\s*([\s\S]*)$/);
-  return match ? [match[1], match[2]] : [text, ""];
-}
 
 interface LedgerProps {
   name: string;
@@ -78,8 +74,7 @@ export function CurrencyExchange({ project }: CurrencyExchangeProps) {
   const { t } = useTranslation();
   const operatorsRef = useRef<HTMLOListElement>(null);
   const teamRef = useRef<HTMLOListElement>(null);
-  const [lede, arc] = project.description.split(/\n{2,}/);
-  const [deck, ledeRest] = splitLede(lede);
+  const { deck, lede, arc } = readProjectCopy(project.description);
   const operators = useMemo(() => project.byHand?.operators ?? [], [project.byHand]);
   const team = useMemo(() => project.byHand?.team ?? [], [project.byHand]);
   const [hovered, setHovered] = useState<number | null>(null);
@@ -130,7 +125,7 @@ export function CurrencyExchange({ project }: CurrencyExchangeProps) {
             <p className={styles.deck}>{deck}</p>
             <EntryFigure />
           </div>
-          {ledeRest && <p className={styles.lede}>{ledeRest}</p>}
+          {lede && <p className={styles.lede}>{lede}</p>}
         </div>
       </header>
 
