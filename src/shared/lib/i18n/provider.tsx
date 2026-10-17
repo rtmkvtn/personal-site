@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useSyncExternalStore } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
 import i18n from "./init";
 import { detectLocale, SUPPORTED_LOCALES, DEFAULT_LOCALE } from "./detect";
@@ -30,15 +30,30 @@ export function setLocale(locale: Locale): void {
   setLocaleCookie(locale);
 }
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [ready, setReady] = useState(false);
+let initialLocaleApplied = false;
+const readyListeners = new Set<() => void>();
 
-  useEffect(() => {
-    const locale = resolveInitialLocale();
-    i18n.changeLanguage(locale);
-    setLocaleCookie(locale);
-    setReady(true);
-  }, []);
+function applyInitialLocale(): void {
+  if (initialLocaleApplied) return;
+  const locale = resolveInitialLocale();
+  i18n.changeLanguage(locale);
+  setLocaleCookie(locale);
+  initialLocaleApplied = true;
+  readyListeners.forEach((listener) => listener());
+}
+
+function subscribeReady(listener: () => void): () => void {
+  readyListeners.add(listener);
+  applyInitialLocale();
+  return () => readyListeners.delete(listener);
+}
+
+export function I18nProvider({ children }: { children: React.ReactNode }) {
+  const ready = useSyncExternalStore(
+    subscribeReady,
+    () => initialLocaleApplied,
+    () => false,
+  );
 
   if (!ready) return null;
 
