@@ -1,0 +1,19 @@
+.top,
+.bottom {
+  pointer-events: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 15dvh;
+  z-index: 4;
+}
+
+.top {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-surface), transparent);
+}
+
+.bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-surface), transparent);
+}

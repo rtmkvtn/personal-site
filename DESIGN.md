@@ -224,6 +224,8 @@ Hero surfaces (Home, About, Contact, the Skills summary) share one grammar: a ve
 
 Two-panel surfaces split at 50% (Skills: detail left, chart right, with the hairline on the seam) or 60/40 (Work: scroller left, detail panel right from 1024px). On phones the panel is replaced by a smoked-glass modal.
 
+Project pages scroll the document, so they carry the Work page's edge fade as two fixed bands: 15% of the viewport at the top and at the bottom, each a gradient from the page surface to transparent, pointer-events off, beneath the header and footer and beneath a composition's pinned elements (the Order's Journey map sits above it). Content fades out under the header and in above the footer, the way the Work scroller's mask does.
+
 Project detail pages are a reading column: 3rem by 4rem padding, 64rem max width, left-aligned. No shipped slug reaches it any more; every project page is a composition (72rem max, 7rem top padding, 1.5rem sides on phones and 4rem from 640px) with its own indent: a guide at 5.5rem from 640px and 2.75rem on phones, a seam at the centre, or, on Taken Off Hands, an 11rem name column plus a 2.75rem gap that the figures, hand-off, arc, and meta all align to from 1024px. The retired How It Was Built block's ladder indents (8.5rem, 5.5rem, 2.75rem) are no longer in the code.
 
 Spacing is a fixed scale: 0.25, 0.5, 1, 1.5, 2, 2.75rem for intra-composition rhythm; 4rem gutters; 5.5, 7, and 8.5rem to separate ideas and sections. Lists separate items with 0.5rem of space and a disc, never a divider. Breakpoints are 640px (sm) and 1024px (md/lg).
