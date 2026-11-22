@@ -159,6 +159,7 @@ export function ProjectScroller({
 
   return (
     <div
+      aria-hidden
       className={styles.mask}
       style={{
         maskImage:
@@ -181,7 +182,6 @@ export function ProjectScroller({
           {virtualizer.getVirtualItems().map((vRow) => {
           const projectIndex = vRow.index % projects.length;
           const project = projects[projectIndex];
-          const isClone = vRow.index >= projects.length;
           const isActive = activeVirtualIndex === vRow.index;
           const isDimmed = activeVirtualIndex !== null && !isActive;
 
@@ -193,7 +193,6 @@ export function ProjectScroller({
               ref={virtualizer.measureElement}
               data-index={vRow.index}
               data-project-index={projectIndex}
-              aria-hidden={isClone || undefined}
               style={{
                 position: "absolute",
                 top: 0,

@@ -79,13 +79,23 @@ test.describe("Work Page", () => {
     }
   });
 
-  test("every scrolling row is hidden from the accessibility tree", async ({ page }) => {
-    // The scroller repeats the six projects a hundred times to fake an endless list, so no copy of
-    // a row is announced — including the first. Asserted as it is, not as it ought to be.
+  test("exposes each project once to assistive technology, as a link to its page", async ({ page }) => {
+    const links = page.getByRole("list", { name: "WORK" }).getByRole("link");
+    await expect(links).toHaveText(PROJECTS.map((p) => p.name));
+    for (const [i, { slug }] of PROJECTS.entries()) {
+      await expect(links.nth(i)).toHaveAttribute("href", `/work/${slug}`);
+    }
+
+    // The scroller repeats the projects to fake an endless list; none of its copies is announced.
     const rows = page.locator("[data-project-index]");
-    const total = await rows.count();
-    expect(total).toBeGreaterThan(PROJECTS.length);
-    await expect(rows.and(page.locator("[aria-hidden='true']"))).toHaveCount(total);
+    expect(await rows.count()).toBeGreaterThan(PROJECTS.length);
+    await expect(page.getByRole("heading", { level: 2 })).toHaveCount(0);
+  });
+
+  test("focusing a project link shows that project in the panel", async ({ page }) => {
+    await page.getByRole("list", { name: "WORK" }).getByRole("link").nth(1).focus();
+
+    await expect(page.getByText(PROJECTS[1].stack, { exact: true })).toBeVisible();
   });
 
   test("hovering a project shows its type, stack and highlight", async ({ page }) => {
@@ -119,6 +129,27 @@ test.describe("Work Page", () => {
   });
 });
 
+test.describe("server-rendered HTML", () => {
+  test("carries the page content before any script runs", async ({ request }) => {
+    const html = await (await request.get("/work/m-invest")).text();
+
+    expect(html).toContain("<h1");
+    expect(html).toContain("M-INVEST");
+  });
+
+  test("follows the locale cookie, then Accept-Language", async ({ request }) => {
+    const byCookie = await request.get("/", {
+      headers: { cookie: "locale=ru", "accept-language": "zh-CN" },
+    });
+    expect(await byCookie.text()).toContain('<html lang="ru"');
+
+    const byHeader = await request.get("/", {
+      headers: { "accept-language": "fr-FR, zh-CN;q=0.9, en;q=0.8" },
+    });
+    expect(await byHeader.text()).toContain('<html lang="zh"');
+  });
+});
+
 test.describe("/work/[slug] route", () => {
   for (const { slug, name } of PROJECTS) {
     test(`renders ${slug} by its name`, async ({ page }) => {
@@ -127,12 +158,10 @@ test.describe("/work/[slug] route", () => {
     });
   }
 
-  // The old spec asserted a 404 status here. The app does not send one: `notFound()` renders the
-  // not-found page but the response is 200, measured against `npm run dev` and `npm start` alike.
-  // What a visitor gets is asserted; the status is a separate defect and not this spec's to hide.
-  test("shows the not-found page for a slug no project has", async ({ page }) => {
-    await page.goto("/work/nonexistent-project");
+  test("answers 404 with the not-found page for a slug no project has", async ({ page }) => {
+    const response = await page.goto("/work/nonexistent-project");
 
+    expect(response?.status()).toBe(404);
     await expect(page.getByText("This page could not be found.")).toBeVisible();
     await expect(page.getByRole("heading", { level: 1, name: /CURRENCY|INVEST|ZIPHY/ })).toHaveCount(0);
   });

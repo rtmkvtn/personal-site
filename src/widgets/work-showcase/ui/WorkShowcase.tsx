@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useRef, useCallback } from "react";
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
 import type { Project } from "@/shared/config";
 import { useLocalizedProjects } from "@/shared/lib/i18n";
 import { ProjectScroller } from "./ProjectScroller";
@@ -15,6 +17,7 @@ interface WorkShowcaseProps {
 }
 
 export function WorkShowcase({ projects: rawProjects }: WorkShowcaseProps) {
+  const { t } = useTranslation();
   const projects = useLocalizedProjects(rawProjects);
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const dismissTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -70,6 +73,20 @@ export function WorkShowcase({ projects: rawProjects }: WorkShowcaseProps) {
 
   return (
     <main className={styles.main}>
+      <ul className={styles.projectLinks} aria-label={t("nav.work")}>
+        {projects.map((project, index) => (
+          <li key={project.slug}>
+            <Link
+              href={`/work/${project.slug}`}
+              onFocus={() => handleProjectHover(index)}
+              onBlur={() => handleProjectHover(null)}
+            >
+              {project.name}
+            </Link>
+          </li>
+        ))}
+      </ul>
+
       <ProjectScroller
         projects={projects}
         activeIndex={activeIndex}

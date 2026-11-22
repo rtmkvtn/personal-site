@@ -293,6 +293,7 @@ Quiet until touched. At rest a component is a label or a ghost outline on the vo
 ### Project Scroller (Work)
 - **Row:** index in label typography (Slate; Signal White when active; 40% when dimmed), project name in headline typography (Soft White; Signal White active; 30% dimmed), a date chip in label typography at 60% Signal White on smoked glass. Rows advance continuously; hover pauses and raises the row.
 - **Timeline:** a 1px Slate tick and a year label at the row's left; a rotated start marker at the end of the history.
+- **Assistive list:** the scroller is hidden from assistive technology as a whole. A visually hidden list of one link per project, newest first, sits before it and is what screen readers and the keyboard get; focusing a link opens that project in the detail panel, the way hovering its row does.
 - **Glitch:** the hovered name splits into red (#ff0040) and blue (#0040ff) screen-blended halves for a few frames. The one chromatic moment on the site, and it is transient.
 
 ### How It Was Built (retired)
