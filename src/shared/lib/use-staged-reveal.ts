@@ -30,9 +30,12 @@ export function useStagedReveal<T>(value: T | null, delays: readonly number[]): 
       const timers = delays.map((delay, i) => setTimeout(() => setStage(i + 1), delay));
       return () => timers.forEach(clearTimeout);
     }
+    // Clearing an already empty panel queues a no-op update that React later replays over the
+    // value set during render, so the first value to arrive would vanish.
+    if (displayed === null) return;
     const timer = setTimeout(() => setDisplayed(null), EXIT_MS);
     return () => clearTimeout(timer);
-  }, [value, delays]);
+  }, [value, delays, displayed]);
 
   return { displayed, reached: (target: number) => stage >= target };
 }
