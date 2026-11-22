@@ -1,5 +1,11 @@
 export { I18nProvider, useLocale, setLocale } from "./provider";
-export { SUPPORTED_LOCALES, DEFAULT_LOCALE, detectLocale } from "./detect";
+export {
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
+  LOCALE_COOKIE,
+  detectLocale,
+  resolveRequestLocale,
+} from "./detect";
 export { resolveProjectLocale } from "./locale-resolver";
 export {
   useLocalizedProject,

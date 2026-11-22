@@ -1,23 +1,21 @@
 "use client";
 
-import { useSyncExternalStore } from "react";
+import { useState } from "react";
+import type { i18n } from "i18next";
 import { I18nextProvider, useTranslation } from "react-i18next";
-import i18n from "./init";
-import { detectLocale, SUPPORTED_LOCALES, DEFAULT_LOCALE } from "./detect";
+import { createI18n } from "./init";
+import { DEFAULT_LOCALE } from "./detect";
 import type { Locale } from "./detect";
-import { getLocaleCookie, setLocaleCookie } from "./cookie";
+import { setLocaleCookie } from "./cookie";
 
-function resolveInitialLocale(): Locale {
-  const cookie = getLocaleCookie();
-  if (cookie && (SUPPORTED_LOCALES as readonly string[]).includes(cookie)) {
-    return cookie as Locale;
-  }
+let browserInstance: i18n | null = null;
 
-  if (typeof navigator !== "undefined") {
-    return detectLocale(navigator.language);
-  }
-
-  return DEFAULT_LOCALE;
+// The server renders many requests at once, so each render there gets its own instance;
+// the browser keeps one, which setLocale switches.
+function getInstance(locale: Locale): i18n {
+  if (typeof window === "undefined") return createI18n(locale);
+  browserInstance ??= createI18n(locale);
+  return browserInstance;
 }
 
 export function useLocale(): Locale {
@@ -26,36 +24,19 @@ export function useLocale(): Locale {
 }
 
 export function setLocale(locale: Locale): void {
-  i18n.changeLanguage(locale);
+  browserInstance?.changeLanguage(locale);
   setLocaleCookie(locale);
+  document.documentElement.lang = locale;
 }
 
-let initialLocaleApplied = false;
-const readyListeners = new Set<() => void>();
+export function I18nProvider({
+  locale,
+  children,
+}: {
+  locale: Locale;
+  children: React.ReactNode;
+}) {
+  const [instance] = useState(() => getInstance(locale));
 
-function applyInitialLocale(): void {
-  if (initialLocaleApplied) return;
-  const locale = resolveInitialLocale();
-  i18n.changeLanguage(locale);
-  setLocaleCookie(locale);
-  initialLocaleApplied = true;
-  readyListeners.forEach((listener) => listener());
-}
-
-function subscribeReady(listener: () => void): () => void {
-  readyListeners.add(listener);
-  applyInitialLocale();
-  return () => readyListeners.delete(listener);
-}
-
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const ready = useSyncExternalStore(
-    subscribeReady,
-    () => initialLocaleApplied,
-    () => false,
-  );
-
-  if (!ready) return null;
-
-  return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
+  return <I18nextProvider i18n={instance}>{children}</I18nextProvider>;
 }

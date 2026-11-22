@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { detectLocale, SUPPORTED_LOCALES, DEFAULT_LOCALE } from "../i18n/detect";
+import {
+  detectLocale,
+  resolveRequestLocale,
+  SUPPORTED_LOCALES,
+  DEFAULT_LOCALE,
+} from "../i18n/detect";
 
 describe("detectLocale", () => {
   it("returns exact match for supported locale", () => {
@@ -26,5 +31,30 @@ describe("detectLocale", () => {
   it("exports supported locales and default", () => {
     expect(SUPPORTED_LOCALES).toEqual(["en", "ru", "zh"]);
     expect(DEFAULT_LOCALE).toBe("en");
+  });
+});
+
+describe("resolveRequestLocale", () => {
+  it("prefers a supported cookie over the header", () => {
+    expect(resolveRequestLocale("ru", "zh-CN,zh;q=0.9")).toBe("ru");
+  });
+
+  it("ignores an unsupported cookie", () => {
+    expect(resolveRequestLocale("fr", "zh-CN")).toBe("zh");
+  });
+
+  it("takes the first supported language by weight", () => {
+    expect(resolveRequestLocale(undefined, "fr-FR, ru;q=0.8, zh;q=0.9")).toBe("zh");
+    expect(resolveRequestLocale(undefined, "en-US,en;q=0.9,ru;q=0.8")).toBe("en");
+  });
+
+  it("skips languages weighted zero", () => {
+    expect(resolveRequestLocale(undefined, "ru;q=0, zh;q=0.5")).toBe("zh");
+  });
+
+  it("falls back to the default without a usable signal", () => {
+    expect(resolveRequestLocale(undefined, null)).toBe("en");
+    expect(resolveRequestLocale(undefined, "fr, de;q=0.9")).toBe("en");
+    expect(resolveRequestLocale(undefined, "*")).toBe("en");
   });
 });
